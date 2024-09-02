@@ -1,0 +1,297 @@
+/* 기본 스타일 설정 */
+body {
+  margin: 0;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+  color: #333;
+}
+
+/* 헤더 스타일 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: #f8f8f8;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 150px; /* 로고 이미지 크기 */
+  margin-right: 10px;
+}
+
+.login button {
+  background-color: #FFBB6A;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login button:hover {
+  background-color: #e06a43;
+}
+
+.banner-area {
+  position: relative; /* 자식 요소의 절대 위치를 기준으로 설정 */
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  max-height: 400px; /* 배너 영역의 최대 높이 */
+}
+
+.banner-area img {
+  width: 100%;
+  height: auto;
+  max-height: 100%; /* 배너 영역에 맞게 조정 */
+  object-fit: cover; /* 이미지가 컨테이너를 가득 채우도록 설정 */
+}
+
+.banner-text {
+  position: absolute; /* 배너 영역 내에서 절대 위치 */
+  bottom: 0; /* 이미지 하단에 위치 */
+  left: 0; /* 이미지 왼쪽에 위치 */
+  margin: 10px; /* 텍스트 주변의 여백 */
+  color: #F9973E; /* 텍스트 색상 (배경에 맞게 조정) */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  padding: 20px; /* 여백 추가 */
+}
+
+.banner-text h1 {
+  margin: 0;
+  font-size: 3em; /* 기본 폰트 크기 */
+}
+
+.banner-text p {
+  margin: 0; /* 설명의 기본 여백 제거 */
+  font-size: 3em; /* 기본 폰트 크기 */
+}
+
+/* 검색창 스타일 */
+.search-area {
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-area h2 {
+  font-size: 2em; /* 기본 폰트 크기 */
+  color: #F9973E;
+  margin-bottom: 10px;
+}
+
+.search-area .search-container {
+  position: relative; /* 아이콘을 위치시키기 위해 상대 위치 설정 */
+  width: 60%;
+  max-width: 600px;
+}
+
+.search-area input[type="text"] {
+  background-color: #FFBB6A;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding-left: 20px; /* 왼쪽 패딩을 아이콘과 일치하도록 설정 */
+  width: 100%;
+  margin-top: 20px;
+  outline: none;
+  box-sizing: border-box; /* 패딩과 보더를 포함하여 너비 조정 */
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+  font-size: 1em; /* 텍스트 크기 조정 */
+  color: #ffffff;
+}
+
+.search-icon {
+  position: absolute; /* 아이콘의 절대 위치 설정 */
+  right: 20px; /* 검색창의 오른쪽 여백 설정 */
+  top: 50%; /* 검색창의 수직 가운데 정렬 */
+  color: #ffffff;
+  font-size: 1.2em; /* 아이콘 크기 조정 */
+  z-index: 10; /* 아이콘을 다른 요소 위에 표시되도록 설정 */
+}
+
+/* placeholder 스타일 */
+.search-area input[type="text"]::placeholder {
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+  color: #ffffff;
+}
+
+/* 혜택이 많은 지역 스타일 */
+.top-areas {
+  padding: 20px 40px;
+}
+
+.top-areas h2 {
+  text-align: left;
+  font-size: 2em; /* 기본 폰트 크기 */
+  color: #F9973E;
+  margin-bottom: 10px;
+}
+
+.areas-list {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* 반응형을 위해 Flexbox 사용 */
+}
+
+.area-item {
+  display: flex;
+  flex-direction: row; /* 기본 방향 설정 */
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 200px;
+  transition: transform 0.3s;
+  gap: 30px; /* 이미지와 텍스트 사이의 간격 */
+  box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
+  overflow: hidden; /* 내용이 요소를 벗어나지 않도록 설정 */
+}
+
+.area-item img {
+  width: 150px; /* 고정 폭 */
+  height: auto;
+  max-height: 150px; /* 이미지 크기 조정 */
+}
+
+.area-item .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.area-item .text .region-name {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.area-item .text .region-tag {
+  margin: 0;
+  color: #F9973E; /* 태그 색상 */
+}
+
+.area-item:hover {
+  transform: translateY(-10px);
+}
+
+/* 푸터 스타일 */
+footer {
+  background-color: #FFE9CE;
+  padding: 20px;
+  text-align: left;
+}
+
+.footer-content p {
+  margin: 0;
+}
+
+.footer-content a {
+  color: #767676;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .search-area .search-container {
+    width: 80%;
+  }
+
+  .search-icon {
+    font-size: 1em; /* 화면 크기에 따라 아이콘 크기 조정 */
+  }
+
+  .search-area h2 {
+    font-size: 1.2em; /* 화면 너비가 768px 이하일 때 폰트 크기 조정 */
+  }
+
+  .areas-list {
+    gap: 10px;
+  }
+
+  .area-item {
+    width: 45%;
+    flex-direction: column; /* 이미지와 텍스트가 수직으로 배치되도록 변경 */
+    height: auto; /* 높이 자동 조정 */
+    gap: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+    box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
+  }
+
+  .banner-text h1 {
+    font-size: 1.5em; /* 화면 너비가 768px 이하일 때 폰트 크기 조정 */
+  }
+
+  .banner-text p {
+    font-size: 1em; /* 화면 너비가 768px 이하일 때 폰트 크기 조정 */
+  }
+
+  .top-areas h3 {
+    font-size: 1em; /* 화면 너비가 768px 이하일 때 폰트 크기 조정 */
+  }
+}
+
+@media (max-width: 480px) {
+  .search-area .search-container {
+    width: 90%;
+  }
+
+  .search-icon {
+    font-size: 0.8em; /* 화면 크기에 따라 아이콘 크기 조정 */
+    right: 10px; /* 화면이 작아질 때 오른쪽 여백 조정 */
+  }
+
+  .search-area h2 {
+    font-size: 1em; /* 화면 너비가 480px 이하일 때 폰트 크기 조정 */
+  }
+
+  .area-item {
+    width: 100%;
+    flex-direction: column; /* 이미지와 텍스트가 수직으로 배치되도록 변경 */
+    height: auto; /* 높이 자동 조정 */
+    gap: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+    box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
+  }
+
+  .area-item img {
+    width: 100%; /* 이미지 너비를 100%로 설정 */
+    max-height: 200px; /* 화면이 작을 때 이미지 크기 조정 */
+  }
+
+  .area-item .text {
+    text-align: center; /* 텍스트를 가운데 정렬 */
+  }
+
+  .banner-text h1 {
+    font-size: 1.2em; /* 화면 너비가 480px 이하일 때 폰트 크기 조정 */
+  }
+
+  .banner-text p {
+    font-size: 0.8em; /* 화면 너비가 480px 이하일 때 폰트 크기 조정 */
+  }
+
+  .top-areas h3 {
+    font-size: 0.9em; /* 화면 너비가 480px 이하일 때 폰트 크기 조정 */
+  }
+
+}
