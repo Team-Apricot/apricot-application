@@ -91,48 +91,24 @@
                 <h3 class="text-primary mb-3">안녕하세요</h3>
                 <h1 class="display-3 mb-3">이서호입니다, 저는</h1>
                 <h2 class="typed-text-output d-inline"></h2>
-                <div class="typed-text d-none"> 끝없이 성장하는 백엔드 개발자,
-                    알고리즘을 좋아하는 개발자
+                <div class="typed-text d-none"> 알고리즘을 좋아하는 백엔드 개발자,
+                    새로운 걸 추구하는 프론트 개발자,끝없이 성장하는 신입 개발자
                 </div>
+                <h3 class="text-primary mb-3">입니다.</h3>
                 <div class="d-flex align-items-center pt-5">
                     <a href="" class="btn btn-primary py-3 px-4 me-5">Download CV</a>
                 </div>
             </div>
             <div class="col-lg-6">
-                <img class="img-fluid"
-                     src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/profile.jpg"
-                     alt="">
+<%--                <img class="img-fluid"--%>
+<%--                     src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/profile.jpg"--%>
+<%--                     alt="">--%>
             </div>
 
         </div>
     </div>
 </div>
 <!-- Header End -->
-
-
-<!-- Video Modal Start -->
-<div class="modal modal-video fade" id="videoModal" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content rounded-0">
-            <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- 16:9 aspect ratio -->
-                <div class="ratio ratio-16x9">
-                    <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
-                            allowscriptaccess="always"
-                            allow="autoplay"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Video Modal End -->
-
 
 <!-- About Start -->
 <div class="container-xxl py-6" id="about">
@@ -141,35 +117,31 @@
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="d-flex align-items-center mb-5">
                     <div class="years flex-shrink-0 text-center me-4">
-                        <h1 class="display-1 mb-0">안녕하세요</h1>
+<%--                        <h4 class="display-1 mb-0">개발자</h4>--%>
                         <h5 class="mb-0"></h5>
                     </div>
-                    <h3 class="lh-base mb-0">of working experience as a web designer &
-                        developer</h3>
+                    <h3 class="lh-base mb-0">개발자가 되기 위해 노력한 것들</h3>
                 </div>
-                <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet
-                    est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit
-                    at, sed sit sanctus dolor eos.</p>
-                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Afordable
-                    Prices</p>
-                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>High Quality
-                    Product</p>
-                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>On Time Project
-                    Delivery</p>
+                <p class="mb-4">본래 생명공학을 전공했던 저는 생물정보학이라는 학문을 접하며, 프로그래밍에 관심을 갖기 시작했습니다.
+                그리고 이제 그 꿈을 실현하려고 합니다.</p>
+                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>정보처리기사 자격증 (2023.09.01)</p>
+                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>리눅스 마스터 2급 (2023.10.06)</p>
+                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>정보보안기사 필기(24.03.05)</p>
+                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>백준 알고리즘 Platinum (상위 4.3%)</p>
                 <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="row g-3 mb-4">
-                    <div class="col-sm-6">
-                        <img class="img-fluid rounded"
-                             src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/about-1.jpg"
-                             alt="">
-                    </div>
-                    <div class="col-sm-6">
-                        <img class="img-fluid rounded"
-                             src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/about-2.jpg"
-                             alt="">
-                    </div>
+<%--                    <div class="col-sm-6">--%>
+<%--                        <img class="img-fluid rounded"--%>
+<%--                             src="http://mazassumnida.wtf/api/v2/generate_badge?boj=ssoulistic"--%>
+<%--                             alt="">--%>
+<%--                    </div>--%>
+<%--                    <div class="col-sm-6">--%>
+<%--                        <img class="img-fluid rounded"--%>
+<%--                             src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/about-2.jpg"--%>
+<%--                             alt="">--%>
+<%--                    </div>--%>
                 </div>
                 <div class="d-flex align-items-center mb-3">
                     <h5 class="border-end pe-3 me-3 mb-0">Happy Clients</h5>
@@ -196,7 +168,7 @@
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <h1 class="display-5 mb-5">Skills & Experience</h1>
-                <p class="mb-4">저는 생물정보학을 공부하던 중 개발에 흥미를 느껴 개발자로서의 꿈을 갖고 공부를 시작하게 되었습니다.</p>
+<%--                <p class="mb-4">저의 기술스택입니다.</p>--%>
                 <h3 class="mb-4">My Skills</h3>
                 <div class="row align-items-center">
                     <div class="col-md-6">
@@ -455,68 +427,68 @@
 
 
 <!-- Service Start -->
-<div class="container-fluid bg-light my-5 py-6" id="service">
-    <div class="container">
-        <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="col-lg-6">
-                <h1 class="display-5 mb-0">My Services</h1>
-            </div>
-            <div class="col-lg-6 text-lg-end">
-                <a class="btn btn-primary py-3 px-5" href="">Hire Me</a>
-            </div>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
-                    <div class="bg-icon flex-shrink-0 mb-3">
-                        <i class="fa fa-crop-alt fa-2x text-dark"></i>
-                    </div>
-                    <div class="ms-sm-4">
-                        <h4 class="mb-3">Creative Design</h4>
-                        <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>
-                        <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
-                    <div class="bg-icon flex-shrink-0 mb-3">
-                        <i class="fa fa-code-branch fa-2x text-dark"></i>
-                    </div>
-                    <div class="ms-sm-4">
-                        <h4 class="mb-3">Graphic Design</h4>
-                        <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>
-                        <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
-                    <div class="bg-icon flex-shrink-0 mb-3">
-                        <i class="fa fa-code fa-2x text-dark"></i>
-                    </div>
-                    <div class="ms-sm-4">
-                        <h4 class="mb-3">Web Design</h4>
-                        <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>
-                        <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
-                    <div class="bg-icon flex-shrink-0 mb-3">
-                        <i class="fa fa-laptop-code fa-2x text-dark"></i>
-                    </div>
-                    <div class="ms-sm-4">
-                        <h4 class="mb-3">UI/UX Design</h4>
-                        <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>
-                        <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%--<div class="container-fluid bg-light my-5 py-6" id="service">--%>
+<%--    <div class="container">--%>
+<%--        <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">--%>
+<%--            <div class="col-lg-6">--%>
+<%--                <h1 class="display-5 mb-0">나의 강점</h1>--%>
+<%--            </div>--%>
+<%--            <div class="col-lg-6 text-lg-end">--%>
+<%--                <a class="btn btn-primary py-3 px-5" href="">Hire Me</a>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="row g-4">--%>
+<%--            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">--%>
+<%--                <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">--%>
+<%--                    <div class="bg-icon flex-shrink-0 mb-3">--%>
+<%--                        <i class="fa fa-crop-alt fa-2x text-dark"></i>--%>
+<%--                    </div>--%>
+<%--                    <div class="ms-sm-4">--%>
+<%--                        <h4 class="mb-3">Creative Design</h4>--%>
+<%--                        <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>--%>
+<%--                        <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">--%>
+<%--                <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">--%>
+<%--                    <div class="bg-icon flex-shrink-0 mb-3">--%>
+<%--                        <i class="fa fa-code-branch fa-2x text-dark"></i>--%>
+<%--                    </div>--%>
+<%--                    <div class="ms-sm-4">--%>
+<%--                        <h4 class="mb-3">Graphic Design</h4>--%>
+<%--                        <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>--%>
+<%--                        <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">--%>
+<%--                <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">--%>
+<%--                    <div class="bg-icon flex-shrink-0 mb-3">--%>
+<%--                        <i class="fa fa-code fa-2x text-dark"></i>--%>
+<%--                    </div>--%>
+<%--                    <div class="ms-sm-4">--%>
+<%--                        <h4 class="mb-3">Web Design</h4>--%>
+<%--                        <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>--%>
+<%--                        <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">--%>
+<%--                <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">--%>
+<%--                    <div class="bg-icon flex-shrink-0 mb-3">--%>
+<%--                        <i class="fa fa-laptop-code fa-2x text-dark"></i>--%>
+<%--                    </div>--%>
+<%--                    <div class="ms-sm-4">--%>
+<%--                        <h4 class="mb-3">UI/UX Design</h4>--%>
+<%--                        <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>--%>
+<%--                        <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- Service End -->
 
 
