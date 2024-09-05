@@ -26,9 +26,17 @@ public class ResumeController {
         return "resume/seoho";
     }
 
-    @GetMapping("/seockhyun")
-    public String introSeockHyun(Model model) {
-        return "resume/seockhyun";
+    @GetMapping("/seokhyun/home")
+    public String introSeokHyunHome(Model model) {
+        return "resume/seokhyun/home";
     }
 
+    @GetMapping("/seokhyun/about")
+    public String introSeokHyunAbout(Model model) {
+        return "resume/seokhyun/about";
+    }
+    @GetMapping("/seokhyun/resume")
+    public String introSeokHyunResume(Model model) {
+        return "resume/seokhyun/resume";
+    }
 }
