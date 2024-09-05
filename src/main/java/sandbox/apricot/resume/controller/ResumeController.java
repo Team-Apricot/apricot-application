@@ -13,7 +13,7 @@ public class ResumeController {
 
     @GetMapping("/heonuk")
     public String introHeonUk(Model model) {
-        return "resume/heonuk";
+        return "developerIntroductionViews/heonuk/intro";
     }
 
     @GetMapping("/heejung")
