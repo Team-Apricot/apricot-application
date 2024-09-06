@@ -11,8 +11,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<c:url value='/assets/img/favicon.png' />" rel="icon">
-  <link href="<c:url value='/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/favicon.png' />" rel="icon">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -20,14 +20,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;300;400;500;600;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<c:url value='/assets/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/bootstrap-icons/bootstrap-icons.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/aos/aos.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/swiper/swiper-bundle.min.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/glightbox/css/glightbox.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap-icons/bootstrap-icons.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/aos/aos.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/swiper/swiper-bundle.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/glightbox/css/glightbox.min.css' />" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="<c:url value='/assets/css/main.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/css/main.css' />" rel="stylesheet">
 
 </head>
 
@@ -76,8 +76,8 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <!--<img src="<c:url value='/assets/img/seokhyun.jpg' />" alt="" data-aos="fade-in">-->
-      <img src="<c:url value='/assets/img/koong.png' />" alt="" data-aos="fade-in">
+      <!--<img src="<c:url value='/salguDevelopers/seokhyun/assets/img/seokhyun.jpg' />" alt="" data-aos="fade-in">-->
+      <img src="<c:url value='/salguDevelopers/seokhyun/assets/img/koong.png' />" alt="" data-aos="fade-in">
       <div class="container" data-aos="zoom-out" data-aos-delay="100">
         <h2>Seokhyun Hwang</h2>
         <p>I <span class="typed" data-typed-items=" am Developer, love my Koong">I love my Koong</span><span class="typed-cursor typed-cursor--blink"></span></p>
@@ -122,19 +122,19 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="<c:url value='/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/php-email-form/validate.js' />"></script>
-  <script src="<c:url value='/assets/vendor/aos/aos.js' />"></script>
-  <script src="<c:url value='/assets/vendor/typed.js/typed.umd.js' />"></script>
-  <script src="<c:url value='/assets/vendor/purecounter/purecounter_vanilla.js' />"></script>
-  <script src="<c:url value='/assets/vendor/waypoints/noframework.waypoints.js' />"></script>
-  <script src="<c:url value='/assets/vendor/swiper/swiper-bundle.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/glightbox/js/glightbox.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/isotope-layout/isotope.pkgd.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/php-email-form/validate.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/aos/aos.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/typed.js/typed.umd.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/purecounter/purecounter_vanilla.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/waypoints/noframework.waypoints.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/swiper/swiper-bundle.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/glightbox/js/glightbox.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/isotope-layout/isotope.pkgd.min.js' />"></script>
 
   <!-- Main JS File -->
-  <script src="<c:url value='/assets/js/main.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/js/main.js' />"></script>
 
 </body>
 </html>

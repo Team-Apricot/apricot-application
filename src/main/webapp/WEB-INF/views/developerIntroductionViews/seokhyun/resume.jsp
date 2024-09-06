@@ -13,8 +13,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<c:url value='/assets/img/favicon.png' />" rel="icon">
-  <link href="<c:url value='/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/favicon.png' />" rel="icon">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -22,14 +22,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<c:url value='/assets/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/bootstrap-icons/bootstrap-icons.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/aos/aos.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/swiper/swiper-bundle.min.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/glightbox/css/glightbox.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap-icons/bootstrap-icons.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/aos/aos.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/swiper/swiper-bundle.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/glightbox/css/glightbox.min.css' />" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="<c:url value='/assets/css/main.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/css/main.css' />" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Personal
@@ -47,7 +47,7 @@
 
       <a href="<c:url value='/index.html' />" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <!-- <img src="/salguDevelopers/seokhyun/assets/img/logo.png" alt=""> -->
         <h1 class="sitename">shhwang</h1>
       </a>
 
@@ -57,29 +57,6 @@
           <li><a href="<c:url value='/resume/seokhyun/home' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/home"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Home</a></li>
           <li><a href="<c:url value='/resume/seokhyun/about' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/about"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">About</a></li>
           <li><a href="<c:url value='/resume/seokhyun/resume' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/resume"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Resume</a></li>
-          <!--
-          <li><a href="<c:url value='/resume/seokhyun/services' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/services"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Services</a></li>
-          <li><a href="<c:url value='/resume/seokhyun/portfolio' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/portfolio"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Portfolio</a></li>
-          <li><a href="<c:url value='/resume/seokhyun/contact' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/contact"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Contact</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-          -->
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -254,19 +231,19 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
-  <script src="<c:url value='/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/php-email-form/validate.js' />"></script>
-  <script src="<c:url value='/assets/vendor/aos/aos.js' />"></script>
-  <script src="<c:url value='/assets/vendor/typed.js/typed.umd.js' />"></script>
-  <script src="<c:url value='/assets/vendor/purecounter/purecounter_vanilla.js' />"></script>
-  <script src="<c:url value='/assets/vendor/waypoints/noframework.waypoints.js' />"></script>
-  <script src="<c:url value='/assets/vendor/swiper/swiper-bundle.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/glightbox/js/glightbox.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/isotope-layout/isotope.pkgd.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/php-email-form/validate.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/aos/aos.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/typed.js/typed.umd.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/purecounter/purecounter_vanilla.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/waypoints/noframework.waypoints.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/swiper/swiper-bundle.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/glightbox/js/glightbox.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/isotope-layout/isotope.pkgd.min.js' />"></script>
 
   <!-- Main JS File -->
-  <script src="<c:url value='/assets/js/main.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/js/main.js' />"></script>
 
 </body>
 

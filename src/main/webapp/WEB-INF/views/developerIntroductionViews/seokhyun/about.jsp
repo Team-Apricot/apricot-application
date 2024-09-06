@@ -13,8 +13,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<c:url value='/assets/img/favicon.png' />" rel="icon">
-  <link href="<c:url value='/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/favicon.png' />" rel="icon">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -22,14 +22,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;300;400;500;600;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<c:url value='/assets/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/bootstrap-icons/bootstrap-icons.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/aos/aos.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/swiper/swiper-bundle.min.css' />" rel="stylesheet">
-  <link href="<c:url value='/assets/vendor/glightbox/css/glightbox.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap-icons/bootstrap-icons.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/aos/aos.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/swiper/swiper-bundle.min.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/vendor/glightbox/css/glightbox.min.css' />" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="<c:url value='/assets/css/main.css' />" rel="stylesheet">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/css/main.css' />" rel="stylesheet">
 </head>
 
 <body class="about-page">
@@ -49,29 +49,6 @@
           <li><a href="<c:url value='/resume/seokhyun/home' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/home"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Home</a></li>
           <li><a href="<c:url value='/resume/seokhyun/about' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/about"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">About</a></li>
           <li><a href="<c:url value='/resume/seokhyun/resume' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/resume"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Resume</a></li>
-          <!--
-          <li><a href="<c:url value='/resume/seokhyun/services' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/services"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Services</a></li>
-          <li><a href="<c:url value='/resume/seokhyun/portfolio' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/portfolio"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Portfolio</a></li>
-          <li><a href="<c:url value='/resume/seokhyun/contact' />" class="<c:choose><c:when test='${pageContext.request.requestURI eq "/resume/seokhyun/contact"}'>active</c:when><c:otherwise></c:otherwise></c:choose>">Contact</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-          -->
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -110,8 +87,7 @@
 
         <div class="row gy-4 justify-content-center">
           <div class="col-lg-4">
-            <!--<img src="assets/img/seokhyun.jpg" class="img-fluid" alt=""> -->
-            <img src="<c:url value='/assets/img/seokhyun(2).jpg' />" alt="" data-aos="fade-in">
+            <img src="<c:url value='/salguDevelopers/seokhyun/assets/img/seokhyun(2).jpg' />" alt="" data-aos="fade-in">
           </div>
           <div class="col-lg-8 content">
             <h2>Full Stack Developer &amp; SI Developer.</h2>
@@ -122,7 +98,6 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1994.10.04</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+010 8723 5181</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>경기 성남시 분당구</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Certificate:</strong> <span>Salesforce Administrator</span></li>
                 </ul>
@@ -410,7 +385,7 @@
                 <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
                 <i class="bi bi-quote quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <img src="/salguDevelopers/seokhyun/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                 <h3>Saul Goodman</h3>
                 <h4>Ceo &amp; Founder</h4>
               </div>
@@ -423,7 +398,7 @@
                   <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <img src="/salguDevelopers/seokhyun/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                 <h3>Sara Wilsson</h3>
                 <h4>Designer</h4>
               </div>
@@ -436,7 +411,7 @@
                   <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <img src="/salguDevelopers/seokhyun/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                 <h3>Jena Karlis</h3>
                 <h4>Store Owner</h4>
               </div>
@@ -449,7 +424,7 @@
                   <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <img src="/salguDevelopers/seokhyun/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                 <h3>Matt Brandon</h3>
                 <h4>Freelancer</h4>
               </div>
@@ -462,7 +437,7 @@
                   <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                <img src="/salguDevelopers/seokhyun/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                 <h3>John Larson</h3>
                 <h4>Entrepreneur</h4>
               </div>
@@ -508,19 +483,19 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="<c:url value='/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/php-email-form/validate.js' />"></script>
-  <script src="<c:url value='/assets/vendor/aos/aos.js' />"></script>
-  <script src="<c:url value='/assets/vendor/typed.js/typed.umd.js' />"></script>
-  <script src="<c:url value='/assets/vendor/purecounter/purecounter_vanilla.js' />"></script>
-  <script src="<c:url value='/assets/vendor/waypoints/noframework.waypoints.js' />"></script>
-  <script src="<c:url value='/assets/vendor/swiper/swiper-bundle.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/glightbox/js/glightbox.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' />"></script>
-  <script src="<c:url value='/assets/vendor/isotope-layout/isotope.pkgd.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/php-email-form/validate.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/aos/aos.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/typed.js/typed.umd.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/purecounter/purecounter_vanilla.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/waypoints/noframework.waypoints.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/swiper/swiper-bundle.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/glightbox/js/glightbox.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/vendor/isotope-layout/isotope.pkgd.min.js' />"></script>
 
   <!-- Main JS File -->
-  <script src="<c:url value='/assets/js/main.js' />"></script>
+  <script src="<c:url value='/salguDevelopers/seokhyun/assets/js/main.js' />"></script>
 
 </body>
 
