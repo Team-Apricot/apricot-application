@@ -18,9 +18,18 @@ public class ResumeController {
 
     @GetMapping("/heejung")
     public String introHeeJung(Model model) {
-        return "resume/heejung";
+        return "developerIntroductionViews/heejung/heejung";
     }
 
+    @GetMapping("/heejung/resume")
+    public String introHeeJungResume(Model model) {
+        return "developerIntroductionViews/heejung/resume";
+    }
+
+    @GetMapping("/heejung/projects")
+    public String introHeeJungProjects(Model model) {
+        return "developerIntroductionViews/heejung/projects";
+    }
     @GetMapping("/seoho")
     public String introSeoHo(Model model) {
         return "resume/seoho";
