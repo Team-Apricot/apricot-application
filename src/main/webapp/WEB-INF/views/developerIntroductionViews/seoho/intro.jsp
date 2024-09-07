@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ProMan - Personal Portfolio HTML Template</title>
+    <title>살구 - 이서호.</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -57,9 +57,9 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn"
      data-wow-delay="0.1s">
-    <a href="intro.jsp" class="navbar-brand d-block d-lg-none">
-        <h1 class="text-primary fw-bold m-0">ProMan</h1>
-    </a>
+<%--    <a href="intro.jsp" class="navbar-brand d-block d-lg-none">--%>
+<%--        <h1 class="text-primary fw-bold m-0">자기소개 페이지</h1>--%>
+<%--    </a>--%>
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
             data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -67,16 +67,16 @@
     <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
             <a href="#home" class="nav-item nav-link active">Home</a>
-            <a href="#about" class="nav-item nav-link">About ME</a>
-            <a href="#skill" class="nav-item nav-link">Skills</a>
+            <a href="#about" class="nav-item nav-link">Certificates</a>
 
         </div>
-        <a href="intro.jsp" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
-            <h1 class="text-primary fw-bold m-0">WELCOME</h1>
-        </a>
+<%--        <a href="#home" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">--%>
+<%--            <h1 class="text-primary fw-bold m-0">MY PAGE</h1>--%>
+<%--        </a>--%>
         <div class="navbar-nav me-auto py-0">
+            <a href="#skill" class="nav-item nav-link">Skills & Experience</a>
             <a href="#project" class="nav-item nav-link">Projects</a>
-            <a href="#service" class="nav-item nav-link">Services</a>
+<%--            <a href="#service" class="nav-item nav-link">Services</a>--%>
         </div>
     </div>
 </nav>
@@ -89,20 +89,19 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 py-6 pb-0 pt-lg-0">
                 <h3 class="text-primary mb-3">안녕하세요</h3>
-                <h1 class="display-3 mb-3">이서호입니다, 저는</h1>
                 <h2 class="typed-text-output d-inline"></h2>
-                <div class="typed-text d-none"> 알고리즘을 좋아하는 백엔드 개발자,
-                    새로운 걸 추구하는 프론트 개발자,끝없이 성장하는 신입 개발자
+                <div class="typed-text d-none"> 끝없이 성장하는 신입 개발자,  새로운 걸 추구하는 프론트 엔드 개발자,  알고리즘을 좋아하는 백엔드 개발자
                 </div>
+                <h1 class="display-3 mb-3">이서호</h1>
                 <h3 class="text-primary mb-3">입니다.</h3>
                 <div class="d-flex align-items-center pt-5">
                     <a href="" class="btn btn-primary py-3 px-4 me-5">Download CV</a>
                 </div>
             </div>
             <div class="col-lg-6">
-<%--                <img class="img-fluid"--%>
-<%--                     src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/profile.jpg"--%>
-<%--                     alt="">--%>
+                <img class="img-fluid"
+                     src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/profile_500.png"
+                     alt="">
             </div>
 
         </div>
@@ -118,17 +117,18 @@
                 <div class="d-flex align-items-center mb-5">
                     <div class="years flex-shrink-0 text-center me-4">
 <%--                        <h4 class="display-1 mb-0">개발자</h4>--%>
-                        <h5 class="mb-0"></h5>
+<%--                        <h5 class="mb-0"></h5>--%>
                     </div>
-                    <h3 class="lh-base mb-0">개발자가 되기 위해 노력한 것들</h3>
+                    <h3 class="display-5 mb-2">Certificates</h3>
                 </div>
-                <p class="mb-4">본래 생명공학을 전공했던 저는 생물정보학이라는 학문을 접하며, 프로그래밍에 관심을 갖기 시작했습니다.
-                그리고 이제 그 꿈을 실현하려고 합니다.</p>
-                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>정보처리기사 자격증 (2023.09.01)</p>
-                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>리눅스 마스터 2급 (2023.10.06)</p>
+                <p class="mb-4"> 제가 개발자 공부를 진행하며 취득한 자격증과 비공식적인 노력의 결과물입니다.</p>
+                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>정보처리기사 자격증 (23.09.01)</p>
+                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>리눅스 마스터 2급 (23.10.06)</p>
                 <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>정보보안기사 필기(24.03.05)</p>
-                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>백준 알고리즘 Platinum (상위 4.3%)</p>
-                <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
+                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>SQLD 자격증 (24.08.24)</p>
+                <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>백준 Platinum (상위 4.3%)</p>
+
+<%--                <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>--%>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="row g-3 mb-4">
@@ -143,18 +143,24 @@
 <%--                             alt="">--%>
 <%--                    </div>--%>
                 </div>
+                <br>
                 <div class="d-flex align-items-center mb-3">
-                    <h5 class="border-end pe-3 me-3 mb-0">Happy Clients</h5>
-                    <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">1234</h2>
+                    <h5 class="border-end pe-3 me-3 mb-0">경험한 프로젝트 수</h5>
+                    <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">3</h2>
                 </div>
-                <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet
-                    est diam amet diam ipsum clita labore dolor duo clita.</p>
+                <p class="mb-0">이제 막 시작한 신입 개발자로 다양한 경험을 쌓아가는 중입니다.</p>
+                <br>
                 <div class="d-flex align-items-center mb-3">
-                    <h5 class="border-end pe-3 me-3 mb-0">Projects Completed</h5>
-                    <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">1234</h2>
+                    <h5 class="border-end pe-3 me-3 mb-0">solved ac 최장 스트릭</h5>
+                    <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">141</h2>
                 </div>
-                <p class="mb-0">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet
-                    est diam amet diam ipsum clita labore dolor duo clita.</p>
+                <p class="mb-4">2023년 코딩테스트 준비를 시작하고, 141일 연속 꾸준히 문제를 풀어 제출한 기록이 있습니다.</p>
+
+                <div class="d-flex align-items-center mb-3">
+                    <h5 class="border-end pe-3 me-3 mb-0">TOEIC</h5>
+                    <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">800</h2><h2>+</h2>
+                </div>
+                <p class="mb-0"> 영어로 된 장문의 글을 읽고, 요약할 수 있는 정도의 영어 실력을 가지고 있습니다.</p>
             </div>
         </div>
     </div>
@@ -175,35 +181,23 @@
                         <div class="skill mb-4">
                             <div class="d-flex justify-content-between">
                                 <h6 class="font-weight-bold">Python</h6>
-                                <h6 class="font-weight-bold">95%</h6>
+                                <h6 class="font-weight-bold">90%</h6>
                             </div>
                             <div class="progress">
                                 <div class="progress-bar bg-primary" role="progressbar"
-                                     aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="skill mb-4">
                             <div class="d-flex justify-content-between">
                                 <h6 class="font-weight-bold">JAVA</h6>
-                                <h6 class="font-weight-bold">90%</h6>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar"
-                                     aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="skill mb-4">
-                            <div class="d-flex justify-content-between">
-                                <h6 class="font-weight-bold">HTML</h6>
                                 <h6 class="font-weight-bold">80%</h6>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar"
-                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-warning" role="progressbar"
+                                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
                         <div class="skill mb-4">
                             <div class="d-flex justify-content-between">
                                 <h6 class="font-weight-bold">Javascript</h6>
@@ -211,27 +205,39 @@
                             </div>
                             <div class="progress">
                                 <div class="progress-bar bg-danger" role="progressbar"
-                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill mb-4">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="font-weight-bold">HTML</h6>
+                                <h6 class="font-weight-bold">75%</h6>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" role="progressbar"
+                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="skill mb-4">
                             <div class="d-flex justify-content-between">
                                 <h6 class="font-weight-bold">CSS</h6>
-                                <h6 class="font-weight-bold">80%</h6>
+                                <h6 class="font-weight-bold">70%</h6>
                             </div>
                             <div class="progress">
                                 <div class="progress-bar bg-dark" role="progressbar"
-                                     aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="skill mb-4">
                             <div class="d-flex justify-content-between">
-                                <h6 class="font-weight-bold">Flask</h6>
-                                <h6 class="font-weight-bold">80%</h6>
+                                <h6 class="font-weight-bold">C#</h6>
+                                <h6 class="font-weight-bold">70%</h6>
                             </div>
                             <div class="progress">
                                 <div class="progress-bar bg-info" role="progressbar"
-                                     aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -241,12 +247,12 @@
                 <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
                     <li class="nav-item w-50">
                         <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill"
-                                href="#tab-1">Experience
+                                href="#tab-1">경력 및 이수 교육
                         </button>
                     </li>
                     <li class="nav-item w-50">
                         <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill"
-                                href="#tab-2">Education
+                                href="#tab-2">최종 학력
                         </button>
                     </li>
                 </ul>
@@ -254,57 +260,40 @@
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         <div class="row gy-5 gx-4">
                             <div class="col-sm-6">
-                                <h5>UI Designer</h5>
+                                <h5>한국생명공학연구원 인턴</h5>
                                 <hr class="text-primary my-2">
-                                <p class="text-primary mb-1">2000 - 2045</p>
-                                <h6 class="mb-0">Apex Software Inc</h6>
+                                <p class="text-primary mb-1">2020.09 ~ 2021.08</p>
+                                <h6 class="mb-0">한국생명공학연구원</h6>
                             </div>
                             <div class="col-sm-6">
-                                <h5>Product Designer</h5>
+                                <h5>정보보호 전문가 양성과정</h5>
                                 <hr class="text-primary my-2">
-                                <p class="text-primary mb-1">2000 - 2045</p>
-                                <h6 class="mb-0">Apex Software Inc</h6>
+                                <p class="text-primary mb-1">2023.04 ~ 2023.11</p>
+                                <h6 class="mb-0">KISIA</h6>
                             </div>
                             <div class="col-sm-6">
-                                <h5>Web Designer</h5>
+                                <h5>SYSONE 연계 SI 개발자 교육</h5>
                                 <hr class="text-primary my-2">
-                                <p class="text-primary mb-1">2000 - 2045</p>
-                                <h6 class="mb-0">Apex Software Inc</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <h5>Apps Designer</h5>
-                                <hr class="text-primary my-2">
-                                <p class="text-primary mb-1">2000 - 2045</p>
-                                <h6 class="mb-0">Apex Software Inc</h6>
+                                <p class="text-primary mb-1">2024.06 ~ 2024.11 (진행중)</p>
+                                <h6 class="mb-0">KOSA</h6>
                             </div>
                         </div>
                     </div>
                     <div id="tab-2" class="tab-pane fade show p-0">
                         <div class="row gy-5 gx-4">
                             <div class="col-sm-6">
-                                <h5>UI Design Course</h5>
+                                <h5>세광고등학교</h5>
                                 <hr class="text-primary my-2">
-                                <p class="text-primary mb-1">2000 - 2045</p>
-                                <h6 class="mb-0">Cambridge University</h6>
+                                <p class="text-primary mb-1">2008.03 ~ 2011.02</p>
+                                <h6 class="mb-0">인문계 고등학교</h6>
                             </div>
                             <div class="col-sm-6">
-                                <h5>IOS Development</h5>
+                                <h5>한양대학교</h5>
                                 <hr class="text-primary my-2">
-                                <p class="text-primary mb-1">2000 - 2045</p>
-                                <h6 class="mb-0">Cambridge University</h6>
+                                <p class="text-primary mb-1">2012.03 ~ 2019.08</p>
+                                <h6 class="mb-0">화공생명공학부 생명공학과</h6>
                             </div>
-                            <div class="col-sm-6">
-                                <h5>Web Design</h5>
-                                <hr class="text-primary my-2">
-                                <p class="text-primary mb-1">2000 - 2045</p>
-                                <h6 class="mb-0">Cambridge University</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <h5>Apps Design</h5>
-                                <hr class="text-primary my-2">
-                                <p class="text-primary mb-1">2000 - 2045</p>
-                                <h6 class="mb-0">Cambridge University</h6>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -324,8 +313,8 @@
             <div class="col-lg-6 text-lg-end">
                 <ul class="list-inline mx-n3 mb-0" id="portfolio-flters">
                     <li class="mx-3 active" data-filter="*">All Projects</li>
-                    <li class="mx-3" data-filter=".first">UI/UX Design</li>
-                    <li class="mx-3" data-filter=".second">Graphic Design</li>
+                    <li class="mx-3" data-filter=".first">Mini Projects</li>
+                    <li class="mx-3" data-filter=".second">Final Projects</li>
                 </ul>
             </div>
         </div>
@@ -333,93 +322,98 @@
             <div class="col-lg-4 col-md-6 portfolio-item first">
                 <div class="portfolio-img rounded overflow-hidden">
                     <img class="img-fluid"
-                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-1.jpg"
+                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/liargame_logo.png"
                          alt="">
                     <div class="portfolio-btn">
                         <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-1.jpg"
+                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/liargame_500.png"
                            data-lightbox="portfolio"><i
                                 class="fa fa-eye"></i></a>
-                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/ssoulistic/CSminiP_liargame_server"><i
                                 class="fa fa-link"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 portfolio-item second">
-                <div class="portfolio-img rounded overflow-hidden">
-                    <img class="img-fluid"
-                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-2.jpg"
-                         alt="">
-                    <div class="portfolio-btn">
-                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-2.jpg"
-                           data-lightbox="portfolio"><i
-                                class="fa fa-eye"></i></a>
-                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
-                                class="fa fa-link"></i></a>
-                    </div>
-                </div>
-            </div>
+
             <div class="col-lg-4 col-md-6 portfolio-item first">
                 <div class="portfolio-img rounded overflow-hidden">
                     <img class="img-fluid"
-                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-3.jpg"
+                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/OneStepOneStamp_logo_450.png"
                          alt="">
                     <div class="portfolio-btn">
                         <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-3.jpg"
+                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/OneStepOneStamp_service_500.png"
                            data-lightbox="portfolio"><i
                                 class="fa fa-eye"></i></a>
-                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/SysWin1/OneStepOneStamp"><i
                                 class="fa fa-link"></i></a>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6 portfolio-item second">
                 <div class="portfolio-img rounded overflow-hidden">
                     <img class="img-fluid"
-                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-4.jpg"
+                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/Thanos_IP_logo.png"
                          alt="">
                     <div class="portfolio-btn">
                         <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-4.jpg"
+                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/thanos_ip_500.png"
                            data-lightbox="portfolio"><i
                                 class="fa fa-eye"></i></a>
-                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/ssoulistic/ThanosIP"><i
                                 class="fa fa-link"></i></a>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6 portfolio-item first">
                 <div class="portfolio-img rounded overflow-hidden">
                     <img class="img-fluid"
-                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-5.jpg"
+                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/salgu_logo.png"
                          alt="">
                     <div class="portfolio-btn">
                         <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-5.jpg"
+                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/salgu_logo.png"
                            data-lightbox="portfolio"><i
                                 class="fa fa-eye"></i></a>
-                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/Team-Apricot"><i
                                 class="fa fa-link"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 portfolio-item second">
-                <div class="portfolio-img rounded overflow-hidden">
-                    <img class="img-fluid"
-                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-6.jpg"
-                         alt="">
-                    <div class="portfolio-btn">
-                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
-                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-6.jpg"
-                           data-lightbox="portfolio"><i
-                                class="fa fa-eye"></i></a>
-                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
-                                class="fa fa-link"></i></a>
-                    </div>
-                </div>
-            </div>
+
+<%--            <div class="col-lg-4 col-md-6 portfolio-item first">--%>
+<%--                <div class="portfolio-img rounded overflow-hidden">--%>
+<%--                    <img class="img-fluid"--%>
+<%--                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-5.jpg"--%>
+<%--                         alt="">--%>
+<%--                    <div class="portfolio-btn">--%>
+<%--                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"--%>
+<%--                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-5.jpg"--%>
+<%--                           data-lightbox="portfolio"><i--%>
+<%--                                class="fa fa-eye"></i></a>--%>
+<%--                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i--%>
+<%--                                class="fa fa-link"></i></a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+
+<%--            <div class="col-lg-4 col-md-6 portfolio-item second">--%>
+<%--                <div class="portfolio-img rounded overflow-hidden">--%>
+<%--                    <img class="img-fluid"--%>
+<%--                         src="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-6.jpg"--%>
+<%--                         alt="">--%>
+<%--                    <div class="portfolio-btn">--%>
+<%--                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"--%>
+<%--                           href="${pageContext.request.contextPath}/salguDevelopers/seoho/assets/img/project-6.jpg"--%>
+<%--                           data-lightbox="portfolio"><i--%>
+<%--                                class="fa fa-eye"></i></a>--%>
+<%--                        <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i--%>
+<%--                                class="fa fa-link"></i></a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
     </div>
 </div>
@@ -493,24 +487,24 @@
 
 
 <!-- Copyright Start -->
-<div class="container-fluid bg-dark text-white py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy; <a class="border-bottom text-secondary" href="#">Your Site Name</a>, All
-                Right Reserved.
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                Designed By <a class="border-bottom text-secondary" href="https://htmlcodex.com">HTML
-                Codex</a>
-                <br>Distributed By: <a class="border-bottom" href="https://themewagon.com"
-                                       target="_blank">ThemeWagon</a>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+<%--<div class="container-fluid bg-dark text-white py-4">--%>
+<%--    <div class="container">--%>
+<%--        <div class="row">--%>
+<%--            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">--%>
+<%--                &copy; <a class="border-bottom text-secondary" href="#">ssoulistic</a>, All--%>
+<%--                Right Reserved.--%>
+<%--            </div>--%>
+<%--            <div class="col-md-6 text-center text-md-end">--%>
+<%--                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->--%>
+<%--                Designed By <a class="border-bottom text-secondary" href="https://htmlcodex.com">HTML--%>
+<%--                Codex</a>--%>
+<%--                <br>Distributed By: <a class="border-bottom" href="https://themewagon.com"--%>
+<%--                                       target="_blank">ThemeWagon</a>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--</div>--%>
 <!-- Copyright End -->
 
 
