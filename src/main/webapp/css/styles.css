@@ -75,6 +75,14 @@ header {
   margin: 0; /* 설명의 기본 여백 제거 */
   font-size: 3em; /* 기본 폰트 크기 */
 }
+#myChart {
+  width: 100%;
+  min-height: 500px;
+}
+
+.zc-ref {
+  display: none;
+}
 .container {
   display: flex; /* Flexbox 사용 */
   width: 100%;
