@@ -4,7 +4,6 @@
 
 <div class="hidden-background"></div>
 
-
 <%@ include file="/WEB-INF/components/login.jsp" %>
 
 <div class="mainContent">
