@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<script src="${pageContext.request.contextPath}/js/member/member.js"></script>
+<script src="${pageContext.request.contextPath}/js/member/login.js"></script>
 <header>
     <div class="logo">
         <img src="${pageContext.request.contextPath}/assets/img/logo.png" alt="살구 Logo">
