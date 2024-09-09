@@ -11,32 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome 링크 추가 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
-    <style>
-      html,
-      body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-      }
-
-      #myChart {
-        width: 100%;
-        min-height: 500px;
-      }
-
-      .zc-ref {
-        display: none;
-      }
-    </style>
-
 </head>
 <body>
+<script src="${pageContext.request.contextPath}/js/member/login.js"></script>
 <header>
     <div class="logo">
         <img src="${pageContext.request.contextPath}/assets/img/logo.png" alt="살구 Logo">
     </div>
     <div class="login">
-        <button onclick="location.href='/login.jsp'">Sign in</button>
+        <button onclick="openLoginModal()">Sign in</button>
     </div>
 </header>
