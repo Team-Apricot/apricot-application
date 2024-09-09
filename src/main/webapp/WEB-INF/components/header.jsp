@@ -14,11 +14,12 @@
 
 </head>
 <body>
+<script src="${pageContext.request.contextPath}/js/member/member.js"></script>
 <header>
     <div class="logo">
         <img src="${pageContext.request.contextPath}/assets/img/logo.png" alt="살구 Logo">
     </div>
     <div class="login">
-        <button onclick="location.href='/login.jsp'">Sign in</button>
+        <button onclick="openLoginModal()">Sign in</button>
     </div>
 </header>
