@@ -30,10 +30,11 @@ public class ResumeController {
     public String introHeeJungProjects(Model model) {
         return "developerIntroductionViews/heejung/projects";
     }
-    @GetMapping("/seoho")
-    public String introSeoHo(Model model) {
-        return "resume/seoho";
-    }
+
+  @GetMapping("/seoho")
+  public String introSeoHo(Model model) {
+    return "developerIntroductionViews/seoho/intro";
+  }
 
     @GetMapping("/seokhyun/home")
     public String introSeokHyunHome(Model model) {
