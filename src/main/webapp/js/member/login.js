@@ -15,4 +15,4 @@ function closeLoginModal() {
 }
 
 // hiddenBackground 클릭 시 모달 닫기
-document.querySelector('.hiddenBackground').addEventListener('click', closeLoginModal);
+document.querySelector('.hidden-background').addEventListener('click', closeLoginModal);
