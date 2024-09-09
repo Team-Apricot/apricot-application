@@ -119,28 +119,32 @@ header {
 }
 
 .search-area .search-container {
-  position: relative; /* 아이콘을 위치시키기 위해 상대 위치 설정 */
+  position: relative;
   width: 60%;
   max-width: 600px;
+  background-color: #FFBB6A;
+  height: 60px;
+  border-radius: 40px;
+  padding-left: 20px;
+  display: flex;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.3);
+
 }
 
 .search-area input[type="text"] {
-  background-color: #FFBB6A;
-  height: 40px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  padding-left: 20px; /* 왼쪽 패딩을 아이콘과 일치하도록 설정 */
+  background-color: transparent;
+  border:0;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 4px;
   outline: none;
-  box-sizing: border-box; /* 패딩과 보더를 포함하여 너비 조정 */
-  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
-  font-size: 1em; /* 텍스트 크기 조정 */
-  color: #ffffff;
+  box-sizing: border-box;
+  font-family: 'Jua', sans-serif;
+  font-size: 1.3em;
+  color: black;
 }
 
+
 .search-icon {
-  position: absolute; /* 아이콘의 절대 위치 설정 */
   right: 20px; /* 검색창의 오른쪽 여백 설정 */
   top: 50%; /* 검색창의 수직 가운데 정렬 */
   color: #ffffff;
@@ -245,7 +249,12 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #FFBB6A;
+  border:0px;
+  border-radius: 20px;
+  margin-right: 20px;
 }
+
 /* 반응형 디자인을 위한 미디어 쿼리 */
 @media (max-width: 768px) {
   .container {
