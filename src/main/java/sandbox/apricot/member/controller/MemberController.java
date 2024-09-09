@@ -12,8 +12,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class MemberController {
 
-  @GetMapping("/login")
-  public String loginPage(Model model){
-    return "/WEB-INF/components/login.jsp";
-  }
+
 }
