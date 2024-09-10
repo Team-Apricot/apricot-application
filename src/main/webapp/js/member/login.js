@@ -13,6 +13,10 @@ function closeLoginModal() {
   document.querySelector('.mainContent').style.pointerEvents = 'auto' ;
 
 }
+//회원가입 버튼 클릭시 회원가입 페이지로 이동
+function gotoSignUp(){
+  location.href = "/signup";
+  }
 
 // hiddenBackground 클릭 시 모달 닫기
 document.querySelector('.hidden-background').addEventListener('click', closeLoginModal);
