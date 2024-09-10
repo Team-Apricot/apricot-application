@@ -15,9 +15,9 @@ public class MemberController {
     return "/member/signup";
   }
 
-  @GetMapping("/secondSignUp")
-  public String secondSignUp(Model model) {
-    return "/member/secondSignUp";
+  @GetMapping("/informationSignUp")
+  public String informationSignUp(Model model) {
+    return "/member/informationSignUp";
   }
 
 
