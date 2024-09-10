@@ -1,0 +1,208 @@
+/*회원가입 모달 화면 css */
+
+.signup-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top:20px;
+}
+
+.signup-logo img {
+  width: 170px; /* 로고 이미지 크기 */
+  margin-right: 30px;
+}
+.signup-message{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#FFBB6A;
+  font-size: 40px;
+    font-family: 'Jua', sans-serif;
+}
+.signup-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.signup-content {
+  padding: 20px;
+  border-radius: 5px;
+  width: 450px;
+  height: auto;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.4);
+
+}
+.signup-content input {
+  border:0.02px solid lightgrey;
+  border-radius: 10px;
+  margin-top:10px;
+  margin-bottom: 10px;
+  height: 30px;
+  padding: 5px 10px 5px 10px;
+}
+.signup-content input::placeholder {
+  color: darkgrey;
+  font-size: 1.2em;
+  font-family: 'Jua', sans-serif;
+}
+.signup-form{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.signup-btn{
+  margin-top:10px;
+  background-color: #FFBB6A;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+}
+
+.signup-form button:hover{
+  background-color: #e06a43;
+}
+
+/* 유효성 검사 메시지 출력 */
+#buttonCheck{
+  margin-top:10px;
+}
+
+/*관심사 회원가입 */
+.filter{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  font-size:22px;
+}
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  padding: 20px;
+
+}
+
+.form-group label {
+  margin: 10px;
+  font-family: 'Jua', sans-serif;
+
+}
+.category-list {
+  display: none; /* 기본적으로 카테고리 목록을 숨김 */
+}
+.category-header {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+}
+.category-list {
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.category-list label {
+  background-color: white;
+  border: 1px solid #f79025;
+  border-radius: 15px;
+  padding: 8px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category-list button:hover {
+  background-color: #f79025;
+  color: white;
+}
+
+.category-list button {
+  color: black;
+  font-size: 1.03em;
+  /*font-family: 'Jua', sans-serif;*/
+}
+/* 원래 라디오와 checkbox 버튼 제거*/
+input[type="radio"]
+,input[type="checkbox"]{
+  display: none;
+}
+
+/*라디오 버튼 커스텀*/
+.category-list input[type="radio"]+label{
+  display: inline-block;
+  cursor: pointer;
+  height: 24px;
+  width: 90px;
+  /*border: 1px solid #333;*/
+  line-height: 24px;
+  text-align: center;
+  font-weight:bold;
+  font-size:17px;
+  background-color: #fff;
+  color: #333;
+}
+
+/*라디오 버튼 클릭시*/
+.category-list input[type="radio"]:checked+label{
+  background-color: #f79025;
+  color: #fff;
+}
+
+/*체크박스 버튼 커스텀*/
+.category-list input[type="checkbox"]+label{
+  display: inline-block;
+  cursor: pointer;
+  height: 24px;
+  width: 90px;
+  /*border: 1px solid #333;*/
+  line-height: 24px;
+  text-align: center;
+  font-weight:bold;
+  font-size: 17px;
+  background-color: #fff;
+  color: #333;
+}
+/*체크박스 버튼 클릭시*/
+.category-list input[type="checkbox"]:checked+label{
+  background-color: #f79025;
+  color: #fff;
+}
+/* 체크박스 순서 */
+.order-number {
+  font-weight: bold;
+  color: red;
+  margin-right: 3px;
+}
+datalist{
+  display: grid;
+  grid-auto-flow: column;
+  width:500px;
+  font-family: 'Jua', sans-serif;
+  justify-content: space-between;
+}
+
+input[type="range"]{
+  accent-color:#f79025;
+  width:100%;
+
+}
+input[type="range"]:focus{
+  outline:none;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+  width:100%;
+  height:10px;
+}
+
