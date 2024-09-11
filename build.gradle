@@ -35,6 +35,7 @@ dependencies {
 
     // Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '6.3.3'
 
     // Oracle Database
     implementation group: 'com.oracle.database.jdbc', name: 'ojdbc11', version: '23.3.0.23.09'
@@ -49,7 +50,11 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // Spring Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     // Mybatis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
 
     // Test
