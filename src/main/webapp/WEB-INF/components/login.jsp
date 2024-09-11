@@ -21,7 +21,8 @@
             <input type="password" id="password"  placeholder="비밀번호를 입력하세요">
 
             <button type="submit" class="login-btn">로그인</button>
-            <button type="submit" class="signup-btn">회원가입</button>
+            <button  type = "button"  onclick="gotoSignUp()" class="signup-btn">회원가입</button>
+
         </form>
     </div>
 
