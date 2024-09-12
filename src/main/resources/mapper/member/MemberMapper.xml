@@ -13,8 +13,8 @@
   </select>
 
   <insert id="insertMember" parameterType="sandbox.apricot.member.entity.Member">
-    INSERT INTO MEMBERS (email, nick_name, password, age_range, gender, career, married_status, num_child, member_role)
-    VALUES (#{email}, #{nickName}, #{password}, #{ageRange}, #{gender}, #{career}, #{marriedStatus}, #{numChild}, #{memberRole})
+    INSERT INTO MEMBERS (email, nick_name, password, member_role)
+    VALUES (#{email}, #{nickName}, #{password}, #{memberRole})
   </insert>
 
 </mapper>

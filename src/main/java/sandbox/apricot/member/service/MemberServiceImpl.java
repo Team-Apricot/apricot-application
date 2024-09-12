@@ -38,13 +38,14 @@ public class MemberServiceImpl implements MemberService {
                 .email(request.getEmail())
                 .nickName(request.getNickName())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .ageRange(request.getAgeRange())
-                .gender(request.getGender())
-                .career(request.getCareer())
-                .marriedStatus(request.getMarriedStatus())
-                .numChild(request.getNumChild())
+//                .ageRange(request.getAgeRange())
+//                .gender(request.getGender())
+//                .career(request.getCareer())
+//                .marriedStatus(request.getMarriedStatus())
+//                .numChild(request.getNumChild())
                 .memberRole(MemberRole.USER_ROLE)
                 .build();
+        log.info(" >>> [ ✨ Member: {} ]", member.toString());
         memberMapper.insertMember(member);
     }
 }

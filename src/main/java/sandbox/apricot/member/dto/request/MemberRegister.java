@@ -1,5 +1,6 @@
 package sandbox.apricot.member.dto.request;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -7,26 +8,21 @@ import lombok.Getter;
 @Builder
 public class MemberRegister {
 
+    @NotNull(message = "이메일 식별 정보가 필요 합니다.")
     private String email; // 로그인 아이디
-    private String nickName; // 닉네임
-    private String password; // 로그인 비밀번호
-    private String ageRange; // 연령대 - 20대 미만, 20대, 30대, 40대, 50대 이상
-    private String gender; // 성별
-    private String career; // 직업 - 무직, 학생, 직장인
-    private String marriedStatus; // 결혼 유무 - SINGLE, MARRIED
-    private Integer numChild; // 자녀 수 - 0, 1, 2+
 
-    public static MemberRegister of(String email, String nickName, String password, String ageRange,
-            String gender, String career, String marriedStatus, Integer numChild) {
+    @NotNull(message = "닉네임 식별 정보가 필요 합니다.")
+    private String nickName; // 닉네임
+
+    @NotNull(message = "비밀번호 식별 정보가 필요 합니다.")
+    private String password; // 로그인 비밀번호
+
+    public static MemberRegister of(String email, String nickName, String password) {
         return MemberRegister.builder()
                 .email(email)
                 .nickName(nickName)
                 .password(password)
-                .ageRange(ageRange)
-                .gender(gender)
-                .career(career)
-                .marriedStatus(marriedStatus)
-                .numChild(numChild)
                 .build();
     }
+
 }
