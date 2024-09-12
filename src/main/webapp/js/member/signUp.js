@@ -87,7 +87,7 @@ function gotoSecondSignUp() {
   if (username !=='' && nickname!==''
       && password!=='' && passwordCheck!==''
       && password=== passwordCheck) {
-    location.href = "/informationSignUp";
+    location.href = "/register-interest";
   } else {
     document.getElementById('buttonCheck').innerHTML = '다음단계로 넘어갈 수 없습니다. 회원가입 입력을 계속 해주세요.';
     document.getElementById('buttonCheck').style.color = "red";
