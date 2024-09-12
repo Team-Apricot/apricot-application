@@ -1,6 +1,4 @@
 /*로그인 모달 화면 css */
-
-
 .login-modal {
   display: none; /* 기본적으로 숨김 */
   position: fixed;
@@ -12,7 +10,6 @@
   border-radius: 10px;
   z-index: 2; /* hiddenBackground 위에 표시되도록 설정 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
 }
 
 .modal-content {
@@ -20,7 +17,10 @@
   border-radius: 5px;
   width: 400px;
   height: auto;
+  display: flex;
+  flex-direction: column;
 }
+
 .modal-content input {
   border:1px solid lightgrey;
   border-radius: 10px;
@@ -28,16 +28,18 @@
   margin-bottom: 10px;
   height: 30px;
   padding: 5px 10px 5px 10px;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
 }
+
 .modal-content input::placeholder {
   color: darkgrey;
   font-size: 1.2em;
-  font-family: 'Jua', sans-serif;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
 }
+
 .login-form{
   display: flex;
   flex-direction: column;
-
 }
 
 .login-btn{
@@ -49,6 +51,13 @@
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .signup-btn{
@@ -60,20 +69,20 @@
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
-
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
 }
 
 .close {
   display: flex;
   justify-content: flex-end;
 }
+
 .close-btn{
   background-color: transparent;
   color:#FFBB6A;
   font-size: 30px;
   font-weight: bold;
   border:none;
-
 }
 
 .login-logo {

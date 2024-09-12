@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class MemberController {
 
-  @GetMapping("/signup")
+  @GetMapping("/register")
   public String signUp(Model model) {
-    return "/member/signup";
+    return "member/register";
   }
 
-  @GetMapping("/informationSignUp")
+  @GetMapping("/register-interest")
   public String informationSignUp(Model model) {
-    return "/member/informationSignUp";
+    return "member/register-interest";
   }
 
   @GetMapping("/mypage")
   public String myPage(Model model) {
-    return "/member/myPage";
+    return "member/myPage";
   }
 
 }
