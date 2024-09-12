@@ -21,9 +21,6 @@ public class Member extends BaseTime {
     private Integer numChild; // 자녀 수 - 0, 1, 2+
     private MemberRole memberRole; // 권한 - USER_ROLE, ADMIN_ROLE
 
-    // TODO: 관심사 객체 연결
-    // private List<Interest> interests;
-
     @Builder
     public Member(String email, String nickName, String password, String ageRange, String gender,
             String career, String marriedStatus, Integer numChild, MemberRole memberRole) {

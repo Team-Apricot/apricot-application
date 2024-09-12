@@ -43,7 +43,7 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-                .requestMatchers("/assets/**", "/css/**", "/js/**");
+                .requestMatchers("/assets/**", "/css/**", "/js/**", "/salguDevelopers/**");
     }
 
     @Bean
@@ -59,6 +59,7 @@ public class SecurityConfig {
             .cors(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> {
                 auth.requestMatchers("/", "/signup", "/informationSignUp").permitAll()
+                    .requestMatchers("/resume/**").permitAll()
                     .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                     .dispatcherTypeMatchers(DispatcherType.INCLUDE).permitAll()
                     .anyRequest().authenticated();
