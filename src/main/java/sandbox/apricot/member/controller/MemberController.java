@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping
 public class MemberController {
+
   @GetMapping("/signup")
   public String signUp(Model model) {
     return "/member/signup";
@@ -20,5 +21,9 @@ public class MemberController {
     return "/member/informationSignUp";
   }
 
+  @GetMapping("/mypage")
+  public String myPage(Model model) {
+    return "/member/myPage";
+  }
 
 }

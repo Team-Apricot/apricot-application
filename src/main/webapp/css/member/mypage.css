@@ -1,0 +1,327 @@
+.mypage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypage-title {
+  font-size: 35px;
+  margin: 30px;
+  color: #F9973E;
+}
+
+.mypage-info {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+/*마이페이지 왼쪽*/
+.mypage-left-side {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*마이페이지 오른쪽*/
+.mypage-right-side {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.my-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  width: 100%;
+}
+
+/*마이페이지 기본정보*/
+.basic-info {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 4px solid #F9973E;
+  padding: 25px;
+  width: 150px; /* 원의 너비 */
+  height: 150px; /* 원의 높이 (너비와 동일하게 설정) */
+  border-radius: 50%; /* 완벽한 원으로 만들기 */
+}
+
+/*마이페이지 추가정보*/
+.interest-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*추가정보 아이콘 - 결혼 , 아이 , 성별 ) */
+i.fa-solid.fa-user {
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 13px;
+}
+
+.add-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 30px 0 30px 0;
+  align-items: center;
+}
+
+.info-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s;
+  width: 500px;
+  border: none;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 2px;
+  color: #F9973E;
+}
+
+.info-detail:hover {
+  background-color: #F9973E;
+  color: #fff;
+}
+
+.info-header {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.info-content {
+  color: gray;
+}
+
+.info-detail:hover .info-content {
+  color: #fff;
+}
+
+/* 아이콘 */
+i {
+  font-size: 50px;
+}
+
+/*정보들 알려주는 타이틀 */
+.title {
+  color: #F9973E;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.my-interest {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+}
+
+.my-interest-detail {
+  border: 1px solid #B3B3B3;
+  border-radius: 20px;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.like-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-like {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.like-detail {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+  align-items: center;
+}
+
+.like-detail:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2),
+  0 10px 20px rgba(0, 0, 0, 0.2),
+  0 15px 30px rgba(0, 0, 0, 0.5); /* 호버 시 그림자 확대 */
+
+}
+
+.policy-status {
+  padding: 5px;
+  width: 70px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.time {
+  background-color: #ADCDFD;
+}
+
+.progress {
+  background-color: #73D990;
+}
+
+.end {
+  background-color: #FF8080;
+}
+
+.location-img {
+  margin-right: 40px; /* 이미지와 텍스트 간 간격 */
+}
+
+.location-img img {
+  width: 70px;
+}
+
+.location-name {
+  flex: 1;
+}
+
+.policy-name {
+  flex: 3; /* 남은 공간을 채우도록 설정 */
+}
+
+/*반응형 웹 */
+@media (max-width: 1000px) {
+  .mypage-container {
+    display: flex;
+    width: 100%;
+    /*padding:20px;*/
+  }
+
+  .mypage-left-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mypage-right-side {
+    width: 50%;
+    display: flex;
+  }
+
+  .my-info {
+    width: 90%;
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .basic-info {
+    display: flex;
+    /*width:40%;*/
+    /*height:40%;*/
+    padding: 20px;
+  }
+
+  .interest-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 23px;
+  }
+
+  .like-detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .location-img {
+    display: flex;
+    margin: 0;
+  }
+
+  .add-info {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .info-detail {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 15px;
+  }
+
+  .my-interest {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*반응형 웹 */
+@media (max-width: 480px) {
+  .mypage-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .left-side {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mypage-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mypage-left-side {
+    width: 100%;
+  }
+
+  .my-info {
+    /*padding: 50px;*/
+    display: flex;
+    align-items: center;
+  }
+
+  .basic-info {
+    display: flex;
+    margin: 0;
+  }
+
+  .interest-info {
+    display: flex;
+    margin-top: 30px;
+  }
+
+  .my-interest {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mypage-right-side {
+    width: 100%;
+    margin: 10px;
+  }
+}

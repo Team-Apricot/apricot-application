@@ -25,7 +25,7 @@
                 <div class="search-container">
                     <input type="text" placeholder="검색 예시: 강서구">
                     <button class="search-btn">
-                    <i class="fas fa-search search-icon"></i> <!-- 돋보기 아이콘 추가 -->
+                        <i class="fas fa-search search-icon"></i> <!-- 돋보기 아이콘 추가 -->
                     </button>
                 </div>
             </div>
@@ -35,29 +35,40 @@
                 <h2>현재 혜택이 많은 지역 Top 3</h2>
                 <div class="areas-list">
                     <div class="area-item">
-                        <img src="${pageContext.request.contextPath}/assets/img/gangnam.png" alt="강남구">
-                        <div class="text">
-                            <p class="region-name">강남구</p>
-                            <p class="region-tag">#역세권 1위!</p>
+                        <div class="area-container">
+                            <img src="${pageContext.request.contextPath}/assets/img/gangnam.png"
+                                 alt="강남구">
+                            <div class="text">
+                                <p class="region-name">강남구</p>
+                                <p class="region-tag">#역세권 1위!</p>
+                            </div>
                         </div>
                     </div>
                     <div class="area-item">
-                        <img src="${pageContext.request.contextPath}/assets/img/gangseo.png" alt="강서구">
-                        <div class="text">
-                            <p class="region-name">강서구</p>
-                            <p class="region-tag">#거주권 1위!</p>
+                        <div class="area-container">
+                            <img src="${pageContext.request.contextPath}/assets/img/gangseo.png"
+                                 alt="강서구">
+                            <div class="text">
+                                <p class="region-name">강서구</p>
+                                <p class="region-tag">#거주권 1위!</p>
+                            </div>
                         </div>
                     </div>
                     <div class="area-item">
-                        <img src="${pageContext.request.contextPath}/assets/img/jongno.png" alt="종로구">
-                        <div class="text">
-                            <p class="region-name">종로구</p>
-                            <p class="region-tag">#병세권 1위!</p>
+                        <div class="area-container">
+                            <img src="${pageContext.request.contextPath}/assets/img/jongno.png"
+                                 alt="종로구">
+                            <div class="text">
+                                <p class="region-name">종로구</p>
+                                <p class="region-tag">#병세권 1위!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!--워드 클라우드 -->
         <div class="right-side">
             <%@ include file="/WEB-INF/components/wordcloud.jsp" %>
         </div>
