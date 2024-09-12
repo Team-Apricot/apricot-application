@@ -33,7 +33,7 @@
             <input type="password" id="passwordCheck"  placeholder="다시 한번 비밀번호를 입력해주세요.">
             <div id="passwordCheckValid"></div>
 
-            <button  type = "button" onclick="gotoSecondSignUp()" class="signup-btn">다음</button>
+            <button  type = "button" onclick="gotoSecondSignUp()" class="signup-btn">가입 후 상세 정보 입력하러 가기</button>
             <div id="buttonCheck"></div>
 
         </form>
