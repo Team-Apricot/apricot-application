@@ -54,18 +54,29 @@ spring:
   config:
     activate:
       on-profile: common
+
   application:
     name: apricot
+
+  tomcat:
+    uri-encoding: UTF-8
+
+#  devtools:
+#    livereload:
+#      enabled: true
+#    restart:
+#      enabled: true
+
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
----
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: DEBUG
 
-spring:
-  devtools:
-    livereload:
-      enabled: true
-    restart:
-      enabled: true
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
