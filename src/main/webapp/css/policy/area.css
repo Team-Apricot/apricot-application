@@ -27,8 +27,8 @@ header.content-header {
 }
 /* 이미지 크기 수정 */
 header.content-header img {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 100px;
 }
 
 /* 텍스트 정렬 수정 */
