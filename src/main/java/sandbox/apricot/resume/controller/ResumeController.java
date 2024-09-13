@@ -46,4 +46,7 @@ public class ResumeController {
     }
     @GetMapping("/seokhyun/resume")
     public String introSeokHyunResume(Model model) {return "developerIntroductionViews/seokhyun/resume";}
+
+    @GetMapping("/policy")
+    public String viewAreaPage(Model model) {return "policy/area";}
 }
