@@ -7,7 +7,7 @@ import sandbox.apricot.member.entity.Member;
 @Mapper
 public interface MemberMapper {
 
-    Optional<Member> findByEmail(String email);
     void insertMember(Member member);
+    Optional<Member> findByEmail(String email);
 
 }

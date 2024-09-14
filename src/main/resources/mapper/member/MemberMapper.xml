@@ -6,15 +6,15 @@
     <result property="memberRole" column="MEMBER_ROLE" typeHandler="org.apache.ibatis.type.EnumTypeHandler" javaType="sandbox.apricot.member.entity.MemberRole"/>
   </resultMap>
 
+  <insert id="insertMember" parameterType="sandbox.apricot.member.entity.Member" >
+    INSERT INTO MEMBERS (EMAIL, NICK_NAME, PASSWORD, AGE_RANGE, GENDER, CAREER, MARRIED_STATUS, NUM_CHILD, MEMBER_ROLE)
+    VALUES (#{email}, #{nickName}, #{password}, #{ageRange}, #{gender}, #{career}, #{marriedStatus}, #{numChild}, #{memberRole})
+  </insert>
+
   <select id="findByEmail" parameterType="String" resultType="sandbox.apricot.member.entity.Member">
     SELECT *
     FROM MEMBERS
     WHERE EMAIL = #{email}
   </select>
-
-  <insert id="insertMember" parameterType="sandbox.apricot.member.entity.Member">
-    INSERT INTO MEMBERS (email, nick_name, password, member_role)
-    VALUES (#{email}, #{nickName}, #{password}, #{memberRole})
-  </insert>
 
 </mapper>
