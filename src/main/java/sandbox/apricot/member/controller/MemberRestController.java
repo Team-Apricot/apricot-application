@@ -4,8 +4,6 @@ import static org.springframework.http.HttpStatus.*;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import java.util.List;
-import java.util.stream.IntStream;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sandbox.apricot.common.response.ApiResponse;
-import sandbox.apricot.interest.dto.request.InterestRegister;
 import sandbox.apricot.interest.service.InterestService;
 import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
