@@ -9,5 +9,6 @@ public interface MemberMapper {
 
     void insertMember(Member member);
     Optional<Member> findByEmail(String email);
+    Optional<Member> findByNickName(String nickName);
 
 }

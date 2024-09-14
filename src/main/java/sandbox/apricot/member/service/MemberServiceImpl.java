@@ -1,6 +1,8 @@
 package sandbox.apricot.member.service;
 
-import static sandbox.apricot.member.exception.MemberErrorCode.MEMBER_NOT_FOUND;
+import static sandbox.apricot.member.util.exception.MemberErrorCode.EMAIL_DUPLICATE;
+import static sandbox.apricot.member.util.exception.MemberErrorCode.MEMBER_NOT_FOUND;
+import static sandbox.apricot.member.util.exception.MemberErrorCode.NICKNAME_DUPLICATE;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -11,7 +13,7 @@ import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
 import sandbox.apricot.member.entity.Member;
 import sandbox.apricot.member.entity.MemberRole;
-import sandbox.apricot.member.exception.MemberBusinessException;
+import sandbox.apricot.member.util.exception.MemberBusinessException;
 import sandbox.apricot.member.mapper.MemberMapper;
 
 @Log4j2
@@ -26,6 +28,16 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void register(MemberRegisterBasic basicInfo, MemberRegisterDetail detailInfo) {
         log.info(" >>> [ ✨ 회원 가입을 시도 합니다. ]");
+
+        // 중복 이메일 확인
+        if (memberMapper.findByEmail(basicInfo.getEmail()).isPresent()) {
+            throw new MemberBusinessException(EMAIL_DUPLICATE);
+        }
+
+        // 중복 닉네임 확인
+        if (memberMapper.findByNickName(basicInfo.getNickName()).isPresent()) {
+            throw new MemberBusinessException(NICKNAME_DUPLICATE);
+        }
 
         // 회원 객체 생성
         Member member = Member.builder()
