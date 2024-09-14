@@ -131,8 +131,14 @@ function validateAllFields() {
     benefits: document.querySelectorAll('input[name="benefits"]')
   };
 
-  return Object.keys(groups).every(group =>
-      validateGroup(groups[group], `${group}Valid`));
+// 모든 라디오 그룹 유효성 검사
+  return Object.keys(groups).every(group => {
+    if (group === 'benefits') {
+      return validateCheckboxGroup(groups[group], `${group}Valid`);
+    } else {
+      return validateGroup(groups[group], `${group}Valid`);
+    }
+  });
 }
 
 // 라디오 그룹 유효성 검사
@@ -157,6 +163,13 @@ function validateCheckboxGroup(checkboxes, errorDivId) {
 
 // 회원 가입 완료 버튼 클릭 시
 function finishSignUp() {
+  // 모든 필드 유효성 검사
+  if (!validateAllFields()) {
+    const buttonChk = document.getElementById('buttonCheck');
+    buttonChk.innerHTML = '다음단계로 넘어갈 수 없습니다. 회원가입 입력을 계속 해주세요.';
+    buttonChk.style.color = "red";
+    return;
+  }
   // 각 입력 값을 읽어서 객체로 정리
   const completeInfo = {
     ageRange: document.querySelector('input[name="age"]:checked')?.value,
@@ -176,20 +189,6 @@ function finishSignUp() {
     alert("모든 필수 항목을 선택해 주세요.");
     return;
   }
-
-  /*
-  // Ajax 요청을 통해 회원 가입 정보를 서버로 전송
-  const param = {
-    ageRange: completeInfo.ageRange,
-    gender: completeInfo.gender,
-    career: completeInfo.career,
-    marriedStatus: completeInfo.marriedStatus,
-    numChild: completeInfo.numChild,
-    interests: completeInfo.interests
-  };
-
-  console.log(param);
-  */
 
   $.ajax({
     url: `/api/v1/member/register`,
