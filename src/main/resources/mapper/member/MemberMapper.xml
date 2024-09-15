@@ -2,25 +2,63 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sandbox.apricot.member.mapper.MemberMapper">
 
-  <resultMap id="memberResultMap" type="sandbox.apricot.member.entity.Member">
-    <result property="memberRole" column="MEMBER_ROLE" typeHandler="org.apache.ibatis.type.EnumTypeHandler" javaType="sandbox.apricot.member.entity.MemberRole"/>
+  <resultMap id="MemberResultMap" type="Member">
+    <id property="memberId" column="MEMBER_ID"/>
+    <result property="email" column="EMAIL"/>
+    <result property="nickName" column="NICK_NAME"/>
+    <result property="password" column="PASSWORD"/>
+    <result property="ageRange" column="AGE_RANGE"/>
+    <result property="gender" column="GENDER"/>
+    <result property="career" column="CAREER"/>
+    <result property="marriedStatus" column="MARRIED_STATUS"/>
+    <result property="numChild" column="NUM_CHILD"/>
+    <result property="memberRole" column="MEMBER_ROLE"/>
   </resultMap>
 
-  <insert id="insertMember" parameterType="sandbox.apricot.member.entity.Member" >
+  <resultMap id="MemberInfoResultMap" type="sandbox.apricot.member.dto.response.MemberInfo">
+    <result property="email" column="EMAIL"/>
+    <result property="nickName" column="NICK_NAME"/>
+    <result property="ageRange" column="AGE_RANGE"/>
+    <result property="gender" column="GENDER"/>
+    <result property="career" column="CAREER"/>
+    <result property="marriedStatus" column="MARRIED_STATUS"/>
+    <result property="numChild" column="NUM_CHILD"/>
+    <result property="memberRole" column="MEMBER_ROLE"/>
+    <collection property="interests" ofType="java.lang.String">
+      <result column="CATEGORY_NAME"/>
+    </collection>
+  </resultMap>
+
+  <insert id="save" parameterType="Member" >
     INSERT INTO MEMBERS (email, nick_name, password, age_range, gender, career, married_status, num_child, member_role)
     VALUES (#{email}, #{nickName}, #{password}, #{ageRange}, #{gender}, #{career}, #{marriedStatus}, #{numChild}, #{memberRole})
   </insert>
 
-  <select id="findByEmail" parameterType="String" resultType="sandbox.apricot.member.entity.Member">
+  <select id="findById" resultMap="MemberResultMap">
+    SELECT MEMBER_ID, EMAIL, NICK_NAME, PASSWORD, AGE_RANGE, GENDER, CAREER, MARRIED_STATUS, NUM_CHILD, MEMBER_ROLE
+    FROM MEMBERS
+    WHERE MEMBER_ID = #{memberId}
+  </select>
+
+  <select id="findByEmail" resultMap="MemberResultMap">
     SELECT member_id, email, nick_name, password, age_range, gender, career, married_status, num_child, member_role
     FROM MEMBERS
     WHERE email = #{email}
   </select>
 
-  <select id="findByNickName" parameterType="String" resultType="sandbox.apricot.member.entity.Member">
+  <select id="findByNickName" resultMap="MemberResultMap">
     SELECT member_id, email, nick_name, password, age_range, gender, career, married_status, num_child, member_role
     FROM MEMBERS
     WHERE nick_name = #{nickName}
+  </select>
+
+  <select id="findByIdWithInterests" resultMap="MemberInfoResultMap">
+    SELECT m.EMAIL, m.NICK_NAME, m.AGE_RANGE, m.GENDER, m.CAREER, m.MARRIED_STATUS, m.NUM_CHILD, m.MEMBER_ROLE,
+           c.CATEGORY_NAME
+    FROM MEMBERS m
+    LEFT JOIN INTERESTS i ON m.MEMBER_ID = i.MEMBER_ID
+    LEFT JOIN CATEGORIES c ON i.CATEGORY_ID = c.CATEGORY_ID
+    WHERE m.MEMBER_ID = #{memberId}
   </select>
 
 </mapper>

@@ -2,10 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sandbox.apricot.interest.mapper.InterestMapper">
 
-  <!-- 관심사 등록 (Insert) -->
-  <insert id="insertInterest" parameterType="sandbox.apricot.interest.entity.Interest">
+  <resultMap id="InterestResultMap" type="Interest">
+    <id property="interestId" column="INTEREST_ID"/>
+    <result property="memberId" column="MEMBER_ID"/>
+    <result property="priority" column="PRIORITY"/>
+  </resultMap>
+
+  <insert id="save" parameterType="Interest">
     INSERT INTO INTERESTS (member_id, category_id, priority)
     VALUES (#{memberId}, #{categoryId}, #{priority})
   </insert>
+
+  <select id="findByMemberId" resultMap="InterestResultMap">
+    SELECT INTEREST_ID, MEMBER_ID, CATEGORY_ID, PRIORITY
+    FROM INTERESTS
+    WHERE MEMBER_ID = #{memberId}
+  </select>
+
 
 </mapper>

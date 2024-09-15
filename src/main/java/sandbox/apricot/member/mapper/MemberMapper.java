@@ -2,13 +2,16 @@ package sandbox.apricot.member.mapper;
 
 import java.util.Optional;
 import org.apache.ibatis.annotations.Mapper;
-import sandbox.apricot.member.entity.Member;
+import sandbox.apricot.member.dto.response.MemberInfo;
+import sandbox.apricot.member.vo.Member;
 
 @Mapper
 public interface MemberMapper {
 
-    void insertMember(Member member);
+    void save(Member member);
+    Optional<Member> findById(Long memberId);
     Optional<Member> findByEmail(String email);
     Optional<Member> findByNickName(String nickName);
+    MemberInfo findByIdWithInterests(Long memberId);
 
 }
