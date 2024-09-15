@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sandbox.apricot.interest.mapper.CategoryMapper">
+
+  <resultMap id="CategoryResultMap" type="Category">
+    <id property="categoryId" column="CATEGORY_ID"/>
+    <result property="categoryName" column="CATEGORY_NAME"/>
+  </resultMap>
+
+  <select id="findById" resultMap="CategoryResultMap">
+    SELECT CATEGORY_ID, CATEGORY_NAME
+    FROM CATEGORIES
+    WHERE CATEGORY_ID = #{categoryId}
+  </select>
+
+</mapper>
