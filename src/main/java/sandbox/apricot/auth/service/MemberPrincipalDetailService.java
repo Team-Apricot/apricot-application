@@ -1,6 +1,6 @@
 package sandbox.apricot.auth.service;
 
-import static sandbox.apricot.member.exception.MemberErrorCode.MEMBER_NOT_FOUND;
+import static sandbox.apricot.member.util.exception.MemberErrorCode.MEMBER_NOT_FOUND;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,8 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import sandbox.apricot.auth.dto.MemberPrincipalDetails;
-import sandbox.apricot.member.entity.Member;
-import sandbox.apricot.member.exception.MemberBusinessException;
+import sandbox.apricot.member.util.exception.MemberBusinessException;
 import sandbox.apricot.member.mapper.MemberMapper;
 
 @Service

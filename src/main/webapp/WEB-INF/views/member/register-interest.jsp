@@ -2,9 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/components/header.jsp" %>
 
-<script src="${pageContext.request.contextPath}/js/member/signUp.js"></script>
+<script src="${pageContext.request.contextPath}/js/member/register.js"></script>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member/signup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member/register.css">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet"> <!-- 구글 폰트 링크 추가 -->
 
 
@@ -25,11 +25,11 @@
             <div class="form-group">
                 <div class="category-header" onclick="toggleCategory('category1','icon1')">나이* <i id="icon1" class="fa-solid fa-sort-down" ></i></div>
                 <div id="category1" class="category-list">
-                    <input type="radio" name="age" id="age1" value="10"><label for="age1"> 20대 미만</label>
-                    <input type="radio" name="age" id="age2" value="10"><label for="age2"> 20대</label>
-                    <input type="radio" name="age" id="age3" value="10"><label for="age3"> 30대</label>
-                    <input type="radio" name="age" id="age4" value="10"><label for="age4"> 40대</label>
-                    <input type="radio" name="age" id="age5" value="10"><label for="age5"> 50대 이상</label>
+                    <input type="radio" name="age" id="age1" value="20대 미만"><label for="age1"> 20대 미만</label>
+                    <input type="radio" name="age" id="age2" value="20대"><label for="age2"> 20대</label>
+                    <input type="radio" name="age" id="age3" value="30대"><label for="age3"> 30대</label>
+                    <input type="radio" name="age" id="age4" value="40대"><label for="age4"> 40대</label>
+                    <input type="radio" name="age" id="age5" value="50대 이상"><label for="age5"> 50대 이상</label>
                 </div>
                 <div id="ageValid"></div>
             </div>
@@ -84,14 +84,14 @@
             <div class="form-group">
                 <div class="category-header" onclick="toggleCategory('category6','icon6')">관심있는 혜택을 선택해주세요 (최대 3개) <i id="icon6" class="fa-solid fa-sort-down" ></i></div>
                 <div id="category6" class="category-list">
-                    <input type="checkbox" id="benefits1" name="benefits" value="일자리" onclick='getCheckedCnt(this)'> <label for="benefits1"> <span class="order-number"></span> 일자리 </label>
-                    <input type="checkbox" id="benefits2" name="benefits" value="주거" onclick='getCheckedCnt(this)'> <label for="benefits2"> <span class="order-number"></span>주거 </label>
-                    <input type="checkbox" id="benefits3" name="benefits" value="교육" onclick='getCheckedCnt(this)'> <label for="benefits3"> <span class="order-number"></span>교육 </label>
-                    <input type="checkbox" id="benefits4" name="benefits" value="복지" onclick='getCheckedCnt(this)'> <label for="benefits4"><span class="order-number"></span> 복지 </label>
-                    <input type="checkbox" id="benefits5" name="benefits" value="참여/권리" onclick='getCheckedCnt(this)'><label for="benefits5"><span class="order-number"></span> 참여/권리 </label>
-                    <input type="checkbox" id="benefits6" name="benefits" value="의료 시설" onclick='getCheckedCnt(this)'> <label for="benefits6"><span class="order-number"></span> 의료 시설 </label>
-                    <input type="checkbox" id="benefits7" name="benefits" value="문화 시설" onclick='getCheckedCnt(this)'> <label for="benefits7"><span class="order-number"></span> 문화 시설 </label>
-                    <input type="checkbox" id="benefits8" name="benefits" value="체육 시설" onclick='getCheckedCnt(this)'> <label for="benefits8"> <span class="order-number"></span>체육 시설 </label>
+                    <input type="checkbox" id="023010" name="benefits" value="일자리" onclick='getCheckedCnt(this)'> <label for="023010"> <span class="order-number"></span> 일자리 </label>
+                    <input type="checkbox" id="023020" name="benefits" value="주거" onclick='getCheckedCnt(this)'> <label for="023020"> <span class="order-number"></span>주거 </label>
+                    <input type="checkbox" id="023030" name="benefits" value="교육" onclick='getCheckedCnt(this)'> <label for="023030"> <span class="order-number"></span>교육 </label>
+                    <input type="checkbox" id="023040" name="benefits" value="복지" onclick='getCheckedCnt(this)'> <label for="023040"><span class="order-number"></span> 복지 </label>
+                    <input type="checkbox" id="023050" name="benefits" value="참여/권리" onclick='getCheckedCnt(this)'><label for="023050"><span class="order-number"></span> 참여/권리 </label>
+                    <input type="checkbox" id="023060" name="benefits" value="의료 시설" onclick='getCheckedCnt(this)'> <label for="023060"><span class="order-number"></span> 의료 시설 </label>
+                    <input type="checkbox" id="023070" name="benefits" value="문화 시설" onclick='getCheckedCnt(this)'> <label for="023070"><span class="order-number"></span> 문화 시설 </label>
+                    <input type="checkbox" id="023080" name="benefits" value="체육 시설" onclick='getCheckedCnt(this)'> <label for="023080"> <span class="order-number"></span>체육 시설 </label>
                 </div>
                 <div id="benefitsValid" class="error"></div>
             </div>

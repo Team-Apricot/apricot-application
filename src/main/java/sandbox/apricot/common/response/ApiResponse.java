@@ -57,15 +57,15 @@ public class ApiResponse<T> {
     /**
      * 요청 수행 중, 예외 발생시 응답 데이터로 사용할 errorResponse 메서드
      *
-     * @param code - HttpStatus Code
+     * @param httpStatus - HttpStatus Code
      * @param message - 오류 메세지
      */
     public static <T> ApiResponse<T> errorResponse(
-            final int code,
+            final HttpStatus httpStatus,
             final String message
     ) {
         return ApiResponse.<T>builder()
-                .code(code)
+                .code(httpStatus.value())
                 .message(message)
                 .build();
     }
