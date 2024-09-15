@@ -41,6 +41,73 @@ header {
   background-color: #e06a43;
 }
 
+/* 개인 정보 */
+
+.my-img {
+  width: 70px; /* 원의 크기 */
+  height: 70px; /* 원의 크기 */
+  border-radius: 50%; /* 원형으로 만들기 */
+  overflow: hidden; /* 이미지가 원 바깥으로 나가지 않도록 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid orange; /* 테두리 색상 및 두께 */
+}
+
+.person {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 원 안에 이미지가 잘 맞도록 조정 */
+}
+
+.triangle {
+  display: none;
+  width: 30px;
+  background-color: #ffffffd4;
+  backdrop-filter: blur(10px);
+  height: 30px;
+  border-radius: 4px;
+  box-shadow: -2px 2px rgb(178 178 178 / 0.3);
+  transform: rotate(135deg);
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 1;
+}
+
+.my-modal {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  z-index: 500; /* 다른 요소 위에 위치하도록 설정 */
+  background-color: #ffffffd4;
+  backdrop-filter: blur(10px);
+  box-shadow: -2px 2px rgb(178 178 178 / 0.3);
+  top: 70px;
+  right: 5px;
+  width: 300px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+
+}
+
+.my-modal-detail {
+  padding: 10px;
+}
+
+.modal-btn {
+  background-color: #FFBB6A;
+  cursor: pointer;
+  width: 150px;
+  border: 0;
+  border-radius: 30px;
+  height: 30px;
+  font-family: 'Jua', sans-serif;
+  color: white;
+}
+
 .banner-area {
   position: relative; /* 자식 요소의 절대 위치를 기준으로 설정 */
   width: 100%;
@@ -92,20 +159,20 @@ header {
 .container {
   display: flex; /* Flexbox 사용 */
   width: 100%;
-  padding:30px;
+  padding: 30px;
 }
 
-.left-side{
-  width:60%;
+.left-side {
+  width: 60%;
   display: flex;
   flex-direction: column;
 }
 
-.right-side{
-  width:40%;
+.right-side {
+  width: 40%;
   display: flex;
   align-items: center;
-  padding:20px;
+  padding: 20px;
   margin-right: 100px;
 }
 
@@ -133,12 +200,12 @@ header {
   border-radius: 40px;
   padding-left: 20px;
   display: flex;
-  box-shadow: 0 3px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .search-area input[type="text"] {
   background-color: transparent;
-  border:0;
+  border: 0;
   width: 100%;
   margin-top: 4px;
   outline: none;
@@ -223,7 +290,7 @@ header {
 }
 
 .area-item .text .region-tag {
-  margin-top:5px;
+  margin-top: 5px;
   color: #F9973E; /* 태그 색상 */
 }
 
@@ -232,10 +299,10 @@ header {
 }
 
 .area-container {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
 
 /* 푸터 스타일 */
@@ -273,12 +340,12 @@ footer {
   margin: 10px;
 }
 
-.search-btn{
+.search-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #FFBB6A;
-  border:0px;
+  border: 0px;
   border-radius: 20px;
   margin-right: 20px;
 }
@@ -288,17 +355,17 @@ footer {
   .container {
     display: flex; /* Flexbox 사용 */
     width: 100%;
-    padding:30px;
+    padding: 30px;
   }
 
-  .left-side{
-    width:100%;
+  .left-side {
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  .right-side{
-    display:none;
+  .right-side {
+    display: none;
   }
 
   .search-area .search-container {
@@ -342,17 +409,17 @@ footer {
   .container {
     display: flex; /* Flexbox 사용 */
     width: 100%;
-    padding:30px;
+    padding: 30px;
   }
 
-  .left-side{
-    width:100%;
+  .left-side {
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  .right-side{
-    display:none;
+  .right-side {
+    display: none;
   }
 
   .search-area .search-container {
