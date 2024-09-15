@@ -20,12 +20,12 @@ public class Member extends BaseTime {
     private String gender; // 성별
     private String career; // 직업 - 무직, 학생, 직장인
     private String marriedStatus; // 결혼 유무 - SINGLE, MARRIED
-    private Integer numChild; // 자녀 수 - 0, 1, 2+
+    private int numChild; // 자녀 수 - 0, 1, 2+
     private MemberRole memberRole; // 권한 - USER_ROLE, ADMIN_ROLE
 
     @Builder
     public Member(String email, String nickName, String password, String ageRange, String gender,
-            String career, String marriedStatus, Integer numChild, MemberRole memberRole) {
+            String career, String marriedStatus, int numChild, MemberRole memberRole) {
         this.email = email;
         this.nickName = nickName;
         this.password = password;

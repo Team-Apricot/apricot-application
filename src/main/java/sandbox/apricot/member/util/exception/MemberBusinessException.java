@@ -1,4 +1,4 @@
-package sandbox.apricot.member.exception;
+package sandbox.apricot.member.util.exception;
 
 import lombok.Getter;
 
@@ -11,4 +11,5 @@ public class MemberBusinessException extends RuntimeException {
         super(memberErrorCode.getMessage());
         this.memberErrorCode = memberErrorCode;
     }
+
 }
