@@ -9,7 +9,7 @@
   </resultMap>
 
   <insert id="save" parameterType="Interest">
-    INSERT INTO INTERESTS (member_id, category_id, priority)
+    INSERT INTO INTERESTS (MEMBER_ID, CATEGORY_ID, PRIORITY)
     VALUES (#{memberId}, #{categoryId}, #{priority})
   </insert>
 

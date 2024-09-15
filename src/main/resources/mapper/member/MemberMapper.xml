@@ -41,13 +41,13 @@
   </select>
 
   <select id="findByEmail" resultMap="MemberResultMap">
-    SELECT member_id, email, nick_name, password, age_range, gender, career, married_status, num_child, member_role
+    SELECT MEMBER_ID, EMAIL, NICK_NAME, PASSWORD, AGE_RANGE, GENDER, CAREER, MARRIED_STATUS, NUM_CHILD, MEMBER_ROLE
     FROM MEMBERS
     WHERE email = #{email}
   </select>
 
   <select id="findByNickName" resultMap="MemberResultMap">
-    SELECT member_id, email, nick_name, password, age_range, gender, career, married_status, num_child, member_role
+    SELECT MEMBER_ID, email, NICK_NAME, PASSWORD, AGE_RANGE, GENDER, CAREER, MARRIED_STATUS, NUM_CHILD, MEMBER_ROLE
     FROM MEMBERS
     WHERE nick_name = #{nickName}
   </select>
