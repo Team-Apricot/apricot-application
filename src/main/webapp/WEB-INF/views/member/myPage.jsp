@@ -19,10 +19,10 @@
                 <!-- 기본 정보 -->
                 <div class="basic-info">
                     <i class="fa-solid fa-user"></i>
-                    <div class="my-nickname">살구추노꾼</div>
-                    <div class="my-age">(30대)</div>
-                    <div class="my-job">직장인</div>
-                    <div class="my-id">test@test.com</div>
+                    <div class="my-nickname">${memberInfo.nickName}</div>
+                    <div class="my-age">(${memberInfo.ageRange})</div>
+                    <div class="my-job">${memberInfo.career}</div>
+                    <div class="my-id">${memberInfo.email}</div>
                 </div>
 
                 <!-- 관심 정보 -->
@@ -31,15 +31,9 @@
                         선택 하신 관심 분야
                     </div>
                     <div class="my-interest">
-                        <div class="my-interest-detail">
-                            #일자리
-                        </div>
-                        <div class="my-interest-detail">
-                            #문화시설
-                        </div>
-                        <div class="my-interest-detail">
-                            #주거
-                        </div>
+                        <c:forEach items="${memberInfo.interests}" var="interest">
+                            <div class="my-interest-detail">#${interest}</div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -49,17 +43,17 @@
                 <div class="info-detail">
                     <i class="fa-solid fa-heart"></i>
                     <div class="info-header">결혼여부</div>
-                    <div class="info-content">MARRIED</div>
+                    <div class="info-content">${memberInfo.marriedStatus}</div>
                 </div>
                 <div class="info-detail">
                     <i class="fa-solid fa-baby-carriage"></i>
                     <div class="info-header">자녀수</div>
-                    <div class="info-content">3</div>
+                    <div class="info-content">${memberInfo.numChild}</div>
                 </div>
                 <div class="info-detail">
                     <i class="fa-solid fa-venus-mars"></i>
                     <div class="info-header">성별</div>
-                    <div class="info-content">M</div>
+                    <div class="info-content">${memberInfo.gender}</div>
                 </div>
             </div>
         </div>
