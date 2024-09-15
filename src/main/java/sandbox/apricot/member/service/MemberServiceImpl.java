@@ -48,6 +48,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public MemberInfo getMemberInfo(Long memberId) {
         return memberMapper.findByIdWithInterests(memberId);
     }
