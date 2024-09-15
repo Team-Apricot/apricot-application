@@ -61,11 +61,11 @@ spring:
   tomcat:
     uri-encoding: UTF-8
 
-#  devtools:
-#    livereload:
-#      enabled: true
-#    restart:
-#      enabled: true
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
 
   mvc:
     view:
@@ -77,10 +77,9 @@ logging:
     org.hibernate.type.descriptor.sql: DEBUG
     org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: ERROR
 
-#  pattern:
-#    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
-
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: sandbox.apricot.member.vo, sandbox.apricot.interest.vo
   configuration:
     map-underscore-to-camel-case: true
+#    cache-enabled: false
