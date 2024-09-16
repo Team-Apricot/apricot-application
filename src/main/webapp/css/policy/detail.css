@@ -31,7 +31,7 @@ body{
     margin: 20px auto;
     padding: 20px;
     border-radius :8px;
-    border: 2px solid #ffdab3;
+    /*border: 2px solid #ffdab3;*/
 }
 
 /* 제목 스타일 */
@@ -75,11 +75,11 @@ body{
 .policy-table-content {
     /*background-color: #FFE9CE;*/
     /*background-color: #FFFDCE;*/
-    /*border: 2px solid #ffdab3;*/
+    border: 3px solid #ffdab3;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 30px;
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);*/
 }
 
 /* 리스트 항목 스타일 */
@@ -92,7 +92,7 @@ body{
 .policy-table-content ul li {
     gap:10%;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     /*border-bottom: 2px solid #ffdab3;*/
     padding: 15px 0;
     margin-left: 5%;
@@ -121,8 +121,9 @@ body{
     /*border-radius: 8px;*/
     /*box-sizing: border-box;*/
     /*margin-bottom: auto;*/
-    /*padding-bottom: calc(5% - 1em);*/
-    /*border-bottom: 1px dotted gray;*/
+    padding-bottom: calc(5% - 1em);
+    border-bottom: 2px solid gray;
+    /*border-bottom: 2px solid #ffdab3;*/
 
     overflow-wrap: break-word; /* 긴 단어를 줄바꿈 */
     word-wrap: break-word; /* 긴 단어를 줄바꿈 */
@@ -157,8 +158,8 @@ body{
 
 /* 신청자격, 신청방법 등 스타일 */
 .policy-table-content ul li .list-content {
-    background-color: #FFFDCE; /* 배경색을 주황색으로 설정 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 */
+    /*background-color: #FFFDCE; !* 배경색을 주황색으로 설정 *!*/
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); !* 그림자 *!*/
 }
 
 /* 추천 혜택 섹션 스타일 */

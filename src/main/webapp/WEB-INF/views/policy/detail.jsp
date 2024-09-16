@@ -20,7 +20,8 @@
         <div class="button-link">
         <%-- 공유와 찜하기 버튼 위치 우상단.--%>
             <button type="button" class="sns-share">
-                <img src="${pageContext.request.contextPath}/assets/img/share_icon_0.8.png" alt="공유하기">
+<%--                <img src="${pageContext.request.contextPath}/assets/img/share_icon_0.8.png" alt="공유하기">--%>
+                <img src="${pageContext.request.contextPath}/assets/img/share_icon2_0.8.png" alt="공유하기">
             </button>
             <div class="share-group" style="display: none;">
                 <p class="title"> 공유하기</p>
@@ -37,15 +38,16 @@
                 </ul>
             </div>
                 <button type="button" class="wish-list">
-                    <img src="${pageContext.request.contextPath}/assets/img/heart_icon_0.8.png" alt="찜하기">
+<%--                    <img src="${pageContext.request.contextPath}/assets/img/heart_icon_0.8.png" alt="찜하기">--%>
+                    <img src="${pageContext.request.contextPath}/assets/img/heart_icon2_0.8.png" alt="찜하기">
                 </button>
         </div>
     </div>
 
+    <div class="policy-table-content">
     <div class="policy-table-header">
         <h3>한 눈에 보는 정책 요약</h3>
     </div>
-    <div class="policy-table-content">
         <ul>
             <li>
                 <div class="list-container">
