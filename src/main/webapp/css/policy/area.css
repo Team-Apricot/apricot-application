@@ -1,216 +1,215 @@
-body {
-    font-family: 'Noto Sans KR', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* .container의 width를 전체 너비로 수정 */
+.policy-container {
+  width: 100%; /* 페이지 전체 너비로 설정 */
+  max-width: none; /* 최대 너비 제한을 제거 */
+  margin: 0 auto; /* 여백 제거 */
+  padding: 0; /* 패딩 제거 */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .container의 width를 전체 너비로 수정 */
-.container {
-    width: 100%; /* 페이지 전체 너비로 설정 */
-    max-width: none; /* 최대 너비 제한을 제거 */
-    margin: 0 auto; /* 여백 제거 */
-    padding: 0; /* 패딩 제거 */
-    box-sizing: border-box;
-    display: block;
-}
 /* header를 양옆으로 꽉 차게 수정 */
 header.content-header {
-    width: 100%; /* header가 페이지 전체 너비를 차지 */
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: flex-start; /* 왼쪽 정렬 */
-    align-items: center;
+  width: 100%; /* header가 페이지 전체 너비를 차지 */
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  align-items: center;
 }
+
 /* 이미지 크기 수정 */
 header.content-header img {
-    width: 120px;
-    height: 100px;
+  width: 120px;
+  height: 100px;
 }
 
 /* 텍스트 정렬 수정 */
 header.content-header h1, header.content-header h3 {
-    margin: 0;
-    color: #FF6347;
-    text-align: left; /* 텍스트 왼쪽 정렬 */
+  margin: 0;
+  color: #FF6347;
+  text-align: left; /* 텍스트 왼쪽 정렬 */
 }
+
 header.content-header h1 {
-    font-size: 24px;
-    margin-right: 10px;
+  font-size: 24px;
+  margin-right: 10px;
 }
 
 header.content-header h3 {
-    font-size: 18px;
-    color: #666;
+  font-size: 18px;
+  color: #666;
 }
-
 
 /* 버튼 및 상세 정보 스타일 */
 .details input[type="button"], .details .deadline-btn {
-    background-color: #FFBB6A;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 16px;
-    margin: 10px 0;
-    cursor: pointer;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
+  background-color: #FFBB6A;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
 }
 
 .details input[type="button"]:hover, .details .deadline-btn:hover {
-    background-color: #FF4500;
+  background-color: #FF4500;
 }
 
 .details input.selected {
-    background-color: #FF6347;
+  background-color: #FF6347;
 }
 
 /* 메인 컨텐츠 스타일 */
 .content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* 요소 간 여백 균등 배치 */
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .map, .details {
-    flex: 1 1 45%;
-    max-width: 600px;
-    min-width: 300px;
-    margin-bottom: 20px;
+  flex: 1 1 45%;
+  max-width: 600px;
+  min-width: 300px;
+  margin-bottom: 40px;
 }
 
 .map object {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .details {
-    width: 100%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
 }
 
 /* 이벤트 카드 그리드 */
 .details2 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .details2 > div {
-    background: #fff;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1em;
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background: #fff;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .details2 h3 {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .details2 p {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
 .deadline-btn {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 /* 버튼 상태에 따른 색상 지정 */
 .deadline-btn[data-status="신청마감"] {
-    background-color: #FF6347;
+  background-color: #FF6347;
 }
 
 .deadline-btn[data-status="상시"] {
-    background-color: #00BFFF;
+  background-color: #00BFFF;
 }
 
 .deadline-btn[data-status="진행중"] {
-    background-color: #32CD32;
+  background-color: #32CD32;
 }
 
 .deadline-btn {
-    color: white;
+  color: white;
 }
 
 /* 각 상태에 따른 호버 색상 */
 .deadline-btn[data-status="신청마감"]:hover {
-    background-color: #FF4500;
+  background-color: #FF4500;
 }
 
 .deadline-btn[data-status="상시"]:hover {
-    background-color: #008BFF;
+  background-color: #008BFF;
 }
 
 .deadline-btn[data-status="진행중"]:hover {
-    background-color: #2E8B57;
+  background-color: #2E8B57;
 }
 
 @media (max-width: 1024px) {
-    .details2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .details2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-    .details2 {
-        grid-template-columns: 1fr;
-    }
+  .details2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* 페이지네이션 스타일 */
 .pagination {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
 }
 
 .pagination li {
-    margin: 0 5px;
+  margin: 0 5px;
 }
 
 .pagination li a {
-    text-decoration: none;
-    color: #FF6347;
-    padding: 10px 15px;
-    border-radius: 50%;
-    background-color: #FFEFDC;
+  text-decoration: none;
+  color: #FF6347;
+  padding: 10px 15px;
+  border-radius: 50%;
+  background-color: #FFEFDC;
 }
 
 .pagination li a:hover {
-    background-color: #FF6347;
-    color: white;
+  background-color: #FF6347;
+  color: white;
 }
 
 .pagination li a.selected {
-    background-color: #FF6347;
-    color: white;
+  background-color: #FF6347;
+  color: white;
 }
 
 .pagination li.arrow a {
-    background-color: #FFEFDC;
-    color: #FF6347;
+  background-color: #FFEFDC;
+  color: #FF6347;
 }
 
 .pagination li.arrow a:hover {
-    background-color: #FF6347;
-    color: white;
+  background-color: #FF6347;
+  color: white;
 }
