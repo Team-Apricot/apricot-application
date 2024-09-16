@@ -1,0 +1,239 @@
+body{
+    font-family: "맑은 고딕",돋움, 굴림;
+}
+
+/* 정책 페이지 - 대분류적 스타일 */
+.policy-header {
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center; /* 가운데 정렬 */
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.policy-title {
+    justify-content: center; /* 가운데 정렬 */
+    flex: 1; /* 제목은 가능한 공간을 다 차지 */
+}
+
+.policy-title h2 {
+    font-size: 40px; /* 폰트 크기 조정 */
+    /*color: #f7941d; !* 제목 색상 *!*/
+    margin: 0; /* 기본 여백 제거 */
+}
+
+
+/* 전체 컨테이너 */
+.policy-detail-page {
+    /*background-color:#FFFDCE ;*/
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius :8px;
+    border: 2px solid #ffdab3;
+}
+
+/* 제목 스타일 */
+.policy-table-header h3 {
+    font-size: 30px;
+    margin-bottom: 0;
+    margin-left:5%;
+}
+
+/* 공유하기 버튼 스타일 */
+
+/* 공유와 찜하기 버튼 스타일 */
+.button-link {
+    display: flex; /* Flexbox 사용 */
+    gap: 10px; /* 버튼 사이 간격 */
+}
+
+.button-link {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.button-link button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    /*padding: 10px 20px;*/
+    margin-left: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button-link button:hover img{
+    transform: scale(1.05); /* 약간 확대 */
+    transition: 0.5s;
+    filter: brightness(90%) invert(5%);
+}
+
+/* 콘텐츠 테이블 스타일 */
+.policy-table-content {
+    /*background-color: #FFE9CE;*/
+    /*background-color: #FFFDCE;*/
+    /*border: 2px solid #ffdab3;*/
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+}
+
+/* 리스트 항목 스타일 */
+.policy-table-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 1%;
+}
+
+.policy-table-content ul li {
+    gap:10%;
+    display: flex;
+    align-items: flex-start;
+    /*border-bottom: 2px solid #ffdab3;*/
+    padding: 15px 0;
+    margin-left: 5%;
+
+    color:black;
+
+    overflow-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    white-space: normal; /* 일반적인 줄바꿈 적용 */
+}
+
+.policy-table-content ul li:last-child {
+    border-bottom: none;
+}
+
+/*
+내용 안의 리스트 스타일 설정
+*/
+.list-container {
+    /*width: fit-content;*/
+    flex: 1;
+    display: inline-flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    color:black;
+    /*border-radius: 8px;*/
+    /*box-sizing: border-box;*/
+    /*margin-bottom: auto;*/
+    /*padding-bottom: calc(5% - 1em);*/
+    /*border-bottom: 1px dotted gray;*/
+
+    overflow-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    word-break: break-word;
+    white-space: normal; /* 일반적인 줄바꿈 적용 */
+}
+
+
+.list-title {
+    font-size:16px;
+    align-content: center;
+    justify-content: center;
+    /*color: #f7941d;*/
+    color: gray;
+    /*font-weight: bold;*/
+    margin: 10px;
+}
+
+.list-content {
+    display:inline-flex;
+    font-size:20px;
+    font-weight: bold;
+    color:black;
+    background-color: white;
+
+    padding: 1.2rem;
+    margin-left: 2%;
+    border-radius: 8px;
+
+}
+
+
+/* 신청자격, 신청방법 등 스타일 */
+.policy-table-content ul li .list-content {
+    background-color: #FFFDCE; /* 배경색을 주황색으로 설정 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 */
+}
+
+/* 추천 혜택 섹션 스타일 */
+/* 혜택이 많은 지역 스타일 */
+.top-areas {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-areas h2 {
+    text-align: left;
+    font-size: 2em; /* 기본 폰트 크기 */
+    color: #F9973E;
+    margin-bottom: 10px;
+}
+
+.areas-list {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 30px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap; /* 반응형을 위해 Flexbox 사용 */
+}
+
+.area-item {
+    display: flex;
+    flex-direction: row; /* 기본 방향 설정 */
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    transition: transform 0.3s;
+    gap: 30px; /* 이미지와 텍스트 사이의 간격 */
+    box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
+    overflow: hidden; /* 내용이 요소를 벗어나지 않도록 설정 */
+}
+
+.area-item img {
+    width: 150px; /* 고정 폭 */
+    height: auto;
+    max-height: 150px; /* 이미지 크기 조정 */
+}
+
+.area-item .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.area-item .text .region-name {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.area-item .text .region-tag {
+    margin-top:5px;
+    color: #F9973E; /* 태그 색상 */
+}
+
+.area-item:hover {
+    transform: translateY(-10px);
+}
+
+.area-container {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:10px;
+}
