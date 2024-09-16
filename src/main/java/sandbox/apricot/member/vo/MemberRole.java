@@ -1,4 +1,4 @@
-package sandbox.apricot.member.entity;
+package sandbox.apricot.member.vo;
 
 import lombok.Getter;
 

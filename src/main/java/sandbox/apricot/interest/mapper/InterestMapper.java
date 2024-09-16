@@ -1,11 +1,13 @@
 package sandbox.apricot.interest.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
-import sandbox.apricot.interest.entity.Interest;
+import sandbox.apricot.interest.vo.Interest;
 
 @Mapper
 public interface InterestMapper {
 
-    void insertInterest(Interest interest);
+    void save(Interest interest);
+    List<Interest> findByMemberId(Long memberId);
 
 }

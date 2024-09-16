@@ -1,6 +1,5 @@
 package sandbox.apricot.auth.provider;
 
-import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -13,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import sandbox.apricot.auth.dto.MemberPrincipalDetails;
 import sandbox.apricot.auth.service.MemberPrincipalDetailService;
-import sandbox.apricot.member.entity.Member;
 
 @Log4j2
 @Component

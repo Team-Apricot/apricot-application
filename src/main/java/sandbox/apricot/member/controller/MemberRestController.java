@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sandbox.apricot.common.response.ApiResponse;
-import sandbox.apricot.interest.service.InterestService;
 import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
 import sandbox.apricot.member.service.MemberService;
@@ -24,17 +23,18 @@ import sandbox.apricot.member.service.MemberService;
 public class MemberRestController {
 
     private final MemberService memberService;
-    private final InterestService interestService;
     private final HttpSession session;
 
     /**
      * 회원 가입을 위해 필요한 기본 정보를 세션에 저장
      *
-     * @param request - email, password, nickName
+     * @param reqBasic - email, password, nickName
      */
     @PostMapping("/register-basic")
-    public ResponseEntity<ApiResponse> saveMember(@RequestBody @Valid MemberRegisterBasic request) {
-        session.setAttribute("basicInfo", request);
+    public ResponseEntity<ApiResponse<Void>> saveMember(
+            @RequestBody @Valid MemberRegisterBasic reqBasic
+    ) {
+        session.setAttribute("reqBasic", reqBasic);
         return ResponseEntity.ok().body(
                 ApiResponse.successResponse(
                         OK,
@@ -46,17 +46,15 @@ public class MemberRestController {
     /**
      * 회원 가입 - 회원 등록, 관심사 등록
      *
-     * @param request - ageRange, gender, career, marriedStatus, numChild, interests
+     * @param reqDetail - ageRange, gender, career, marriedStatus, numChild, interests
      */
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse> registerMember(@RequestBody @Valid MemberRegisterDetail request) {
-        MemberRegisterBasic basicInfo = (MemberRegisterBasic) session.getAttribute("basicInfo");
-        memberService.register(basicInfo, request);
-
-        Long memberId = memberService.getMemberId(basicInfo.getEmail());
-        interestService.register(request.getInterests(), memberId);
-
-        session.removeAttribute("basicInfo"); // 기본 정보 삭제
+    public ResponseEntity<ApiResponse<Void>> registerMember(
+            @RequestBody @Valid MemberRegisterDetail reqDetail
+    ) {
+        MemberRegisterBasic reqBasic = (MemberRegisterBasic) session.getAttribute("reqBasic");
+        memberService.register(reqBasic.toService(), reqDetail.toService());
+        session.removeAttribute("reqBasic"); // 기본 정보 삭제
         return ResponseEntity.ok().body(
                 ApiResponse.successResponse(
                         OK,
