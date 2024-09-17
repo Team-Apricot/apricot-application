@@ -12,7 +12,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
+  padding: 10px 30px;
   background-color: #f8f8f8;
   height: 70px;
 }
@@ -23,26 +23,67 @@ header {
 }
 
 .logo img {
-  width: 150px; /* 로고 이미지 크기 */
+  width: 100px; /* 로고 이미지 크기 */
   margin-right: 10px;
 }
 
+/* 로그인 버튼 CSS */
 .login button {
-  background-color: #FFBB6A;
+  font-weight: bold;
   color: white;
+  background-color: #F9973E;
+  padding: 0.5em 1em;
   border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 1rem;
+  position: relative;
   cursor: pointer;
-  transition: background-color 0.3s;
+  overflow: hidden;
+  box-shadow:  1px 1px 2px #FFBB6A,
+  -1px -1px 2px #FFBB6A
 }
 
-.login button:hover {
+.login button span:not(:nth-child(6)) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
   background-color: #e06a43;
+  border-radius: 50%;
+  transition: .6s ease;
+}
+
+.login button span:nth-child(6) {
+  position: relative;
+}
+
+.login button span:nth-child(1) {
+  transform: translate(-3.3em, -4em);
+}
+
+.login button span:nth-child(2) {
+  transform: translate(-6em, 1.3em);
+}
+
+.login button span:nth-child(3) {
+  transform: translate(-.2em, 1.8em);
+}
+
+.login button span:nth-child(4) {
+  transform: translate(3.5em, 1.4em);
+}
+
+.login button span:nth-child(5) {
+  transform: translate(3.5em, -3.8em);
+}
+
+.login button:hover span:not(:nth-child(6)) {
+  transform: translate(-50%, -50%) scale(4);
+  transition: 1.5s ease;
 }
 
 /* 개인 정보 */
-
 .my-img {
   width: 70px; /* 원의 크기 */
   height: 70px; /* 원의 크기 */
@@ -90,7 +131,6 @@ header {
   justify-content: center;
   align-items: center;
   transition: all 0.5s;
-
 }
 
 .my-modal-detail {
@@ -108,44 +148,6 @@ header {
   color: white;
 }
 
-.banner-area {
-  position: relative; /* 자식 요소의 절대 위치를 기준으로 설정 */
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  max-height: 400px; /* 배너 영역의 최대 높이 */
-}
-
-.banner-area img {
-  width: 100%;
-  height: auto;
-  max-height: 100%; /* 배너 영역에 맞게 조정 */
-  object-fit: cover; /* 이미지가 컨테이너를 가득 채우도록 설정 */
-}
-
-.banner-text {
-  position: absolute; /* 배너 영역 내에서 절대 위치 */
-  bottom: 0; /* 이미지 하단에 위치 */
-  left: 0; /* 이미지 왼쪽에 위치 */
-  margin: 10px; /* 텍스트 주변의 여백 */
-  color: #F9973E; /* 텍스트 색상 (배경에 맞게 조정) */
-  text-align: left; /* 텍스트 왼쪽 정렬 */
-  padding: 20px; /* 여백 추가 */
-}
-
-.banner-text h1 {
-  margin: 0;
-  font-size: 3em; /* 기본 폰트 크기 */
-}
-
-.banner-text p {
-  margin: 0; /* 설명의 기본 여백 제거 */
-  font-size: 3em; /* 기본 폰트 크기 */
-}
-
 /* 워드클라우드 부분 */
 #myChart {
   width: 100%;
@@ -156,19 +158,19 @@ header {
   display: none;
 }
 
-.container {
+.index-container {
   display: flex; /* Flexbox 사용 */
   width: 100%;
   padding: 30px;
 }
 
-.left-side {
+.index-left-side {
   width: 60%;
   display: flex;
   flex-direction: column;
 }
 
-.right-side {
+.index-right-side {
   width: 40%;
   display: flex;
   align-items: center;
@@ -214,7 +216,6 @@ header {
   font-size: 1.3em;
   color: black;
 }
-
 
 .search-icon {
   right: 20px; /* 검색창의 오른쪽 여백 설정 */
@@ -352,19 +353,19 @@ footer {
 
 /* 반응형 디자인을 위한 미디어 쿼리 */
 @media (max-width: 768px) {
-  .container {
+  .index-container {
     display: flex; /* Flexbox 사용 */
     width: 100%;
     padding: 30px;
   }
 
-  .left-side {
+  .index-left-side {
     width: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  .right-side {
+  .index-right-side {
     display: none;
   }
 
@@ -406,19 +407,19 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .container {
+  .index-container {
     display: flex; /* Flexbox 사용 */
     width: 100%;
     padding: 30px;
   }
 
-  .left-side {
+  .index-left-side {
     width: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  .right-side {
+  .index-right-side {
     display: none;
   }
 
@@ -478,9 +479,3 @@ footer {
   background-color: rgba(0, 0, 0, 0.5); /* 투명도 있는 어두운 배경 */
   z-index: 1;
 }
-
-
-
-
-
-

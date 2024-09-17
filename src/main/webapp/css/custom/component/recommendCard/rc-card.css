@@ -1,0 +1,204 @@
+/* From Uiverse.io by Smit-Prajapati */
+.rc-parent {
+  width: 290px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.rc-card {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #FFB357 0%, #F9973E 100%);
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  box-shadow: rgba(255, 179, 87, 0.3) 40px 50px 25px -40px, rgba(249, 151, 62, 0.2) 0px 25px 25px -5px;
+}
+
+.rc-glass {
+  transform-style: preserve-3d;
+  position: absolute;
+  inset: 8px;
+  border-radius: 55px 100% 55px 55px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.349) 0%, rgba(255, 255, 255, 0.815) 100%);
+  /* -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px); */
+  transform: translate3d(0px, 0px, 25px);
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  transition: all 0.5s ease-in-out;
+}
+
+.rc-content {
+  padding: 100px 60px 0px 30px;
+  transform: translate3d(0, 0, 26px);
+}
+
+.rc-content .rc-title {
+  display: block;
+  color: #343a40;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.rc-content .rc-text {
+  display: block;
+  color: #565e61;
+      /*rgba(249, 151, 62, 0.7647058824);*/
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.rc-bottom {
+  padding: 10px 12px;
+  transform-style: preserve-3d;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translate3d(0, 0, 26px);
+}
+
+.rc-bottom .rc-view-more {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  justify-content: flex-end;
+  transition: all 0.2s ease-in-out;
+}
+
+.rc-bottom .rc-view-more:hover {
+  transform: translate3d(0, 0, 10px);
+}
+
+.rc-bottom .rc-view-more .rc-view-more-button {
+  background: none;
+  border: none;
+  color: #565e61;
+  font-weight: bolder;
+  font-size: 12px;
+}
+
+.rc-bottom .rc-view-more .rc-svg {
+  fill: none;
+  stroke: #565e61;
+  stroke-width: 4px;
+  max-height: 20px;
+}
+
+.rc-bottom .rc-social-buttons-container {
+  display: flex;
+  gap: 10px;
+  transform-style: preserve-3d;
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button {
+  width: 30px;
+  aspect-ratio: 1;
+  padding: 5px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  border: none;
+  display: grid;
+  place-content: center;
+  box-shadow: rgba(255, 179, 87, 0.5) 0px 7px 5px -5px;
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button:first-child {
+  transition: transform 0.2s ease-in-out 0.4s, box-shadow 0.2s ease-in-out 0.4s;
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button:nth-child(2) {
+  transition: transform 0.2s ease-in-out 0.6s, box-shadow 0.2s ease-in-out 0.6s;
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button:nth-child(3) {
+  transition: transform 0.2s ease-in-out 0.8s, box-shadow 0.2s ease-in-out 0.8s;
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button .rc-svg {
+  width: 15px;
+  fill: #F9973E;
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button:hover {
+  background: #F9973E;
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button:hover .rc-svg {
+  fill: white;
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button:active {
+  background: rgb(255, 234, 0);
+}
+
+.rc-bottom .rc-social-buttons-container .rc-social-button:active .svg {
+  fill: black;
+}
+
+.rc-logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform-style: preserve-3d;
+}
+
+.rc-logo .rc-circle {
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center;     /* 수직 중앙 정렬 */
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  box-shadow: rgba(100, 100, 111, 0.2) -10px 10px 20px 0px;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background: rgba(255, 219, 196, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.rc-logo .rc-circle3 {
+  width: 110px;
+  transform: translate3d(0, 0, 60px);
+  top: 17px;
+  right: 17px;
+  transition-delay: 0.8s;
+  display: flex; /* 중앙 정렬을 위해 flex 사용 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+}
+
+.rc-parent:hover .rc-card {
+  transform: rotate3d(1, 1, 0, 30deg);
+  box-shadow: rgba(255, 140, 71, 0.3) 30px 50px 25px -40px, rgba(5, 71, 17, 0.1) 0px 25px 30px 0px;
+}
+
+.rc-parent:hover .rc-card .rc-bottom .rc-social-buttons-container .rc-social-button {
+  transform: translate3d(0, 0, 50px);
+  box-shadow: rgba(71, 35, 5, 0.2) -5px 20px 10px 0px;
+}
+
+.rc-parent:hover .rc-card .rc-logo .rc-circle2 {
+  transform: translate3d(0, 0, 60px);
+}
+
+.rc-parent:hover .rc-card .rc-logo .rc-circle3 {
+  transform: translate3d(0, 0, 80px);
+}
+
+.rc-parent:hover .rc-card .rc-logo .rc-circle4 {
+  transform: translate3d(0, 0, 100px);
+}
+
+.rc-parent:hover .rc-card .rc-logo .rc-circle5 {
+  transform: translate3d(0, 0, 120px);
+}
+
+.rc-badge {
+  width: 50px;
+  height: 50px;
+}
