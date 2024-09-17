@@ -16,9 +16,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import sandbox.apricot.auth.provider.MemberAuthenticatorProvider;
-import sandbox.apricot.auth.service.MemberPrincipalDetailService;
 
 @Log4j2
 @Configuration
@@ -27,7 +28,8 @@ import sandbox.apricot.auth.service.MemberPrincipalDetailService;
 public class SecurityConfig {
 
     private final MemberAuthenticatorProvider memberAuthenticatorProvider;
-    private final MemberPrincipalDetailService memberPrincipalDetailService;
+    private final AuthenticationFailureHandler failureHandler;
+    private final AuthenticationEntryPoint entryPoint;
 
     @Autowired
     public final void configure (AuthenticationManagerBuilder auth) throws Exception {
@@ -55,32 +57,32 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(AbstractHttpConfigurer::disable)
-            .cors(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/", "/register", "/register-interest", "/mypage", "/resume/**", "/policy/**").permitAll()
-                    .requestMatchers("/api/v1/**").permitAll()
-                    .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                    .dispatcherTypeMatchers(DispatcherType.INCLUDE).permitAll()
-                    .anyRequest().authenticated();
-            })
-
-            .formLogin(form -> {
-                form.loginPage("/")
-                    .loginProcessingUrl("/member/login")
-                    .defaultSuccessUrl("/")
-                    .successHandler(new MemberAuthSuccessHandler())
-                    .failureHandler(new MemberAuthFailureHandler())
-                    .permitAll();
-            })
-
-            .logout(exit -> {
-                exit.logoutUrl("/member/logout")
-                    .logoutSuccessUrl("/")
-                    .deleteCookies("JSESSIONID")
-                    .invalidateHttpSession(true);
-            });
-
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/", "/register", "/register-interest", "/mypage",
+                                    "/resume/**", "/policy/**").permitAll()
+                            .requestMatchers("/api/v1/**").permitAll()
+                            .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
+                            .dispatcherTypeMatchers(DispatcherType.INCLUDE).permitAll()
+                            .anyRequest().authenticated();
+                })
+                .formLogin(form -> {
+                    form.loginPage("/login")
+                            .loginProcessingUrl("/api/v1/login")
+                            .defaultSuccessUrl("/")
+                            .failureHandler(failureHandler)
+                            .permitAll();
+                })
+                .exceptionHandling(handler -> {
+                    handler.authenticationEntryPoint(entryPoint);
+                })
+                .logout(exit -> {
+                    exit.logoutUrl("/api/v1/logout")
+                            .logoutSuccessUrl("/")
+                            .deleteCookies("JSESSIONID")
+                            .invalidateHttpSession(true);
+                });
         return http.build();
     }
 
