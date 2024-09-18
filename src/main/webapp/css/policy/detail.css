@@ -1,47 +1,43 @@
 body{
     font-family: "맑은 고딕",돋움, 굴림;
 }
-
-/* 정책 페이지 - 대분류적 스타일 */
-.policy-header {
-    display: flex; /* Flexbox 사용 */
-    align-items: center; /* 세로 가운데 정렬 */
-    justify-content: center; /* 가운데 정렬 */
-    padding: 20px;
-    margin: 20px auto;
+.layout{
+    display: flex;
 }
 
-.policy-title {
-    justify-content: center; /* 가운데 정렬 */
-    flex: 1; /* 제목은 가능한 공간을 다 차지 */
-}
-
-.policy-title h2 {
-    font-size: 40px; /* 폰트 크기 조정 */
-    /*color: #f7941d; !* 제목 색상 *!*/
-    margin: 0; /* 기본 여백 제거 */
-}
-
-
-/* 전체 컨테이너 */
-.policy-detail-page {
-    /*background-color:#FFFDCE ;*/
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius :8px;
+/*!* TOC 설정 *!*/
+.toc {
+    position: fixed;
+    top: 15%;
+    margin: 20px;
+    left: 20px;
+    width: 10%;
+    background-color: transparent;
+    padding: 10px;
+    z-index: 1000;
     border: 2px solid #ffdab3;
+    border-radius: 5px;
 }
 
-/* 제목 스타일 */
-.policy-table-header h3 {
-    font-size: 30px;
-    margin-bottom: 0;
-    margin-left:5%;
+.toc ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-/* 공유하기 버튼 스타일 */
+.toc li {
+    margin-bottom: 10px;
+}
+
+
+.toc a {
+    text-decoration: none;
+    color: #333;
+}
+
+.toc a:hover {
+    text-decoration: underline;
+}
+
 
 /* 공유와 찜하기 버튼 스타일 */
 .button-link {
@@ -71,15 +67,70 @@ body{
     filter: brightness(90%) invert(5%);
 }
 
+/* 정책 페이지 - 대분류적 스타일 */
+.policy-header {
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center; /* 가운데 정렬 */
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.policy-title {
+    justify-content: center; /* 가운데 정렬 */
+    flex: 1; /* 제목은 가능한 공간을 다 차지 */
+}
+
+.policy-title h2 {
+    font-size: 40px; /* 폰트 크기 조정 */
+    /*color: #f7941d; !* 제목 색상 *!*/
+    margin: 0; /* 기본 여백 제거 */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.policy-title.visible h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 전체 컨테이너 */
+.policy-detail-page {
+    /*background-color:#FFFDCE ;*/
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto auto calc(10% + 60px);
+
+    padding: 20px;
+    border-radius :8px;
+    /*border: 2px solid #ffdab3;*/
+}
+
+/* 제목 스타일 */
+.policy-table-header h3 {
+    font-size: 30px;
+    margin-bottom: 0;
+    margin-left:5%;
+}
+
 /* 콘텐츠 테이블 스타일 */
 .policy-table-content {
     /*background-color: #FFE9CE;*/
     /*background-color: #FFFDCE;*/
-    /*border: 2px solid #ffdab3;*/
+    border: 2px solid #ffdab3;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 30px;
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.policy-table-content.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* 리스트 항목 스타일 */
@@ -128,8 +179,20 @@ body{
     word-wrap: break-word; /* 긴 단어를 줄바꿈 */
     word-break: break-word;
     white-space: normal; /* 일반적인 줄바꿈 적용 */
+
+    /*opacity: 0; !* 기본 상태에서는 보이지 않음 *!*/
+    /*transform: translateY(20px); !* 살짝 아래에서 올라오는 효과 *!*/
+    /*transition: opacity 0.6s ease, transform 0.6s ease;*/
 }
 
+/*.list-title .fade-in{*/
+/*    opacity: 1;*/
+/*    transform: translateY(0); !* 보일 때 위로 올라오면서 완전히 보이도록 설정 *!*/
+/*}*/
+/*.list-container.fade-in{*/
+/*    opacity: 1;*/
+/*    transform: translateY(0); !* 보일 때 위로 올라오면서 완전히 보이도록 설정 *!*/
+/*}*/
 
 .list-title {
     font-size:16px;
@@ -139,6 +202,11 @@ body{
     color: gray;
     /*font-weight: bold;*/
     margin: 10px;
+
+
+    /*opacity: 0; !* 기본 상태에서는 보이지 않음 *!*/
+    /*transform: translateY(20px); !* 살짝 아래에서 올라오는 효과 *!*/
+    /*transition: opacity 0.6s ease, transform 0.6s ease;*/
 }
 
 .list-content {
@@ -151,6 +219,11 @@ body{
     padding: 1.2rem;
     margin-left: 2%;
     border-radius: 8px;
+
+
+    /*opacity: 0; !* 기본 상태에서는 보이지 않음 *!*/
+    /*transform: translateY(20px); !* 살짝 아래에서 올라오는 효과 *!*/
+    /*transition: opacity 0.6s ease, transform 0.6s ease;*/
 
 }
 

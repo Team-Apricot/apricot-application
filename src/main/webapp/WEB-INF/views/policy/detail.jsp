@@ -9,10 +9,13 @@
     <title>정책 지원 페이지</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/policy/detail.css">
     <script src="${pageContext.request.contextPath}/js/policy/detail.js"></script>
+    <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
 </head>
 <body>
-
-<div class="policy-detail-page">
+<div class="layout">
+<div class="policy-detail-page" id="section1">
+<div class="toc" id="toc">
+</div>
     <div class="policy-header">
         <div class="policy-title">
             <h2>서울시 청년수당</h2>
@@ -42,10 +45,10 @@
         </div>
     </div>
 
+    <div class="policy-table-content" id="section2">
     <div class="policy-table-header">
         <h3>한 눈에 보는 정책 요약</h3>
     </div>
-    <div class="policy-table-content">
         <ul>
             <li>
                 <div class="list-container">
@@ -137,10 +140,10 @@
         </ul>
     </div>
 
+    <div class="policy-table-content"  id="section3">
     <div class="policy-table-header">
         <h3>신청자격</h3>
     </div>
-    <div class="policy-table-content">
         <ul>
             <li>
                 <div class="list-container">
@@ -239,10 +242,10 @@
         </ul>
     </div>
 
-    <div class="policy-table-header">
-        <h3>신청방법</h3>
-    </div>
-    <div class="policy-table-content">
+    <div class="policy-table-content" id="section4">
+        <div class="policy-table-header">
+            <h3>신청방법</h3>
+        </div>
         <ul>
             <li>
                 <div class="list-container">
@@ -309,10 +312,10 @@
                 </div>
         </ul>
     </div>
-    <div class="policy-table-header">
-        <h3>기타</h3>
-    </div>
-    <div class="policy-table-content">
+    <div class="policy-table-content" id="section5">
+        <div class="policy-table-header">
+            <h3>기타</h3>
+        </div>
         <ul>
             <li>
                 <div class="list-container">
@@ -358,7 +361,7 @@
         </ul>
     </div>
 </div>
-
+</div>
 <div class="top-areas">
     <h2>지금 보고 있는 혜택과 비슷한 혜택</h2>
     <div class="areas-list">
@@ -393,6 +396,9 @@
     </div>
 </div>
 </body>
+<script>
+    ScrollOut();
+</script>
 <footer>
 
 </footer>
