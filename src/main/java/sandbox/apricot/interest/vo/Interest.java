@@ -1,14 +1,16 @@
-package sandbox.apricot.interest.entity;
-
+package sandbox.apricot.interest.vo;
 
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import sandbox.apricot.common.entity.BaseTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Interest {
+@EqualsAndHashCode(of = "interestId", callSuper = false)
+public class Interest extends BaseTime {
 
     private Long interestId; // 관심사 고유 식별자
     private Long memberId; // 사용자 고유 식별자(FK)

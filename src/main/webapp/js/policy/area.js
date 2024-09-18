@@ -86,9 +86,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // 지역구 클릭 시 동작 설정
             region.addEventListener('click', function () {
                 if (selectedRegion) {
-                    selectedRegion.style.fill = '#e6cbae';  // 이전 선택된 지역 스타일 복원
+                    selectedRegion.style.fill = '#e6cbae';  // 이전 선택된 지역 스타일 초기화
+                    if (selectedRegion === region && region.classList.contains(
+                        'clicked')) {
+                        selectedRegion = null;
+                        return;  // 더 이상 실행하지 않음
+                    }
+                    selectedRegion.classList.remove('clicked');  // 이전 선택된 지역의 clicked 클래스 제거
                 }
-
+                region.classList.add('clicked');
                 selectedRegion = region;
                 region.style.fill = '#F9973E';  // 새로운 선택된 지역 표시
 

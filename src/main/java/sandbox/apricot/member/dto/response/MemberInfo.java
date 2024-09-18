@@ -1,11 +1,13 @@
 package sandbox.apricot.member.dto.response;
 
+import java.util.List;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import sandbox.apricot.member.entity.Member;
+import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberInfo {
 
     private String email; // 로그인 아이디
@@ -16,19 +18,20 @@ public class MemberInfo {
     private String marriedStatus; // 결혼 유무 - SINGLE, MARRIED
     private Integer numChild; // 자녀 수 - 0, 1, 2+
     private String memberRole; // 권한 - USER_ROLE, ADMIN_ROLE
-    // TODO: 관심사 추가
+    private List<String> interests; // 관심사 이름
 
-    public static MemberInfo from(Member member) {
-        return MemberInfo.builder()
-                .email(member.getEmail())
-                .nickName(member.getNickName())
-                .ageRange(member.getAgeRange())
-                .gender(member.getGender())
-                .career(member.getCareer())
-                .marriedStatus(member.getMarriedStatus())
-                .numChild(member.getNumChild())
-                .memberRole(member.getMemberRole().name())
-                .build();
+    @Builder
+    public MemberInfo(String email, String nickName, String ageRange, String gender, String career,
+            String marriedStatus, Integer numChild, String memberRole, List<String> interests) {
+        this.email = email;
+        this.nickName = nickName;
+        this.ageRange = ageRange;
+        this.gender = gender;
+        this.career = career;
+        this.marriedStatus = marriedStatus;
+        this.numChild = numChild;
+        this.memberRole = memberRole;
+        this.interests = interests;
     }
 
 }

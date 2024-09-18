@@ -1,15 +1,15 @@
-package sandbox.apricot.member.entity;
+package sandbox.apricot.member.vo;
 
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import sandbox.apricot.common.entity.BaseTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString
+@EqualsAndHashCode(of = "memberId", callSuper = false)
 public class Member extends BaseTime {
 
     private Long memberId; // 사용자 고유 식별자
