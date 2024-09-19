@@ -61,4 +61,9 @@
     WHERE m.MEMBER_ID = #{memberId}
   </select>
 
+  <update id="updateNickNameById">
+    UPDATE MEMBERS SET NICK_NAME = #{nickName}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
+
 </mapper>
