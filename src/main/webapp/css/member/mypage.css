@@ -53,6 +53,7 @@
   width: 150px; /* 원의 너비 */
   height: 150px; /* 원의 높이 (너비와 동일하게 설정) */
   border-radius: 50%; /* 완벽한 원으로 만들기 */
+  justify-content: space-around; /* 중간 띄어쓰기 */
 }
 
 /*마이페이지 추가정보*/
@@ -84,7 +85,6 @@ i.fa-solid.fa-user {
 .info-detail {
   display: flex;
   flex-direction: column;
-  align-items: center;
   transition: all 0.5s;
   width: 500px;
   border: none;
@@ -206,6 +206,79 @@ i {
   flex: 3; /* 남은 공간을 채우도록 설정 */
 }
 
+.fa-pen { /*수정하기 아이콘 */
+  font-size:13px;
+}
+
+.update-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.update-btn{ /*수정하기 버튼*/
+  padding: 10px;
+  width: 100px;
+  border-radius: 20px;
+  background-color: #F9973E;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  color:white;
+}
+
+.update-btn:hover{
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2),
+  0 5px 15px rgba(0, 0, 0, 0.2),
+  0 10px 20px rgba(0, 0, 0, 0.5); /* 호버 시 그림자 확대 */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo  img {
+  width: 170px; /* 로고 이미지 크기 */
+  margin-right: 30px;
+}
+
+.modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.modal-content input {
+  border:1px solid lightgrey;
+  border-radius: 10px;
+  margin-top:10px;
+  margin-bottom: 10px;
+  height: 30px;
+  padding: 5px 10px 5px 10px;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+}
+
+.modal-content input::placeholder {
+  color: darkgrey;
+  font-size: 1.2em;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+}
+
+.updateIcon {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.add-info-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /*반응형 웹 */
 @media (max-width: 1000px) {
   .mypage-container {
@@ -322,6 +395,5 @@ i {
 
   .mypage-right-side {
     width: 100%;
-    margin: 10px;
   }
 }
