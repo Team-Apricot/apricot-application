@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sandbox.apricot.scrap.mapper.ScrapMapper">
+
+  <resultMap id="ScrapResultMap" type="Scrap">
+    <id property="scrapId" column="SCRAP_ID"/>
+    <result property="memberId" column="MEMBER_ID"/>
+    <result property="policyCode" column="POLICY_CODE"/>
+  </resultMap>
+
+  <resultMap id="ScrapInfoResultMap" type="sandbox.apricot.scrap.dto.response.ScrapInfo">
+    <result property="districtName" column="DISTRICT_NAME"/>
+    <result property="policyName" column="POLICY_NAME"/>
+    <result property="prdRpttSecd" column="PRD_RPTT_SECD"/>
+    <result property="districtLogoPath" column="DISTRICT_LOGO_PATH"/>
+  </resultMap>
+
+  <insert id="save" parameterType="Scrap">
+    INSERT INTO SCRAPS (MEMBER_ID, POLICY_CODE) VALUES (#{memberId}, #{policyCode})
+    </insert>
+
+  <select id="findScrap" resultMap="ScrapInfoResultMap">
+    SELECT D.DISTRICT_NAME, SP.POLICY_NAME, SP.PRD_RPTT_SECD, D.DISTRICT_LOGO_PATH
+    FROM (SELECT *
+          FROM SCRAPS S
+                 JOIN YOUTH_POLICY_DETAIL P
+                      ON S.POLICY_CODE = P.POLICY_CODE
+          WHERE S.MEMBER_ID = #{memberId}) SP
+           JOIN DISTRICTS D
+                ON SP.DISTRICT_CODE = D.DISTRICT_CODE
+  </select>
+
+</mapper>

@@ -18,12 +18,9 @@
 						</button>
 					</div>
 					<div class="my-modal-detail">
-						<button class="modal-btn" type="submit">정보 수정</button>
-					</div>
-					<div class="my-modal-detail">
 						<form action="${pageContext.request.contextPath}/api/v1/logout"
 						      method="post">
-							<button class="modal-btn" type="submit">Logout</button>
+							<button class="modal-btn" type="submit">로그아웃</button>
 						</form>
 					</div>
 				</div>
