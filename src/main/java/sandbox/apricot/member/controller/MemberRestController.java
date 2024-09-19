@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import sandbox.apricot.common.response.ApiResponse;
 import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
+import sandbox.apricot.member.dto.request.UpdateAgeRange;
 import sandbox.apricot.member.dto.request.UpdateNickName;
 import sandbox.apricot.member.service.MemberService;
 
@@ -66,19 +67,33 @@ public class MemberRestController {
     }
 
     /**
-     * 회원 수정 - 닉네임
+     * 회원 수정 - 닉네임 변경
      *
-     * @return
+     * @param request - memberId, nickName
      */
     @PatchMapping("/nickname")
-    public ResponseEntity<ApiResponse> updateMember(
-            @RequestBody @Valid UpdateNickName request
-    ) {
-        memberService.updateNickName(request);
+    public ResponseEntity<ApiResponse<Void>> updateMember(@RequestBody @Valid UpdateNickName request) {
+        memberService.updateNickName(request.toService());
         return ResponseEntity.ok().body(
                 ApiResponse.successResponse(
                         OK,
-                        "성공적으로 회원 정보를 수정하였습니다."
+                        "성공적으로 회원 닉네임 정보를 수정하였습니다."
+                )
+        );
+    }
+
+    /**
+     * 회원 수정 - 나이대 변경
+     *
+     * @param request - memberId, nickName
+     */
+    @PatchMapping("/ageRange")
+    public ResponseEntity<ApiResponse<Void>> updateMember(@RequestBody @Valid UpdateAgeRange request) {
+        memberService.updateAgeRange(request.toService());
+        return ResponseEntity.ok().body(
+                ApiResponse.successResponse(
+                        OK,
+                        "성공적으로 회원 나이대 정보를 수정하였습니다."
                 )
         );
     }
