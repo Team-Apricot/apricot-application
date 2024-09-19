@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>살구 - 회원 가입</title>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/common-env.jsp"/>
 	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/register-env.jsp"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>

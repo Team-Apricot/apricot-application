@@ -6,7 +6,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>살구 - MyPage</title>
-	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/basic-env.jsp"/>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/common-env.jsp"/>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/myPage-env.jsp"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
