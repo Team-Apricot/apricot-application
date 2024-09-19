@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sandbox.apricot.policy.mapper.PolicyDetailMapper">
+
+  <select id="getPolicyDetails" resultType="sandbox.apricot.policy.dto.PolicyDetailDTO">
+    SELECT PRD_RPTT_SECD,
+           POLICY_CODE,
+           CATEGORY_CODE,
+           DISTRICT_CODE,
+           POLICY_NAME,
+           POLICY_CONTENT,
+           SUPPORT_CONTENT,
+           SCHEDULE,
+           POLICY_START_DATE,
+           POLICY_END_DATE,
+           AGE_INFO,
+           MIN_AGE,
+           MAX_AGE,
+           MAJOR_RQIS_CN,
+           EMPM_STTS_CN,
+           SPLZ_RLM_RQIS_CN,
+           ACCR_RQIS_CN,
+           PRCP_CN,
+           ADIT_RSCN,
+           PRCP_LMTT_TRGT_CN,
+           RQUT_PROC_CN,
+           PSTN_PAPR_CN,
+           JDGN_PRES_CN,
+           RQUT_URLA,
+           RFC_SITE_URLA1,
+           RFC_SITE_URLA2,
+           MNGT_MSON,
+           MNGT_MROF_CHER_CN,
+           CHER_CTPC_CN,
+           CNSG_NMOR,
+           TINT_CHER_CN,
+           TINT_CHER_CTPC_CN,
+           ETCT
+    FROM youth_policy_detail
+  </select>
+  <select id="getPolicyDetailsByPolicyCode" resultType="sandbox.apricot.policy.dto.PolicyDetailDTO">
+    SELECT PRD_RPTT_SECD,
+           POLICY_CODE,
+           CATEGORY_CODE,
+           DISTRICT_CODE,
+           POLICY_NAME,
+           POLICY_CONTENT,
+           SUPPORT_CONTENT,
+           SCHEDULE,
+           POLICY_START_DATE,
+           POLICY_END_DATE,
+           AGE_INFO,
+           MIN_AGE,
+           MAX_AGE,
+           MAJOR_RQIS_CN,
+           EMPM_STTS_CN,
+           SPLZ_RLM_RQIS_CN,
+           ACCR_RQIS_CN,
+           PRCP_CN,
+           ADIT_RSCN,
+           PRCP_LMTT_TRGT_CN,
+           RQUT_PROC_CN,
+           PSTN_PAPR_CN,
+           JDGN_PRES_CN,
+           RQUT_URLA,
+           RFC_SITE_URLA1,
+           RFC_SITE_URLA2,
+           MNGT_MSON,
+           MNGT_MROF_CHER_CN,
+           CHER_CTPC_CN,
+           CNSG_NMOR,
+           TINT_CHER_CN,
+           TINT_CHER_CTPC_CN,
+           ETCT
+    FROM youth_policy_detail
+    WHERE POLICY_CODE = #{policyCode}
+  </select>
+</mapper>
