@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var myConfig = {
     "graphset": [{
       "type": "wordcloud",
+      backgroundColor: 'rgba(249,151,62,0)',
       options: {
         colorType: 'palette',
         palette: ['#F9973E', '#375E97', '#FB6542', '#3F681C', '#FFBB00', '#FB7252'], //색상지정
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
           //padding: '5px 10px',
           hoverState: {
             alpha: 1,
-            backgroundColor: '#ffffff',
+            backgroundColor: 'rgba(249,151,62,0)',
             borderColor: 'none',
             fontColor: 'black',
             textAlpha: 1,

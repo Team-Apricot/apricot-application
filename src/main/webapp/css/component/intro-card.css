@@ -1,0 +1,6 @@
+/*TODO: 소개 페이지 필요시 사용(일정 보고 진행 예정)*/
+#intro-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+}

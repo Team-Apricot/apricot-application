@@ -6,6 +6,7 @@
   right: 15%; /* 화면의 오른쪽에서 일정 거리 */
   max-width: 90%; /* 캡션 너비 최대 90%로 제한 */
   padding: 0.5rem; /* 내부 여백 조정 */
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
   color: #fff; /* 글자 색상 */
 }
 
