@@ -66,4 +66,9 @@
     WHERE MEMBER_ID = #{memberId}
   </update>
 
+  <update id="updateAgeRangeById">
+    UPDATE MEMBERS SET AGE_RANGE = #{ageRange}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
+
 </mapper>
