@@ -89,6 +89,14 @@
                         </div>
                     </div>
                 </li>
+                <li>
+                    <div class="list-container">
+                        <div class="list-title">비고</div>
+                        <div class="list-content">
+                            something something
+                        </div>
+                    </div>
+                </li>
 
             </ul>
         </div>
@@ -109,28 +117,27 @@
                             ${policyDetails.empmSttsCn !="null" && !policyDetails.empmSttsCn.isEmpty()? policyDetails.empmSttsCn:"❌"}
                         </div>
                     </div>
-                </li>
-                <li>
                     <div class="list-container">
                         <div class="list-title">학력</div>
                         <div class="list-content">
                             ${policyDetails.accrRqisCn !="null" && !policyDetails.accrRqisCn.isEmpty()? policyDetails.accrRqisCn:"❌"}
                         </div>
                     </div>
+                </li>
+                <li>
                     <div class="list-container">
                         <div class="list-title">전공</div>
                         <div class="list-content">
                             ${policyDetails.majorRqisCn !="null" && !policyDetails.majorRqisCn.isEmpty()? policyDetails.majorRqisCn:"❌"}
                         </div>
                     </div>
-                </li>
-                <li>
                     <div class="list-container">
                         <div class="list-title">특화 분야</div>
                         <div class="list-content">
                             ${policyDetails.splzRlmRqisCn !="null" && !policyDetails.splzRlmRqisCn.isEmpty()? policyDetails.splzRlmRqisCn:"❌"}
                         </div>
                     </div>
+
                 </li>
                 <li>
                     <div class="list-container">
@@ -187,7 +194,16 @@
                     <div class="list-container">
                         <div class="list-title">신청 사이트</div>
                         <div class="list-content">
-                            ${policyDetails.rqutUrla !="null" && !policyDetails.rqutUrla.isEmpty()? policyDetails.rqutUrla:"❌"}
+                            <!-- rqutUrla가 null이 아니고 빈 문자열이 아닌 경우에만 링크를 출력 -->
+                            <c:if test="${policyDetails.rqutUrla != 'null' && !policyDetails.rqutUrla.isEmpty()}">
+                                <a href="${policyDetails.rqutUrla}">${policyDetails.rqutUrla}</a>
+                            </c:if>
+
+                            <!-- rqutUrla가 null이거나 빈 문자열이면 "❌" 표시 -->
+                            <c:if test="${policyDetails.rqutUrla == 'null' || policyDetails.rqutUrla.isEmpty()}">
+                                ❌
+                            </c:if>
+
                         </div>
                     </div>
                 </li>
@@ -231,7 +247,16 @@
                     <div class="list-container">
                         <div class="list-title">사업관련 참고 사이트1</div>
                         <div class="list-content">
-                            ${policyDetails.rfcSiteUrla1 !="null" && !policyDetails.rfcSiteUrla1.isEmpty()? policyDetails.rfcSiteUrla1:"❌"}
+                            <!-- rqutUrla가 null이 아니고 빈 문자열이 아닌 경우에만 링크를 출력 -->
+                            <c:if test="${policyDetails.rfcSiteUrla1 != 'null' && !policyDetails.rfcSiteUrla1.isEmpty()}">
+                                <a href="${policyDetails.rfcSiteUrla1}">${policyDetails.rfcSiteUrla1}</a>
+                            </c:if>
+
+                            <!-- rqutUrla가 null이거나 빈 문자열이면 "❌" 표시 -->
+                            <c:if test="${policyDetails.rfcSiteUrla1 == 'null' || policyDetails.rfcSiteUrla1.isEmpty()}">
+                                ❌
+                            </c:if>
+
                         </div>
                     </div>
                 </li>
@@ -239,7 +264,16 @@
                     <div class="list-container">
                         <div class="list-title">사업관련 참고 사이트2</div>
                         <div class="list-content">
-                            ${policyDetails.rfcSiteUrla2 !="null" && !policyDetails.rfcSiteUrla2.isEmpty()? policyDetails.rfcSiteUrla2:"❌"}
+
+                            <!-- rqutUrla가 null이 아니고 빈 문자열이 아닌 경우에만 링크를 출력 -->
+                            <c:if test="${policyDetails.rfcSiteUrla2 != 'null' && !policyDetails.rfcSiteUrla2.isEmpty()}">
+                                <a href="${policyDetails.rfcSiteUrla2}">${policyDetails.rfcSiteUrla2}</a>
+                            </c:if>
+
+                            <!-- rqutUrla가 null이거나 빈 문자열이면 "❌" 표시 -->
+                            <c:if test="${policyDetails.rfcSiteUrla2 == 'null' || policyDetails.rfcSiteUrla2.isEmpty()}">
+                                ❌
+                            </c:if>
                         </div>
                     </div>
                 </li>
