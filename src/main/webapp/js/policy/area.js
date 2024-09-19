@@ -230,9 +230,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // TODO 예시 데이터 (실제 데이터로 대체 필요)
     function getEventCards(regionId) {
         return [
-            { title: `청년 쿡 비즈니스센터 운영`, description: '청년 스타트업 육성...' },
-            { title: `대학생 아르바이트 사업`, description: '서울시 대학생을 위한...' }
+            {
+                title: `청년 쿡 비즈니스센터 운영`,
+                description: '청년 스타트업 육성... <div class="deadline-btn" data-status="deadline">신청마감</div>'
+            },
+            {
+                title: `대학생 아르바이트 사업`,
+                description: '서울시 대학생을 위한... <div class="deadline-btn" data-status="progress">진행중</div>'
+            },
         ];
         console.log(`${regionId}`);
     }
+
 });
