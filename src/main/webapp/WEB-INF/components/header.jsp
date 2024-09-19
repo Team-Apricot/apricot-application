@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<title>살구 - 살기 좋은 지역구</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
-	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>살구 - 살기 좋은 지역구</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -36,23 +36,18 @@
                         </button>
                     </div>
                     <div class="my-modal-detail">
-                        <button class="modal-btn" type="submit">정보 수정</button>
-                    </div>
-                    <div class="my-modal-detail">
                         <form action="${pageContext.request.contextPath}/member/logout"
                               method="post">
-                            <button class="modal-btn" type="submit">Logout</button>
+                            <button class="modal-btn" type="submit">로그아웃</button>
                         </form>
                     </div>
                 </div>
             </div>
-
-
         </sec:authorize>
 
         <sec:authorize access="!isAuthenticated()"> <!-- 비로그인 사용자에게 표시할 내비게이션 링크 -->
             <div class="login">
-                <button onclick="openLoginModal()">Sign in</button>
+                <button onclick="openLoginModal()">로그인</button>
             </div>
         </sec:authorize>
     </nav>
