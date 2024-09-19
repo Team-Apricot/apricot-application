@@ -25,7 +25,7 @@ public class ScrapRestController {
   // 스크랩 등록 API
   @PostMapping(value = "/register")
   public ResponseEntity<ApiResponse<Void>> saveScrap(@RequestBody @Valid ScrapRegister request) {
-    scrapService.register(request.toService())
+    scrapService.register(request.toService());
     return ResponseEntity.ok().body(
         ApiResponse.successResponse(
             OK,
