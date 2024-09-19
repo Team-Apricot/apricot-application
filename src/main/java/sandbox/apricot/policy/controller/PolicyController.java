@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/policy")
 public class PolicyController {
 
-    @GetMapping
+    @GetMapping("/area")
     public String viewArea(Model model) {
         return "policy/area";
     }
