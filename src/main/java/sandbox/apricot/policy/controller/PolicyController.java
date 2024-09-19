@@ -14,25 +14,27 @@ import sandbox.apricot.policy.service.PolicyDetailService;
 @RequestMapping("/policy")
 public class PolicyController {
 
-  private final PolicyDetailService policyDetailService;
+    private final PolicyDetailService policyDetailService;
 
-  @GetMapping("/area")
-  public String viewArea(Model model) {
-    return "policy/area";
-  }
+    @GetMapping("/area")
+    public String viewArea(Model model) {
+        return "policy/area";
+    }
 
-//    @GetMapping("/detail")
-//    public String viewDetail(Model model) {
-//        List<PolicyDetailDTO> policyDetails = policyDetailService.getPolicyDetails();
-//        model.addAttribute("policyDetails", policyDetails);
-//        return "policy/detail";
-//    }
+    /*
+    @GetMapping("/detail")
+    public String viewDetail(Model model) {
+        List<PolicyDetailDTO> policyDetails = policyDetailService.getPolicyDetails();
+        model.addAttribute("policyDetails", policyDetails);
+        return "policy/detail";
+    }
+    */
 
-  @GetMapping("/detail/{policy_code}")
-  public String viewDetail(Model model, @PathVariable("policy_code") String policyCode) {
-    PolicyDetailDTO policyDetails = policyDetailService.getPolicyDetailsByCode(policyCode);
-    model.addAttribute("policyDetails", policyDetails);
-    return "policy/detail";
-  }
+    @GetMapping("/detail/{policy_code}")
+    public String viewDetail(Model model, @PathVariable("policy_code") String policyCode) {
+        PolicyDetailDTO policyDetails = policyDetailService.getPolicyDetailsByCode(policyCode);
+        model.addAttribute("policyDetails", policyDetails);
+        return "policy/detail";
+    }
 
 }
