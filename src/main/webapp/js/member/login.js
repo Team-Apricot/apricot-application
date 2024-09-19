@@ -1,8 +1,10 @@
 // 로그인 폼 제출
-// $(document).ready(() => {
+$(document).ready(() => {
   $('.login-form').off('submit').on('submit', function (e) {
     e.preventDefault();
-    if (!validateEmail()) { return; }
+    if (!validateEmail()) {
+      return;
+    }
     const formData = $(this).serialize();
 
     $.ajax({
@@ -25,17 +27,17 @@
       }
     });
   });
-// });
+});
 
 // 로그인 모달 열기
 function openLoginModal() {
   const hiddenBackground = document.querySelector('.hidden-background');
   const loginModal = document.querySelector('.login-modal');
-  const mainContent = document.querySelector('.mainContent');
+  // const mainContent = document.querySelector('.mainContent');
 
   hiddenBackground.style.display = 'block';
   loginModal.style.display = 'block';
-  mainContent.style.pointerEvents = 'none';
+  // mainContent.style.pointerEvents = 'none';
 
   $.ajax({
     url: '/login',
@@ -56,15 +58,15 @@ function openLoginModal() {
 function closeLoginModal() {
   const hiddenBackground = document.querySelector('.hidden-background');
   const loginModal = document.querySelector('.login-modal');
-  const mainContent = document.querySelector('.mainContent');
+  // const mainContent = document.querySelector('.mainContent');
 
   hiddenBackground.style.display = 'none';
   loginModal.style.display = 'none';
-  mainContent.style.pointerEvents = 'auto';
+  // mainContent.style.pointerEvents = 'auto';
 }
 
 // hidden-background 클릭 시 모달 닫기
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const hiddenBackground = document.querySelector('.hidden-background');
   if (hiddenBackground) {
     hiddenBackground.addEventListener('click', closeLoginModal);
