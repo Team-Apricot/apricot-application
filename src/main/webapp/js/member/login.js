@@ -10,7 +10,6 @@
       url: '/api/v1/login', // 로그인 요청을 처리하는 URL
       data: formData,
       success: function () {
-        alert("S")
         window.location.href = '/'; // 로그인 성공 시 홈
       },
       error: function (xhr, status, error) {

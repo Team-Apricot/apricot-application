@@ -74,8 +74,6 @@ function gotoSecondSignUp() {
       password: fields.password
     };
 
-    console.log(param);
-
     // AJAX 요청을 통해 기본 정보 저장
     $.ajax({
       url: `/api/v1/member/register-basic`,
@@ -87,9 +85,6 @@ function gotoSecondSignUp() {
         location.href = "/register-interest";
       },
       error: function (xhr, status, error) {
-        console.log('email: '+ param.email);
-        console.log('nickName: '+ param.nickName);
-        console.log('password: '+ param.pwd);
         console.log("Error: " + error);
         console.log("Status: " + status);
         console.log(xhr.responseText);
