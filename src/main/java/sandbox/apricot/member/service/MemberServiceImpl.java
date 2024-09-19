@@ -14,6 +14,7 @@ import sandbox.apricot.interest.dto.request.InterestRegister;
 import sandbox.apricot.interest.service.InterestService;
 import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
+import sandbox.apricot.member.dto.request.UpdateAgeRange;
 import sandbox.apricot.member.dto.request.UpdateNickName;
 import sandbox.apricot.member.dto.response.MemberInfo;
 import sandbox.apricot.member.vo.Member;
@@ -67,6 +68,17 @@ public class MemberServiceImpl implements MemberService {
         validateDuplicationNickName(request.getNickName());
         validateForbidden(memberId, member);
         memberMapper.updateNickNameById(memberId, newNickName);
+    }
+
+    @Override
+    public void updateAgeRange(UpdateAgeRange request) {
+        Long memberId = request.getMemberId();
+        String newAgeRange = request.getAgeRange();
+
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateAgeRangeById(memberId, newAgeRange);
     }
 
     private void validateDuplicationEmail(String email) {
