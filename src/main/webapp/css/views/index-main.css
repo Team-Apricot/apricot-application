@@ -44,14 +44,6 @@ section {
   flex-direction: row; /* 기본적으로 가로 방향으로 배치 */
 }
 
-/*.search-container {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  flex: 1; !* 남은 공간을 차지하도록 설정 *!*/
-/*}*/
-
 .blur-background {
   position: relative; /* 헤더 위에 위치하지 않도록 조정 */
   background: rgba(255, 255, 255, 0.7); /* 불투명한 카드 배경 */
