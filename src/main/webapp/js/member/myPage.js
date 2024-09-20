@@ -58,7 +58,7 @@ function closeUpdateInfoModal() {
   document.querySelector('.mypage-container').style.pointerEvents = 'auto';
 }
 
-//모달 밖에 선택했을 때 모달창 닫기
+// 모달 밖에 선택했을 때 모달창 닫기 - TODO: 현재 작동되지 않음. 해결 필요
 document.addEventListener('DOMContentLoaded', () => {
   const hiddenBackground = document.querySelector('.hidden-background');
 
