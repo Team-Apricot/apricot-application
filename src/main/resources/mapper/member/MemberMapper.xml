@@ -30,7 +30,7 @@
   </resultMap>
 
   <insert id="save" parameterType="Member" >
-    INSERT INTO MEMBERS (email, nick_name, password, age_range, gender, career, married_status, num_child, member_role)
+    INSERT INTO MEMBERS (EMAIL, NICK_NAME, PASSWORD, AGE_RANGE, GENDER, CAREER, MARRIED_STATUS, NUM_CHILD, MEMBER_ROLE)
     VALUES (#{email}, #{nickName}, #{password}, #{ageRange}, #{gender}, #{career}, #{marriedStatus}, #{numChild}, #{memberRole})
   </insert>
 
@@ -68,6 +68,11 @@
 
   <update id="updateAgeRangeById">
     UPDATE MEMBERS SET AGE_RANGE = #{ageRange}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
+
+  <update id="updatePassword">
+    UPDATE MEMBERS SET PASSWORD = #{password}
     WHERE MEMBER_ID = #{memberId}
   </update>
 
