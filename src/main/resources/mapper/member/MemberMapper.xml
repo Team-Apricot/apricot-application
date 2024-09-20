@@ -56,9 +56,19 @@
     SELECT m.EMAIL, m.NICK_NAME, m.AGE_RANGE, m.GENDER, m.CAREER, m.MARRIED_STATUS, m.NUM_CHILD, m.MEMBER_ROLE,
            c.CATEGORY_NAME
     FROM MEMBERS m
-    LEFT JOIN INTERESTS i ON m.MEMBER_ID = i.MEMBER_ID
-    LEFT JOIN CATEGORIES c ON i.CATEGORY_ID = c.CATEGORY_ID
+    JOIN INTERESTS i ON m.MEMBER_ID = i.MEMBER_ID
+    JOIN CATEGORIES c ON i.CATEGORY_ID = c.CATEGORY_ID
     WHERE m.MEMBER_ID = #{memberId}
   </select>
+
+  <update id="updateNickNameById">
+    UPDATE MEMBERS SET NICK_NAME = #{nickName}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
+
+  <update id="updateAgeRangeById">
+    UPDATE MEMBERS SET AGE_RANGE = #{ageRange}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
 
 </mapper>

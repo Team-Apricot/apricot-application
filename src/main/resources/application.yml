@@ -72,6 +72,11 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
+server:
+  servlet:
+    session:
+      persistent: false
+
 logging:
   level:
     org.hibernate.type.descriptor.sql: DEBUG
@@ -79,7 +84,7 @@ logging:
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
-  type-aliases-package: sandbox.apricot.member.vo, sandbox.apricot.interest.vo
+  type-aliases-package: sandbox.apricot.member.vo, sandbox.apricot.interest.vo, sandbox.apricot.scrap.vo
   configuration:
     map-underscore-to-camel-case: true
 #    cache-enabled: false
