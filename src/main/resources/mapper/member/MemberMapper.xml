@@ -71,4 +71,24 @@
     WHERE MEMBER_ID = #{memberId}
   </update>
 
+  <update id="updateCareerById">
+    UPDATE MEMBERS SET CAREER = #{career}
+    WHERE MEMBER_ID =#{memberId}
+  </update>
+
+  <update id="updateMarriedStatusById">
+    UPDATE MEMBERS SET MARRIED_STATUS = #{marriedStatus}
+    WHERE MEMBER_ID = #{membeId}
+  </update>
+
+  <update id="updateNumChildById">
+    UPDATE MEMBERS SET NUM_CHILD = #{numChild}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
+
+  <update id="updateGenderById">
+    UPDATE MEMBERS SET GENDER = #{gender}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
+
 </mapper>
