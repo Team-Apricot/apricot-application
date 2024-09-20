@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const statusElements = document.querySelectorAll('.policy-status'); //정책 상태 받아오기
 
-  statusElements.forEach(element => { 
+  statusElements.forEach(element => {
     const statusText = element.textContent.trim();
 
     let statusClass = '';
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //비밀변경 모달 열기
-function openUpdatePwModal(){
+function openUpdatePwModal() {
   document.querySelector('.hidden-background').style.display = 'block';
   document.querySelector('.updatePassword-modal').style.display = 'block';
   document.querySelector('.mypage-container').style.pointerEvents = 'none';
@@ -44,7 +44,7 @@ function closeUpdatePwModal() {
 }
 
 //정보수정 모달 열기
-function openUpdateInfoModal(){
+function openUpdateInfoModal() {
   document.querySelector('.hidden-background').style.display = 'block';
   document.querySelector('.updateInfo-modal').style.display = 'block';
   document.querySelector('.mypage-container').style.pointerEvents = 'none';
@@ -58,6 +58,14 @@ function closeUpdateInfoModal() {
   document.querySelector('.mypage-container').style.pointerEvents = 'auto';
 }
 
-//모달 밖에 선택했을 때 모달창 닫기
-document.querySelector('.hidden-background').addEventListener('click', closeUpdatePwModal);
-document.querySelector('.hidden-background').addEventListener('click', closeUpdateInfoModal);
+// 모달 밖에 선택했을 때 모달창 닫기 - TODO: 현재 작동되지 않음. 해결 필요
+document.addEventListener('DOMContentLoaded', () => {
+  const hiddenBackground = document.querySelector('.hidden-background');
+
+  if (hiddenBackground) {
+    hiddenBackground.addEventListener('click', closeUpdatePwModal);
+    hiddenBackground.addEventListener('click', closeUpdateInfoModal);
+  } else {
+    console.error('.hidden-background not found');
+  }
+})

@@ -72,6 +72,11 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
+server:
+  servlet:
+    session:
+      persistent: false
+
 logging:
   level:
     org.hibernate.type.descriptor.sql: DEBUG

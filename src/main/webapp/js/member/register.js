@@ -3,10 +3,10 @@
  */
 document.addEventListener('DOMContentLoaded', function () {
   const fields = {
-    username: document.getElementById('username'),
+    email: document.getElementById('email'),
     nickname: document.getElementById('nickname'),
-    password: document.getElementById('password'),
-    passwordChk: document.getElementById('passwordCheck'),
+    pwd: document.getElementById('pwd'),
+    pwdChk: document.getElementById('pwdChk'),
   };
 
   // 필드 유효성 검사 함수
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let isValid = true;
 
     switch (field.id) {
-      case 'username':
+      case 'email':
         isValid = value !== '';
         errorMessage = isValid ? '' : "이메일을 입력해주세요.";
         break;
@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
         isValid = value !== '';
         errorMessage = isValid ? '' : "닉네임을 입력해주세요.";
         break;
-      case 'password':
+      case 'pwd':
         isValid = value !== ''; // TODO: 비밀번호 유효성 검사 조건 추가
         errorMessage = isValid ? '' : "비밀번호를 입력해주세요.";
         break;
-      case 'passwordCheck':
-        isValid = value !== '' && value === fields.password.value;
+      case 'pwdChk':
+        isValid = value !== '' && value === fields.pwd.value;
         errorMessage = isValid ? '' : "비밀번호가 일치하지 않습니다.";
         break;
     }
@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function () {
  */
 function gotoSecondSignUp() {
   const fields = {
-    username: document.getElementById('username').value,
-    nickname: document.getElementById('nickname').value,
-    password: document.getElementById('password').value,
-    passwordChk: document.getElementById('passwordCheck').value
+    email: document.getElementById('email').value,
+    nickName: document.getElementById('nickname').value,
+    password: document.getElementById('pwd').value,
+    passwordChk: document.getElementById('pwdChk').value
   }
 
   const isValid = Object.values(fields)
@@ -69,12 +69,10 @@ function gotoSecondSignUp() {
 
   if (isValid) {
     const param = {
-      email: fields.username,
-      nickName: fields.nickname,
+      email: fields.email,
+      nickName: fields.nickName,
       password: fields.password
     };
-
-    console.log(param);
 
     // AJAX 요청을 통해 기본 정보 저장
     $.ajax({

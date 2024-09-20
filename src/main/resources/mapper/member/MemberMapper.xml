@@ -29,7 +29,6 @@
     </collection>
   </resultMap>
 
-
   <insert id="save" parameterType="Member" >
     INSERT INTO MEMBERS (email, nick_name, password, age_range, gender, career, married_status, num_child, member_role)
     VALUES (#{email}, #{nickName}, #{password}, #{ageRange}, #{gender}, #{career}, #{marriedStatus}, #{numChild}, #{memberRole})
@@ -62,5 +61,14 @@
     WHERE m.MEMBER_ID = #{memberId}
   </select>
 
+  <update id="updateNickNameById">
+    UPDATE MEMBERS SET NICK_NAME = #{nickName}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
+
+  <update id="updateAgeRangeById">
+    UPDATE MEMBERS SET AGE_RANGE = #{ageRange}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
 
 </mapper>

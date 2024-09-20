@@ -13,5 +13,7 @@ public interface MemberMapper {
     Optional<Member> findByEmail(String email);
     Optional<Member> findByNickName(String nickName);
     MemberInfo findByIdWithInterests(Long memberId);
+    void updateNickNameById(Long memberId, String nickName);
+    void updateAgeRangeById(Long memberId, String ageRange);
 
 }

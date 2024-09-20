@@ -1,9 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="/WEB-INF/components/header.jsp" %>
 
-<script src="${pageContext.request.contextPath}/js/member/register.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member/register.css">
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>살구 - 회원 가입</title>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/common-env.jsp"/>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/register-env.jsp"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/header.jsp"/>
 
 <div class="signup-container">
 	<div class="signup-content">
@@ -12,26 +20,28 @@
 		</div>
 		
 		<form class="signup-form">
-			<label for="username">아이디</label>
-			<input type="text" id="username" placeholder="이메일을 입력해주세요.">
-			<div id="usernameValid"></div>
+			<label for="email">이메일 아이디</label>
+			<input type="text" id="email" placeholder="이메일을 입력해주세요.">
+			<div id="emailValid"></div>
 			
 			<label for="nickname">닉네임</label>
 			<input type="text" id="nickname" placeholder="닉네임을 입력해주세요.">
 			<div id="nicknameValid"></div>
 			
 			
-			<label for="password">비밀번호</label>
-			<input type="password" id="password" placeholder="비밀번호를 입력해주세요.">
-			<div id="passwordValid"></div>
+			<label for="pwd">비밀번호</label>
+			<input type="password" id="pwd" placeholder="비밀번호를 입력해주세요.">
+			<div id="pwdValid"></div>
 			
-			<label for="passwordCheck">비밀번호확인</label>
-			<input type="password" id="passwordCheck" placeholder="다시 한번 비밀번호를 입력해주세요.">
-			<div id="passwordCheckValid"></div>
+			<label for="pwdChk">비밀번호 확인</label>
+			<input type="password" id="pwdChk" placeholder="다시 한번 비밀번호를 입력해주세요.">
+			<div id="pwdChkValid"></div>
 			
-			<button type="button" onclick="gotoSecondSignUp()" class="signup-btn">가입 후 상세 정보 입력하러 가기
+			<button type="button" onclick="gotoSecondSignUp()" class="signup-btn">다음
 			</button>
 			<div id="buttonCheck"></div>
 		</form>
 	</div>
 </div>
+</body>
+</html>
