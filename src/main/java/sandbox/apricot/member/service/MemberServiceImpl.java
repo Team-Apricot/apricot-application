@@ -16,6 +16,7 @@ import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
 import sandbox.apricot.member.dto.request.UpdateAgeRange;
 import sandbox.apricot.member.dto.request.UpdateNickName;
+import sandbox.apricot.member.dto.request.UpdatePassword;
 import sandbox.apricot.member.dto.response.MemberInfo;
 import sandbox.apricot.member.vo.Member;
 import sandbox.apricot.member.vo.MemberRole;
@@ -81,6 +82,19 @@ public class MemberServiceImpl implements MemberService {
         memberMapper.updateAgeRangeById(memberId, newAgeRange);
     }
 
+    @Override
+    public void updatePassword(UpdatePassword request, Long memberId) {
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+
+        String oldPassword = request.getOldPassword();
+        String newPassword = request.getNewPassword();
+        String curPassword = member.getPassword();
+
+        validateForbidden(oldPassword, curPassword);
+        memberMapper.updatePassword(memberId, passwordEncoder.encode(newPassword));
+    }
+
     private void validateDuplicationEmail(String email) {
         if (memberMapper.findByEmail(email).isPresent()) {
             throw new MemberBusinessException(EMAIL_DUPLICATE);
@@ -93,8 +107,14 @@ public class MemberServiceImpl implements MemberService {
         }
     }
 
-    private void validateForbidden(Long target, Member member) {
-        if (!member.getMemberId().equals(target)) {
+    private void validateForbidden(Long targetId, Member member) {
+        if (!member.getMemberId().equals(targetId)) {
+            throw new MemberBusinessException(UNAUTHORIZED_TO_MEMBER);
+        }
+    }
+
+    private void validateForbidden(String oldPassword, String newPassword) {
+        if (!passwordEncoder.matches(oldPassword, newPassword)) {
             throw new MemberBusinessException(UNAUTHORIZED_TO_MEMBER);
         }
     }
