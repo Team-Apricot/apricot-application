@@ -9,11 +9,24 @@ import sandbox.apricot.member.vo.Member;
 public interface MemberMapper {
 
     void save(Member member);
+
     Optional<Member> findById(Long memberId);
+
     Optional<Member> findByEmail(String email);
+
     Optional<Member> findByNickName(String nickName);
+
     MemberInfo findByIdWithInterests(Long memberId);
+
     void updateNickNameById(Long memberId, String nickName);
+
     void updateAgeRangeById(Long memberId, String ageRange);
 
+    void updateCareerById(Long memberId, String career);
+
+    void updateMarriedStatusById(Long memberId, String marriedStatus);
+
+    void updateNumChildById(Long memberId, Integer numChild);
+
+    void updateGenderById(Long memberId, String gender);
 }
