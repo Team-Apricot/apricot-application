@@ -6,20 +6,23 @@ body {
   display: flex;
 }
 
-/*!* TOC 설정 *!*/
+.navmenu ul li a span{
+  font-family: 'Jua', sans-serif !important;
+}
+/*!* TOC(목차) 설정 *!*/
 .toc {
+  font-family: 'Jua', sans-serif;
   position: fixed;
-  top: 15%;
+  top: 30%;
   margin: 20px;
-  left: 20px;
-  width: 11%;
+  left: 0;
+  width: 14%;
   background-color: transparent;
-  padding: 10px;
-  z-index: 1000;
+  padding: 5px;
   /*border: 2px solid #ffdab3;*/
-  border: 2px solid #e5e5e5;
+  /*border: 2px solid #e5e5e5;*/
 
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .toc-title {
@@ -30,20 +33,57 @@ body {
 .toc ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-.toc li {
+.toc ul li {
+  width: auto;
+  position: relative;
   margin-bottom: 10px;
+  padding: 5px;
+  /*border: 2px solid #ffdab3;*/
+  /*background-color: orange;*/
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 
-.toc a {
+
+.toc ul li a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  font-size: 16px;
   color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color 0.3s;
 }
 
-.toc a:hover {
-  text-decoration: underline;
+
+.toc ul li a img {
+  transition: transform 0.3s ease;
+}
+
+.toc ul li a span {
+  margin-left: 10px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.toc ul li a:hover span {
+  opacity: 1;
+  background-color: red;
+  transition: color 0.3s ease, background-color 5s ease;
+
+  transform: translateX(0);
+}
+
+.toc ul li a:hover img {
+  transform: rotateY(180deg);
+  transition-duration: 1s;
 }
 
 
@@ -106,9 +146,9 @@ body {
 /* 전체 컨테이너 */
 .policy-detail-page {
   /*background-color:#FFFDCE ;*/
-  width: 89%;
+  width: 87%;
   max-width: 1200px;
-  margin: 20px auto auto calc(11% + 60px);
+  margin: 20px auto auto calc(13% + 60px);
 
   padding: 20px;
   border-radius: 8px;
@@ -126,12 +166,12 @@ body {
 .policy-table-content {
   /*background-color: #FFE9CE;*/
   /*background-color: #FFFDCE;*/
-  /*border: 2px solid #ffdab3;*/
-  border: 2px solid #e5e5e5;
+  border: 2px solid #ffdab3;
+  /*border: 2px solid #e5e5e5;*/
 
   border-radius: 10px;
   padding: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 5%;
   /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
   opacity: 0;
   transform: translateY(50px);
@@ -187,7 +227,7 @@ body {
   /*border-bottom: 2px solid lightgray;*/
   flex-basis: calc(50% - 12px);
   padding-bottom: 28px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px dotted rgba(193, 193, 193, 0.87);
 
   overflow-wrap: break-word; /* 긴 단어를 줄바꿈 */
   word-wrap: break-word; /* 긴 단어를 줄바꿈 */
@@ -199,28 +239,14 @@ body {
   /*transition: opacity 0.6s ease, transform 0.6s ease;*/
 }
 
-/*.list-title .fade-in{*/
-/*    opacity: 1;*/
-/*    transform: translateY(0); !* 보일 때 위로 올라오면서 완전히 보이도록 설정 *!*/
-/*}*/
-/*.list-container.fade-in{*/
-/*    opacity: 1;*/
-/*    transform: translateY(0); !* 보일 때 위로 올라오면서 완전히 보이도록 설정 *!*/
-/*}*/
-
 .list-title {
   font-size: 16px;
   align-content: center;
   justify-content: center;
-  /*color: #f7941d;*/
   color: gray;
   /*font-weight: bold;*/
   margin: 10px;
 
-
-  /*opacity: 0; !* 기본 상태에서는 보이지 않음 *!*/
-  /*transform: translateY(20px); !* 살짝 아래에서 올라오는 효과 *!*/
-  /*transition: opacity 0.6s ease, transform 0.6s ease;*/
 }
 
 .list-content {

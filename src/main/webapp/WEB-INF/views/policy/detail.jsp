@@ -7,17 +7,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>정책 지원 페이지</title>
+    <!-- Main CSS File -->
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/css/policy/detail_sub.css">
+
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/css/policy/detail.css">
+    <script src="${pageContext.request.contextPath}/salguDevelopers/heonuk/assets/js/main.js"></script>
     <script src="${pageContext.request.contextPath}/js/policy/detail.js"></script>
 </head>
 <body>
 
 <div class="layout">
     <div class="policy-detail-page" id="section1">
-        <div class="toc" id="toc">
-            <span class="toc-title">목차</span>
-        </div>
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="#section1" class="active"><img src="/assets/img/mascot.png" width="40"><span>한 눈에 보는 정책 요약</span></a>
+                </li>
+                <li><a href="#section2"><img src="/assets/img/mascot.png" width="40"><span>신청자격</span></a></li>
+                <li><a href="#section3"><img src="/assets/img/mascot.png" width="40"><span>신청방법</span></a>
+                </li>
+                <li><a href="#section4"><img src="/assets/img/mascot.png" width="40"><span>기타</span></a></li>
+            </ul>
+        </nav>
         <div class="policy-header">
             <div class="policy-title">
                 <h2>${policyDetails.policyName !="null" && !policyDetails.policyName.isEmpty()? policyDetails.policyName:"❌"}</h2>
@@ -27,7 +39,7 @@
                 <%-- 공유와 찜하기 버튼 위치 우상단.--%>
                 <button type="button" class="sns-share">
                     <img src="${pageContext.request.contextPath}/assets/img/share_icon2_0.8.png"
-                         width="30"
+                         width="40"
                          alt="공유하기">
                 </button>
                 <div class="share-group" style="display: none;">
@@ -46,7 +58,7 @@
                 </div>
                 <button type="button" class="wish-list">
                     <img src="${pageContext.request.contextPath}/assets/img/heart_icon_0.8.png"
-                         width="30"
+                         width="40"
                          alt="찜하기">
                 </button>
             </div>
@@ -315,9 +327,6 @@
     </div>
 </div>
 </body>
-<script>
-  ScrollOut();
-</script>
 <footer>
 
 </footer>
