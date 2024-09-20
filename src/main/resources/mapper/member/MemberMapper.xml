@@ -78,7 +78,7 @@
 
   <update id="updateMarriedStatusById">
     UPDATE MEMBERS SET MARRIED_STATUS = #{marriedStatus}
-    WHERE MEMBER_ID = #{membeId}
+    WHERE MEMBER_ID = #{memberId}
   </update>
 
   <update id="updateNumChildById">

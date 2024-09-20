@@ -104,7 +104,7 @@ public class MemberServiceImpl implements MemberService {
         Member member = memberMapper.findById(memberId)
                 .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
         validateForbidden(memberId, member);
-        memberMapper.updateCareerById(memberId, marriedStatus);
+        memberMapper.updateMarriedStatusById(memberId, marriedStatus);
     }
 
     @Override
