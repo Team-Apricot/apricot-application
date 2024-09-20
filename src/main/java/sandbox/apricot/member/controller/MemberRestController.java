@@ -4,9 +4,11 @@ import static org.springframework.http.HttpStatus.*;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,7 @@ import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
 import sandbox.apricot.member.dto.request.UpdateAgeRange;
 import sandbox.apricot.member.dto.request.UpdateNickName;
+import sandbox.apricot.member.dto.request.UpdatePassword;
 import sandbox.apricot.member.service.MemberService;
 
 @RestController
@@ -62,6 +65,26 @@ public class MemberRestController {
                 ApiResponse.successResponse(
                         OK,
                         "성공적으로 회원가입을 완료하였습니다."
+                )
+        );
+    }
+
+    /**
+     * 회원 수정 - 비밀번호 변경
+     *
+     * @param request - oldPassword, newPassword
+     */
+    @PreAuthorize("isAuthenticated()")
+    @PatchMapping("/password")
+    public ResponseEntity<ApiResponse<Void>> updateMember(
+            @RequestBody @Valid UpdatePassword request,
+            Principal principal) {
+        Long memberId = memberService.getMemberId(principal.getName());
+        memberService.updatePassword(request, memberId);
+        return ResponseEntity.ok().body(
+                ApiResponse.successResponse(
+                        OK,
+                        "성공적으로 회원 비밀번호를 수정하였습니다."
                 )
         );
     }
