@@ -4,6 +4,7 @@ import static sandbox.apricot.member.util.exception.MemberErrorCode.EMAIL_DUPLIC
 import static sandbox.apricot.member.util.exception.MemberErrorCode.MEMBER_NOT_FOUND;
 import static sandbox.apricot.member.util.exception.MemberErrorCode.NICKNAME_DUPLICATE;
 import static sandbox.apricot.member.util.exception.MemberErrorCode.UNAUTHORIZED_TO_MEMBER;
+import static sandbox.apricot.member.util.exception.MemberErrorCode.WRONG_PASSWORD;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -71,7 +72,7 @@ public class MemberServiceImpl implements MemberService {
         String newPassword = request.getNewPassword();
         String curPassword = member.getPassword();
 
-        validateForbidden(oldPassword, curPassword);
+        validatePassword(oldPassword, curPassword);
         memberMapper.updatePassword(memberId, passwordEncoder.encode(newPassword));
     }
 
@@ -168,9 +169,9 @@ public class MemberServiceImpl implements MemberService {
         }
     }
 
-    private void validateForbidden(String oldPassword, String newPassword) {
+    private void validatePassword(String oldPassword, String newPassword) {
         if (!passwordEncoder.matches(oldPassword, newPassword)) {
-            throw new MemberBusinessException(UNAUTHORIZED_TO_MEMBER);
+            throw new MemberBusinessException(WRONG_PASSWORD);
         }
     }
 

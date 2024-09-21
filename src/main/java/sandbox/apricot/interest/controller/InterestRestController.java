@@ -6,10 +6,10 @@ import java.security.Principal;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import sandbox.apricot.common.response.ApiResponse;
 import sandbox.apricot.interest.dto.request.InterestRegister;
@@ -19,6 +19,7 @@ import sandbox.apricot.member.service.MemberService;
 @RestController
 @Log4j2
 @RequiredArgsConstructor
+@ResponseStatus(OK)
 @RequestMapping("/api/v1/interest")
 public class InterestRestController {
 
@@ -31,16 +32,11 @@ public class InterestRestController {
      * @param request - List<String> categoryInfo;
      */
     @PutMapping("/update")
-    public ResponseEntity<ApiResponse<Void>> updateInterest(
-            @RequestBody List<String> request, Principal principal) {
+    public ApiResponse<Void> updateInterest(@RequestBody List<String> request,
+            Principal principal) {
         Long memberId = memberService.getMemberId(principal.getName());
         interestService.update(InterestRegister.of(memberId, request));
-        return ResponseEntity.ok().body(
-                ApiResponse.successResponse(
-                        OK,
-                        "성공적으로 관심사 정보를 수정하였습니다."
-                )
-        );
+        return ApiResponse.successResponse(OK, "성공적으로 관심사 정보를 수정하였습니다.");
     }
 
 }
