@@ -19,7 +19,7 @@ public class MemberAuthFailureHandler extends SimpleUrlAuthenticationFailureHand
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException exception) throws IOException, ServletException {
-        String errorMessage = "{\"error\": \"아이디 또는 비밀번호가 맞지 않습니다.\"}";
+        String errorMessage = "{\"fail\": \"" + exception.getMessage() + "\"}";
         response.setStatus(SC_UNAUTHORIZED);
         response.setContentType("application/json; charset=UTF-8");
         response.getWriter().write(errorMessage);
