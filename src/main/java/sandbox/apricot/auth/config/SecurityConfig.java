@@ -61,30 +61,34 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/", "/register", "/register-interest", "/mypage",
-                                    "/resume/**", "/policy/**").permitAll()
-                            .requestMatchers("/api/v1/**").permitAll()
-                            .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                            .dispatcherTypeMatchers(DispatcherType.INCLUDE).permitAll()
-                            .anyRequest().authenticated();
-                })
-                .formLogin(form -> {
-                    form.loginPage("/login")
-                            .loginProcessingUrl("/api/v1/login")
-                            .defaultSuccessUrl("/")
-                            .failureHandler(failureHandler)
-                            .permitAll();
-                })
-                .exceptionHandling(handler -> {
-                    handler.authenticationEntryPoint(entryPoint);
-                })
-                .logout(exit -> {
-                    exit.logoutUrl("/api/v1/logout")
-                            .logoutSuccessUrl("/")
-                            .deleteCookies("JSESSIONID")
-                            .invalidateHttpSession(true);
-                });
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/", "/resume/**",
+                                "/register", "/register-interest",
+                                "/mypage",
+                                "/policy/**"
+                        ).permitAll()
+                        .requestMatchers("/api/v1/**").permitAll()
+                        .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
+                        .dispatcherTypeMatchers(DispatcherType.INCLUDE).permitAll()
+                        .anyRequest().authenticated()
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/api/v1/login")
+                        .defaultSuccessUrl("/")
+                        .failureHandler(failureHandler)
+                        .permitAll()
+                )
+                .logout(exit -> exit
+                        .logoutUrl("/api/v1/logout")
+                        .logoutSuccessUrl("/")
+                        .deleteCookies("JSESSIONID")
+                        .invalidateHttpSession(true)
+                )
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint(entryPoint)
+                );
         return http.build();
     }
 

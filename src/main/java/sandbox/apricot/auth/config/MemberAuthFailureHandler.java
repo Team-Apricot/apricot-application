@@ -12,6 +12,7 @@ import java.util.Map;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,7 @@ public class MemberAuthFailureHandler implements AuthenticationFailureHandler {
         log.error(">>> [ ❌ 로그인 실패: {} ]", exception.getMessage());  // 예외 메시지 로그 출력
         String errorMessage = "알 수 없는 에러가 발생하여 로그인에 실패 하였습니다.";
 
-        if (exception instanceof BadCredentialsException) {
+        if (exception instanceof UsernameNotFoundException || exception instanceof BadCredentialsException) {
             errorMessage = exception.getMessage();
         }
 
