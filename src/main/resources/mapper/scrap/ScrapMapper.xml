@@ -10,6 +10,7 @@
   </resultMap>
 
   <resultMap id="ScrapInfoResultMap" type="sandbox.apricot.scrap.dto.response.ScrapInfo">
+    <result property="policyCode" column="POLICY_CODE"/>
     <result property="districtName" column="DISTRICT_NAME"/>
     <result property="policyName" column="POLICY_NAME"/>
     <result property="prdRpttSecd" column="PRD_RPTT_SECD"/>
@@ -21,14 +22,14 @@
     </insert>
 
   <select id="findScrap" resultMap="ScrapInfoResultMap">
-    SELECT D.DISTRICT_NAME, SP.POLICY_NAME, SP.PRD_RPTT_SECD, D.DISTRICT_LOGO_PATH
-    FROM (SELECT *
+    SELECT SP.POLICY_CODE,D.DISTRICT_NAME, SP.POLICY_NAME, SP.PRD_RPTT_SECD, D.DISTRICT_LOGO_PATH
+    FROM (SELECT S.POLICY_CODE ,P.POLICY_NAME,P.PRD_RPTT_SECD,P.DISTRICT_CODE
           FROM SCRAPS S
                  JOIN YOUTH_POLICY_DETAIL P
                       ON S.POLICY_CODE = P.POLICY_CODE
-          WHERE S.MEMBER_ID = #{memberId}) SP
-           JOIN DISTRICTS D
-                ON SP.DISTRICT_CODE = D.DISTRICT_CODE
+          WHERE S.MEMBER_ID = 1) SP
+           LEFT JOIN DISTRICTS D
+                     ON SP.DISTRICT_CODE = D.DISTRICT_CODE
   </select>
 
 </mapper>

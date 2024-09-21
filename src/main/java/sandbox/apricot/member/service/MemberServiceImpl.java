@@ -15,7 +15,11 @@ import sandbox.apricot.interest.service.InterestService;
 import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
 import sandbox.apricot.member.dto.request.UpdateAgeRange;
+import sandbox.apricot.member.dto.request.UpdateCareer;
+import sandbox.apricot.member.dto.request.UpdateGender;
+import sandbox.apricot.member.dto.request.UpdateMarriedStatus;
 import sandbox.apricot.member.dto.request.UpdateNickName;
+import sandbox.apricot.member.dto.request.UpdateNumChild;
 import sandbox.apricot.member.dto.response.MemberInfo;
 import sandbox.apricot.member.vo.Member;
 import sandbox.apricot.member.vo.MemberRole;
@@ -79,6 +83,50 @@ public class MemberServiceImpl implements MemberService {
                 .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
         validateForbidden(memberId, member);
         memberMapper.updateAgeRangeById(memberId, newAgeRange);
+    }
+
+    @Override
+    public void updateCareer(UpdateCareer request) {
+        Long memberId = request.getMemberId();
+        String newCareer = request.getCareer();
+
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateCareerById(memberId, newCareer);
+    }
+
+    @Override
+    public void updateMarriedStatus(UpdateMarriedStatus request) {
+        Long memberId = request.getMemberId();
+        String marriedStatus = request.getMarriedStatus();
+
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateMarriedStatusById(memberId, marriedStatus);
+    }
+
+    @Override
+    public void updateNumChild(UpdateNumChild request) {
+        Long memberId = request.getMemberId();
+        Integer numChild = request.getNumChild();
+        System.out.println(memberId + " " + numChild);
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateNumChildById(memberId, numChild);
+
+    }
+
+    @Override
+    public void updateGender(UpdateGender request) {
+        Long memberId = request.getMemberId();
+        String gender = request.getGender();
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateGenderById(memberId, gender);
     }
 
     private void validateDuplicationEmail(String email) {
