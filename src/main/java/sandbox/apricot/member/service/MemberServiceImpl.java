@@ -15,7 +15,11 @@ import sandbox.apricot.interest.service.InterestService;
 import sandbox.apricot.member.dto.request.MemberRegisterBasic;
 import sandbox.apricot.member.dto.request.MemberRegisterDetail;
 import sandbox.apricot.member.dto.request.UpdateAgeRange;
+import sandbox.apricot.member.dto.request.UpdateCareer;
+import sandbox.apricot.member.dto.request.UpdateGender;
+import sandbox.apricot.member.dto.request.UpdateMarriedStatus;
 import sandbox.apricot.member.dto.request.UpdateNickName;
+import sandbox.apricot.member.dto.request.UpdateNumChild;
 import sandbox.apricot.member.dto.request.UpdatePassword;
 import sandbox.apricot.member.dto.response.MemberInfo;
 import sandbox.apricot.member.vo.Member;
@@ -59,6 +63,19 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public void updatePassword(UpdatePassword request, Long memberId) {
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+
+        String oldPassword = request.getOldPassword();
+        String newPassword = request.getNewPassword();
+        String curPassword = member.getPassword();
+
+        validateForbidden(oldPassword, curPassword);
+        memberMapper.updatePassword(memberId, passwordEncoder.encode(newPassword));
+    }
+
+    @Override
     public void updateNickName(UpdateNickName request) {
         Long memberId = request.getMemberId();
         String newNickName = request.getNickName();
@@ -83,16 +100,47 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void updatePassword(UpdatePassword request, Long memberId) {
+    public void updateCareer(UpdateCareer request) {
+        Long memberId = request.getMemberId();
+        String newCareer = request.getCareer();
+
         Member member = memberMapper.findById(memberId)
                 .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateCareerById(memberId, newCareer);
+    }
 
-        String oldPassword = request.getOldPassword();
-        String newPassword = request.getNewPassword();
-        String curPassword = member.getPassword();
+    @Override
+    public void updateMarriedStatus(UpdateMarriedStatus request) {
+        Long memberId = request.getMemberId();
+        String marriedStatus = request.getMarriedStatus();
 
-        validateForbidden(oldPassword, curPassword);
-        memberMapper.updatePassword(memberId, passwordEncoder.encode(newPassword));
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateMarriedStatusById(memberId, marriedStatus);
+    }
+
+    @Override
+    public void updateNumChild(UpdateNumChild request) {
+        Long memberId = request.getMemberId();
+        Integer numChild = request.getNumChild();
+        System.out.println(memberId + " " + numChild);
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateNumChildById(memberId, numChild);
+
+    }
+
+    @Override
+    public void updateGender(UpdateGender request) {
+        Long memberId = request.getMemberId();
+        String gender = request.getGender();
+        Member member = memberMapper.findById(memberId)
+                .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+        validateForbidden(memberId, member);
+        memberMapper.updateGenderById(memberId, gender);
     }
 
     @Override
@@ -114,8 +162,8 @@ public class MemberServiceImpl implements MemberService {
         }
     }
 
-    private void validateForbidden(Long targetId, Member member) {
-        if (!member.getMemberId().equals(targetId)) {
+    private void validateForbidden(Long target, Member member) {
+        if (!member.getMemberId().equals(target)) {
             throw new MemberBusinessException(UNAUTHORIZED_TO_MEMBER);
         }
     }

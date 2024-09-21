@@ -22,6 +22,14 @@ public interface MemberMapper {
 
     void updateAgeRangeById(Long memberId, String ageRange);
 
+    void updateCareerById(Long memberId, String career);
+
+    void updateMarriedStatusById(Long memberId, String marriedStatus);
+
+    void updateNumChildById(Long memberId, Integer numChild);
+
+    void updateGenderById(Long memberId, String gender);
+
     void updatePassword(Long memberId, String password);
 
     void deleteById(Long memberId);
