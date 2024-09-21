@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     success: function (api) {
       const words = api.data.map(data => ({
         text: data.districtName,
-        count: data.policyCnt
+        count: data.policyCnt,
       }));
 
       var myConfig = {
@@ -56,6 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
         data: myConfig,
         height: '100%',
         width: '100%',
+      });
+
+      zingchart.bind('myChart', 'label_click', function(e) {
+        if (e.label) {
+          const district = e.label.text;
+          window.location.href = `${window.location.origin}/policy?search-name=${encodeURIComponent(district)}`;
+        }
       });
     },
     error: function (jqXHR, textStatus, errorThrown) {
