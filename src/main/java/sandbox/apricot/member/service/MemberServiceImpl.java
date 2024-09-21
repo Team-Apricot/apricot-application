@@ -95,6 +95,13 @@ public class MemberServiceImpl implements MemberService {
         memberMapper.updatePassword(memberId, passwordEncoder.encode(newPassword));
     }
 
+    @Override
+    public void delete(Long memberId) {
+        log.info(" >>> [ ✨ 회원 삭제를 시도합니다. 회원 ID: {} ]", memberId);
+        memberMapper.deleteById(memberId);
+        log.info(" >>> [ ✨ 회원 삭제 성공. 회원 ID: {} ]", memberId);
+    }
+
     private void validateDuplicationEmail(String email) {
         if (memberMapper.findByEmail(email).isPresent()) {
             throw new MemberBusinessException(EMAIL_DUPLICATE);

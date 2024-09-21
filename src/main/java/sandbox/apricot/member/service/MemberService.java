@@ -21,4 +21,6 @@ public interface MemberService {
 
     void updatePassword(UpdatePassword request, Long memberId);
 
+    void delete(Long memberId);
+
 }
