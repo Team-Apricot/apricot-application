@@ -9,7 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,8 +79,7 @@ public class MemberRestController {
     @PreAuthorize("isAuthenticated()")
     @PatchMapping("/password")
     public ResponseEntity<ApiResponse<Void>> updateMember(
-            @RequestBody @Valid UpdatePassword request,
-            Principal principal) {
+            @RequestBody @Valid UpdatePassword request, Principal principal) {
         Long memberId = memberService.getMemberId(principal.getName());
         memberService.updatePassword(request, memberId);
         return ResponseEntity.ok().body(
@@ -95,7 +96,8 @@ public class MemberRestController {
      * @param request - memberId, nickName
      */
     @PatchMapping("/nickname")
-    public ResponseEntity<ApiResponse<Void>> updateMember(@RequestBody @Valid UpdateNickName request) {
+    public ResponseEntity<ApiResponse<Void>> updateMember(
+            @RequestBody @Valid UpdateNickName request) {
         memberService.updateNickName(request.toService());
         return ResponseEntity.ok().body(
                 ApiResponse.successResponse(
@@ -111,12 +113,29 @@ public class MemberRestController {
      * @param request - memberId, nickName
      */
     @PatchMapping("/ageRange")
-    public ResponseEntity<ApiResponse<Void>> updateMember(@RequestBody @Valid UpdateAgeRange request) {
+    public ResponseEntity<ApiResponse<Void>> updateMember(
+            @RequestBody @Valid UpdateAgeRange request) {
         memberService.updateAgeRange(request.toService());
         return ResponseEntity.ok().body(
                 ApiResponse.successResponse(
                         OK,
                         "성공적으로 회원 나이대 정보를 수정하였습니다."
+                )
+        );
+    }
+
+    /**
+     * 회원 삭제
+     */
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping
+    public ResponseEntity<ApiResponse<Void>> delete(Principal principal) {
+        Long memberId = memberService.getMemberId(principal.getName());
+        memberService.delete(memberId);
+        return ResponseEntity.ok().body(
+                ApiResponse.successResponse(
+                        OK,
+                        "성공적으로 회원을 삭제하였습니다."
                 )
         );
     }
