@@ -23,4 +23,7 @@ public interface MemberMapper {
     void updateAgeRangeById(Long memberId, String ageRange);
 
     void updatePassword(Long memberId, String password);
+
+    void deleteById(Long memberId);
+
 }
