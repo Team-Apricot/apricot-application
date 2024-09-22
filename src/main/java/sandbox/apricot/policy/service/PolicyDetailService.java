@@ -1,26 +1,23 @@
 package sandbox.apricot.policy.service;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sandbox.apricot.policy.dto.PolicyDetailDTO;
 import sandbox.apricot.policy.mapper.PolicyDetailMapper;
 
+
 @Service
+@RequiredArgsConstructor
 public class PolicyDetailService {
 
     private final PolicyDetailMapper detailMapper;
-
-    // 생성자 주입을 통한 DetailMapper 사용
-    public PolicyDetailService(PolicyDetailMapper detailMapper) {
-        this.detailMapper = detailMapper;
-    }
 
     // 유틸리티 메서드: 개행 문자를 <br>로 변환
     private String formatText(String text) {
         if (text != null) {
             return text.replace("\n", "<br>").replace("\r\n", "<br>");
         }
-        return text;
+        return null;
     }
 
     // DTO의 모든 필드에 개행 문자를 <br>로 변환하는 로직
@@ -67,12 +64,7 @@ public class PolicyDetailService {
         return policyDetailDTO;
     }
 
-    // youth_policy_detail 테이블에서 모든 정책 정보를 가져오는 메서드
-    public List<PolicyDetailDTO> getPolicyDetails() {
-        return detailMapper.getPolicyDetails();
-    }
-
-    // yout_policy_detail 테이블에서 특정 정책 코드를 가져오는 메서드
+    // youth_policy_detail 테이블에서 특정 정책 코드를 가져오는 메서드
     public PolicyDetailDTO getPolicyDetailsByCode(String policyCode) {
         PolicyDetailDTO policyDetailDTO = detailMapper.getPolicyDetailsByPolicyCode(policyCode);
         return formatPolicyDetail(policyDetailDTO);
