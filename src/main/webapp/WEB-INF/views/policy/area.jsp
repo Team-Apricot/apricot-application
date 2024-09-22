@@ -11,7 +11,6 @@
     <jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/area-env.jsp"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        // JSP에서 전달받은 districtCode와 districtName을 JavaScript 변수로 설정
         const initialDistrictCode = "${districtCode}";
         const initialDistrictName = "${districtName}";
     </script>
@@ -23,7 +22,6 @@
     <div class="content-header">
         <img src="${pageContext.request.contextPath}/assets/img/jongno.png" alt="로고" class="region-logo">
         <div class="region-text">
-            <!-- 선택된 지역구 정보가 동적으로 업데이트됨 -->
             <h1 id="selected-region-title">서울시</h1>
             <h3 id="selected-region-description">서울의 심장 다시 뛰는 ${regionId}</h3>
         </div>
@@ -31,57 +29,30 @@
 
     <div class="policy-container">
         <section class="content">
-            <!-- 서울 지도 SVG -->
             <div class="map">
                 <object type="image/svg+xml"
                         data="${pageContext.request.contextPath}/assets/img/Seoul_districts.svg"
                         id="seoul-map"></object>
             </div>
 
-            <!-- 카테고리 및 상세 정보 섹션 -->
             <div class="details">
-                <!-- 카테고리 버튼들 -->
-                <input type="button" value="전체" class="category-btn selected">
-                <input type="button" value="일자리" class="category-btn">
-                <input type="button" value="주거" class="category-btn">
-                <input type="button" value="교육" class="category-btn">
-                <input type="button" value="복지" class="category-btn">
-                <input type="button" value="참여권리" class="category-btn">
+                <input type="button" value="전체" class="category-btn selected" data-category="전체">
+                <input type="button" value="일자리" class="category-btn" data-category="일자리">
+                <input type="button" value="주거" class="category-btn" data-category="주거">
+                <input type="button" value="교육" class="category-btn" data-category="교육">
+                <input type="button" value="복지" class="category-btn" data-category="복지">
+                <input type="button" value="참여권리" class="category-btn" data-category="참여권리">
 
-                <!-- 이벤트 카드 그리드 -->
-                <div id="grid" class="details2">
-                    <c:forEach var="policy" items="${policies}">
-                        <div class="event-card">
-                            <h3>${policy.policyName}</h3>
-                            <p>${policy.policyContent}</p>
-                            <div class="status">
-                                <c:set var="policyEndDate" value="${policy.policyEndDate}" />
-                                <c:set var="currentDate" value="<%= java.time.LocalDate.now() %>" />
-                                <c:choose>
-                                    <c:when test="${policyEndDate == null}">
-                                        <div class="deadline-btn" data-status="always">상시</div>
-                                    </c:when>
-                                    <c:when test="${policyEndDate < currentDate}">
-                                        <div class="deadline-btn" data-status="deadline">신청마감</div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <div class="deadline-btn" data-status="progress">진행중</div>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
+                <div id="grid" class="details2"></div>
 
-                <!-- 페이지네이션 -->
                 <ul class="pagination">
-                    <li class="arrow"><a href="#">&lt;</a></li>
-                    <li><a href="#" class="selected">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li class="arrow"><a href="#">&gt;</a></li>
+                    <li class="arrow"><a href="#" id="prev-page">&lt;</a></li>
+                    <li><a href="#" class="page-number selected">1</a></li>
+                    <li><a href="#" class="page-number">2</a></li>
+                    <li><a href="#" class="page-number">3</a></li>
+                    <li><a href="#" class="page-number">4</a></li>
+                    <li><a href="#" class="page-number">5</a></li>
+                    <li class="arrow"><a href="#" id="next-page">&gt;</a></li>
                 </ul>
             </div>
         </section>
