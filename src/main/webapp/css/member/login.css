@@ -1,4 +1,4 @@
-/*로그인 모달 화면 css */
+/* 로그인 모달 화면 css */
 .login-modal {
   display: none; /* 기본적으로 숨김 */
   position: fixed;
@@ -8,11 +8,31 @@
   background-color: #fff;
   padding: 40px;
   border-radius: 10px;
-  z-index: 2; /* hiddenBackground 위에 표시되도록 설정 */
+  z-index: 5; /* hiddenBackground 위에 표시되도록 설정 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.modal-content {
+.login-input {
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid white;
+  outline: none;
+  transition: 200ms ease-in;
+  padding-left: 1rem;
+}
+
+.login-input:focus {
+  border-bottom: 4px solid orange;
+  padding-top: 2px;
+}
+
+.login-input::placeholder {
+  color: black;
+  opacity: 0.5;
+}
+
+
+.login-modal-content {
   padding: 20px;
   border-radius: 5px;
   width: 400px;
@@ -21,8 +41,7 @@
   flex-direction: column;
 }
 
-.modal-content input {
-  border:1px solid lightgrey;
+.login-modal-content input {
   border-radius: 10px;
   margin-top:10px;
   margin-bottom: 10px;
@@ -31,7 +50,7 @@
   font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
 }
 
-.modal-content input::placeholder {
+.login-modal-content input::placeholder {
   color: darkgrey;
   font-size: 1.2em;
   font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */

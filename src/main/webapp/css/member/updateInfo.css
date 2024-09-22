@@ -1,19 +1,46 @@
 .updateInfo-modal {
-  display: none; /* 기본적으로 숨김 */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* 화면 중앙으로 이동 */
   background-color: #fff;
-  padding: 40px;
   border-radius: 10px;
-  z-index: 2; /* hiddenBackground 위에 표시되도록 설정 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.update-info-detail {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 60px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content input {
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 30px;
+  padding: 5px 10px 5px 10px;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+}
+
+.modal-content input::placeholder {
+  color: darkgrey;
+  font-size: 1.2em;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+}
+
+/*왼쪽 수정*/
+.modal-left {
+  width: 100%;
+  margin: 20px;
+}
+
+/*오른쪽 수정 */
+.modal-right {
+  width: 100%;
+  margin: 20px;
 }
 
 .update-detail-btn {
@@ -25,18 +52,6 @@
   cursor: pointer;
   transition: background-color 0.3s;
   font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
-}
-
-.update-nickname-btn {
-  background-color: #F9973E;
-  color: white;
-  border: none;
-  padding: 7px 10px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
-  width: 80px;
 }
 
 .close {
@@ -116,7 +131,7 @@ input[type="radio"] {
 
 .update_nickname {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }

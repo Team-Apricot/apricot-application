@@ -1,23 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/components/header.jsp" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>정책 지원 페이지</title>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/common-env.jsp"/>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/detail-env.jsp"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정책 지원 페이지</title>
-    <!-- Main CSS File -->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/css/policy/detail_sub.css">
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/css/policy/detail.css">
-
-    <!-- Main JS File -->
-    <script src="${pageContext.request.contextPath}/js/policy/detail.js"></script>
 </head>
 <body>
-
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/header.jsp"/>
 <div class="layout">
     <div class="policy-detail-page">
         <nav class="navmenu">
