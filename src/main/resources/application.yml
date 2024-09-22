@@ -67,6 +67,13 @@ spring:
     restart:
       enabled: true
 
+  data:
+    redis:
+      port: 6379
+      host: localhost
+  cache:
+    type: redis
+
   mvc:
     view:
       prefix: /WEB-INF/views/
