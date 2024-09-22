@@ -1,6 +1,7 @@
 package sandbox.apricot.member.controller;
 
 import static org.springframework.http.HttpStatus.*;
+import static sandbox.apricot.member.util.exception.MemberErrorCode.*;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -26,6 +27,7 @@ import sandbox.apricot.member.dto.request.UpdateNickName;
 import sandbox.apricot.member.dto.request.UpdateNumChild;
 import sandbox.apricot.member.dto.request.UpdatePassword;
 import sandbox.apricot.member.service.MemberService;
+import sandbox.apricot.member.util.exception.MemberBusinessException;
 
 @RestController
 @Log4j2
@@ -59,10 +61,14 @@ public class MemberRestController {
     @PostMapping("/register")
     public ApiResponse<Void> registerMember(
             @RequestBody @Valid MemberRegisterDetail reqDetail
-    ) {
+    ) throws MemberBusinessException {
         MemberRegisterBasic reqBasic = (MemberRegisterBasic) session.getAttribute("reqBasic");
+        if (reqBasic == null) {
+            throw new MemberBusinessException(REGISTER_INFO_NOT_FOUND);
+        }
         memberService.register(reqBasic.toService(), reqDetail.toService());
-        session.removeAttribute("reqBasic"); // 기본 정보 삭제
+        session.removeAttribute("reqBasic");
+
         return ApiResponse.successResponse(
                 OK,
                 "성공적으로 회원가입을 완료하였습니다."
