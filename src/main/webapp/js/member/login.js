@@ -14,16 +14,15 @@ $(document).ready(() => {
       success: function () {
         window.location.href = '/'; // 로그인 성공 시 홈
       },
-      error: function (xhr, status, error) {
+      error: function (xhr) {
         let errorMessage;
         try {
           const responseJSON = JSON.parse(xhr.responseText);
-          errorMessage = responseJSON.error;
+          errorMessage = responseJSON.message;
         } catch (e) {
           errorMessage = "알 수 없는 오류가 발생하였습니다.";
         }
         $('#loginErrorMessage').text(errorMessage).show();
-        console.error('AJAX Error:', status, error); // AJAX 요청의 상태 및 오류 출력
       }
     });
   });

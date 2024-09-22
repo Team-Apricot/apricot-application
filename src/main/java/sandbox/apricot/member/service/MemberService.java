@@ -8,6 +8,7 @@ import sandbox.apricot.member.dto.request.UpdateGender;
 import sandbox.apricot.member.dto.request.UpdateMarriedStatus;
 import sandbox.apricot.member.dto.request.UpdateNickName;
 import sandbox.apricot.member.dto.request.UpdateNumChild;
+import sandbox.apricot.member.dto.request.UpdatePassword;
 import sandbox.apricot.member.dto.response.MemberInfo;
 
 public interface MemberService {
@@ -17,6 +18,8 @@ public interface MemberService {
     Long getMemberId(String email);
 
     MemberInfo getMemberInfo(Long memberId);
+
+    void updatePassword(UpdatePassword request, Long memberId);
 
     void updateNickName(UpdateNickName request);
 
@@ -29,4 +32,7 @@ public interface MemberService {
     void updateNumChild(UpdateNumChild request);
 
     void updateGender(UpdateGender request);
+
+    void delete(Long memberId);
+
 }

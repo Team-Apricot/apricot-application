@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sandbox.apricot.policy.mapper.PolicyMapper">
+
+  <resultMap id="DistrictPolicyResultMap" type="sandbox.apricot.policy.dto.response.DistrictPolicy">
+    <id property="districtName" column="DISTRICT_NAME" />
+    <result property="policyCnt" column="POLICY_CNT" />
+  </resultMap>
+
+  <select id="getPolicyCountByDistrict" resultMap="DistrictPolicyResultMap">
+    SELECT d.DISTRICT_NAME AS DISTRICT_NAME, COUNT(*) AS POLICY_CNT
+    FROM YOUTH_POLICY_DETAIL y
+    JOIN districts d ON y.DISTRICT_CODE = d.DISTRICT_CODE
+    GROUP BY d.DISTRICT_CODE, d.DISTRICT_NAME
+  </select>
+
+</mapper>

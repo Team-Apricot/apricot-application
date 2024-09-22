@@ -37,6 +37,12 @@ public class InterestServiceImpl implements InterestService {
         log.info(" >>> [ ✨ 회원 ID: {} 의 관심사 등록을 완료 하였습니다. ]", memberId);
     }
 
+    @Override
+    public void update(InterestRegister request) {
+        interestMapper.deleteByMemberId(request.getMemberId());
+        register(request);
+    }
+
     private void validateCategory(String categoryId) {
         if (categoryMapper.findById(categoryId).isEmpty()) {
             throw new InterestBusinessException(CATEGORY_NOT_FOUND);
