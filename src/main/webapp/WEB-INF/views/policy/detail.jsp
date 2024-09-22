@@ -10,24 +10,24 @@
     <!-- Main CSS File -->
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/css/policy/detail_sub.css">
-
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/css/policy/detail.css">
-    <script src="${pageContext.request.contextPath}/salguDevelopers/heonuk/assets/js/main.js"></script>
+
+    <!-- Main JS File -->
     <script src="${pageContext.request.contextPath}/js/policy/detail.js"></script>
 </head>
 <body>
 
 <div class="layout">
-    <div class="policy-detail-page" id="section1">
-        <nav id="navmenu" class="navmenu">
+    <div class="policy-detail-page">
+        <nav class="navmenu">
             <ul>
-                <li><a href="#section1" class="active"><img src="/assets/img/mascot.png" width="40"><span>한 눈에 보는 정책 요약</span></a>
+                <li><a href="#section1" id="navitem1" class="active"><img src="/assets/img/mascot.png" width="40"><span>한 눈에 보는 정책 요약</span></a>
                 </li>
-                <li><a href="#section2"><img src="/assets/img/mascot.png" width="40"><span>신청자격</span></a></li>
-                <li><a href="#section3"><img src="/assets/img/mascot.png" width="40"><span>신청방법</span></a>
+                <li><a href="#section2" id="navitem2"><img src="/assets/img/mascot.png" width="40"><span>신청자격</span></a></li>
+                <li><a href="#section3" id="navitem3"><img src="/assets/img/mascot.png" width="40"><span>신청방법</span></a>
                 </li>
-                <li><a href="#section4"><img src="/assets/img/mascot.png" width="40"><span>기타</span></a></li>
+                <li><a href="#section4" id="navitem4"><img src="/assets/img/mascot.png" width="40"><span>기타</span></a></li>
             </ul>
         </nav>
         <div class="policy-header">
@@ -57,14 +57,14 @@
                     </ul>
                 </div>
                 <button type="button" class="wish-list">
-                    <img src="${pageContext.request.contextPath}/assets/img/heart_icon_0.8.png"
+                    <img src="${pageContext.request.contextPath}/assets/img/heart_icon2_0.8.png"
                          width="40"
                          alt="찜하기">
                 </button>
             </div>
         </div>
 
-        <div class="policy-table-content" id="section2">
+        <div class="policy-table-content" id="section1">
             <div class="policy-table-header">
                 <h3>한 눈에 보는 정책 요약</h3>
             </div>
@@ -113,7 +113,7 @@
             </ul>
         </div>
 
-        <div class="policy-table-content" id="section3">
+        <div class="policy-table-content" id="section2">
             <div class="policy-table-header">
                 <h3>신청자격</h3>
             </div>
@@ -181,7 +181,7 @@
             </ul>
         </div>
 
-        <div class="policy-table-content" id="section4">
+        <div class="policy-table-content" id="section3">
             <div class="policy-table-header">
                 <h3>신청방법</h3>
             </div>
@@ -228,7 +228,7 @@
                     </div>
             </ul>
         </div>
-        <div class="policy-table-content" id="section5">
+        <div class="policy-table-content" id="section4">
             <div class="policy-table-header">
                 <h3>기타</h3>
             </div>
