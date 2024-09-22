@@ -1,10 +1,6 @@
 /* .container의 width를 전체 너비로 수정 */
 .policy-container {
   width: 100%; /* 페이지 전체 너비로 설정 */
-  max-width: none; /* 최대 너비 제한을 제거 */
-  margin: 0 auto; /* 여백 제거 */
-  padding: 0; /* 패딩 제거 */
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,154 +104,25 @@
 }
 
 /* 카드 개별 항목 스타일 */
-.details2 > div {
-  background: #fff; /* 카드 배경색 */
-  text-align: center; /* 텍스트 중앙 정렬 */
-  border-radius: 10px; /* 둥근 모서리 */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-  padding: 1em; /* 패딩 */
-  font-size: 0.9rem; /* 글자 크기 */
-  display: flex; /* 플렉스 박스 사용 */
-  flex-direction: column; /* 세로 방향 정렬 */
-  justify-content: space-between; /* 요소 간격 조절 */
-}
-
-.details2 h3 {
-  font-size: 1rem; /* 제목 크기 */
-}
-
-.details2 p {
-  font-size: 0.8rem; /* 설명 크기 */
-}
-
-/* 마감, 상시, 진행중 버튼의 비활성화 및 디자인 유지 */
-.deadline-btn {
-  font-size: 0.9rem; /* 글자 크기 */
-  pointer-events: none; /* 버튼 비활성화 */
-  background-color: transparent; /* 기본 배경색 제거 */
-  color: #000; /* 텍스트 색상 유지 */
-  border: 1px solid #ddd; /* 버튼 테두리 설정 */
-}
-
-/* 버튼 상태에 따른 색상 지정 */
-.deadline-btn[data-status="deadline"] {
-  background-color: #FF6347; /* 마감 상태 색상 */
-}
-
-.deadline-btn[data-status="always"] {
-  background-color: #00BFFF; /* 상시 상태 색상 */
-}
-
-.deadline-btn[data-status="progress"] {
-  background-color: #32CD32; /* 진행중 상태 색상 */
-}
-
-.deadline-btn {
-  color: white; /* 텍스트 색상 */
-}
-
-/* 각 상태에 따른 호버 색상 */
-.deadline-btn[data-status="deadline"]:hover {
-  background-color: #FF4500; /* 마감 상태 호버 색상 */
-}
-
-.deadline-btn[data-status="always"]:hover {
-  background-color: #008BFF; /* 상시 상태 호버 색상 */
-}
-
-.deadline-btn[data-status="progress"]:hover {
-  background-color: #2E8B57; /* 진행중 상태 호버 색상 */
-}
-
-@media (max-width: 1024px) {
-  .details2 {
-    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
-  }
-}
-
-@media (max-width: 768px) {
-  .details2 {
-    grid-template-columns: 1fr; /* 1열 그리드 */
-  }
-}
-
-/* 페이지네이션 스타일 */
-.pagination {
-  display: flex; /* 플렉스 박스 사용 */
-  justify-content: center; /* 중앙 정렬 */
-  list-style-type: none; /* 목록 스타일 제거 */
-  padding: 0; /* 패딩 제거 */
-}
-
-.pagination li {
-  margin: 0 5px; /* 좌우 여백 */
-}
-
-.pagination li a {
-  text-decoration: none; /* 밑줄 제거 */
-  color: #FF6347; /* 텍스트 색상 */
-  padding: 10px 15px; /* 패딩 */
-  border-radius: 50%; /* 둥근 버튼 */
-  background-color: #FFEFDC; /* 배경색 */
-}
-
-.pagination li a:hover {
-  background-color: #FF6347; /* 호버 시 배경색 */
-  color: white; /* 호버 시 텍스트 색상 */
-}
-
-.pagination li a.selected {
-  background-color: #FF6347; /* 선택된 페이지 버튼 색상 */
-  color: white; /* 선택된 텍스트 색상 */
-}
-
-.pagination li.arrow a {
-  background-color: #FFEFDC; /* 화살표 버튼 배경색 */
-  color: #FF6347; /* 화살표 텍스트 색상 */
-}
-
-.pagination li.arrow a:hover {
-  background-color: #FF6347; /* 화살표 버튼 호버 색상 */
-  color: white; /* 화살표 텍스트 호버 색상 */
-}
-
-/* 기본 버튼 스타일 */
-.category-btn {
-  background-color: #FFBB6A; /* 버튼 배경색 */
-  border: none; /* 테두리 없음 */
-  padding: 10px 20px; /* 패딩 */
-  cursor: pointer; /* 커서 모양 */
-  transition: background-color 0.3s ease; /* 전환 효과 */
-  color: white; /* 텍스트 색상 */
-  font-weight: bold; /* 글자 굵기 */
-  margin-right: 10px; /* 오른쪽 여백 */
-}
-
-.category-btn.selected {
-  background-color: #FF6347; /* 선택된 카테고리 버튼 색상 */
-}
-
 .event-card {
-  display: none; /* 기본적으로 카드는 보이지 않음 */
+  background: #fff; /* 카드 배경색 */
   border: 1px solid #ddd; /* 카드 테두리 */
-  padding: 20px; /* 패딩 */
-  margin-bottom: 10px; /* 아래쪽 여백 */
-  border-radius: 10px; /* 둥근 모서리 */
-  background-color: #f9f9f9; /* 카드 배경색 */
+  border-radius: 8px; /* 둥근 모서리 */
+  padding: 15px; /* 패딩 */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  transition: transform 0.3s, box-shadow 0.3s; /* 전환 효과 */
 }
 
 /* 카드 마우스 오버 시 음영 효과 추가 */
 .event-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스 오버 시 그림자 효과 */
   transform: translateY(-5px); /* 살짝 위로 올라가는 애니메이션 */
-  transition: all 0.3s ease; /* 부드러운 전환 효과 */
 }
 
 /* 마우스 클릭 시 카드가 선택된 것처럼 보이도록 스타일 추가 */
 .event-card:active {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 눌린 상태의 그림자 효과 */
   transform: translateY(2px); /* 살짝 아래로 내려가는 애니메이션 */
-  cursor: pointer;
 }
 
 /* 버튼에 마우스 오버 시 색상 변경 */
@@ -297,7 +164,8 @@
   transform: scale(1.2) rotate(2deg); /* 텍스트 크기 및 회전 효과 */
 }
 
-.region.hover-effect {
+/* 선택된 지역구에 추가 스타일 적용 */
+.region.clicked {
   fill: #F9973E; /* 선택된 지역구 색상 */
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3)); /* 음영 효과 */
   stroke: #FF4500; /* 진한 주황색 테두리 */
@@ -310,6 +178,73 @@
   font-weight: bold; /* 텍스트 강조 */
 }
 
+/* 카테고리 버튼 및 마감 버튼 호버 */
 .details input[type="button"]:hover, .details .deadline-btn:hover {
   background-color: #FF4500; /* 카테고리 버튼 hover 시 색상 변경 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .details2 {
+    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+  }
+}
+
+@media (max-width: 768px) {
+  .details2 {
+    grid-template-columns: 1fr; /* 1열 그리드 */
+  }
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex; /* 플렉스 레이아웃 */
+  justify-content: center; /* 중앙 정렬 */
+  list-style-type: none; /* 목록 스타일 제거 */
+  padding: 0; /* 패딩 제거 */
+}
+
+.pagination li {
+  margin: 0 5px; /* 좌우 여백 */
+}
+
+.pagination li a {
+  display: inline-block; /* 인라인 블록 */
+  padding: 10px 15px; /* 패딩 */
+  background-color: #FFEFDC; /* 배경색 */
+  border-radius: 5px; /* 둥근 모서리 */
+  color: #333; /* 텍스트 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+  transition: background-color 0.3s; /* 전환 효과 */
+}
+
+.pagination li a.selected {
+  background-color: #FF6347; /* 선택된 버튼 색상 */
+  color: white; /* 선택된 텍스트 색상 */
+}
+
+.pagination li.arrow a {
+  background-color: #FFEFDC; /* 화살표 버튼 배경색 */
+  color: #FF6347; /* 화살표 텍스트 색상 */
+}
+
+.pagination li.arrow a:hover {
+  background-color: #FF6347; /* 화살표 버튼 호버 색상 */
+  color: white; /* 화살표 텍스트 호버 색상 */
+}
+
+/* 기본 버튼 스타일 */
+.category-btn {
+  background-color: #FFBB6A; /* 버튼 배경색 */
+  border: none; /* 테두리 없음 */
+  padding: 10px 20px; /* 패딩 */
+  cursor: pointer; /* 커서 모양 */
+  transition: background-color 0.3s ease; /* 전환 효과 */
+  color: white; /* 텍스트 색상 */
+  font-weight: bold; /* 글자 굵기 */
+  margin-right: 10px; /* 오른쪽 여백 */
+}
+
+.category-btn.selected {
+  background-color: #FF6347; /* 선택된 카테고리 버튼 색상 */
 }

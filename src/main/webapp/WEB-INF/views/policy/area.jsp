@@ -10,6 +10,11 @@
     <jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/common-env.jsp"/>
     <jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/area-env.jsp"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // JSP에서 전달받은 districtCode와 districtName을 JavaScript 변수로 설정
+        const initialDistrictCode = "${districtCode}";
+        const initialDistrictName = "${districtName}";
+    </script>
 </head>
 <body>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/header.jsp"/>
