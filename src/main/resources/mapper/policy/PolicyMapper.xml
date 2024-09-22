@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="sandbox.apricot.policy.dao.PolicyDao">
+<mapper namespace="sandbox.apricot.policy.mapper.PolicyDao">
 
-  <!-- 전체 정책 조회 -->
-  <select id="selectAllPolicy" parameterType="String" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT *
-    FROM youth_policy_detail
-    WHERE policy_code = #{policyCode}
+  <!-- 지역구에 따른 정책 조회 -->
+  <select id="selectAllPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
+    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
+    FROM (
+    SELECT y.*, ROWNUM AS rn
+    FROM youth_policy_detail y
+    WHERE district_code = #{districtCode, jdbcType=VARCHAR}  <!-- 지역구 코드로 필터링, jdbcType 추가 -->
+    AND ROWNUM <![CDATA[<=]]> 100
+    )
+    WHERE rn <![CDATA[>]]> 0
   </select>
 
   <!-- 일자리 정책 조회 -->
   <select id="selectJobsPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT *
-    FROM youth_policy_detail
-    WHERE policy_code = #{policyCode} AND category_code = #{categoryCode}
+    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
+    FROM (
+    SELECT y.*, ROWNUM AS rn
+    FROM youth_policy_detail y
+    WHERE policy_code = #{policyCode}
+    AND category_code = #{categoryCode}
+    AND district_code = #{districtCode}
+    AND ROWNUM <![CDATA[<=]]> 100
+    )
+    WHERE rn <![CDATA[>]]> 0
   </select>
 
   <!-- 주거 정책 조회 -->
   <select id="selectHousingPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT *
+    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
     FROM youth_policy_detail
     WHERE policy_code = #{policyCode} AND category_code = #{categoryCode}
   </select>
 
   <!-- 교육 정책 조회 -->
   <select id="selectEducationPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT *
+    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
     FROM youth_policy_detail
     WHERE policy_code = #{policyCode} AND category_code = #{categoryCode}
   </select>
 
   <!-- 복지 정책 조회 -->
   <select id="selectWelfarePolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT *
+    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
     FROM youth_policy_detail
     WHERE policy_code = #{policyCode} AND category_code = #{categoryCode}
   </select>
 
   <!-- 참여권리 정책 조회 -->
   <select id="selectParticipationPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT *
+    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
     FROM youth_policy_detail
     WHERE policy_code = #{policyCode} AND category_code = #{categoryCode}
   </select>

@@ -1,4 +1,4 @@
-package sandbox.apricot.policy.dao;
+package sandbox.apricot.policy.mapper;
 
 import sandbox.apricot.policy.dto.PolicyDTO;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 public interface PolicyDao {
 
     //전체
-    List<PolicyDTO> selectAllPolicy(String policyCode) throws Exception;
+    List<PolicyDTO> selectAllPolicy(String policyCode, String categoryCode) throws Exception;
     //일자리
-    List<PolicyDTO> selectJobsPolicy(String policyCode, String categoryCode) throws Exception;
+    List<PolicyDTO> selectJobsPolicy(String policyCode, String categoryCode, String districtCode) throws Exception;
     //주거
     List<PolicyDTO> selectHousingPolicy(String policyCode, String categoryCode) throws Exception;
     //교육
