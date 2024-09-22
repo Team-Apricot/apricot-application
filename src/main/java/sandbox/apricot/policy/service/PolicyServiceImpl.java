@@ -27,19 +27,27 @@ public class PolicyServiceImpl implements PolicyService {
     @Transactional(readOnly = true)
     public List<DistrictPolicy> getPolicyCntByDistrict() {
         ValueOperations<String, Object> ops = redisTemplate.opsForValue();
-        // redis에서 key에 해당하는 value를 찾음.
-        List<DistrictPolicy> cachedData = (List<DistrictPolicy>) ops.get(REDIS_KEY);
-        if (cachedData != null) {
-            return cachedData;
+        List<DistrictPolicy> cachedData = null;
+
+        try {
+            cachedData = (List<DistrictPolicy>) ops.get(REDIS_KEY);
+            if (cachedData != null) {
+                return cachedData;
+            }
+        } catch (Exception e) {
+            log.error(">>> [ ⚠️ Redis 접근 중 오류 발생 ]: {}", e.getMessage());
         }
 
-        // Redis에 데이터가 없을 경우, DB에서 데이터를 조회하고 Redis에 저장
+        // Redis에 데이터가 없거나 오류가 발생한 경우 DB에서 데이터를 조회
         log.info(" >>> [ 🔍 Oracle - 지역구 혜택 수 조회 시도 ]");
         List<DistrictPolicy> dbData = policyMapper.getPolicyCountByDistrict();
 
-        // 데이터를 Redis에 캐싱 (예: 24시간 동안 유지)
-        ops.set(REDIS_KEY, dbData, 24, TimeUnit.HOURS);
-        log.info(" >>> [ ✨ Redis - Data 등록 완료 ]");
+        try {
+            ops.set(REDIS_KEY, dbData, 24, TimeUnit.HOURS);
+            log.info(" >>> [ ✨ Redis - Data 등록 완료 ]");
+        } catch (Exception e) {
+            log.error(" >>> [ ⚠️ Redis 데이터 캐싱 중 오류 발생: {} ]", e.getMessage());
+        }
 
         return dbData;
     }
