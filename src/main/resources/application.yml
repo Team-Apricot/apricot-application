@@ -86,8 +86,9 @@ server:
 
 logging:
   level:
-    org.hibernate.type.descriptor.sql: DEBUG
-    org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: ERROR
+    org.springframework.cache: DEBUG
+    sandbox.apricot: DEBUG
+    sandbox.apricot.common.aop.CacheLogging: DEBUG
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
