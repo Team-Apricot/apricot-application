@@ -59,6 +59,31 @@ section {
   justify-content: center; /* 카드 내부의 내용 세로 중앙 정렬 */
 }
 
+#rank-policy-districts-container {
+  margin-top: 20px;
+  margin-left: 35em;
+  border: none;
+  width: 100%;
+  max-width: 500px;
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+#rank-policy-title {
+  width: 150px; /* 고정된 너비 설정 */
+}
+
+.rank-policy-districts {
+  color: #333;
+  opacity: 0; /* 초기 불투명도 */
+  transition: opacity 0.5s ease-in-out; /* 애니메이션 효과 설정 */
+  margin-left: 10px;
+}
+
+.fade-in {
+  opacity: 1; /* 부드럽게 나타나는 효과 */
+}
+
 /* 워드 클라우드 섹션 */
 .word-cloud {
   display: flex;
