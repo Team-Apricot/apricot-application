@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/index-main-env.jsp"/>
 <meta name="context-path" content="${pageContext.request.contextPath}"/>
-
 <section>
 	<video class="background-video" autoplay muted loop>
 		<source src="${pageContext.request.contextPath}/assets/video/index-page-background.mp4" type="video/mp4">

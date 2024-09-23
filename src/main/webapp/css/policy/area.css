@@ -1,313 +1,251 @@
 /* .container의 width를 전체 너비로 수정 */
 .policy-container {
   width: 100%; /* 페이지 전체 너비로 설정 */
-  max-width: none; /* 최대 너비 제한을 제거 */
-  margin: 0 auto; /* 여백 제거 */
-  padding: 0; /* 패딩 제거 */
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* header를 양옆으로 꽉 차게 수정 */
-header.content-header {
-  width: 100%; /* header가 페이지 전체 너비를 차지 */
-  margin-bottom: 20px;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  display: flex;
+/* 헤더 영역을 꽉 차게 수정 */
+.content-header {
+  width: 100%; /* 전체 너비를 차지 */
+  margin-bottom: 20px; /* 아래쪽 여백 */
+  background-color: #fff; /* 배경색 */
+  padding: 20px; /* 패딩 */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  display: flex; /* 플렉스 박스 사용 */
   justify-content: flex-start; /* 왼쪽 정렬 */
-  align-items: center;
+  align-items: center; /* 세로 중앙 정렬 */
 }
 
 /* 이미지 크기 수정 */
-header.content-header img {
-  width: 120px;
-  height: 100px;
+.content-header img {
+  width: 120px; /* 이미지 너비 */
+  height: 100px; /* 이미지 높이 */
 }
 
 /* 텍스트 정렬 수정 */
-header.content-header h1, header.content-header h3 {
-  margin: 0;
-  color: #FF6347;
+.content-header h1, .content-header h3 {
+  margin: 0; /* 여백 제거 */
+  color: #FF6347; /* 텍스트 색상 */
   text-align: left; /* 텍스트 왼쪽 정렬 */
 }
 
-header.content-header h1 {
-  font-size: 24px;
-  margin-right: 10px;
+.content-header h1 {
+  font-size: 24px; /* 제목 크기 */
+  margin-right: 10px; /* 오른쪽 여백 */
 }
 
-header.content-header h3 {
-  font-size: 18px;
-  color: #666;
+.content-header h3 {
+  font-size: 18px; /* 설명 크기 */
+  color: #666; /* 설명 색상 */
 }
 
 /* 버튼 및 상세 정보 스타일 */
 .details input[type="button"], .details .deadline-btn {
-  background-color: #FFBB6A;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 16px;
-  margin: 10px 0;
-  cursor: pointer;
-  border-radius: 25px;
-  transition: background-color 0.3s ease;
+  background-color: #FFBB6A; /* 버튼 배경색 */
+  border: none; /* 테두리 없음 */
+  color: white; /* 텍스트 색상 */
+  padding: 10px 20px; /* 패딩 */
+  text-align: center; /* 텍스트 정렬 */
+  font-size: 16px; /* 글자 크기 */
+  margin: 10px 0; /* 여백 */
+  cursor: pointer; /* 커서 모양 */
+  border-radius: 25px; /* 둥근 모서리 */
+  transition: background-color 0.3s ease; /* 전환 효과 */
 }
 
 /* 선택된 버튼의 배경색 설정 */
 .details input.selected {
-  background-color: #FF6347;
+  background-color: #FF6347; /* 선택된 버튼 색상 */
 }
 
 /* 메인 컨텐츠 스타일 */
 .content {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
+  display: flex; /* 플렉스 박스 사용 */
+  justify-content: space-around; /* 요소 간격 조절 */
+  flex-direction: row; /* 가로 방향 정렬 */
+  flex-wrap: wrap; /* 줄 바꿈 가능 */
+  align-items: center; /* 세로 중앙 정렬 */
 }
 
 .map, .details {
-  flex: 1 1 45%;
-  max-width: 600px;
-  min-width: 300px;
-  margin-bottom: 40px;
+  flex: 1 1 45%; /* 요소 비율 조정 */
+  max-width: 600px; /* 최대 너비 */
+  min-width: 300px; /* 최소 너비 */
+  margin: 0 20px; /* 좌우 여백을 조금 추가하여 간격 조정 */
+  margin-bottom: 40px; /* 아래쪽 여백 */
 }
 
 /* SVG 지도가 있는 메인 맵 섹션 */
 .map object {
   width: 100%; /* 지도 이미지를 전체 영역에 맞춤 */
-  height: auto;
+  height: auto; /* 자동 높이 조절 */
 }
 
 .details {
-  width: 100%;
-  background-color: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  box-sizing: border-box;
+  width: 100%; /* 전체 너비 */
+  background-color: white; /* 배경색 */
+  padding: 20px; /* 패딩 */
+  border-radius: 15px; /* 둥근 모서리 */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  box-sizing: border-box; /* 박스 사이징 설정 */
 }
 
 /* 이벤트 카드 그리드 */
 .details2 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
+  display: grid; /* 그리드 레이아웃 사용 */
+  grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
+  grid-gap: 20px; /* 간격 조절 */
+  padding: 20px; /* 패딩 */
+  width: 100%; /* 전체 너비 */
+  box-sizing: border-box; /* 박스 사이징 설정 */
 }
 
 /* 카드 개별 항목 스타일 */
-.details2 > div {
-  background: #fff;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1em;
-  font-size: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.event-card {
+  background: #fff; /* 카드 배경색 */
+  border: 1px solid #ddd; /* 카드 테두리 */
+  border-radius: 8px; /* 둥근 모서리 */
+  padding: 15px; /* 패딩 */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  transition: transform 0.3s, box-shadow 0.3s; /* 전환 효과 */
 }
 
-.details2 h3 {
-  font-size: 1rem;
+/* 카드 마우스 오버 시 음영 효과 추가 */
+.event-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스 오버 시 그림자 효과 */
+  transform: translateY(-5px); /* 살짝 위로 올라가는 애니메이션 */
 }
 
-.details2 p {
-  font-size: 0.8rem;
+/* 마우스 클릭 시 카드가 선택된 것처럼 보이도록 스타일 추가 */
+.event-card:active {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 눌린 상태의 그림자 효과 */
+  transform: translateY(2px); /* 살짝 아래로 내려가는 애니메이션 */
 }
 
-/* 마감, 상시, 진행중 버튼의 비활성화 및 디자인 유지 */
-.deadline-btn {
-  font-size: 0.9rem;
-  pointer-events: none; /* 버튼 비활성화 */
-  background-color: transparent; /* 기본 배경색 제거 */
-  color: #000; /* 텍스트 색상을 유지 */
-  border: 1px solid #ddd; /* 버튼 테두리 설정 */
+/* 버튼에 마우스 오버 시 색상 변경 */
+.deadline-btn:hover {
+  background-color: #FF4500; /* 버튼 호버 시 색상 변경 */
+  transform: scale(1.05); /* 살짝 확대되는 효과 */
+  transition: transform 0.2s ease; /* 확대 효과가 부드럽게 적용되도록 전환 */
 }
 
-/* 버튼 상태에 따른 색상 지정 */
-.deadline-btn[data-status="deadline"] {
-  background-color: #FF6347;
+/* 마우스 클릭 시 버튼이 눌리는 것처럼 보이도록 스타일 추가 */
+.deadline-btn:active {
+  transform: scale(0.95); /* 클릭 시 살짝 축소 */
 }
 
-.deadline-btn[data-status="always"] {
-  background-color: #00BFFF;
+/* 지역구 폴리곤 hover 시 음영 효과 및 테두리 추가 */
+.region {
+  transition: all 0.3s ease; /* 모든 효과 부드럽게 */
+  fill: #e6cbae; /* 기본 색상 */
 }
 
-.deadline-btn[data-status="progress"] {
-  background-color: #32CD32;
+/* 선택된 지역구 색상 */
+.region.selected {
+  fill: #FF6347; /* 선택된 색상 */
 }
 
-.deadline-btn {
-  color: white;
+/* 마우스 오버 색상 */
+.region:hover {
+  fill: #D29660; /* 마우스 오버 시 색상 변경 */
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3)); /* 음영 효과 */
 }
 
-/* 각 상태에 따른 호버 색상 */
-.deadline-btn[data-status="deadline"]:hover {
-  background-color: #FF4500;
+/* 텍스트 효과 */
+.region text {
+  transition: all 0.3s ease; /* 텍스트 효과 부드럽게 */
+  transform-origin: center; /* 확대 기준점 설정 */
 }
 
-.deadline-btn[data-status="always"]:hover {
-  background-color: #008BFF;
+.region:hover text {
+  transform: scale(1.2) rotate(2deg); /* 텍스트 크기 및 회전 효과 */
 }
 
-.deadline-btn[data-status="progress"]:hover {
-  background-color: #2E8B57;
+/* 선택된 지역구에 추가 스타일 적용 */
+.region.clicked {
+  fill: #F9973E; /* 선택된 지역구 색상 */
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3)); /* 음영 효과 */
+  stroke: #FF4500; /* 진한 주황색 테두리 */
+  stroke-width: 2px; /* 테두리 두께 */
 }
 
+/* 텍스트 hover 시 색상 변경 */
+.text-hover-effect {
+  fill: #FF6347; /* hover 시 텍스트 색상 */
+  font-weight: bold; /* 텍스트 강조 */
+}
+
+/* 카테고리 버튼 및 마감 버튼 호버 */
+.details input[type="button"]:hover, .details .deadline-btn:hover {
+  background-color: #FF4500; /* 카테고리 버튼 hover 시 색상 변경 */
+}
+
+/* 반응형 디자인 */
 @media (max-width: 1024px) {
   .details2 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
   }
 }
 
 @media (max-width: 768px) {
   .details2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1열 그리드 */
   }
 }
 
 /* 페이지네이션 스타일 */
 .pagination {
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
+  display: flex; /* 플렉스 레이아웃 */
+  justify-content: center; /* 중앙 정렬 */
+  list-style-type: none; /* 목록 스타일 제거 */
+  padding: 0; /* 패딩 제거 */
 }
 
 .pagination li {
-  margin: 0 5px;
+  margin: 0 5px; /* 좌우 여백 */
 }
 
 .pagination li a {
-  text-decoration: none;
-  color: #FF6347;
-  padding: 10px 15px;
-  border-radius: 50%;
-  background-color: #FFEFDC;
-}
-
-.pagination li a:hover {
-  background-color: #FF6347;
-  color: white;
+  cursor: pointer; /* 포인터 커서 설정 */
+  display: inline-block; /* 인라인 블록 */
+  padding: 10px 15px; /* 패딩 */
+  background-color: #FFEFDC; /* 배경색 */
+  border-radius: 5px; /* 둥근 모서리 */
+  color: #333; /* 텍스트 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+  transition: background-color 0.3s; /* 전환 효과 */
 }
 
 .pagination li a.selected {
-  background-color: #FF6347;
-  color: white;
+  background-color: #FF6347; /* 선택된 버튼 색상 */
+  color: white; /* 선택된 텍스트 색상 */
 }
 
 .pagination li.arrow a {
-  background-color: #FFEFDC;
-  color: #FF6347;
+  background-color: #FFEFDC; /* 화살표 버튼 배경색 */
+  color: #FF6347; /* 화살표 텍스트 색상 */
 }
 
 .pagination li.arrow a:hover {
-  background-color: #FF6347;
-  color: white;
+  background-color: #FF6347; /* 화살표 버튼 호버 색상 */
+  color: white; /* 화살표 텍스트 호버 색상 */
 }
 
 /* 기본 버튼 스타일 */
 .category-btn {
-    background-color: #FFBB6A;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: white;
-    font-weight: bold;
-    margin-right: 10px;
+  background-color: #FFBB6A; /* 버튼 배경색 */
+  border: none; /* 테두리 없음 */
+  padding: 10px 20px; /* 패딩 */
+  cursor: pointer; /* 커서 모양 */
+  transition: background-color 0.3s ease; /* 전환 효과 */
+  color: white; /* 텍스트 색상 */
+  font-weight: bold; /* 글자 굵기 */
+  margin-right: 10px; /* 오른쪽 여백 */
 }
 
 .category-btn.selected {
-    background-color: #FF6347; /* 선택된 카테고리 버튼 스타일 */
-}
-
-.event-card {
-    display: none; /* 기본적으로 카드는 보이지 않음 */
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-/* 카드 마우스 오버 시 음영 효과 추가 */
-.event-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스 오버 시 그림자 효과 */
-    transform: translateY(-5px); /* 살짝 위로 올라가는 애니메이션 */
-    transition: all 0.3s ease; /* 부드러운 전환 효과 */
-}
-
-/* 마우스 클릭 시 카드가 선택된 것처럼 보이도록 스타일 추가 */
-.event-card:active {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 눌린 상태의 그림자 효과 */
-    transform: translateY(2px); /* 살짝 아래로 내려가는 애니메이션 */
-}
-
-/* 버튼에 마우스 오버 시 색상 변경 */
-.deadline-btn:hover {
-    background-color: #FF4500; /* 버튼 호버 시 색상 변경 */
-    transform: scale(1.05); /* 살짝 확대되는 효과 */
-    transition: transform 0.2s ease; /* 확대 효과가 부드럽게 적용되도록 전환 */
-}
-
-/* 마우스 클릭 시 버튼이 눌리는 것처럼 보이도록 스타일 추가 */
-.deadline-btn:active {
-    transform: scale(0.95); /* 클릭 시 살짝 축소 */
-}
-
-/* 지역구 폴리곤 hover 시 음영 효과 및 테두리 추가 */
-.region {
-    transition: all 0.3s ease; /* 모든 효과 부드럽게 */
-    fill: #e6cbae; /* 기본 색상 */
-}
-
-/* 선택된 지역구 색상 */
-.region.selected {
-    fill: #FF6347; /* 선택된 색상 */
-}
-
-/* 마우스 오버 색상 */
-.region:hover {
-    fill: #D29660; /* 마우스 오버 시 색상 변경 */
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3)); /* 음영 효과 */
-}
-
-/* 텍스트 효과 */
-.region text {
-    transition: all 0.3s ease; /* 텍스트 효과 부드럽게 */
-    transform-origin: center; /* 확대 기준점 설정 */
-}
-
-.region:hover text {
-    transform: scale(1.2) rotate(2deg); /* 텍스트 크기 및 회전 효과 */
-}
-
-.region.hover-effect {
-    fill: #F9973E; /* 선택된 지역구 색상 */
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3)); /* 음영 효과 */
-    stroke: #FF4500; /* 진한 주황색 테두리 */
-    stroke-width: 2px; /* 테두리 두께 */
-}
-
-/* 텍스트 hover 시 색상 변경 */
-.text-hover-effect {
-    fill: #FF6347; /* hover 시 텍스트 색상 */
-    font-weight: bold; /* 텍스트 강조 */
-}
-
-.details input[type="button"]:hover, .details .deadline-btn:hover {
-  background-color: #FF4500; /* 카테고리 버튼 hover 시 색상 변경 */
+  background-color: #FF6347; /* 선택된 카테고리 버튼 색상 */
 }

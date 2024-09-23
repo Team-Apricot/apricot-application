@@ -1,10 +1,9 @@
-package sandbox.apricot.policy.service;
+package sandbox.apricot.policy.mapper;
 
 import sandbox.apricot.policy.dto.PolicyDTO;
 import java.util.List;
-import sandbox.apricot.policy.dto.response.DistrictPolicy;
 
-public interface PolicyService {
+public interface PolicyDao {
 
     //전체
     List<PolicyDTO> selectAllPolicy(String policyCode, String categoryCode) throws Exception;
@@ -18,7 +17,4 @@ public interface PolicyService {
     List<PolicyDTO> selectWelfarePolicy(String policyCode, String categoryCode) throws Exception;
     //참여권리
     List<PolicyDTO> selectParticipationPolicy(String policyCode, String categoryCode) throws Exception;
-
-    List<DistrictPolicy> getPolicyCntByDistrict();
-
 }
