@@ -20,6 +20,10 @@
 					</button>
 				</form>
 			</div>
+			<div id="rank-policy-districts-container">
+				<span id="rank-policy-title">📈 지역구 혜택 순위: </span>
+				<span id="rank-policy-districts" class="rank-policy-districts"></span>
+			</div>
 			<div id="myChart"></div>
 		</div>
 	</div>
