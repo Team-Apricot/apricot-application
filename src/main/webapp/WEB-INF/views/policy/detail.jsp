@@ -321,8 +321,6 @@
 
     </div>
 </div>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/footer.jsp"/>
 </body>
-<footer>
-
-</footer>
 </html>
