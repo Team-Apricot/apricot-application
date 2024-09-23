@@ -1,7 +1,10 @@
 package sandbox.apricot.policy.service;
 
-import sandbox.apricot.policy.mapper.PolicyDao;
-import sandbox.apricot.policy.dto.PolicyDTO;
+import org.springframework.data.domain.Pageable;
+import sandbox.apricot.policy.dto.request.PolicyPagination;
+import sandbox.apricot.policy.dto.response.District;
+import sandbox.apricot.policy.dto.response.DistrictPolicies;
+import sandbox.apricot.policy.dto.response.PolicyTLDR;
 import sandbox.apricot.policy.dto.response.DistrictPolicy;
 import sandbox.apricot.policy.mapper.PolicyMapper;
 
@@ -27,7 +30,6 @@ public class PolicyServiceImpl implements PolicyService {
 
     private final PolicyMapper policyMapper;
     private final RedisTemplate<String, Object> redisTemplate;
-    private final PolicyDao policyDao;
 
     // 일자리 정책 조회
     @Override
@@ -59,45 +61,75 @@ public class PolicyServiceImpl implements PolicyService {
         return dbData;
     }
 
-    // 전체 정책 조회
     @Override
-    public List<PolicyDTO> selectAllPolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectAllPolicy(policyCode, categoryCode);
+    public DistrictPolicies getAllDistrictPolicies(PolicyPagination request) {
+        Pageable pageable = request.toPageable();
+        List<PolicyTLDR> policies = getPolicies(
+                request.getCursorId(),
+                pageable,
+                request.getDistrictCode(),
+                request.getCategoryCode()
+        );
+        Long nextCursorId = getNextCursorId(policies);
+        Boolean hasNext = policies.size() >= pageable.getPageSize();
+        return DistrictPolicies.of(policies, nextCursorId, hasNext);
     }
 
-
-    public List<PolicyDTO> selectJobsPolicy(String policyCode, String categoryCode,
-            String districtCode) throws Exception {
-        return policyDao.selectJobsPolicy(policyCode, categoryCode, districtCode);
-    }
-
-    // 주거 정책 조회
     @Override
-    public List<PolicyDTO> selectHousingPolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectHousingPolicy(policyCode, categoryCode);
+    public District getDistrict(String districtCode) {
+        return policyMapper.findByDistrictCode(districtCode);
     }
 
-    // 교육 정책 조회
-    @Override
-    public List<PolicyDTO> selectEducationPolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectEducationPolicy(policyCode, categoryCode);
+    private List<PolicyTLDR> getPolicies(Long cursorId, Pageable pageable, String districtCode, String categoryCode) {
+        log.info(" >>> [ 🔍 {}번 지역구 혜택 조회 시도 ]", districtCode);
+        return cursorId == null ?
+                policyMapper.findAllDistrictPolicyTLDRByCategory(districtCode, categoryCode, pageable) :
+                policyMapper.findPartOfDistrictPolicyTLDRByCursorId(cursorId, districtCode, categoryCode, pageable);
     }
 
-    // 복지 정책 조회
-    @Override
-    public List<PolicyDTO> selectWelfarePolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectWelfarePolicy(policyCode, categoryCode);
+    private Long getNextCursorId(List<PolicyTLDR> policies) {
+        return policies.isEmpty() ? null : policies.get(policies.size() - 1).getCursorId();
     }
 
-    // 참여권리 정책 조회
-    @Override
-    public List<PolicyDTO> selectParticipationPolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectParticipationPolicy(policyCode, categoryCode);
-    }
+//    // 전체 정책 조회
+//    @Override
+//    public List<PolicyDTO> selectAllPolicy(String policyCode, String categoryCode)
+//            throws Exception {
+//        return policyDao.selectAllPolicy(policyCode, categoryCode);
+//    }
+//
+//
+//    public List<PolicyDTO> selectJobsPolicy(String policyCode, String categoryCode,
+//            String districtCode) throws Exception {
+//        return policyDao.selectJobsPolicy(policyCode, categoryCode, districtCode);
+//    }
+//
+//    // 주거 정책 조회
+//    @Override
+//    public List<PolicyDTO> selectHousingPolicy(String policyCode, String categoryCode)
+//            throws Exception {
+//        return policyDao.selectHousingPolicy(policyCode, categoryCode);
+//    }
+//
+//    // 교육 정책 조회
+//    @Override
+//    public List<PolicyDTO> selectEducationPolicy(String policyCode, String categoryCode)
+//            throws Exception {
+//        return policyDao.selectEducationPolicy(policyCode, categoryCode);
+//    }
+//
+//    // 복지 정책 조회
+//    @Override
+//    public List<PolicyDTO> selectWelfarePolicy(String policyCode, String categoryCode)
+//            throws Exception {
+//        return policyDao.selectWelfarePolicy(policyCode, categoryCode);
+//    }
+//
+//    // 참여권리 정책 조회
+//    @Override
+//    public List<PolicyDTO> selectParticipationPolicy(String policyCode, String categoryCode)
+//            throws Exception {
+//        return policyDao.selectParticipationPolicy(policyCode, categoryCode);
+//    }
 
 }

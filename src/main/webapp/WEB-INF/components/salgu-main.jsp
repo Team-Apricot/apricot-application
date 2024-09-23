@@ -14,7 +14,7 @@
 			     style="width: 200px; padding-top: 20px; padding-bottom: 10px">
 			<div class="search-wrapper">
 				<form action="${pageContext.request.contextPath}/policy" method="get">
-					<input type="text" id="search-id" name="search-name" class="district-search"
+					<input type="text" id="search-id" name="districtCode" class="district-search"
 					       placeholder="찾고 싶은 지역구를 검색 해보세요(검색 예시: 강서구)">
 					<button class="search-btn">
 						<i class="fas fa-search search-icon"></i>

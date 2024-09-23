@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
       zingchart.bind('myChart', 'label_click', function(e) {
         if (e.label) {
           const district = e.label.text;
-          window.location.href = `${window.location.origin}/policy?search-name=${encodeURIComponent(district)}`;
+          const districtCode = districtMapping[district];
+          window.location.href = `${window.location.origin}/policy?districtCode=${encodeURIComponent(districtCode)}`;
         }
       });
 
