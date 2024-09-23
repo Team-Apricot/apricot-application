@@ -3,113 +3,20 @@
 document.addEventListener('DOMContentLoaded', function () {
     const seoulMap = document.getElementById('seoul-map'); // 서울 지도 SVG 파일을 가져오는 요소
     let selectedRegion = null; // 현재 선택된 지역을 저장하는 변수
+    const initialDistrictCodeValue = initialDistrictCode || null; // JSP에서 전달된 districtCode
+    const initialDistrictNameValue = initialDistrictName || ''; // JSP에서 전달된 districtName
+    const regionLogo = document.getElementById('region-logo'); // 이미지 요소를 정확하게 선택
 
     // 지역구 제목 및 설명을 업데이트하는 요소
     const selectedRegionTitle = document.getElementById('selected-region-title');
     const selectedRegionDescription = document.getElementById('selected-region-description');
 
     // 페이지네이션과 카테고리 버튼 상태 관리 변수
-    let selectedPageButton = document.querySelector('.pagination li a.selected');
-    let selectedCategoryButton = null; // 처음엔 선택된 카테고리 버튼 없음
+    let selectedPageButton = null;
+    let selectedCategoryButton = null; // 선택된 카테고리 버튼
 
     // 이벤트 카드 그리드
-    const eventCards = document.querySelectorAll('.event-card');
-
-    // 페이지네이션 버튼 스타일 설정 (선택된 페이지)
-    if (selectedPageButton) {
-        selectedPageButton.style.backgroundColor = '#FF6347';
-        selectedPageButton.style.color = 'white';
-    }
-
-    // 페이지네이션 버튼 클릭 시 동작 설정
-    const paginationButtons = document.querySelectorAll('.pagination li:not(.arrow) a');
-    paginationButtons.forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault(); // 기본 링크 동작 방지
-            if (button !== selectedPageButton) {
-                // 이전 선택된 페이지 버튼 초기화
-                if (selectedPageButton) {
-                    selectedPageButton.classList.remove('selected');
-                    selectedPageButton.style.backgroundColor = '#FFEFDC';
-                    selectedPageButton.style.color = '#FF6347';
-                }
-
-                // 새로운 선택된 페이지 버튼 업데이트
-                button.classList.add('selected');
-                button.style.backgroundColor = '#FF6347';
-                button.style.color = 'white';
-                selectedPageButton = button; // 현재 선택된 페이지 버튼 업데이트
-
-                // 페이지 이동 로직 (여기서 페이지 번호 출력)
-                const pageNumber = button.textContent;
-                console.log(`페이지 번호: ${pageNumber}`);
-            }
-        });
-    });
-
-    // 카테고리 버튼 클릭 시 동작 설정
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            // 이전 선택된 카테고리 버튼 초기화
-            if (selectedCategoryButton) {
-                selectedCategoryButton.classList.remove('selected');
-                selectedCategoryButton.style.backgroundColor = '#FFBB6A';
-            }
-
-            // 새로운 선택된 버튼 스타일 적용
-            button.classList.add('selected');
-            button.style.backgroundColor = '#FF6347';
-            selectedCategoryButton = button; // 현재 선택된 카테고리 버튼 업데이트
-
-            // 카테고리 필터링 로직 (카테고리별로 이벤트 카드 필터링)
-            const selectedCategory = button.value;
-            console.log(`선택된 카테고리: ${selectedCategory}`);
-            eventCards.forEach(card => {
-                if (card.getAttribute('categoryCode') === selectedCategory || selectedCategory === '전체') {
-                    card.style.display = 'block'; // 해당 카테고리 카드만 표시
-                } else {
-                    card.style.display = 'none'; // 다른 카테고리 카드는 숨김
-                }
-            });
-
-            // 페이지네이션을 1번으로 초기화
-            if (selectedPageButton) {
-                selectedPageButton.classList.remove('selected');
-                selectedPageButton.style.backgroundColor = '#FFEFDC';
-                selectedPageButton.style.color = '#FF6347';
-            }
-
-            selectedPageButton = paginationButtons[0]; // 첫 번째 페이지 버튼 선택
-            selectedPageButton.classList.add('selected');
-            selectedPageButton.style.backgroundColor = '#FF6347';
-            selectedPageButton.style.color = 'white';
-        });
-    });
-
-    // 카드에 마우스 오버 및 클릭 이벤트 추가
-    eventCards.forEach(card => {
-        // 마우스 오버 시 음영 효과 추가
-        card.addEventListener('mouseover', function () {
-            card.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.2)';
-            card.style.transform = 'translateY(-5px)';
-        });
-
-        // 마우스 아웃 시 원래 상태로 복귀
-        card.addEventListener('mouseout', function () {
-            card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-            card.style.transform = 'translateY(0)';
-        });
-
-        // 카드 클릭 시 동작 설정 (클릭된 카드 정보 출력)
-        card.addEventListener('click', function () {
-            card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'; // 클릭 시 눌린 상태로 보이게 설정
-            card.style.transform = 'translateY(2px)';
-            // 카드 클릭 시 동작하는 함수: 콘솔에 카드 제목을 출력하도록 함 (실제 값 들어가는지 확인, 디버깅 용도)
-            const cardTitle = card.querySelector('h3').innerText;
-            console.log(`"${cardTitle}" 카드 클릭됨`);
-        });
-    });
+    const eventCardsContainer = document.getElementById('grid');
 
     // SVG 지도 파일이 로드된 후 지역구 선택 이벤트 설정
     seoulMap.addEventListener('load', function () {
@@ -117,78 +24,77 @@ document.addEventListener('DOMContentLoaded', function () {
         const regions = svgDoc.querySelectorAll('path'); // 각 지역구를 나타내는 path 요소
 
         regions.forEach(region => {
-            // 지역구 기본 스타일 설정
-            region.style.fill = '#e6cbae'; // 기본 색상 설정
-            region.classList.add('region');
+            const regionId = region.getAttribute('id'); // 지역구 ID 가져오기
+            const regionName = getRegionName(regionId); // 지역구 이름 가져오기
 
-            // 마우스 오버 시 지역구 색상 변경
+            // 기본 지역구 스타일 설정
+            region.style.fill = '#e6cbae'; // 기본 색상
+
+            // 만약 regionId가 initialDistrictCodeValue라면 선택된 상태로 보여줌
+            if (regionId === initialDistrictCodeValue) {
+                selectedRegion = region; // 초기 선택된 지역 설정
+                region.style.fill = '#F9973E'; // 선택된 지역구 색상 적용
+                region.style.transform = 'translateY(-10px)'; // 선택된 지역구를 위로 이동
+
+                // 선택된 지역구 제목 및 설명 업데이트
+                selectedRegionTitle.textContent = `서울시 ${regionName}`;
+                //selectedRegionDescription.textContent = `서울의 심장 다시 뛰는 ${regionName}`;
+                selectedRegionDescription.textContent = regionDescriptions[regionId] || '기본 설명';
+                regionLogo.src = `/assets/img/region/${regionImages[regionId] || 'logo.png'}`;
+
+                // 관련 이벤트 카드 갱신 (페이지 1, 카테고리 '전체')
+                updateEventCards(regionId, '전체', 1);
+
+                // '전체' 버튼 선택
+                selectCategoryButton('전체');
+            }
+
+            // 마우스 오버 시 색상 변경 및 텍스트 확대
             region.addEventListener('mouseover', function () {
                 if (region !== selectedRegion) {
                     region.style.fill = '#D29660'; // 마우스 오버 시 색상 변경
-                    region.classList.add('hover-effect'); // 음영 효과 추가
-                }
-                const textElement = svgDoc.querySelector(`text#\\${region.id}`); // 관련 텍스트 요소 가져오기
-                if (textElement) {
-                    textElement.style.transform = 'scale(1.2)'; // 텍스트 확대
                 }
             });
 
             // 마우스 아웃 시 색상 복원
             region.addEventListener('mouseout', function () {
-                const textElement = svgDoc.querySelector(`text#\\${region.id}`);
-                if (textElement) {
-                    textElement.style.transform = 'scale(1)'; // 텍스트 크기 복원
-                }
                 if (region !== selectedRegion) {
-                    region.style.fill = '#e6cbae'; // 마우스 아웃 시 기본 색상으로 복원
-                    region.classList.remove('hover-effect'); // 음영 효과 제거
+                    region.style.fill = '#e6cbae'; // 마우스 아웃 시 기본 색상 복원
                 }
             });
 
-            // 지역구 클릭 시 동작 설정
+            // 지역구 클릭 시 동작 (선택된 경우만 위로 띄움)
             region.addEventListener('click', function () {
-                // 이전에 선택된 지역이 있으면 스타일 초기화
+                // 이전 선택된 지역 스타일 초기화
                 if (selectedRegion) {
-                    selectedRegion.style.fill = '#e6cbae'; // 이전 선택된 지역 색상 초기화
-                    selectedRegion.classList.remove('clicked');
+                    selectedRegion.style.fill = '#e6cbae';
+                    selectedRegion.style.transform = 'translateY(0)'; // 원래 위치로 복원
                 }
 
-                // 현재 클릭된 지역 업데이트 및 스타일 변경
                 selectedRegion = region;
-                region.style.fill = '#F9973E'; // 선택된 지역구 색상 변경
-                region.classList.add('clicked'); // 선택된 상태 표시
+                region.style.fill = '#F9973E'; // 현재 선택된 지역구 스타일 적용
+                region.style.transform = 'translateY(-10px)'; // 선택된 지역구를 위로 이동
 
-                const regionId = region.getAttribute('id'); // 지역구 ID 가져오기
-                const regionName = getRegionName(regionId); // 지역구 이름 가져오기
-
-                // 선택된 지역구 제목 및 설명 업데이트
+                // 제목 및 설명 업데이트
                 selectedRegionTitle.textContent = `서울시 ${regionName}`;
-                selectedRegionDescription.textContent = `서울의 심장 다시 뛰는 ${regionName}`;
+                //selectedRegionDescription.textContent = `서울의 심장 다시 뛰는 ${regionName}`;
+                selectedRegionDescription.textContent = regionDescriptions[regionId] || '기본 설명';
+                regionLogo.src = `/assets/img/region/${regionImages[regionId] || 'logo.png'}`;
 
-                // 선택된 지역구 ID 출력
-                console.log(`선택된 지역구 ID: ${regionId}`);
+                // 이벤트 카드 갱신 (페이지 1, 카테고리 '전체')
+                updateEventCards(regionId, '전체', 1);
 
-                // 관련 이벤트 카드를 갱신
-                updateEventCards(regionId);
+                // 페이지네이션 리셋
+                resetPagination();
 
-                // 페이지네이션을 1번으로 리셋
-                if (selectedPageButton) {
-                    selectedPageButton.classList.remove('selected');
-                    selectedPageButton.style.backgroundColor = '#FFEFDC';
-                    selectedPageButton.style.color = '#FF6347';
-                }
-
-                selectedPageButton = paginationButtons[0]; // 첫 번째 페이지 버튼 선택
-                selectedPageButton.classList.add('selected');
-                selectedPageButton.style.backgroundColor = '#FF6347';
-                selectedPageButton.style.color = 'white';
+                // '전체' 버튼 선택
+                selectCategoryButton('전체');
             });
         });
     });
 
     // 지역구 이름 반환 함수
     function getRegionName(regionId) {
-        // 지역구 ID에 따른 이름 반환
         switch (regionId) {
             case '01': return '종로구';
             case '02': return '중구';
@@ -215,52 +121,141 @@ document.addEventListener('DOMContentLoaded', function () {
             case '23': return '강남구';
             case '24': return '송파구';
             case '25': return '강동구';
-            default: return '알 수 없는 지역'; // 알 수 없는 지역 처리
+            default: return '알 수 없는 지역';
         }
     }
 
-    // 이벤트 카드 갱신 함수 (regionId에 맞는 이벤트 카드를 보여주는 함수)
-    function updateEventCards(regionId) {
-        const eventCardsContainer = document.getElementById('grid');
-        eventCardsContainer.innerHTML = ''; // 기존 카드 초기화
+    // 이벤트 카드 갱신 함수
+    function updateEventCards(regionId, category = '전체', page = 1) {
+        // 기존 카드 초기화
+        eventCardsContainer.innerHTML = '';
 
-        const eventCards = getEventCards(regionId); // 지역구에 따른 이벤트 카드를 불러옴
-        eventCards.forEach(card => {
-            const cardElement = document.createElement('div');
-            cardElement.classList.add('event-card');
-            cardElement.innerHTML = `<h3>${card.title}</h3><p>${card.description}</p>`;
-            eventCardsContainer.appendChild(cardElement);
+        // Jquery를 이용한 AJAX 호출
+        $.ajax({
+            url: `/api/policy/area`,
+            type: 'GET',
+            data: {
+                districtCode: regionId,
+                category: category,
+                page: page
+            },
+            success: function (data) {
+                if (Array.isArray(data)) {
+                    data.forEach(card => {
+                        const cardElement = document.createElement('div');
+                        cardElement.classList.add('event-card');
+                        cardElement.innerHTML = `<h3>${card.policyName}</h3><p>${card.policyContent}</p>`;
+                        eventCardsContainer.appendChild(cardElement);
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Failed to fetch event cards. Error:", error);
+            }
         });
     }
 
-    // TODO 예시 데이터 (실제 데이터로 대체 필요)
-    function getEventCards(regionId) {
-        return [
-            {
-                title: `청년 쿡 비즈니스센터 운영`,
-                description: '청년 스타트업 육성... <div class="deadline-btn" data-status="deadline">신청마감</div>'
-            },
-            {
-                title: `대학생 아르바이트 사업`,
-                description: '서울시 대학생을 위한... <div class="deadline-btn" data-status="progress">진행중</div>'
-            },
-        ];
-        console.log(`${regionId}`);
-    }
+    // 페이지네이션 버튼 클릭 동작 설정 (기존 코드에서 개선된 부분 통합)
+    const paginationButtons = document.querySelectorAll('.pagination li:not(.arrow) a');
+    paginationButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault(); // 기본 링크 동작 방지
+            if (button !== selectedPageButton) {
+                // 이전 선택된 페이지 버튼 초기화
+                if (selectedPageButton) {
+                    selectedPageButton.classList.remove('selected');
+                    selectedPageButton.style.backgroundColor = '#FFEFDC';
+                    selectedPageButton.style.color = '#FF6347';
+                }
 
-    // 카드 로드 함수
-    function loadEventCards(page, category) {
-        const params = new URLSearchParams({
-            page: page,
-            category: category
+                // 새로운 선택된 페이지 버튼 업데이트
+                button.classList.add('selected');
+                button.style.backgroundColor = '#FF6347';
+                button.style.color = 'white';
+                selectedPageButton = button; // 현재 선택된 페이지 버튼 업데이트
+
+                // 페이지 이동 로직 (페이지 번호에 따른 이벤트 카드 갱신)
+                const pageNumber = button.textContent;
+                const regionId = selectedRegion.getAttribute('id');
+                const category = selectedCategoryButton ? selectedCategoryButton.dataset.category : '전체';
+                updateEventCards(regionId, category, pageNumber);
+            }
+        });
+    });
+
+    // 페이지네이션 리셋 함수
+    function resetPagination() {
+        paginationButtons.forEach(button => {
+            button.classList.remove('selected');
+            button.style.backgroundColor = '#FFEFDC'; // 기본 색상으로 초기화
+            button.style.color = '#FF6347';
         });
 
-        fetch(`/policy/area?${params.toString()}`)
-            .then(response => response.text())
-            .then(html => {
-                eventCardsContainer.innerHTML = html;
-            })
-            .catch(error => console.error('Error loading event cards:', error));
+        // 첫 번째 페이지 버튼 선택
+        selectedPageButton = paginationButtons[0];
+        selectedPageButton.classList.add('selected');
+        selectedPageButton.style.backgroundColor = '#FF6347'; // 선택된 버튼 색상
+        selectedPageButton.style.color = 'white';
     }
 
+    // 카테고리 버튼 클릭 시 처리
+    document.querySelectorAll('.category-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            if (selectedCategoryButton) {
+                selectedCategoryButton.classList.remove('selected'); // 이전 선택된 버튼 비활성화
+                selectedCategoryButton.style.backgroundColor = '#FFBB6A'; // 이전 선택된 버튼 색상 복원
+            }
+            selectedCategoryButton = this;
+            selectedCategoryButton.classList.add('selected'); // 현재 클릭된 버튼 활성화
+            selectedCategoryButton.style.backgroundColor = '#FF6347'; // 현재 선택된 버튼 색상 적용
+
+            // 카테고리에 따른 이벤트 카드 갱신 (페이지는 1로 리셋)
+            const category = this.dataset.category;
+            const regionId = selectedRegion ? selectedRegion.getAttribute('id') : initialDistrictCodeValue;
+            updateEventCards(regionId, category, 1); // 1페이지부터 다시 시작
+
+            // 페이지네이션 리셋
+            resetPagination();
+        });
+    });
+
+    // 기본적으로 '전체' 카테고리 버튼이 선택된 상태로 설정
+    function selectCategoryButton(category) {
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(button => {
+            if (button.dataset.category === category) {
+                button.classList.add('selected');
+            } else {
+                button.classList.remove('selected');
+            }
+        });
+    }
+
+    function resetPagination() {
+        paginationButtons.forEach(button => {
+            if (button.textContent === '1') {
+                button.classList.add('selected');
+                button.style.backgroundColor = '#FF6347';
+                button.style.color = 'white';
+                selectedPageButton = button;
+            } else {
+                button.classList.remove('selected');
+                button.style.backgroundColor = '#FFEFDC';
+                button.style.color = '#FF6347';
+            }
+        });
+    }
+
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const category = button.dataset.category;
+            const regionId = selectedRegion.getAttribute('id');
+            const page = 1;
+
+            updateEventCards(regionId, category, page);
+            resetPagination();
+            selectCategoryButton(category);
+        });
+    });
 });

@@ -1,9 +1,8 @@
-package sandbox.apricot.policy.impl;
+package sandbox.apricot.policy.mapper;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import sandbox.apricot.policy.mapper.PolicyDao;
 import sandbox.apricot.policy.dto.PolicyDTO;
 
 import java.util.HashMap;

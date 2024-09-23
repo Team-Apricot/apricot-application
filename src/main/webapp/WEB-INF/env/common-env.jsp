@@ -9,7 +9,7 @@
 
 <!-- External JS File -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
 
 <!-- App. JS File -->
 <script src="${pageContext.request.contextPath}/js/index.js"></script>

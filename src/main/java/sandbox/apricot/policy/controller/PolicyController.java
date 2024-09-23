@@ -104,10 +104,11 @@ public class PolicyController {
         // 지역구에 따른 정책 조회 (JSON 데이터 반환)
         @GetMapping("/area")
         public ResponseEntity<List<PolicyDTO>> getAllPolicies(
-                @RequestParam(value = "districtCode", required = false) String districtCode) {
+                @RequestParam(value = "districtCode", required = false) String districtCode,
+                @RequestParam(value = "category", required = false, defaultValue = "전체") String category) {
             try {
-                // districtCode로 정책 조회
-                List<PolicyDTO> policies = policyService.selectAllPolicy(null, districtCode);
+                // districtCode 및 category로 정책 조회
+                List<PolicyDTO> policies = policyService.selectAllPolicy(category, districtCode);
                 return ResponseEntity.ok(policies); // JSON 형태로 정책 리스트 반환
             } catch (Exception e) {
                 e.printStackTrace(); // 예외 발생 시 스택 트레이스 출력
