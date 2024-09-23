@@ -15,6 +15,7 @@ public enum MemberErrorCode implements ErrorCode {
 
     MEMBER_NOT_FOUND(NOT_FOUND, "존재하지 않는 회원 입니다."),
     UNAUTHORIZED_TO_MEMBER(FORBIDDEN, "권한이 없는 회원 입니다."),
+    REGISTER_INFO_NOT_FOUND(NOT_FOUND,"세션에 기본 정보가 없습니다. 회원가입을 다시 진행해주세요."),
 
     WRONG_PASSWORD(BAD_REQUEST, "비밀번호를 다시 확인해 주세요."),
     PASSWORD_CONDITIONS_VIOLATION(BAD_REQUEST, "비밀번호는 8자 이상, 20자 이하이어야 하며, 대문자, 소문자, 숫자, 특수 문자를 포함해야 합니다."),

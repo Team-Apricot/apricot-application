@@ -33,12 +33,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
 
+    // AOP
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
     // Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '6.3.3'
 
     // Oracle Database
     implementation group: 'com.oracle.database.jdbc', name: 'ojdbc11', version: '23.3.0.23.09'
+
+    // Redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
     // JSP
     implementation("org.apache.tomcat.embed:tomcat-embed-jasper")
