@@ -14,3 +14,4 @@
 <!-- App. JS File -->
 <script src="${pageContext.request.contextPath}/js/index.js"></script>
 <script src="${pageContext.request.contextPath}/js/member/login.js"></script>
+<script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
