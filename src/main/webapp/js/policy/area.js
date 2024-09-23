@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // 선택된 지역구 제목 및 설명 업데이트
                 selectedRegionTitle.textContent = `서울시 ${regionName}`;
-                //selectedRegionDescription.textContent = `서울의 심장 다시 뛰는 ${regionName}`;
                 selectedRegionDescription.textContent = regionDescriptions[regionId] || '기본 설명';
                 regionLogo.src = `/assets/img/region/${regionImages[regionId] || 'logo.png'}`;
 
@@ -77,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // 제목 및 설명 업데이트
                 selectedRegionTitle.textContent = `서울시 ${regionName}`;
-                //selectedRegionDescription.textContent = `서울의 심장 다시 뛰는 ${regionName}`;
                 selectedRegionDescription.textContent = regionDescriptions[regionId] || '기본 설명';
                 regionLogo.src = `/assets/img/region/${regionImages[regionId] || 'logo.png'}`;
 
@@ -155,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 페이지네이션 버튼 클릭 동작 설정 (기존 코드에서 개선된 부분 통합)
+    // 페이지네이션 버튼 클릭 동작 설정
     const paginationButtons = document.querySelectorAll('.pagination li:not(.arrow) a');
     paginationButtons.forEach(button => {
         button.addEventListener('click', function (e) {
@@ -225,27 +223,15 @@ document.addEventListener('DOMContentLoaded', function () {
         categoryButtons.forEach(button => {
             if (button.dataset.category === category) {
                 button.classList.add('selected');
+                button.style.backgroundColor = '#FF6347'; // 선택된 버튼 색상
             } else {
                 button.classList.remove('selected');
+                button.style.backgroundColor = '#FFBB6A'; // 비선택된 버튼 기본 색상
             }
         });
     }
 
-    function resetPagination() {
-        paginationButtons.forEach(button => {
-            if (button.textContent === '1') {
-                button.classList.add('selected');
-                button.style.backgroundColor = '#FF6347';
-                button.style.color = 'white';
-                selectedPageButton = button;
-            } else {
-                button.classList.remove('selected');
-                button.style.backgroundColor = '#FFEFDC';
-                button.style.color = '#FF6347';
-            }
-        });
-    }
-
+    // 지역 선택 시 '전체' 카테고리로 초기화
     const categoryButtons = document.querySelectorAll('.category-btn');
     categoryButtons.forEach(button => {
         button.addEventListener('click', function () {

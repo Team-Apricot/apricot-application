@@ -115,8 +115,9 @@
 
 /* 카드 마우스 오버 시 음영 효과 추가 */
 .event-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스 오버 시 그림자 효과 */
-  transform: translateY(-5px); /* 살짝 위로 올라가는 애니메이션 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스 오버 시 그림자 효과 */
+    transform: translateY(-5px); /* 살짝 위로 올라가는 애니메이션 */
+    transition: all 0.3s ease; /* 부드러운 전환 효과 */
 }
 
 /* 마우스 클릭 시 카드가 선택된 것처럼 보이도록 스타일 추가 */
