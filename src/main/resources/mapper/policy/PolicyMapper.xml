@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sandbox.apricot.policy.mapper.PolicyDao">
+  <resultMap id="DistrictPolicyResultMap" type="sandbox.apricot.policy.dto.response.DistrictPolicy">
+    <id property="districtName" column="DISTRICT_NAME" />
+    <result property="policyCnt" column="POLICY_CNT" />
+  </resultMap>
 
   <!-- 지역구 및 카테고리에 따른 정책 조회 -->
   <select id="selectAllPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
@@ -58,6 +62,13 @@
     SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
     FROM youth_policy_detail
     WHERE policy_code = #{policyCode, jdbcType=VARCHAR} AND category_code = #{categoryCode, jdbcType=VARCHAR}
+  </select>
+
+  <select id="getPolicyCountByDistrict" resultMap="DistrictPolicyResultMap">
+    SELECT d.DISTRICT_NAME AS DISTRICT_NAME, COUNT(*) AS POLICY_CNT
+    FROM YOUTH_POLICY_DETAIL y
+    JOIN districts d ON y.DISTRICT_CODE = d.DISTRICT_CODE
+    GROUP BY d.DISTRICT_CODE, d.DISTRICT_NAME
   </select>
 
 </mapper>

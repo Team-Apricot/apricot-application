@@ -19,5 +19,8 @@
     WHERE MEMBER_ID = #{memberId}
   </select>
 
+  <delete id="deleteByMemberId">
+    DELETE FROM INTERESTS WHERE MEMBER_ID = #{memberId}
+  </delete>
 
 </mapper>

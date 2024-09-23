@@ -8,7 +8,7 @@ import sandbox.apricot.policy.dto.PolicyDetailDTO;
 @Mapper
 public interface PolicyDetailMapper {
 
-  List<PolicyDetailDTO> getPolicyDetails();
+    List<PolicyDetailDTO> getPolicyDetails();
 
-  PolicyDetailDTO getPolicyDetailsByPolicyCode(@Param("policyCode")String policyCode);
+    PolicyDetailDTO getPolicyDetailsByPolicyCode(@Param("policyCode") String policyCode);
 }

@@ -2,6 +2,7 @@ package sandbox.apricot.policy.service;
 
 import sandbox.apricot.policy.dto.PolicyDTO;
 import java.util.List;
+import sandbox.apricot.policy.dto.response.DistrictPolicy;
 
 public interface PolicyService {
 
@@ -17,4 +18,7 @@ public interface PolicyService {
     List<PolicyDTO> selectWelfarePolicy(String policyCode, String categoryCode) throws Exception;
     //참여권리
     List<PolicyDTO> selectParticipationPolicy(String policyCode, String categoryCode) throws Exception;
+
+    List<DistrictPolicy> getPolicyCntByDistrict();
+
 }

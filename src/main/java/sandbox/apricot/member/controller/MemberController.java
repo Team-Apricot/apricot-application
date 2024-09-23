@@ -36,9 +36,17 @@ public class MemberController {
     Long memberId = member.getMember().getMemberId();
     MemberInfo memberInfo = memberService.getMemberInfo(memberId);
     List<ScrapInfo> scrapInfo = scrapService.getScrapInfo(memberId);
+    model.addAttribute("memberId",memberId);
     model.addAttribute("memberInfo", memberInfo);
     model.addAttribute("scrapInfo", scrapInfo);
     return "member/myPage";
+  }
+
+  @GetMapping("/update")
+  public String updateMyPage(Model model, @AuthenticationPrincipal MemberPrincipalDetails member) {
+    Long memberId = member.getMember().getMemberId();
+    model.addAttribute("memberId",memberId);
+    return "member/updateInfo";
   }
 
 }

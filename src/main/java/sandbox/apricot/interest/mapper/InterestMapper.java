@@ -8,6 +8,9 @@ import sandbox.apricot.interest.vo.Interest;
 public interface InterestMapper {
 
     void save(Interest interest);
+
     List<Interest> findByMemberId(Long memberId);
+
+    void deleteByMemberId(Long memberId);
 
 }
