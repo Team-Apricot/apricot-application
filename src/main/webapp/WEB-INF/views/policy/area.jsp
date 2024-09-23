@@ -106,7 +106,31 @@
                 <input type="button" value="복지" class="category-btn" data-category="복지">
                 <input type="button" value="참여권리" class="category-btn" data-category="참여권리">
 
-                <div id="grid" class="details2"></div>
+                <!-- 이벤트 카드 그리드 -->
+                <div id="grid" class="details2">
+                    <!-- 이벤트 카드 동적 출력 -->
+                    <c:forEach var="policy" items="${policies}">
+                        <div class="event-card">
+                            <h3>${policy.policyName}</h3>
+                            <p>${policy.policyContent}</p>
+                            <div class="status">
+                                <c:set var="policyEndDate" value="${policy.policyEndDate}" />
+                                <c:set var="currentDate" value="<%= java.time.LocalDate.now() %>" />
+                                <c:choose>
+                                    <c:when test="${policyEndDate == null}">
+                                        <div class="deadline-btn" data-status="always">상시</div>
+                                    </c:when>
+                                    <c:when test="${policyEndDate < currentDate}">
+                                        <div class="deadline-btn" data-status="deadline">신청마감</div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="deadline-btn" data-status="progress">진행중</div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
 
                 <ul class="pagination">
                     <li class="arrow"><a href="#" id="prev-page">&lt;</a></li>

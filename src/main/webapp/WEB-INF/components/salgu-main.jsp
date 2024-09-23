@@ -4,7 +4,8 @@
 <meta name="context-path" content="${pageContext.request.contextPath}"/>
 <section>
 	<video class="background-video" autoplay muted loop>
-		<source src="${pageContext.request.contextPath}/assets/video/index-page-background.mp4" type="video/mp4">
+		<source src="${pageContext.request.contextPath}/assets/video/index-page-background.mp4"
+		        type="video/mp4">
 	</video>
 	<div class="overlay"></div>
 	<div class="search-container">

@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(BAD_REQUEST)
     protected ApiResponse<Void> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException exception) {
-        log.error(" >>> [ ❌ MethodArgumentNotValidException: {} ]", exception.getMessage());
+        log.error(">>> [ ❌ MethodArgumentNotValidException: {} ]", exception.getMessage());
         String errorMessages = exception.getBindingResult().getFieldErrors()
                 .stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
@@ -60,8 +60,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(NOT_FOUND)
     protected ApiResponse<Void> handleNotFoundException(NoHandlerFoundException exception) {
-        log.error(" >>> [ ❌ NoHandlerFoundException: {} ]", exception.getMessage());
+        log.error(">>> [ ❌ NoHandlerFoundException: {} ]", exception.getMessage());
         return ApiResponse.errorResponse(NOT_FOUND, exception.getMessage());
+
     }
 
     /**
@@ -71,7 +72,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({Exception.class})
     @ResponseStatus(INTERNAL_SERVER_ERROR)
     protected ApiResponse<Void> handleException(Exception exception, HttpServletRequest request) {
-        log.error(" >>> [ ❌ 서버 내부에서 문제가 발생했습니다. method: {}, requestURI: {}, exception: {} ]",
+        log.error(">>> [ ❌ 서버 내부에서 문제가 발생했습니다. method: {}, requestURI: {}, exception: {} ]",
                 request.getMethod(), request.getRequestURI(), exception);
         return ApiResponse.errorResponse(INTERNAL_SERVER_ERROR, exception.getMessage());
     }
