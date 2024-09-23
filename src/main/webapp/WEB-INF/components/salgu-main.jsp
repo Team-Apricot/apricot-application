@@ -4,7 +4,8 @@
 <meta name="context-path" content="${pageContext.request.contextPath}"/>
 <section>
 	<video class="background-video" autoplay muted loop>
-		<source src="${pageContext.request.contextPath}/assets/video/index-page-background.mp4" type="video/mp4">
+		<source src="${pageContext.request.contextPath}/assets/video/index-page-background.mp4"
+		        type="video/mp4">
 	</video>
 	<div class="overlay"></div>
 	<div class="search-container">
@@ -19,6 +20,10 @@
 						<i class="fas fa-search search-icon"></i>
 					</button>
 				</form>
+			</div>
+			<div id="rank-policy-districts-container">
+				<span id="rank-policy-title">📈 지역구 혜택 순위: </span>
+				<span id="rank-policy-districts" class="rank-policy-districts"></span>
 			</div>
 			<div id="myChart"></div>
 		</div>

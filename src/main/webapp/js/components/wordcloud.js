@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     url: 'api/v1/policy/word-cloud',
     method: 'GET',
     success: function (api) {
-      const words = api.data.map(data => ({
+      const words = api.data
+      .filter(data => data.districtName !== "서울시")
+      .map(data => ({
         text: data.districtName,
         count: data.policyCnt,
       }));
@@ -64,6 +66,30 @@ document.addEventListener('DOMContentLoaded', function() {
           window.location.href = `${window.location.origin}/policy?search-name=${encodeURIComponent(district)}`;
         }
       });
+
+      const rankPolicyDistricts = document.getElementById('rank-policy-districts');
+      let currentIndex = 0;
+
+      // 인기 지역구를 혜택 수로 정렬하여 표시할 배열
+      const sortedDistricts = words.sort((a, b) => b.count - a.count); // 혜택 수로 내림차순 정렬
+
+      // 지역구 표시 함수
+      const showDistrict = () => {
+        rankPolicyDistricts.textContent =  `${currentIndex + 1}. ${words[currentIndex].text}`; // 번호와 지역구 이름 표시
+        rankPolicyDistricts.classList.add('fade-in');
+
+        // 애니메이션이 끝난 후 다음 지역구로 전환
+        setTimeout(() => {
+          rankPolicyDistricts.classList.remove('fade-in');
+        }, 2000); // 2s 후 사라짐
+
+        currentIndex = (currentIndex + 1) % sortedDistricts.length; // 인덱스 순환
+      };
+
+      // 애니메이션 적용
+      setInterval(showDistrict, 3000); // 3초마다 지역구 변경
+      showDistrict(); // 시작 시 첫 번째 지역구 표시
+
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.error('Error fetching word cloud data:', textStatus, errorThrown);
