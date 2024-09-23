@@ -6,8 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class PolicyDetailDTO {
-
+public class PolicyDTO {
 
     private String policyCode; // 정책 번호
     private String categoryCode; // 정책 분야
@@ -51,3 +50,4 @@ public class PolicyDetailDTO {
     private String etct; // 기타 유익 정보
 
 }
+

@@ -6,50 +6,40 @@ body {
   display: flex;
 }
 
-/*!* TOC 설정 *!*/
-.toc {
-  position: fixed;
-  top: 15%;
-  margin: 20px;
-  left: 20px;
-  width: 11%;
-  background-color: transparent;
-  padding: 10px;
-  z-index: 1000;
-  /*border: 2px solid #ffdab3;*/
-  border: 2px solid #e5e5e5;
 
-  border-radius: 5px;
+/* 네비게이션 목차 설정 */
+.navmenu ul li a span{
+  font-family: 'Jua', sans-serif !important;
 }
 
-.toc-title {
-  font-size: 18px;
-  font-weight: bold;
+.navmenu a img {
+  display: block;
+  margin: 0 auto; /* 이미지가 수평 중앙에 위치하도록 설정 */
+  max-width: 80%; /* 이미지 크기 조정 */
 }
 
-.toc ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.toc li {
-  margin-bottom: 10px;
+.navmenu a {
+  padding: 10px; /* 링크 자체의 패딩 조정 */
+  background-color: transparent; /* 링크 배경을 투명하게 설정 */
 }
 
 
-.toc a {
-  text-decoration: none;
-  color: #333;
+.navmenu ul #navitem1{
+  width:70%;
 }
-
-.toc a:hover {
-  text-decoration: underline;
+.navmenu ul #navitem2{
+  width:40%;
 }
-
+.navmenu ul #navitem3{
+  width:40%;
+}
+.navmenu ul #navitem4{
+  width:35%;
+}
 
 /* 공유와 찜하기 버튼 스타일 */
 .button-link {
-  display: flex; /* Flexbox 사용 */
+  display: flex;
   /*gap: 5px; !* 버튼 사이 간격 *!*/
 }
 
@@ -63,7 +53,6 @@ body {
   background-color: transparent;
   color: white;
   border: none;
-  /*padding: 10px 20px;*/
   margin-left: 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -75,24 +64,34 @@ body {
   filter: brightness(90%) invert(5%);
 }
 
-/* 정책 페이지 - 대분류적 스타일 */
+
+/* 전체를 감싸는 컨테이너 */
+.policy-detail-page {
+  width: 87%;
+  max-width: 1200px;
+  margin: 20px auto auto calc(13% + 60px);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+
+/* 정책 내용 스타일 */
 .policy-header {
-  display: flex; /* Flexbox 사용 */
-  align-items: center; /* 세로 가운데 정렬 */
-  justify-content: center; /* 가운데 정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   margin: 20px auto;
 }
 
 .policy-title {
-  justify-content: center; /* 가운데 정렬 */
+  justify-content: center;
   flex: 1; /* 제목은 가능한 공간을 다 차지 */
 }
 
 .policy-title h2 {
-  font-size: 40px; /* 폰트 크기 조정 */
-  /*color: #f7941d; !* 제목 색상 *!*/
-  margin: 0; /* 기본 여백 제거 */
+  font-size: 40px;
+  margin: 0;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -103,19 +102,6 @@ body {
   transform: translateY(0);
 }
 
-/* 전체 컨테이너 */
-.policy-detail-page {
-  /*background-color:#FFFDCE ;*/
-  width: 89%;
-  max-width: 1200px;
-  margin: 20px auto auto calc(11% + 60px);
-
-  padding: 20px;
-  border-radius: 8px;
-  /*border: 2px solid #ffdab3;*/
-}
-
-/* 제목 스타일 */
 .policy-table-header h3 {
   font-size: 30px;
   margin-bottom: 0;
@@ -124,14 +110,10 @@ body {
 
 /* 콘텐츠 테이블 스타일 */
 .policy-table-content {
-  /*background-color: #FFE9CE;*/
-  /*background-color: #FFFDCE;*/
-  /*border: 2px solid #ffdab3;*/
-  border: 2px solid #e5e5e5;
-
+  border: 2px solid #ffdab3;
   border-radius: 10px;
   padding: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 5%;
   /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
   opacity: 0;
   transform: translateY(50px);
@@ -170,57 +152,32 @@ body {
 }
 
 /*
-내용 안의 리스트 스타일 설정
+  내용 스타일 설정
 */
 
 .list-container {
-  /*width: fit-content;*/
   flex: 1;
   display: inline-flex;
   flex-direction: column;
-  /*justify-content: space-between;*/
   color: black;
-  /*border-radius: 8px;*/
-  /*box-sizing: border-box;*/
-  /*margin-bottom: auto;*/
-  /*padding-bottom: calc(2%);*/
-  /*border-bottom: 2px solid lightgray;*/
   flex-basis: calc(50% - 12px);
   padding-bottom: 28px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px dotted rgba(193, 193, 193, 0.87);
 
   overflow-wrap: break-word; /* 긴 단어를 줄바꿈 */
   word-wrap: break-word; /* 긴 단어를 줄바꿈 */
   word-break: break-word;
   white-space: normal; /* 일반적인 줄바꿈 적용 */
-
-  /*opacity: 0; !* 기본 상태에서는 보이지 않음 *!*/
-  /*transform: translateY(20px); !* 살짝 아래에서 올라오는 효과 *!*/
-  /*transition: opacity 0.6s ease, transform 0.6s ease;*/
 }
-
-/*.list-title .fade-in{*/
-/*    opacity: 1;*/
-/*    transform: translateY(0); !* 보일 때 위로 올라오면서 완전히 보이도록 설정 *!*/
-/*}*/
-/*.list-container.fade-in{*/
-/*    opacity: 1;*/
-/*    transform: translateY(0); !* 보일 때 위로 올라오면서 완전히 보이도록 설정 *!*/
-/*}*/
 
 .list-title {
   font-size: 16px;
   align-content: center;
   justify-content: center;
-  /*color: #f7941d;*/
   color: gray;
   /*font-weight: bold;*/
   margin: 10px;
 
-
-  /*opacity: 0; !* 기본 상태에서는 보이지 않음 *!*/
-  /*transform: translateY(20px); !* 살짝 아래에서 올라오는 효과 *!*/
-  /*transition: opacity 0.6s ease, transform 0.6s ease;*/
 }
 
 .list-content {
@@ -233,22 +190,9 @@ body {
   padding: 1.2rem;
   margin-left: 2%;
   border-radius: 8px;
-
-
-  /*opacity: 0; !* 기본 상태에서는 보이지 않음 *!*/
-  /*transform: translateY(20px); !* 살짝 아래에서 올라오는 효과 *!*/
-  /*transition: opacity 0.6s ease, transform 0.6s ease;*/
-
 }
 
-
-/* 신청자격, 신청방법 등 스타일 */
-.policy-table-content ul li .list-content {
-  /*background-color: #FFFDCE; !* 배경색을 주황색으로 설정 *!*/
-  /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); !* 그림자 *!*/
-}
-
-/* 추천 혜택 섹션 스타일 */
+/* 추천 혜택 섹션 스타일 - from area */
 /* 혜택이 많은 지역 스타일 */
 .top-areas {
   padding: 20px 40px;
