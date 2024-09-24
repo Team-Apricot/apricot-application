@@ -135,3 +135,14 @@ input[type="radio"] {
   align-items: center;
   justify-content: space-between;
 }
+
+/* 넓이가 800 이하이면 모든 수정 레이아웃 세로로 배치 */
+@media (max-width: 800px) {
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+}

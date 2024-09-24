@@ -1,9 +1,9 @@
 footer {
-  position: relative;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
   background-color: #FFE9CE;
-  padding: 15px;
+  padding: 10PX 0;
   text-align: left;
-  height: 60px; /* 푸터의 높이 */
+  width:100%;
 }
 
 .footer-content p {
@@ -24,48 +24,17 @@ footer {
   justify-content: space-between;
 }
 
+.github{
+  padding-left:10px;
+}
+
 .resume {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-right: 10px;
 }
 
 .resume-href {
   margin: 10px;
 }
-
-/*footer {*/
-/*  background-color: #FFE9CE;*/
-/*  !*padding: 15px;*!*/
-/*  height: 60px; !* 푸터의 고정 높이 *!*/
-/*  flex-shrink: 0; !* 축소되지 않도록 설정 *!*/
-/*}*/
-
-/*.footer-content {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center; !* 콘텐츠를 세로로 중앙 정렬 *!*/
-/*}*/
-
-/*.footer-content p {*/
-/*  margin: 0;*/
-/*}*/
-
-/*.footer-content a {*/
-/*  color: #767676;*/
-/*  text-decoration: none;*/
-/*}*/
-
-/*.footer-content a:hover {*/
-/*  text-decoration: underline;*/
-/*}*/
-
-/*.resume {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  align-items: center;*/
-/*}*/
-
-/*.resume-href {*/
-/*  margin: 10px;*/
-/*}*/

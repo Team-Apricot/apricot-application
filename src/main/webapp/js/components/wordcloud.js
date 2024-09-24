@@ -1,6 +1,6 @@
 ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
   $.ajax({
     url: 'api/v1/policy/word-cloud',
@@ -19,9 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
           backgroundColor: 'rgba(249,151,62,0)',
           options: {
             colorType: 'palette',
-            palette: ['#F9973E', '#375E97', '#FB6542', '#3F681C', '#FFBB00', '#FB7252'], //색상지정
+            palette: ['#F9973E', '#375E97', '#FB6542', '#3F681C', '#FFBB00',
+              '#FB7252'], //색상지정
             aspect: 'spiral', //중앙 원형
-            maxFontSize: 80, //최대 글씨 크기
+            maxFontSize: 50, //최대 글씨 크기
             minFontSize: 20, //최소 글씨 크기
             textSpacing: 0.1, //글짜 간격
             "style": {
@@ -60,10 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
         width: '100%',
       });
 
-      zingchart.bind('myChart', 'label_click', function(e) {
+      zingchart.bind('myChart', 'label_click', function (e) {
         if (e.label) {
           const district = e.label.text;
-          window.location.href = `${window.location.origin}/policy?search-name=${encodeURIComponent(district)}`;
+          window.location.href = `${window.location.origin}/policy?search-name=${encodeURIComponent(
+              district)}`;
         }
       });
 
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // 지역구 표시 함수
       const showDistrict = () => {
-        rankPolicyDistricts.textContent =  `${currentIndex + 1}. ${words[currentIndex].text}`; // 번호와 지역구 이름 표시
+        rankPolicyDistricts.textContent = `${currentIndex + 1}. ${words[currentIndex].text}`; // 번호와 지역구 이름 표시
         rankPolicyDistricts.classList.add('fade-in');
 
         // 애니메이션이 끝난 후 다음 지역구로 전환

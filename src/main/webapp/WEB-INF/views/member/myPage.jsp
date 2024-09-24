@@ -15,11 +15,12 @@
 <%@ include file="/WEB-INF/views/member/updatePassword.jsp" %>
 
 <section>
-  <video class="background-video" autoplay muted loop>
-    <source src="${pageContext.request.contextPath}/assets/video/index-page-background.mp4"
-            type="video/mp4">
-  </video>
-  <div class="overlay"></div>
+  <div class="hidden-background"></div>
+  <%--	백그라운드 비디오 - 나중에 필요시 사용 --%>
+  <%--	<video class="background-video" autoplay muted loop>--%>
+  <%--		<source src="${pageContext.request.contextPath}/assets/video/index-page-background.mp4" type="video/mp4">--%>
+  <%--	</video>--%>
+  <%--	<div class="overlay"></div>--%>
   <div class="mypage-container blur-background">
     <div class="mypage-title">
       My Page
@@ -50,7 +51,7 @@
             </div>
             <div class="update-info">
               <div class="update-btn" onclick="goToUpdateInfo()">정보 수정</div>
-              <div class="update-btn" onclick="openUpdatePwModal(${memberId})">비밀번호 수정</div>
+              <div class="update-btn" onclick="openUpdatePwModal()">비밀번호 수정</div>
             </div>
           </div>
         </div>

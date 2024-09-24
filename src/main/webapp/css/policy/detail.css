@@ -4,37 +4,31 @@ body {
 
 .layout {
   display: flex;
+  /*justify-content: center; !*요소를 가운데로*!*/
+  flex-direction: row;
+  /*align-items: center;*/
 }
 
+.navmenu-wrapper {
+  /*height: 100vh; !* 뷰포트 높이에 맞춰 고정 *!*/
+  /*position: relative; !* 고정된 위치에서 스크롤 가능하게 설정 *!*/
+  width:15%;
+}
 
 /* 네비게이션 목차 설정 */
-.navmenu ul li a span{
+.navmenu ul li a span {
   font-family: 'Jua', sans-serif !important;
 }
 
 .navmenu a img {
   display: block;
-  margin: 0 auto; /* 이미지가 수평 중앙에 위치하도록 설정 */
-  max-width: 80%; /* 이미지 크기 조정 */
+  /*margin: 0 auto; !* 이미지가 수평 중앙에 위치하도록 설정 *!*/
+  max-width: 60%; /* 이미지 크기 조정 */
 }
 
 .navmenu a {
-  padding: 10px; /* 링크 자체의 패딩 조정 */
+  /*padding: 10px; !* 링크 자체의 패딩 조정 *!*/
   background-color: transparent; /* 링크 배경을 투명하게 설정 */
-}
-
-
-.navmenu ul #navitem1{
-  width:70%;
-}
-.navmenu ul #navitem2{
-  width:40%;
-}
-.navmenu ul #navitem3{
-  width:40%;
-}
-.navmenu ul #navitem4{
-  width:35%;
 }
 
 /* 공유와 찜하기 버튼 스타일 */
@@ -67,9 +61,9 @@ body {
 
 /* 전체를 감싸는 컨테이너 */
 .policy-detail-page {
-  width: 87%;
+  width: 70%;
   max-width: 1200px;
-  margin: 20px auto auto calc(13% + 60px);
+  /*margin: 20px auto auto calc(13% + 60px);*/
   padding: 20px;
   border-radius: 8px;
 }
@@ -80,8 +74,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  margin: 20px auto;
+  padding: 15px;
+  margin: 15px auto;
 }
 
 .policy-title {
@@ -90,7 +84,7 @@ body {
 }
 
 .policy-title h2 {
-  font-size: 40px;
+  font-size: 25px;
   margin: 0;
   opacity: 0;
   transform: translateY(50px);
@@ -103,9 +97,10 @@ body {
 }
 
 .policy-table-header h3 {
-  font-size: 30px;
+  font-size: 20px;
   margin-bottom: 0;
   margin-left: 5%;
+  color: #F9973E;
 }
 
 /* 콘텐츠 테이블 스타일 */
@@ -161,9 +156,8 @@ body {
   flex-direction: column;
   color: black;
   flex-basis: calc(50% - 12px);
-  padding-bottom: 28px;
+  padding-bottom: 5px;
   border-bottom: 1px dotted rgba(193, 193, 193, 0.87);
-
   overflow-wrap: break-word; /* 긴 단어를 줄바꿈 */
   word-wrap: break-word; /* 긴 단어를 줄바꿈 */
   word-break: break-word;
@@ -171,7 +165,7 @@ body {
 }
 
 .list-title {
-  font-size: 16px;
+  font-size: 12px;
   align-content: center;
   justify-content: center;
   color: gray;
@@ -182,12 +176,11 @@ body {
 
 .list-content {
   display: inline-flex;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   color: black;
   background-color: white;
-
-  padding: 1.2rem;
+  padding: 10px;
   margin-left: 2%;
   border-radius: 8px;
 }
@@ -195,15 +188,18 @@ body {
 /* 추천 혜택 섹션 스타일 - from area */
 /* 혜택이 많은 지역 스타일 */
 .top-areas {
-  padding: 20px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /*width: 70%;*/
+  max-width: 1200px;
+  /*margin: 20px auto auto calc(13% + 60px);*/
+  padding: 20px;
 }
 
 .top-areas h2 {
   text-align: left;
-  font-size: 2em; /* 기본 폰트 크기 */
+  font-size: 1.5em; /* 기본 폰트 크기 */
   color: #F9973E;
   margin-bottom: 10px;
 }
@@ -220,13 +216,12 @@ body {
 
 .area-item {
   display: flex;
-  flex-direction: row; /* 기본 방향 설정 */
+  flex-direction: row;
   align-items: center;
   background-color: #fff;
-  padding: 20px;
+  padding: 5px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  height: 200px;
   transition: transform 0.3s;
   gap: 30px; /* 이미지와 텍스트 사이의 간격 */
   box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
@@ -249,7 +244,7 @@ body {
 
 .area-item .text .region-name {
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1em;
   margin: 0;
 }
 
@@ -268,3 +263,43 @@ body {
   align-items: center;
   padding: 10px;
 }
+
+/* 반응형 */
+@media (max-width: 575px) {
+  .policy-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .policy-detail-page {
+    margin: 0;
+    padding: 0;
+  }
+
+  .top-areas {
+    margin: 0;
+    padding: 0;
+  }
+
+  .policy-table-content ul li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .list-content {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .policy-title h2 {
+    font-size: 30px;
+  }
+
+  .policy-table-header h3 {
+    font-size: 15px;
+  }
+
+}
+
