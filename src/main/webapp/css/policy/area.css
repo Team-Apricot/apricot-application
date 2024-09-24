@@ -1,30 +1,21 @@
-/* .container의 width를 전체 너비로 수정 */
-.policy-container {
-  width: 100%; /* 페이지 전체 너비로 설정 */
-  max-width: none; /* 최대 너비 제한을 제거 */
-  margin: 0 auto; /* 여백 제거 */
-  padding: 0; /* 패딩 제거 */
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* 헤더 영역을 꽉 차게 수정 */
 .content-header {
+  margin: 1em;
   width: 100%; /* 전체 너비를 차지 */
-  margin-bottom: 20px; /* 아래쪽 여백 */
   background-color: #fff; /* 배경색 */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   display: flex; /* 플렉스 박스 사용 */
   justify-content: flex-start; /* 왼쪽 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
 }
 
 /* 이미지 크기 수정 */
-.content-header img {
-  width: 120px; /* 이미지 너비 */
-  height: 100px; /* 이미지 높이 */
+.region-logo {
+  width: 100px; /* 이미지 너비 */
+  height: 80px; /* 이미지 높이 */
+}
+
+.region-text {
+  margin-left: 1em;
 }
 
 /* 텍스트 정렬 수정 */
@@ -46,13 +37,13 @@
 
 /* 버튼 및 상세 정보 스타일 */
 .details input[type="button"], .details .deadline-btn {
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
   background-color: #FFBB6A; /* 버튼 배경색 */
   border: none; /* 테두리 없음 */
   color: white; /* 텍스트 색상 */
   padding: 10px 20px; /* 패딩 */
   text-align: center; /* 텍스트 정렬 */
   font-size: 16px; /* 글자 크기 */
-  margin: 10px 0; /* 여백 */
   cursor: pointer; /* 커서 모양 */
   border-radius: 25px; /* 둥근 모서리 */
   transition: background-color 0.3s ease; /* 전환 효과 */
@@ -67,17 +58,18 @@
 .content {
   display: flex; /* 플렉스 박스 사용 */
   justify-content: space-around; /* 요소 간격 조절 */
-  flex-direction: row; /* 가로 방향 정렬 */
-  flex-wrap: wrap; /* 줄 바꿈 가능 */
   align-items: center; /* 세로 중앙 정렬 */
+  flex-direction: row; /* 가로 방향 정렬 */
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
-.map, .details {
-  flex: 1 1 45%; /* 요소 비율 조정 */
-  max-width: 600px; /* 최대 너비 */
-  min-width: 300px; /* 최소 너비 */
-  margin: 0 20px; /* 좌우 여백을 조금 추가하여 간격 조정 */
-  margin-bottom: 40px; /* 아래쪽 여백 */
+.category {
+
+}
+
+.map {
+  width: 35%;
 }
 
 /* SVG 지도가 있는 메인 맵 섹션 */
@@ -87,21 +79,19 @@
 }
 
 .details {
-  width: 100%; /* 전체 너비 */
-  background-color: white; /* 배경색 */
-  padding: 20px; /* 패딩 */
-  border-radius: 15px; /* 둥근 모서리 */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-  text-align: center; /* 텍스트 중앙 정렬 */
-  box-sizing: border-box; /* 박스 사이징 설정 */
   display: flex;
+  width: 100%;
+  height: 85%;
+  background-color: #FFFFFF; /* 배경색 */
+  text-align: center; /* 텍스트 중앙 정렬 */
   flex-direction: column;
+  align-items: center;
 }
 
 /* 이벤트 카드 그리드 */
 .details2 {
   display: grid; /* 그리드 레이아웃 사용 */
-  grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
+  grid-template-columns: repeat(2, 1fr); /* 3열 그리드 */
   grid-gap: 20px; /* 간격 조절 */
   padding: 20px; /* 패딩 */
   width: 100%; /* 전체 너비 */
@@ -110,12 +100,16 @@
 
 /* 카드 개별 항목 스타일 */
 .event-card {
-  background: #fff; /* 카드 배경색 */
-  border: 1px solid #ddd; /* 카드 테두리 */
+  display: flex;
+  background: #FFFFFF; /* 카드 배경색 */
   border-radius: 8px; /* 둥근 모서리 */
-  padding: 15px; /* 패딩 */
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   transition: transform 0.3s, box-shadow 0.3s; /* 전환 효과 */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 20em;
+  height: 10em;
 }
 
 /* 카드 마우스 오버 시 음영 효과 추가 */
@@ -239,18 +233,29 @@
   color: white; /* 화살표 텍스트 호버 색상 */
 }
 
-/* 기본 버튼 스타일 */
-.category-btn {
-  background-color: #FFBB6A; /* 버튼 배경색 */
-  border: none; /* 테두리 없음 */
-  padding: 10px 20px; /* 패딩 */
-  cursor: pointer; /* 커서 모양 */
-  transition: background-color 0.3s ease; /* 전환 효과 */
-  color: white; /* 텍스트 색상 */
-  font-weight: bold; /* 글자 굵기 */
-  margin-right: 10px; /* 오른쪽 여백 */
+.policy-title {
+  padding: 1em;
+  margin-top: 2em;
 }
 
-.category-btn.selected {
-  background-color: #FF6347; /* 선택된 카테고리 버튼 색상 */
+.status {
+  padding: 5px;
+  width: 70px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.time {
+  background-color: #ADCDFD;
+}
+
+.progress {
+  background-color: #73D990;
+}
+
+.end {
+  background-color: #FF8080;
 }
