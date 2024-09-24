@@ -13,7 +13,6 @@
 
 <body>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/header.jsp"/>
-<div class="hidden-background"></div>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/salgu-main.jsp"/>
 
 <%-- TODO: 소개 페이지 필요시 사용(일정 보고 진행 예정) --%>
