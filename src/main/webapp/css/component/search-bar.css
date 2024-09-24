@@ -20,9 +20,16 @@
 .search-wrapper {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 90%;
   max-width: 500px;
-  margin-top: 10px; /* 로고와 검색창 사이의 간격 조정 */
+  margin-top: 10px;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
 }
 
 .district-search {
@@ -54,6 +61,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  margin-left: -40px;
 }
 
 .search-icon {
