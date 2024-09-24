@@ -17,26 +17,26 @@ import sandbox.apricot.scrap.vo.Scrap;
 @RequiredArgsConstructor
 public class ScrapServiceImpl implements ScrapService {
 
-  private final ScrapMapper mapper;
+    private final ScrapMapper mapper;
 
-  @Override
-  public void register(ScrapRegister request) {
-    log.info(" >>> [ ✨ 정책 {} 번, 스크랩을 시도 합니다. ]", request.policyCode);
-    mapper.save(toVO(request));
-    log.info(" >>> [ ✨ 스크랩 성공. ]");
-  }
+    @Override
+    public void register(Long memberId, String policyCode) {
+        log.info(" >>> [ ✨ 정책 {} 번, 스크랩을 시도 합니다. ]", policyCode);
+        mapper.save(toVO(memberId, policyCode));
+        log.info(" >>> [ ✨ 스크랩 성공. ]");
+    }
 
-  private Scrap toVO(ScrapRegister request) {
-    return Scrap.builder()
-        .memberId(request.getMemberId())
-        .policyCode(request.getPolicyCode())
-        .build();
-  }
+    private Scrap toVO(Long memberId, String policyCode) {
+        return Scrap.builder()
+                .memberId(memberId)
+                .policyCode(policyCode)
+                .build();
+    }
 
-  @Override
-  public List<ScrapInfo> getScrapInfo(Long memberId) {
-    return mapper.findScrap(memberId);
-  }
+    @Override
+    public List<ScrapInfo> getScrapInfo(Long memberId) {
+        return mapper.findScrap(memberId);
+    }
 
 }
 
