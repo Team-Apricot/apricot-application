@@ -92,11 +92,11 @@ h6 {
 --------------------------------------------------------------*/
 .navmenu {
   font-family: 'Jua', sans-serif;
-  position: fixed;
+  position: sticky;
   top: 30%;
-  margin: 20px;
+  margin: 10px;
   left: 0;
-  width: 14%;
+  width: 100%;
   background-color: transparent;
   padding: 5px;
   border-radius: 8px;
@@ -115,13 +115,13 @@ h6 {
   font-family: var(--nav-font);
   display: flex;
   align-items: center;
-  padding: 10px 18px;
+  padding: 5px 10px;
   margin-bottom: 8px;
   font-size: 15px;
   border-radius: 50px;
   background: color-mix(in srgb, var(--default-color), transparent 92%);
   height: 56px;
-  width: 100%;
+  width: 90%;
   overflow: hidden;
   transition: 0.3s;
 }
@@ -136,10 +136,10 @@ h6 {
   padding: 0 5px 0 7px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 600px) {
 
   .navmenu a,
-  .navmenu a:focus {
+  .navmenu a:focus{
     max-width: 56px;
   }
 
@@ -152,20 +152,24 @@ h6 {
 .navmenu a:hover,
 .navmenu .active,
 .navmenu .active:focus,
-.navmenu li:hover>a {
+.navmenu li:hover>a{
   color: var(--contrast-color);
   background: var(--nav-hover-color);
 }
 
 .navmenu a:hover,
+.navmenu .active,
+.navmenu .active:focus,
 .navmenu li:hover>a {
   max-width: 100%;
   color: var(--contrast-color);
 }
 
 .navmenu a:hover span,
-.navmenu li:hover>a span {
-  display: block;
+.navmenu li:hover>a span,
+.navmenu .active span,
+.navmenu .active:focus span{
+  display: flex;
 }
 
 
@@ -235,7 +239,7 @@ h6 {
 .scroll-top.active {
   visibility: visible;
   opacity: 1;
-  bottom: 15px;
+  /*bottom: 15px;*/
 }
 
 /*--------------------------------------------------------------
@@ -626,6 +630,11 @@ section,
 }
 
 @media (max-width: 575px) {
+
+  .navmenu {
+    display: none;
+  }
+
   .portfolio .portfolio-filters li {
     font-size: 14px;
     margin: 0 0 10px 0;

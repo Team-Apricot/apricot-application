@@ -10,8 +10,7 @@ form {
 .search-wrapper {
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 500px;
+  width: 90%;
   margin-top: 10px; /* 로고와 검색창 사이의 간격 조정 */
 }
 
@@ -42,6 +41,7 @@ section {
   overflow: hidden; /* TODO: x ? 고민....*/
   position: relative;
   flex-direction: row; /* 기본적으로 가로 방향으로 배치 */
+  min-height: 80%;
 }
 
 .blur-background {
@@ -97,8 +97,8 @@ section {
 }
 
 #myChart {
-  width: 90%;
-  min-height: 500px;
+  width: 80%;
+  height: 80%;
 }
 
 .zc-ref {
@@ -107,8 +107,8 @@ section {
 
 /* 챗봇 오버레이 */
 .chatbot-overlay {
-  position: fixed;
-  bottom: 80px;
+  position: absolute;
+  bottom: 0;
   right: 20px;
   width: 60px;
   height: 60px;
@@ -152,9 +152,9 @@ section {
 /* 미디어 쿼리: 화면 너비가 768px 이하인 경우 */
 @media (max-width: 768px) {
   section {
-    min-height: 300px; /* 화면 크기가 작은 경우 최소 높이를 조정 */
     flex-direction: column; /* 화면이 좁아지면 세로 방향으로 배치 */
   }
+
   .search-container, .word-cloud {
     width: 100%; /* 컨테이너의 폭을 전체 화면에 맞춤 */
   }
@@ -163,9 +163,9 @@ section {
 /* 미디어 쿼리: 화면 너비가 480px 이하인 경우 */
 @media (max-width: 480px) {
   section {
-    min-height: 200px; /* 화면 크기가 매우 작은 경우 최소 높이를 조정 */
     flex-direction: column; /* 화면이 좁아지면 세로 방향으로 배치 */
   }
+
   .search-container, .word-cloud {
     width: 100%; /* 컨테이너의 폭을 전체 화면에 맞춤 */
   }

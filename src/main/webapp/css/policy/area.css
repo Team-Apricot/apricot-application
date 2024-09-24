@@ -1,6 +1,10 @@
 /* .container의 width를 전체 너비로 수정 */
 .policy-container {
   width: 100%; /* 페이지 전체 너비로 설정 */
+  max-width: none; /* 최대 너비 제한을 제거 */
+  margin: 0 auto; /* 여백 제거 */
+  padding: 0; /* 패딩 제거 */
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +15,6 @@
   width: 100%; /* 전체 너비를 차지 */
   margin-bottom: 20px; /* 아래쪽 여백 */
   background-color: #fff; /* 배경색 */
-  padding: 20px; /* 패딩 */
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   display: flex; /* 플렉스 박스 사용 */
   justify-content: flex-start; /* 왼쪽 정렬 */
@@ -91,6 +94,8 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   text-align: center; /* 텍스트 중앙 정렬 */
   box-sizing: border-box; /* 박스 사이징 설정 */
+  display: flex;
+  flex-direction: column;
 }
 
 /* 이벤트 카드 그리드 */
@@ -117,7 +122,6 @@
 .event-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스 오버 시 그림자 효과 */
   transform: translateY(-5px); /* 살짝 위로 올라가는 애니메이션 */
-  transition: all 0.3s ease; /* 부드러운 전환 효과 */
 }
 
 /* 마우스 클릭 시 카드가 선택된 것처럼 보이도록 스타일 추가 */
