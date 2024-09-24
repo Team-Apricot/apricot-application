@@ -4,11 +4,16 @@ body {
 
 .layout {
   display: flex;
-  justify-content: center; /*요소를 가운데로*/
-  flex-direction: column;
-  align-items: center;
+  /*justify-content: center; !*요소를 가운데로*!*/
+  flex-direction: row;
+  /*align-items: center;*/
 }
 
+.navmenu-wrapper {
+  /*height: 100vh; !* 뷰포트 높이에 맞춰 고정 *!*/
+  /*position: relative; !* 고정된 위치에서 스크롤 가능하게 설정 *!*/
+  width:15%;
+}
 
 /* 네비게이션 목차 설정 */
 .navmenu ul li a span {
@@ -58,7 +63,7 @@ body {
 .policy-detail-page {
   width: 70%;
   max-width: 1200px;
-  margin: 20px auto auto calc(13% + 60px);
+  /*margin: 20px auto auto calc(13% + 60px);*/
   padding: 20px;
   border-radius: 8px;
 }
@@ -186,9 +191,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
+  /*width: 70%;*/
   max-width: 1200px;
-  margin: 20px auto auto calc(13% + 60px);
+  /*margin: 20px auto auto calc(13% + 60px);*/
   padding: 20px;
 }
 
