@@ -13,18 +13,21 @@
 </head>
 <body>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/header.jsp"/>
+
 <div class="layout">
+    <div class="navmenu-wrapper">
+    <nav class="navmenu">
+        <ul>
+            <li><a href="#section1" id="navitem1" class="active"><img src="/assets/img/mascot.png" width="40"><span>한 눈에 보는 정책 요약</span></a>
+            </li>
+            <li><a href="#section2" id="navitem2"><img src="/assets/img/mascot.png" width="40"><span>신청자격</span></a></li>
+            <li><a href="#section3" id="navitem3"><img src="/assets/img/mascot.png" width="40"><span>신청방법</span></a>
+            </li>
+            <li><a href="#section4" id="navitem4"><img src="/assets/img/mascot.png" width="40"><span>기타</span></a></li>
+        </ul>
+    </nav>
+    </div>
     <div class="policy-detail-page">
-        <nav class="navmenu">
-            <ul>
-                <li><a href="#section1" id="navitem1" class="active"><img src="/assets/img/mascot.png" width="40"><span>한 눈에 보는 정책 요약</span></a>
-                </li>
-                <li><a href="#section2" id="navitem2"><img src="/assets/img/mascot.png" width="40"><span>신청자격</span></a></li>
-                <li><a href="#section3" id="navitem3"><img src="/assets/img/mascot.png" width="40"><span>신청방법</span></a>
-                </li>
-                <li><a href="#section4" id="navitem4"><img src="/assets/img/mascot.png" width="40"><span>기타</span></a></li>
-            </ul>
-        </nav>
         <div class="policy-header">
             <div class="policy-title">
                 <h2>${policyDetails.policyName !="null" && !policyDetails.policyName.isEmpty()? policyDetails.policyName:"❌"}</h2>
@@ -286,41 +289,42 @@
                 </li>
             </ul>
         </div>
-    </div>
-</div>
-<div class="top-areas">
-    <h2>지금 보고 있는 혜택과 비슷한 혜택</h2>
-    <div class="areas-list">
-        <div class="area-item">
-            <div class="area-container">
-                <img src="${pageContext.request.contextPath}/assets/img/gangnam.png" alt="지역구"/>
-            </div>
-            <div class="text">
-                <p class="region-name">강남구</p>
-                <p class="region-tag">#역세권 1위!</p>
-            </div>
-        </div>
-        <div class="area-item">
-            <div class="area-container">
-                <img src="${pageContext.request.contextPath}/assets/img/gangnam.png" alt="지역구"/>
-            </div>
-            <div class="text">
-                <p class="region-name">강남구</p>
-                <p class="region-tag">#역세권 1위!</p>
-            </div>
-        </div>
-        <div class="area-item">
-            <div class="area-container">
-                <img src="${pageContext.request.contextPath}/assets/img/gangnam.png" alt="지역구"/>
-            </div>
-            <div class="text">
-                <p class="region-name">강남구</p>
-                <p class="region-tag">#역세권 1위!</p>
-            </div>
-        </div>
+        <div class="top-areas">
+            <h2>지금 보고 있는 혜택과 비슷한 혜택</h2>
+            <div class="areas-list">
+                <div class="area-item">
+                    <div class="area-container">
+                        <img src="${pageContext.request.contextPath}/assets/img/gangnam.png" alt="지역구"/>
+                    </div>
+                    <div class="text">
+                        <p class="region-name">강남구</p>
+                        <p class="region-tag">#역세권 1위!</p>
+                    </div>
+                </div>
+                <div class="area-item">
+                    <div class="area-container">
+                        <img src="${pageContext.request.contextPath}/assets/img/gangnam.png" alt="지역구"/>
+                    </div>
+                    <div class="text">
+                        <p class="region-name">강남구</p>
+                        <p class="region-tag">#역세권 1위!</p>
+                    </div>
+                </div>
+                <div class="area-item">
+                    <div class="area-container">
+                        <img src="${pageContext.request.contextPath}/assets/img/gangnam.png" alt="지역구"/>
+                    </div>
+                    <div class="text">
+                        <p class="region-name">강남구</p>
+                        <p class="region-tag">#역세권 1위!</p>
+                    </div>
+                </div>
 
+            </div>
+        </div>
     </div>
 </div>
+
 	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/footer.jsp"/>
 </body>
 </html>
