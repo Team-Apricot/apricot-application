@@ -27,13 +27,13 @@
     </div>
 
     <div class="search-policy-wrapper">
-      <div class="like-info">
+      <div class="search-info">
         <div class="searchresult">
           검색결과 : ${policyCnt}
         </div>
-        <div class="my-like">
+        <div class="search-detail">
           <c:forEach items="${policyInfo}" var="policy">
-            <div class="like-detail" onclick="goToPolicy('${policy.policyCode}')">
+            <div class="detail" onclick="goToPolicy('${policy.policyCode}')">
               <div class="location-img">
                 <img src="${pageContext.request.contextPath}${policy.districtLogoPath}">
               </div>
