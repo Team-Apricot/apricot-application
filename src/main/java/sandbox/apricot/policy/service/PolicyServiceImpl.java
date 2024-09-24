@@ -1,7 +1,6 @@
 package sandbox.apricot.policy.service;
 
-import org.springframework.data.domain.Pageable;
-import sandbox.apricot.policy.dto.request.PolicyPagination;
+import org.springframework.data.domain.PageRequest;
 import sandbox.apricot.policy.dto.response.District;
 import sandbox.apricot.policy.dto.response.DistrictPolicies;
 import sandbox.apricot.policy.dto.response.PolicyTLDR;
@@ -31,7 +30,6 @@ public class PolicyServiceImpl implements PolicyService {
     private final PolicyMapper policyMapper;
     private final RedisTemplate<String, Object> redisTemplate;
 
-    // 일자리 정책 조회
     @Override
     @Transactional(readOnly = true)
     public List<DistrictPolicy> getPolicyCntByDistrict() {
@@ -62,74 +60,25 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public DistrictPolicies getAllDistrictPolicies(PolicyPagination request) {
-        Pageable pageable = request.toPageable();
-        List<PolicyTLDR> policies = getPolicies(
-                request.getCursorId(),
-                pageable,
-                request.getDistrictCode(),
-                request.getCategoryCode()
-        );
-        Long nextCursorId = getNextCursorId(policies);
-        Boolean hasNext = policies.size() >= pageable.getPageSize();
-        return DistrictPolicies.of(policies, nextCursorId, hasNext);
-    }
-
-    @Override
     public District getDistrict(String districtCode) {
         return policyMapper.findByDistrictCode(districtCode);
     }
 
-    private List<PolicyTLDR> getPolicies(Long cursorId, Pageable pageable, String districtCode, String categoryCode) {
-        log.info(" >>> [ 🔍 {}번 지역구 혜택 조회 시도 ]", districtCode);
-        return cursorId == null ?
-                policyMapper.findAllDistrictPolicyTLDRByCategory(districtCode, categoryCode, pageable) :
-                policyMapper.findPartOfDistrictPolicyTLDRByCursorId(cursorId, districtCode, categoryCode, pageable);
-    }
+    @Override
+    public DistrictPolicies getDistrictPolicies(String districtCode, String categoryCode, int page) {
+        List<PolicyTLDR> policies = policyMapper.findAllDistrictPolicyTLDRByCategory(
+                districtCode,
+                categoryCode,
+                PageRequest.of(page - 1, 6)
+        );
+        int totalPoliciesCnt = policyMapper.countPoliciesByDistrict(districtCode);
+        int totalPages = (int) Math.ceil((double) totalPoliciesCnt / 6);
 
-    private Long getNextCursorId(List<PolicyTLDR> policies) {
-        return policies.isEmpty() ? null : policies.get(policies.size() - 1).getCursorId();
+        return DistrictPolicies.builder()
+                .categoryCode(categoryCode == null ? "ALL" : categoryCode)
+                .policies(policies)
+                .totalPages(totalPages)
+                .build();
     }
-
-//    // 전체 정책 조회
-//    @Override
-//    public List<PolicyDTO> selectAllPolicy(String policyCode, String categoryCode)
-//            throws Exception {
-//        return policyDao.selectAllPolicy(policyCode, categoryCode);
-//    }
-//
-//
-//    public List<PolicyDTO> selectJobsPolicy(String policyCode, String categoryCode,
-//            String districtCode) throws Exception {
-//        return policyDao.selectJobsPolicy(policyCode, categoryCode, districtCode);
-//    }
-//
-//    // 주거 정책 조회
-//    @Override
-//    public List<PolicyDTO> selectHousingPolicy(String policyCode, String categoryCode)
-//            throws Exception {
-//        return policyDao.selectHousingPolicy(policyCode, categoryCode);
-//    }
-//
-//    // 교육 정책 조회
-//    @Override
-//    public List<PolicyDTO> selectEducationPolicy(String policyCode, String categoryCode)
-//            throws Exception {
-//        return policyDao.selectEducationPolicy(policyCode, categoryCode);
-//    }
-//
-//    // 복지 정책 조회
-//    @Override
-//    public List<PolicyDTO> selectWelfarePolicy(String policyCode, String categoryCode)
-//            throws Exception {
-//        return policyDao.selectWelfarePolicy(policyCode, categoryCode);
-//    }
-//
-//    // 참여권리 정책 조회
-//    @Override
-//    public List<PolicyDTO> selectParticipationPolicy(String policyCode, String categoryCode)
-//            throws Exception {
-//        return policyDao.selectParticipationPolicy(policyCode, categoryCode);
-//    }
 
 }
