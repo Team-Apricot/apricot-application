@@ -6,7 +6,20 @@
   width="1400px" height="1400px" viewBox="0 0 1400 1400" enable-background="new 0 0 1400 1400"
   xml:space="preserve">
 
-    <!-- svg 파일은 link를 직접 가져와 쓸수 없어서 style 태그를 따로 css 파일로 빼지 않았다. -->
+  <!-- svg 파일은 link를 직접 가져와 쓸수 없어서 style 태그를 따로 css 파일로 빼지 않았다. -->
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+      <feOffset dx="0" dy="6" result="offset blur" />
+      <feFlood flood-color="rgba(0, 0, 0, 1.3)" />
+      <feComposite in2="offset blur" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Jua');
 
@@ -15,8 +28,9 @@
     }
 
     .district.clicked {
-      transform: translateY(-10px);
+      transform: translateY(-15px);
       fill: #F9973E; /* 예: 클릭 시 색상 변화 */
+      filter: url(#shadow); /* 그림자 효과 */
     }
 
     text {
