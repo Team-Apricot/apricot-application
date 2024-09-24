@@ -12,11 +12,11 @@
   <div class="search-container">
     <div class="blur-background">
       <img src="${pageContext.request.contextPath}/assets/img/logo.png"
-           style="width: 17%; padding-top: 20px; padding-bottom: 10px">
+           style="width: 10em; padding-top: 20px; padding-bottom: 10px">
       <div class="search-wrapper">
-        <form action="${pageContext.request.contextPath}/policy" method="get">
-          <input type="text" id="search-id" name="search-name" class="district-search"
-                 placeholder="찾고 싶은 지역구를 검색 해보세요(검색 예시: 강서구)">
+        <form action="${pageContext.request.contextPath}/policy/searchpolicy" method="get">
+          <input type="text" id="search-id" name="policy-search-name" class="district-search"
+                 placeholder="관심있는 혜택을 검색해주세요 (검색 예시 : 청년) ">
           <button class="search-btn">
             <i class="fas fa-search search-icon"></i>
           </button>
