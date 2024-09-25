@@ -24,7 +24,9 @@ public interface PolicyMapper {
             Pageable pageable
     );
 
-    List<PolicyInfo> findPolicy(String searchName);
+    List<PolicyInfo> findPolicyWithPagination(String searchName, int offset, int limit);
+
+    int countPolicies(String searchName);
 
     void saveReview(
             @Param("policyCode") String policyCode,

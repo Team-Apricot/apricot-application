@@ -1,6 +1,7 @@
 package sandbox.apricot.policy.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,6 @@ import sandbox.apricot.policy.dto.response.District;
 import sandbox.apricot.policy.dto.response.PolicyInfo;
 import sandbox.apricot.policy.service.PolicyService;
 
-import java.util.List;
 import sandbox.apricot.policy.dto.response.PolicyDetailDTO;
 
 @Controller
@@ -23,12 +23,20 @@ public class PolicyController {
 
     //정책 검색 페이지
     @GetMapping("/searchpolicy")
-    public String goToPolicy(@RequestParam("policy-search-name") String searchName, Model model) {
-        policyService.findPolicy(searchName);
-        List<PolicyInfo> policyInfo = policyService.findPolicy(searchName);
-        int policyCnt = policyInfo.size();
-        model.addAttribute("policyInfo", policyInfo);
-        model.addAttribute("policyCnt", policyCnt);
+    public String goToPolicy(
+            @RequestParam("policy-search-name") String searchName,
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int size,
+            Model model) {
+        Page<PolicyInfo> policySearchPage = policyService.findPolicyWithPagination(
+                searchName, page, size
+        );
+
+        model.addAttribute("policyInfo", policySearchPage.getContent());
+        model.addAttribute("policyCnt", policySearchPage.getTotalElements());
+        model.addAttribute("currentPage", policySearchPage.getNumber() + 1);
+        model.addAttribute("totalPages", policySearchPage.getTotalPages());
+
         return "policy/policy";
     }
 

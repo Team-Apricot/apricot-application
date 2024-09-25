@@ -49,19 +49,104 @@
             </div>
           </c:forEach>
         </div>
-        <ul class="pagination">
-          <li class="arrow"><a href="#" id="prev-page">&lt;</a></li>
-          <li><a href="#" class="page-number selected">1</a></li>
-          <li><a href="#" class="page-number">2</a></li>
-          <li><a href="#" class="page-number">3</a></li>
-          <li><a href="#" class="page-number">4</a></li>
-          <li><a href="#" class="page-number">5</a></li>
-          <li class="arrow"><a href="#" id="next-page">&gt;</a></li>
-        </ul>
-      </div>
 
+        <%--        <ul class="pagination">--%>
+        <%--          <c:if test="${currentPage > 1}">--%>
+        <%--            <li class="arrow"><a--%>
+        <%--                href="?policy-search-name=${param['policy-search-name']}&page=${currentPage - 1}&size=10"--%>
+        <%--                id="prev-page">&lt;</a></li>--%>
+        <%--          </c:if>--%>
+
+        <%--          <c:if test="${totalPages > 5}">--%>
+        <%--            <c:if test="${currentPage <= 3}">--%>
+        <%--              <c:forEach begin="1" end="5" var="i">--%>
+        <%--                <li>--%>
+        <%--                  <a href="?policy-search-name=${param['policy-search-name']}&page=${i}&size=10"--%>
+        <%--                     class="page-number ${i == currentPage ? 'selected' : ''}">${i}</a>--%>
+        <%--                </li>--%>
+        <%--              </c:forEach>--%>
+        <%--            </c:if>--%>
+
+        <%--            <c:if test="${currentPage > 3 && currentPage <= totalPages - 2}">--%>
+        <%--              <c:forEach begin="${currentPage - 2}" end="${currentPage + 2}" var="i">--%>
+        <%--                <li>--%>
+        <%--                  <a href="?policy-search-name=${param['policy-search-name']}&page=${i}&size=10"--%>
+        <%--                     class="page-number ${i == currentPage ? 'selected' : ''}">${i}</a>--%>
+        <%--                </li>--%>
+        <%--              </c:forEach>--%>
+        <%--            </c:if>--%>
+
+        <%--            <c:if test="${currentPage > totalPages - 2}">--%>
+        <%--              <c:forEach begin="${totalPages - 4}" end="${totalPages}" var="i">--%>
+        <%--                <li>--%>
+        <%--                  <a href="?policy-search-name=${param['policy-search-name']}&page=${i}&size=10"--%>
+        <%--                     class="page-number ${i == currentPage ? 'selected' : ''}">${i}</a>--%>
+        <%--                </li>--%>
+        <%--              </c:forEach>--%>
+        <%--            </c:if>--%>
+        <%--          </c:if>--%>
+
+        <%--          <c:if test="${currentPage < totalPages}">--%>
+        <%--            <li class="arrow"><a--%>
+        <%--                href="?policy-search-name=${param['policy-search-name']}&page=${currentPage + 1}&size=10"--%>
+        <%--                id="next-page">&gt;</a></li>--%>
+        <%--          </c:if>--%>
+        <%--        </ul>--%>
+
+        <ul class="pagination">
+          <c:if test="${currentPage > 1}">
+            <li class="arrow"><a
+                href="?policy-search-name=${param['policy-search-name']}&page=${currentPage - 1}&size=10"
+                id="prev-page">&lt;</a></li>
+          </c:if>
+
+          <c:if test="${totalPages <= 5}">
+            <c:forEach begin="1" end="${totalPages}" var="i">
+              <li>
+                <a href="?policy-search-name=${param['policy-search-name']}&page=${i}&size=10"
+                   class="page-number ${i == currentPage ? 'selected' : ''}">${i}</a>
+              </li>
+            </c:forEach>
+          </c:if>
+
+          <c:if test="${totalPages > 5}">
+            <c:if test="${currentPage <= 3}">
+              <c:forEach begin="1" end="5" var="i">
+                <li>
+                  <a href="?policy-search-name=${param['policy-search-name']}&page=${i}&size=10"
+                     class="page-number ${i == currentPage ? 'selected' : ''}">${i}</a>
+                </li>
+              </c:forEach>
+            </c:if>
+
+            <c:if test="${currentPage > 3 && currentPage <= totalPages - 2}">
+              <c:forEach begin="${currentPage - 2}" end="${currentPage + 2}" var="i">
+                <li>
+                  <a href="?policy-search-name=${param['policy-search-name']}&page=${i}&size=10"
+                     class="page-number ${i == currentPage ? 'selected' : ''}">${i}</a>
+                </li>
+              </c:forEach>
+            </c:if>
+
+            <c:if test="${currentPage > totalPages - 2}">
+              <c:forEach begin="${totalPages - 4}" end="${totalPages}" var="i">
+                <li>
+                  <a href="?policy-search-name=${param['policy-search-name']}&page=${i}&size=10"
+                     class="page-number ${i == currentPage ? 'selected' : ''}">${i}</a>
+                </li>
+              </c:forEach>
+            </c:if>
+          </c:if>
+
+          <c:if test="${currentPage < totalPages}">
+            <li class="arrow"><a
+                href="?policy-search-name=${param['policy-search-name']}&page=${currentPage + 1}&size=10"
+                id="next-page">&gt;</a></li>
+          </c:if>
+        </ul>
+
+      </div>
     </div>
-  </div>
 </section>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/footer.jsp"/>
 
