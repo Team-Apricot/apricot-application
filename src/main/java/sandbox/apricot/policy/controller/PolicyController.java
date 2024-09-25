@@ -12,8 +12,7 @@ import sandbox.apricot.policy.dto.response.PolicyInfo;
 import sandbox.apricot.policy.service.PolicyService;
 
 import java.util.List;
-import sandbox.apricot.policy.dto.PolicyDetailDTO;
-import sandbox.apricot.policy.service.PolicyDetailService;
+import sandbox.apricot.policy.dto.response.PolicyDetailDTO;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,7 +20,6 @@ import sandbox.apricot.policy.service.PolicyDetailService;
 public class PolicyController {
 
     private final PolicyService policyService;
-    private final PolicyDetailService policyDetailService;
 
     //정책 검색 페이지
     @GetMapping("/searchpolicy")
@@ -45,7 +43,7 @@ public class PolicyController {
     // 정책 상세 페이지 조회 (JSP 렌더링)
     @GetMapping("/detail/{policy_code}")
     public String viewDetail(Model model, @PathVariable("policy_code") String policyCode) {
-        PolicyDetailDTO policyDetails = policyDetailService.getPolicyDetailsByCode(policyCode);
+        PolicyDetailDTO policyDetails = policyService.getPolicyDetailsByCode(policyCode);
         model.addAttribute("policyDetails", policyDetails);
         return "policy/detail";
     }

@@ -74,7 +74,7 @@
 
   <insert id="saveReview">
     INSERT INTO REVIEWS (POLICY_CODE, MEMBER_ID, POLICY_SCORE)
-    VALUES (#{policyCode}, #{memberId}, #{policyScore})
+    VALUES (#{policyCode}, #{memberId}, #{policyDetailScore})
   </insert>
 
 </mapper>

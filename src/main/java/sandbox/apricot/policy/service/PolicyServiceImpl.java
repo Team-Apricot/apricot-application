@@ -1,5 +1,8 @@
 package sandbox.apricot.policy.service;
 
+import static sandbox.apricot.policy.util.PolicyFormatter.formatPolicyDetail;
+
+import sandbox.apricot.policy.dto.response.PolicyDetailDTO;
 import sandbox.apricot.policy.dto.request.RegisterReview;
 import sandbox.apricot.policy.dto.response.PolicyInfo;
 import org.springframework.data.domain.PageRequest;
@@ -7,6 +10,7 @@ import sandbox.apricot.policy.dto.response.District;
 import sandbox.apricot.policy.dto.response.DistrictPolicies;
 import sandbox.apricot.policy.dto.response.PolicyTLDR;
 import sandbox.apricot.policy.dto.response.DistrictPolicy;
+import sandbox.apricot.policy.mapper.PolicyDetailMapper;
 import sandbox.apricot.policy.mapper.PolicyMapper;
 
 import java.util.List;
@@ -30,6 +34,7 @@ public class PolicyServiceImpl implements PolicyService {
     private static final String REDIS_KEY = "districtPolicyCnt";
 
     private final PolicyMapper policyMapper;
+    private final PolicyDetailMapper detailMapper;
     private final RedisTemplate<String, Object> redisTemplate;
 
     @Override
@@ -86,6 +91,12 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public List<PolicyInfo> findPolicy(String searchName) {
         return policyMapper.findPolicy(searchName);
+    }
+
+    @Override
+    public PolicyDetailDTO getPolicyDetailsByCode(String policyCode) {
+        PolicyDetailDTO policyDetailDTO = detailMapper.getPolicyDetailsByPolicyCode(policyCode);
+        return formatPolicyDetail(policyDetailDTO);
     }
 
     @Override

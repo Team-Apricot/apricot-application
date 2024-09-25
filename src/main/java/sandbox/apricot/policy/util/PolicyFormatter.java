@@ -1,27 +1,11 @@
-package sandbox.apricot.policy.service;
+package sandbox.apricot.policy.util;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import sandbox.apricot.policy.dto.PolicyDetailDTO;
-import sandbox.apricot.policy.mapper.PolicyDetailMapper;
+import sandbox.apricot.policy.dto.response.PolicyDetailDTO;
 
-
-@Service
-@RequiredArgsConstructor
-public class PolicyDetailService {
-
-    private final PolicyDetailMapper detailMapper;
-
-    // 유틸리티 메서드: 개행 문자를 <br>로 변환
-    private String formatText(String text) {
-        if (text != null) {
-            return text.replace("\n", "<br>").replace("\r\n", "<br>");
-        }
-        return null;
-    }
+public class PolicyFormatter {
 
     // DTO의 모든 필드에 개행 문자를 <br>로 변환하는 로직
-    public PolicyDetailDTO formatPolicyDetail(PolicyDetailDTO policyDetailDTO) {
+    public static PolicyDetailDTO formatPolicyDetail(PolicyDetailDTO policyDetailDTO) {
         policyDetailDTO.setPolicyCode(formatText(policyDetailDTO.getPolicyCode()));
         policyDetailDTO.setCategoryCode(formatText(policyDetailDTO.getCategoryCode()));
         policyDetailDTO.setDistrictCode(formatText(policyDetailDTO.getDistrictCode()));
@@ -64,11 +48,12 @@ public class PolicyDetailService {
         return policyDetailDTO;
     }
 
-    // youth_policy_detail 테이블에서 특정 정책 코드를 가져오는 메서드
-    public PolicyDetailDTO getPolicyDetailsByCode(String policyCode) {
-        PolicyDetailDTO policyDetailDTO = detailMapper.getPolicyDetailsByPolicyCode(policyCode);
-        return formatPolicyDetail(policyDetailDTO);
-
+    // 유틸리티 메서드: 개행 문자를 <br>로 변환
+    private static String formatText(String text) {
+        if (text != null) {
+            return text.replace("\n", "<br>").replace("\r\n", "<br>");
+        }
+        return null;
     }
 
 }
