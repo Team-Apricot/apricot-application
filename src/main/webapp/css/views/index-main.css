@@ -6,27 +6,6 @@ form {
   display: flex; /* 폼 내부 요소들이 가로 방향으로 배치되도록 설정 */
 }
 
-/* search-wrapper 스타일 */
-.search-wrapper {
-  display: flex;
-  align-items: center;
-  width: 90%;
-  margin-top: 10px; /* 로고와 검색창 사이의 간격 조정 */
-}
-
-/* search-btn 스타일 */
-.search-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin-left: -40px;
-}
-
-.search-icon {
-  font-size: 18px;
-  color: #F9973E;
-}
-
 /* 기타 스타일 */
 
 body {
@@ -34,15 +13,6 @@ body {
   flex-direction: column; /* 수직 방향으로 배치 */
 }
 
-section {
-  display: flex; /* Flexbox로 레이아웃 조정 */
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* TODO: x ? 고민....*/
-  position: relative;
-  flex-direction: row; /* 기본적으로 가로 방향으로 배치 */
-  min-height: 80%;
-}
 
 .blur-background {
   position: relative; /* 헤더 위에 위치하지 않도록 조정 */

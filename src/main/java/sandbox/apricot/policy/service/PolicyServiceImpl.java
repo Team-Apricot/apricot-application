@@ -1,5 +1,6 @@
 package sandbox.apricot.policy.service;
 
+import sandbox.apricot.policy.dto.response.PolicyInfo;
 import sandbox.apricot.policy.mapper.PolicyDao;
 import sandbox.apricot.policy.dto.PolicyDTO;
 import sandbox.apricot.policy.dto.response.DistrictPolicy;
@@ -57,6 +58,11 @@ public class PolicyServiceImpl implements PolicyService {
         }
 
         return dbData;
+    }
+
+    @Override
+    public List<PolicyInfo> findPolicy(String searchName) {
+        return policyMapper.findPolicy(searchName);
     }
 
     // 전체 정책 조회

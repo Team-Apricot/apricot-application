@@ -8,6 +8,14 @@
     <result property="policyCnt" column="POLICY_CNT" />
   </resultMap>
 
+  <resultMap id="PolicyInfoResultMap" type="sandbox.apricot.policy.dto.response.PolicyInfo">
+    <result property="policyCode" column="POLICY_CODE"/>
+    <result property="districtName" column="DISTRICT_NAME"/>
+    <result property="policyName" column="POLICY_NAME"/>
+    <result property="prdRpttSecd" column="PRD_RPTT_SECD"/>
+    <result property="districtLogoPath" column="DISTRICT_LOGO_PATH"/>
+  </resultMap>
+
   <!-- 지역구 및 카테고리에 따른 정책 조회 -->
   <select id="selectAllPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
     SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
@@ -70,6 +78,14 @@
     FROM YOUTH_POLICY_DETAIL y
     JOIN districts d ON y.DISTRICT_CODE = d.DISTRICT_CODE
     GROUP BY d.DISTRICT_CODE, d.DISTRICT_NAME
+  </select>
+
+  <select id="findPolicy" resultMap="PolicyInfoResultMap">
+    SELECT Y.POLICY_CODE ,Y.POLICY_NAME,Y.PRD_RPTT_SECD ,Y.DISTRICT_CODE,D.DISTRICT_NAME,D.DISTRICT_LOGO_PATH
+    FROM YOUTH_POLICY_DETAIL Y JOIN DISTRICTS D
+                                    ON Y.DISTRICT_CODE = D.DISTRICT_CODE
+    WHERE POLICY_NAME LIKE '%'||#{searchName}||'%'
+       OR POLICY_CONTENT LIKE '%'||#{searchName}||'%'
   </select>
 
 </mapper>

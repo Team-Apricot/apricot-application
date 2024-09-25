@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import sandbox.apricot.policy.dto.PolicyDTO;
+import sandbox.apricot.policy.dto.response.PolicyInfo;
 import sandbox.apricot.policy.service.PolicyService;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestParam;
 import sandbox.apricot.policy.dto.PolicyDetailDTO;
 import sandbox.apricot.policy.service.PolicyDetailService;
 
@@ -29,7 +29,8 @@ public class PolicyController {
 
     // 지역구에 따른 정책 조회
     @GetMapping("/area")
-    public String getAllPolicies(@RequestParam(value = "districtCode", required = false) String districtCode,
+    public String getAllPolicies(
+            @RequestParam(value = "districtCode", required = false) String districtCode,
             @RequestParam(value = "category", required = false, defaultValue = "전체") String category,
             Model model) {
         try {
@@ -40,6 +41,17 @@ public class PolicyController {
             e.printStackTrace(); // 예외 발생 시 스택 트레이스 출력
         }
         return "policy/area"; // area.jsp로 이동
+    }
+
+    //정책 검색 페이지
+    @GetMapping("/searchpolicy")
+    public String goTopolicy(@RequestParam("policy-search-name") String searchName, Model model) {
+        policyService.findPolicy(searchName);
+        List<PolicyInfo> policyInfo = policyService.findPolicy(searchName);
+        int policyCnt = policyInfo.size();
+        model.addAttribute("policyInfo", policyInfo);
+        model.addAttribute("policyCnt", policyCnt);
+        return "policy/policy";
     }
 
     // 검색 이름에 따른 지역구 정보 조회 및 area.jsp 렌더링
