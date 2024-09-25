@@ -4,6 +4,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const policyTableContents = document.querySelectorAll(
       '.policy-table-content');
 
+  const avgScore = document.getElementById("avg-score").getAttribute("data-score");
+  const roundedScore = Math.round(avgScore); // 반올림 처리
+
+  // 해당하는 라디오 버튼을 checked 상태로 설정
+  if (roundedScore > 0) {
+    const radioButton = document.getElementById(`star${roundedScore}`);
+    if (radioButton) {
+      radioButton.checked = true;
+    }
+  }
+
   tocList.forEach((toc) => {
     // 부드러운 스크롤 기능
     toc.addEventListener('click', function (e) {
@@ -14,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         behavior: 'smooth'
       });
     });
-
   });
 
   // Intersection Observer로 등장 애니메이션 적용
@@ -38,26 +48,23 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Navmenu Scrollspy
    */
+  let navmenulinks = document.querySelectorAll('.navmenu a');
 
-    let navmenulinks = document.querySelectorAll('.navmenu a');
+  function navmenuScrollspy() {
+    navmenulinks.forEach(navmenulink => {
+      if (!navmenulink.hash) return;
+      let section = document.querySelector(navmenulink.hash);
+      if (!section) return;
+      let position = window.scrollY + 200;
+      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+        navmenulink.classList.add('active');
+      } else {
+        navmenulink.classList.remove('active');
+      }
+    });
+  }
 
-    function navmenuScrollspy() {
-      navmenulinks.forEach(navmenulink => {
-        if (!navmenulink.hash) return;
-        let section = document.querySelector(navmenulink.hash);
-        console.log(section);
-        if (!section) return;
-        let position = window.scrollY + 200;
-        if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-          document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-          navmenulink.classList.add('active');
-        } else {
-          navmenulink.classList.remove('active');
-        }
-      })
-    }
-    window.addEventListener('load', navmenuScrollspy);
-    document.addEventListener('scroll', navmenuScrollspy);
-
-
+  window.addEventListener('load', navmenuScrollspy);
+  document.addEventListener('scroll', navmenuScrollspy);
 });
