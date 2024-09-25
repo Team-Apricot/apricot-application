@@ -96,6 +96,7 @@ mybatis:
     sandbox.apricot.member.vo,
     sandbox.apricot.interest.vo,
     sandbox.apricot.scrap.vo,
+    sandbox.apricot.policy.dto.response,
     sandbox.apricot.recommendation.dto.response
   configuration:
     map-underscore-to-camel-case: true

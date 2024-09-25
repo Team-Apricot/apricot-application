@@ -18,16 +18,17 @@
   </resultMap>
 
   <insert id="save" parameterType="Scrap">
-    INSERT INTO SCRAPS (MEMBER_ID, POLICY_CODE) VALUES (#{memberId}, #{policyCode})
-    </insert>
+    INSERT INTO SCRAPS (MEMBER_ID, POLICY_CODE)
+    VALUES (#{memberId}, #{policyCode})
+  </insert>
 
   <select id="findScrap" resultMap="ScrapInfoResultMap">
-    SELECT SP.POLICY_CODE,D.DISTRICT_NAME, SP.POLICY_NAME, SP.PRD_RPTT_SECD, D.DISTRICT_LOGO_PATH
-    FROM (SELECT S.POLICY_CODE ,P.POLICY_NAME,P.PRD_RPTT_SECD,P.DISTRICT_CODE
+    SELECT SP.POLICY_CODE, D.DISTRICT_NAME, SP.POLICY_NAME, SP.PRD_RPTT_SECD, D.DISTRICT_LOGO_PATH
+    FROM (SELECT S.POLICY_CODE, P.POLICY_NAME, P.PRD_RPTT_SECD, P.DISTRICT_CODE
           FROM SCRAPS S
                  JOIN YOUTH_POLICY_DETAIL P
                       ON S.POLICY_CODE = P.POLICY_CODE
-          WHERE S.MEMBER_ID = 1) SP
+          WHERE S.MEMBER_ID = #{memberId}) SP
            LEFT JOIN DISTRICTS D
                      ON SP.DISTRICT_CODE = D.DISTRICT_CODE
   </select>

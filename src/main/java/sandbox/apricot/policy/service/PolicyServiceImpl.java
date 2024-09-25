@@ -1,7 +1,10 @@
 package sandbox.apricot.policy.service;
 
-import sandbox.apricot.policy.mapper.PolicyDao;
-import sandbox.apricot.policy.dto.PolicyDTO;
+import sandbox.apricot.policy.dto.response.PolicyInfo;
+import org.springframework.data.domain.PageRequest;
+import sandbox.apricot.policy.dto.response.District;
+import sandbox.apricot.policy.dto.response.DistrictPolicies;
+import sandbox.apricot.policy.dto.response.PolicyTLDR;
 import sandbox.apricot.policy.dto.response.DistrictPolicy;
 import sandbox.apricot.policy.mapper.PolicyMapper;
 
@@ -27,9 +30,7 @@ public class PolicyServiceImpl implements PolicyService {
 
     private final PolicyMapper policyMapper;
     private final RedisTemplate<String, Object> redisTemplate;
-    private final PolicyDao policyDao;
 
-    // 일자리 정책 조회
     @Override
     @Transactional(readOnly = true)
     public List<DistrictPolicy> getPolicyCntByDistrict() {
@@ -59,45 +60,31 @@ public class PolicyServiceImpl implements PolicyService {
         return dbData;
     }
 
-    // 전체 정책 조회
     @Override
-    public List<PolicyDTO> selectAllPolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectAllPolicy(policyCode, categoryCode);
+    public District getDistrict(String districtCode) {
+        return policyMapper.findByDistrictCode(districtCode);
     }
 
+    @Override
+    public DistrictPolicies getDistrictPolicies(String districtCode, String categoryCode, int page) {
+        List<PolicyTLDR> policies = policyMapper.findAllDistrictPolicyTLDRByCategory(
+                districtCode,
+                categoryCode,
+                PageRequest.of(page - 1, 6)
+        );
+        int totalPoliciesCnt = policyMapper.countPoliciesByDistrict(districtCode);
+        int totalPages = (int) Math.ceil((double) totalPoliciesCnt / 6);
 
-    public List<PolicyDTO> selectJobsPolicy(String policyCode, String categoryCode,
-            String districtCode) throws Exception {
-        return policyDao.selectJobsPolicy(policyCode, categoryCode, districtCode);
+        return DistrictPolicies.builder()
+                .categoryCode(categoryCode == null ? "ALL" : categoryCode)
+                .policies(policies)
+                .totalPages(totalPages)
+                .build();
     }
 
-    // 주거 정책 조회
     @Override
-    public List<PolicyDTO> selectHousingPolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectHousingPolicy(policyCode, categoryCode);
-    }
-
-    // 교육 정책 조회
-    @Override
-    public List<PolicyDTO> selectEducationPolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectEducationPolicy(policyCode, categoryCode);
-    }
-
-    // 복지 정책 조회
-    @Override
-    public List<PolicyDTO> selectWelfarePolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectWelfarePolicy(policyCode, categoryCode);
-    }
-
-    // 참여권리 정책 조회
-    @Override
-    public List<PolicyDTO> selectParticipationPolicy(String policyCode, String categoryCode)
-            throws Exception {
-        return policyDao.selectParticipationPolicy(policyCode, categoryCode);
+    public List<PolicyInfo> findPolicy(String searchName) {
+        return policyMapper.findPolicy(searchName);
     }
 
 }

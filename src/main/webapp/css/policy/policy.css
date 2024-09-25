@@ -1,0 +1,157 @@
+/*공통 section 제외 적용*/
+section {
+  background: #f8f8f8;
+  flex-direction: column;
+}
+
+/*정책 전체 화면*/
+.policy-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 40px;
+}
+
+/*검색 전체 화면*/
+.search-wrapper {
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/*검색 결과 전체 화면 */
+.search-policy-wrapper {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 70%;
+  background: #ffffff;
+  margin: 10px;
+}
+
+.search-info {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.search-detail {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+  align-items: center;
+}
+
+
+.detail:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2),
+  0 10px 20px rgba(0, 0, 0, 0.2),
+  0 15px 30px rgba(0, 0, 0, 0.5); /* 호버 시 그림자 확대 */
+
+}
+
+/*정책 상태*/
+.policy-status {
+  padding: 5px;
+  width: 70px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.time {
+  background-color: #ADCDFD;
+}
+
+.progress {
+  background-color: #73D990;
+}
+
+.end {
+  background-color: #FF8080;
+}
+
+/*지역구 이미지*/
+.location-img img {
+  width: 70px;
+}
+
+.location-name {
+  flex: 1;
+}
+
+.policy-name {
+  flex: 3; /* 남은 공간을 채우도록 설정 */
+}
+
+/*페이지네이션*/
+.pagination {
+  display: flex; /* 플렉스 레이아웃 */
+  justify-content: center; /* 중앙 정렬 */
+  list-style-type: none; /* 목록 스타일 제거 */
+  padding: 0; /* 패딩 제거 */
+}
+
+.pagination li {
+  margin: 0 5px; /* 좌우 여백 */
+}
+
+.pagination li a {
+  cursor: pointer; /* 포인터 커서 설정 */
+  display: inline-block; /* 인라인 블록 */
+  padding: 10px 15px; /* 패딩 */
+  background-color: #FFEFDC; /* 배경색 */
+  border-radius: 5px; /* 둥근 모서리 */
+  color: #333; /* 텍스트 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+  transition: background-color 0.3s; /* 전환 효과 */
+}
+
+.pagination li a.selected {
+  background-color: #FF6347; /* 선택된 버튼 색상 */
+  color: white; /* 선택된 텍스트 색상 */
+}
+
+.pagination li.arrow a {
+  background-color: #FFEFDC; /* 화살표 버튼 배경색 */
+  color: #FF6347; /* 화살표 텍스트 색상 */
+}
+
+.pagination li.arrow a:hover {
+  background-color: #FF6347; /* 화살표 버튼 호버 색상 */
+  color: white; /* 화살표 텍스트 호버 색상 */
+}
+
+/*스크랩 버튼*/
+.scrapBtn {
+  margin-left: 20px;
+}
+
+.fa-solid {
+  color: #F9973E;
+}
+
+.fa-regular {
+  color: #F9973E;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .detail {
+    flex-direction: column;
+  }
+
+  .scrapBtn {
+    margin: 0;
+  }
+}
