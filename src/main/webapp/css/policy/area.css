@@ -68,14 +68,6 @@ section {
   width: 100%;
 }
 
-.category {
-
-}
-
-.map {
-  width: 35%;
-}
-
 /* SVG 지도가 있는 메인 맵 섹션 */
 .map object {
   width: 100%; /* 지도 이미지를 전체 영역에 맞춤 */
