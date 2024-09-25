@@ -37,11 +37,3 @@
   font-size: 2em;
   color: #070707;
 }
-
-/* 리뷰 등록 댓글 */
-#reviewForm {
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-}
