@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- <mapper namespace="sandbox.apricot.policy.mapper.PolicyDao"> -->
 <mapper namespace="sandbox.apricot.policy.mapper.PolicyMapper">
-  <resultMap id="DistrictPolicyResultMap" type="sandbox.apricot.policy.dto.response.DistrictPolicy">
-    <id property="districtName" column="DISTRICT_NAME" />
-    <result property="policyCnt" column="POLICY_CNT" />
+
+  <resultMap id="DistrictPolicyResultMap" type="DistrictPolicy">
+    <id property="districtName" column="DISTRICT_NAME"/>
+    <result property="policyCnt" column="POLICY_CNT"/>
   </resultMap>
 
   <resultMap id="PolicyInfoResultMap" type="sandbox.apricot.policy.dto.response.PolicyInfo">
@@ -16,68 +17,51 @@
     <result property="districtLogoPath" column="DISTRICT_LOGO_PATH"/>
   </resultMap>
 
-  <!-- 지역구 및 카테고리에 따른 정책 조회 -->
-  <select id="selectAllPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
-    FROM (
-    SELECT y.*, ROWNUM AS rn
-    FROM youth_policy_detail y
-    WHERE district_code = #{districtCode, jdbcType=VARCHAR} <!-- jdbcType 추가 -->
-    <if test="categoryCode != null">
-      AND category_code = #{categoryCode, jdbcType=VARCHAR} <!-- jdbcType 추가 -->
-    </if>
-    AND ROWNUM <![CDATA[<=]]> 100
-    )
-    WHERE rn <![CDATA[>]]> 0
-  </select>
-
-  <!-- 일자리 정책 조회 -->
-  <select id="selectJobsPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
-    FROM (
-    SELECT y.*, ROWNUM AS rn
-    FROM youth_policy_detail y
-    WHERE policy_code = #{policyCode, jdbcType=VARCHAR}
-    AND category_code = #{categoryCode, jdbcType=VARCHAR}
-    AND district_code = #{districtCode, jdbcType=VARCHAR}
-    AND ROWNUM <![CDATA[<=]]> 100
-    )
-    WHERE rn <![CDATA[>]]> 0
-  </select>
-
-  <!-- 주거 정책 조회 -->
-  <select id="selectHousingPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
-    FROM youth_policy_detail
-    WHERE policy_code = #{policyCode, jdbcType=VARCHAR} AND category_code = #{categoryCode, jdbcType=VARCHAR}
-  </select>
-
-  <!-- 교육 정책 조회 -->
-  <select id="selectEducationPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
-    FROM youth_policy_detail
-    WHERE policy_code = #{policyCode, jdbcType=VARCHAR} AND category_code = #{categoryCode, jdbcType=VARCHAR}
-  </select>
-
-  <!-- 복지 정책 조회 -->
-  <select id="selectWelfarePolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
-    FROM youth_policy_detail
-    WHERE policy_code = #{policyCode, jdbcType=VARCHAR} AND category_code = #{categoryCode, jdbcType=VARCHAR}
-  </select>
-
-  <!-- 참여권리 정책 조회 -->
-  <select id="selectParticipationPolicy" parameterType="map" resultType="sandbox.apricot.policy.dto.PolicyDTO">
-    SELECT policy_code, policy_name, category_code, policy_content, policy_start_date, policy_end_date
-    FROM youth_policy_detail
-    WHERE policy_code = #{policyCode, jdbcType=VARCHAR} AND category_code = #{categoryCode, jdbcType=VARCHAR}
-  </select>
-
   <select id="getPolicyCountByDistrict" resultMap="DistrictPolicyResultMap">
-    SELECT d.DISTRICT_NAME AS DISTRICT_NAME, COUNT(*) AS POLICY_CNT
+    SELECT d.DISTRICT_NAME AS DISTRICT_NAME,
+           COUNT(*) AS POLICY_CNT
     FROM YOUTH_POLICY_DETAIL y
     JOIN districts d ON y.DISTRICT_CODE = d.DISTRICT_CODE
     GROUP BY d.DISTRICT_CODE, d.DISTRICT_NAME
+  </select>
+
+  <select id="countPoliciesByDistrict" resultType="int">
+    SELECT COUNT(*)
+    FROM YOUTH_POLICY_DETAIL
+    WHERE DISTRICT_CODE = #{districtCode}
+       OR (#{districtCode} BETWEEN '01' AND '25' AND DISTRICT_CODE = '26')
+  </select>
+
+  <select id="findByDistrictCode" resultType="District">
+    SELECT DISTRICT_CODE, DISTRICT_NAME, DISTRICT_LOGO_PATH, DISTRICT_SLOGAN
+    FROM DISTRICTS
+    WHERE DISTRICT_CODE = #{districtCode}
+  </select>
+
+  <select id="findAllDistrictPolicyTLDRByCategory" resultType="PolicyTLDR">
+    SELECT
+    ROW_NUMBER() OVER (ORDER BY
+    CASE
+    WHEN DISTRICT_CODE = '26' THEN 1
+    ELSE 0
+    END,
+    POLICY_START_DATE DESC NULLS FIRST) AS CURSOR_ID,
+    POLICY_CODE,
+    POLICY_NAME,
+    POLICY_CONTENT,
+    PRD_RPTT_SECD
+    FROM YOUTH_POLICY_DETAIL
+    WHERE (DISTRICT_CODE = #{districtCode} OR (#{districtCode} BETWEEN '01' AND '25' AND DISTRICT_CODE = '26'))
+    <if test="categoryCode != null">
+      AND CATEGORY_CODE = #{categoryCode}
+    </if>
+    ORDER BY
+    CASE
+    WHEN DISTRICT_CODE = '26' THEN 1
+    ELSE 0
+    END,
+    POLICY_START_DATE DESC NULLS FIRST
+    OFFSET #{pageable.offset} ROWS FETCH NEXT #{pageable.pageSize} ROWS ONLY
   </select>
 
   <select id="findPolicy" resultMap="PolicyInfoResultMap">

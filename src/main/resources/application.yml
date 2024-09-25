@@ -92,7 +92,11 @@ logging:
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
-  type-aliases-package: sandbox.apricot.member.vo, sandbox.apricot.interest.vo, sandbox.apricot.scrap.vo
+  type-aliases-package:
+    sandbox.apricot.member.vo, 
+    sandbox.apricot.interest.vo, 
+    sandbox.apricot.scrap.vo,
+    sandbox.apricot.policy.dto.response
   configuration:
     map-underscore-to-camel-case: true
 #    cache-enabled: false

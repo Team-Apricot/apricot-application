@@ -1,6 +1,34 @@
 ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
 
-document.addEventListener('DOMContentLoaded', function () {
+const districtMapping = {
+  '종로구': '01',
+  '중구': '02',
+  '용산구': '03',
+  '성동구': '04',
+  '광진구': '05',
+  '동대문구': '06',
+  '중랑구': '07',
+  '성북구': '08',
+  '강북구': '09',
+  '도봉구': '10',
+  '노원구': '11',
+  '은평구': '12',
+  '서대문구': '13',
+  '마포구': '14',
+  '양천구': '15',
+  '강서구': '16',
+  '구로구': '17',
+  '금천구': '18',
+  '영등포구': '19',
+  '동작구': '20',
+  '관악구': '21',
+  '서초구': '22',
+  '강남구': '23',
+  '송파구': '24',
+  '강동구': '25'
+};
+
+document.addEventListener('DOMContentLoaded', function() {
 
   $.ajax({
     url: 'api/v1/policy/word-cloud',
@@ -64,8 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
       zingchart.bind('myChart', 'label_click', function (e) {
         if (e.label) {
           const district = e.label.text;
-          window.location.href = `${window.location.origin}/policy?search-name=${encodeURIComponent(
-              district)}`;
+          const districtCode = districtMapping[district];
+          window.location.href = `${window.location.origin}/policy?districtCode=${encodeURIComponent(districtCode)}`;
         }
       });
 

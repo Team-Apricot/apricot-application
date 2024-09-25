@@ -147,7 +147,7 @@ section {
 
 /* 반응형 */
 @media (max-width: 480px) {
-  .like-detail {
+  .detail {
     flex-direction: column;
   }
 
