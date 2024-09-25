@@ -1,18 +1,14 @@
 package sandbox.apricot.recommendation.service;
 
 import java.util.List;
-import sandbox.apricot.recommendation.dto.RecommendationDTO;
-import sandbox.apricot.recommendation.dto.RecommendationScoreDTO;
+import sandbox.apricot.recommendation.dto.response.DistrictScoreDTO;
 
 public interface RecommendationService {
 
-    // 회원의 선호 카테고리와 평가를 기반으로 추천 지역구 목록을 반환
-    List<RecommendationDTO> getRecommendedDistricts(Long memberId, List<String> interests);
+    // 회원의 선호 혜택에 따라 각 지역구의 점수(정책 수 비례)을 가져 오는 메서드
+    List<DistrictScoreDTO> getDistrictScoreByPolicyNumber(Long memberId);
 
-    // 특정 지역구의 정책 평균 평가 점수를 가져옴
-    List<RecommendationDTO> getDistrictPolicyRating(Long membeId, String categoryCd);
-
-    // 특정 지역구의 총점 결과
-    List<RecommendationScoreDTO> getScoreDistrict(String district, String totalScore);
+    // 회원의 선호 혜택에 따라 각 지역구의 점수(각 지역구의 정책들 평가를 통해 지역구를 평가)을 가져 오는 메서드
+    List<DistrictScoreDTO> getDistrictScoreByPolicyReputation(Long memberId);
 
 }

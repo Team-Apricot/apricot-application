@@ -1,13 +1,16 @@
 package sandbox.apricot.recommendation.controller;
 
+import static org.springframework.http.HttpStatus.OK;
+
+import java.security.Principal;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sandbox.apricot.recommendation.dto.RecommendationDTO;
-import sandbox.apricot.recommendation.dto.RecommendationScoreDTO;
+import sandbox.apricot.common.response.ApiResponse;
+import sandbox.apricot.member.service.MemberService;
+import sandbox.apricot.recommendation.dto.response.DistrictScoreDTO;
 import sandbox.apricot.recommendation.service.RecommendationService;
 
 @RestController
@@ -16,25 +19,21 @@ import sandbox.apricot.recommendation.service.RecommendationService;
 public class RecommendationController {
 
     private final RecommendationService recommendationService;
+    private final MemberService memberService;
 
-    // 사용자 선호도에 따른 지역구 추천 API
-    @GetMapping("/districts")
-    public List<RecommendationDTO> getRecommendedDistricts(@RequestParam Long memberId, @RequestParam List<String> interests) {
-        return recommendationService.getRecommendedDistricts(memberId, interests);
+    @GetMapping("/by-number")
+    public ApiResponse<List<DistrictScoreDTO>> getDistrictScoreByNumber(Principal principal) {
+        List<DistrictScoreDTO> data = recommendationService.getDistrictScoreByPolicyNumber(
+                memberService.getMemberId(principal.getName())
+        );
+        return ApiResponse.successResponse(OK, "점수", data);
     }
 
-    // 특정 지역구의 특정 카테고리 정책 평가 점수 조회 API
-    //@GetMapping("/districts/{district}/rating")
-    @GetMapping("/districts2")
-    public List<RecommendationDTO> getDistrictPolicyRating(Long memberId, String categoryCd) {
-        categoryCd = "023040";
-        memberId = 1L;
-        return recommendationService.getDistrictPolicyRating(memberId, categoryCd);
+    @GetMapping("/by-reputation")
+    public ApiResponse<List<DistrictScoreDTO>> getDistrictScoreByReputation(Principal principal) {
+        List<DistrictScoreDTO> data = recommendationService.getDistrictScoreByPolicyReputation(
+                memberService.getMemberId(principal.getName())
+        );
+        return ApiResponse.successResponse(OK, "점수", data);
     }
-
-    @GetMapping("/districts3")
-    public List<RecommendationScoreDTO> getScoreDistrict(String district, String totalScore) {
-        return recommendationService.getScoreDistrict(district, totalScore);
-    }
-
 }
