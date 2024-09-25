@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import sandbox.apricot.policy.dto.response.District;
 import sandbox.apricot.policy.dto.response.DistrictPolicy;
 import sandbox.apricot.policy.dto.response.PolicyTLDR;
+import sandbox.apricot.policy.dto.response.PolicyInfo;
 
 @Mapper
 public interface PolicyMapper {
@@ -22,5 +23,7 @@ public interface PolicyMapper {
             @Param("categoryCode") String categoryCode,
             Pageable pageable
     );
+
+    List<PolicyInfo> findPolicy(String searchName);
 
 }

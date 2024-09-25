@@ -15,6 +15,7 @@
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/header.jsp"/>
 
 <section>
+  <div class="hidden-background"></div>
   <div class="content-header">
     <!-- 지역구 로고 -->
     <img src="${district.districtLogoPath}" alt="로고" class="region-logo" id="region-logo">

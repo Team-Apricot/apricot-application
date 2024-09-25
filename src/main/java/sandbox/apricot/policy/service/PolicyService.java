@@ -4,6 +4,7 @@ import java.util.List;
 import sandbox.apricot.policy.dto.response.District;
 import sandbox.apricot.policy.dto.response.DistrictPolicies;
 import sandbox.apricot.policy.dto.response.DistrictPolicy;
+import sandbox.apricot.policy.dto.response.PolicyInfo;
 
 public interface PolicyService {
 
@@ -12,5 +13,7 @@ public interface PolicyService {
     District getDistrict(String districtCode);
 
     DistrictPolicies getDistrictPolicies(String categoryCode, String districtCode, int page);
+
+    List<PolicyInfo> findPolicy(String searchName);
 
 }

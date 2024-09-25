@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sandbox.apricot.policy.dto.response.District;
+import sandbox.apricot.policy.dto.response.PolicyInfo;
 import sandbox.apricot.policy.service.PolicyService;
 
+import java.util.List;
 import sandbox.apricot.policy.dto.PolicyDetailDTO;
 import sandbox.apricot.policy.service.PolicyDetailService;
 
@@ -21,6 +23,18 @@ public class PolicyController {
     private final PolicyService policyService;
     private final PolicyDetailService policyDetailService;
 
+    //정책 검색 페이지
+    @GetMapping("/searchpolicy")
+    public String goToPolicy(@RequestParam("policy-search-name") String searchName, Model model) {
+        policyService.findPolicy(searchName);
+        List<PolicyInfo> policyInfo = policyService.findPolicy(searchName);
+        int policyCnt = policyInfo.size();
+        model.addAttribute("policyInfo", policyInfo);
+        model.addAttribute("policyCnt", policyCnt);
+        return "policy/policy";
+    }
+
+    // 검색 이름에 따른 지역구 정보 조회 및 area.jsp 렌더링
     @GetMapping
     public String viewArea(@RequestParam("districtCode") String districtCode, Model model) {
         District district = policyService.getDistrict(districtCode);

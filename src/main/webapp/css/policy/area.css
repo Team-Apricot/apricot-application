@@ -1,6 +1,10 @@
+section {
+  flex-direction: column;
+}
+
 /* 헤더 영역을 꽉 차게 수정 */
 .content-header {
-  margin: 1em;
+  margin: 1em 0 0 3em;
   width: 100%; /* 전체 너비를 차지 */
   background-color: #fff; /* 배경색 */
   display: flex; /* 플렉스 박스 사용 */

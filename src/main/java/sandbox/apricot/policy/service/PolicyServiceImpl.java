@@ -1,5 +1,6 @@
 package sandbox.apricot.policy.service;
 
+import sandbox.apricot.policy.dto.response.PolicyInfo;
 import org.springframework.data.domain.PageRequest;
 import sandbox.apricot.policy.dto.response.District;
 import sandbox.apricot.policy.dto.response.DistrictPolicies;
@@ -79,6 +80,11 @@ public class PolicyServiceImpl implements PolicyService {
                 .policies(policies)
                 .totalPages(totalPages)
                 .build();
+    }
+
+    @Override
+    public List<PolicyInfo> findPolicy(String searchName) {
+        return policyMapper.findPolicy(searchName);
     }
 
 }
