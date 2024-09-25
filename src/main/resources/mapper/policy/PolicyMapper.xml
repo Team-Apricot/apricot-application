@@ -72,4 +72,9 @@
        OR POLICY_CONTENT LIKE '%'||#{searchName}||'%'
   </select>
 
+  <insert id="saveReview">
+    INSERT INTO REVIEWS (POLICY_CODE, MEMBER_ID, POLICY_SCORE)
+    VALUES (#{policyCode}, #{memberId}, #{policyScore})
+  </insert>
+
 </mapper>

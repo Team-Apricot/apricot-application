@@ -26,4 +26,10 @@ public interface PolicyMapper {
 
     List<PolicyInfo> findPolicy(String searchName);
 
+    void saveReview(
+            @Param("policyCode") String policyCode,
+            @Param("memberId") Long memberId,
+            @Param("policyScore") Integer policyScore
+    );
+
 }

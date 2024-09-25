@@ -1,5 +1,6 @@
 package sandbox.apricot.policy.service;
 
+import sandbox.apricot.policy.dto.request.RegisterReview;
 import sandbox.apricot.policy.dto.response.PolicyInfo;
 import org.springframework.data.domain.PageRequest;
 import sandbox.apricot.policy.dto.response.District;
@@ -85,6 +86,15 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public List<PolicyInfo> findPolicy(String searchName) {
         return policyMapper.findPolicy(searchName);
+    }
+
+    @Override
+    public void registerReview(RegisterReview request, Long memberId) {
+        policyMapper.saveReview(
+                request.getPolicyCode(),
+                memberId,
+                request.getPolicyScore()
+        );
     }
 
 }
