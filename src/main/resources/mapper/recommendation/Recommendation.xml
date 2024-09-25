@@ -28,41 +28,103 @@
   <!-- 지역구별 정책 평가 점수 평균을 가져오는 쿼리 -->
   <select id="getDistrictPolicyRating" resultType="sandbox.apricot.recommendation.dto.RecommendationDTO">
     SELECT i.interest_id
-    ,i.member_id
-    ,i.category_id -- 관심사 (정책분야)
-    ,i.priority
-    ,y.category_code
-    ,SUM(CASE WHEN y.district_code = '01' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 종로구
-    ,SUM(CASE WHEN y.district_code = '02' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 중구
-    ,SUM(CASE WHEN y.district_code = '03' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 용산구
-    ,SUM(CASE WHEN y.district_code = '04' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 성동구
-    ,SUM(CASE WHEN y.district_code = '05' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 광진구
-    ,SUM(CASE WHEN y.district_code = '06' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 동대문구
-    ,SUM(CASE WHEN y.district_code = '07' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 중랑구
-    ,SUM(CASE WHEN y.district_code = '08' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 성북구
-    ,SUM(CASE WHEN y.district_code = '09' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 강북구
-    ,SUM(CASE WHEN y.district_code = '10' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 도봉구
-    ,SUM(CASE WHEN y.district_code = '11' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 노원구
-    ,SUM(CASE WHEN y.district_code = '12' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 은평구
-    ,SUM(CASE WHEN y.district_code = '13' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 서대문구
-    ,SUM(CASE WHEN y.district_code = '14' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 마포구
-    ,SUM(CASE WHEN y.district_code = '15' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 양천구
-    ,SUM(CASE WHEN y.district_code = '16' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 강서구
-    ,SUM(CASE WHEN y.district_code = '17' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 구로구
-    ,SUM(CASE WHEN y.district_code = '18' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 금천구
-    ,SUM(CASE WHEN y.district_code = '19' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 영등포구
-    ,SUM(CASE WHEN y.district_code = '20' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 동작구
-    ,SUM(CASE WHEN y.district_code = '21' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 관악구
-    ,SUM(CASE WHEN y.district_code = '22' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 서초구
-    ,SUM(CASE WHEN y.district_code = '23' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 강남구
-    ,SUM(CASE WHEN y.district_code = '24' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 송파구
-    ,SUM(CASE WHEN y.district_code = '25' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS 강동구
+          ,i.member_id
+          ,i.category_id AS categoryCd -- 관심사 (정책분야)
+          ,i.priority
+          ,SUM(CASE WHEN y.district_code = '01' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district01 --종로구
+          ,SUM(CASE WHEN y.district_code = '02' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district02 --중구
+          ,SUM(CASE WHEN y.district_code = '03' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district03 --용산구
+          ,SUM(CASE WHEN y.district_code = '04' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district04 --성동구
+          ,SUM(CASE WHEN y.district_code = '05' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district05 --광진구
+          ,SUM(CASE WHEN y.district_code = '06' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district06 --동대문구
+          ,SUM(CASE WHEN y.district_code = '07' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district07 --중랑구
+          ,SUM(CASE WHEN y.district_code = '08' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district08 --성북구
+          ,SUM(CASE WHEN y.district_code = '09' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district09 --강북구
+          ,SUM(CASE WHEN y.district_code = '10' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district10 --도봉구
+          ,SUM(CASE WHEN y.district_code = '11' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district11 --노원구
+          ,SUM(CASE WHEN y.district_code = '12' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district12 --은평구
+          ,SUM(CASE WHEN y.district_code = '13' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district13 --서대문구
+          ,SUM(CASE WHEN y.district_code = '14' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district14 --마포구
+          ,SUM(CASE WHEN y.district_code = '15' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district15 --양천구
+          ,SUM(CASE WHEN y.district_code = '16' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district16 --강서구
+          ,SUM(CASE WHEN y.district_code = '17' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district17 --구로구
+          ,SUM(CASE WHEN y.district_code = '18' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district18 --금천구
+          ,SUM(CASE WHEN y.district_code = '19' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district19 --영등포구
+          ,SUM(CASE WHEN y.district_code = '20' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district20 --동작구
+          ,SUM(CASE WHEN y.district_code = '21' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district21 --관악구
+          ,SUM(CASE WHEN y.district_code = '22' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district22 --서초구
+          ,SUM(CASE WHEN y.district_code = '23' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district23 --강남구
+          ,SUM(CASE WHEN y.district_code = '24' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district24 --송파구
+          ,SUM(CASE WHEN y.district_code = '25' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district25 --강동구
     FROM interests i
-    LEFT JOIN youth_policy_detail y
-    ON i.category_id = y.category_code
-    WHERE i.member_id = '1' -- 특정 회원 ID로 필터링
+        ,youth_policy_detail y
+    WHERE i.member_id = #{memberId} -- 특정 회원 ID로 필터링
+      AND i.category_id = y.category_code
     GROUP BY i.interest_id, i.member_id, i.category_id, i.priority, y.category_code
+    ORDER BY i.priority
+  </select>
 
+  <!-- 지역구별 총점 결과를 가져오는 쿼리 -->
+  <select id="getScoreDistrict" resultType="sandbox.apricot.recommendation.dto.RecommendationScoreDTO">
+    WITH district_sums AS (
+      SELECT
+          SUM(CASE WHEN y.district_code = '01' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district01 --종로구
+         ,SUM(CASE WHEN y.district_code = '02' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district02 --중구
+         ,SUM(CASE WHEN y.district_code = '03' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district03 --용산구
+         ,SUM(CASE WHEN y.district_code = '04' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district04 --성동구
+         ,SUM(CASE WHEN y.district_code = '05' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district05 --광진구
+         ,SUM(CASE WHEN y.district_code = '06' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district06 --동대문구
+         ,SUM(CASE WHEN y.district_code = '07' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district07 --중랑구
+         ,SUM(CASE WHEN y.district_code = '08' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district08 --성북구
+         ,SUM(CASE WHEN y.district_code = '09' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district09 --강북구
+         ,SUM(CASE WHEN y.district_code = '10' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district10 --도봉구
+         ,SUM(CASE WHEN y.district_code = '11' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district11 --노원구
+         ,SUM(CASE WHEN y.district_code = '12' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district12 --은평구
+         ,SUM(CASE WHEN y.district_code = '13' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district13 --서대문구
+         ,SUM(CASE WHEN y.district_code = '14' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district14 --마포구
+         ,SUM(CASE WHEN y.district_code = '15' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district15 --양천구
+         ,SUM(CASE WHEN y.district_code = '16' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district16 --강서구
+         ,SUM(CASE WHEN y.district_code = '17' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district17 --구로구
+         ,SUM(CASE WHEN y.district_code = '18' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district18 --금천구
+         ,SUM(CASE WHEN y.district_code = '19' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district19 --영등포구
+         ,SUM(CASE WHEN y.district_code = '20' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district20 --동작구
+         ,SUM(CASE WHEN y.district_code = '21' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district21 --관악구
+         ,SUM(CASE WHEN y.district_code = '22' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district22 --서초구
+         ,SUM(CASE WHEN y.district_code = '23' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district23 --강남구
+         ,SUM(CASE WHEN y.district_code = '24' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) AS district24 --송파구
+         ,SUM(CASE WHEN y.district_code = '25' THEN (CASE i.priority WHEN 1 THEN 5 WHEN 2 THEN 3 WHEN 3 THEN 2 END) ELSE 0 END) district25 --강동구
+      FROM interests i
+          ,youth_policy_detail y
+      WHERE i.member_id = '1'
+        AND i.category_id = y.category_code
+    )
+    SELECT 'district01' AS district, district01 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district02' AS district, district02 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district03' AS district, district03 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district04' AS district, district04 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district05' AS district, district05 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district06' AS district, district06 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district07' AS district, district07 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district08' AS district, district08 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district09' AS district, district09 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district10' AS district, district10 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district11' AS district, district11 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district12' AS district, district12 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district13' AS district, district13 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district14' AS district, district14 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district15' AS district, district15 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district16' AS district, district16 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district17' AS district, district17 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district18' AS district, district18 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district19' AS district, district19 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district20' AS district, district20 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district21' AS district, district21 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district22' AS district, district22 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district23' AS district, district23 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district24' AS district, district24 AS totalScore FROM district_sums UNION ALL
+    SELECT 'district25' AS district, district25 AS totalScore FROM district_sums
+
+    ORDER BY totalScore DESC
   </select>
 
 </mapper>

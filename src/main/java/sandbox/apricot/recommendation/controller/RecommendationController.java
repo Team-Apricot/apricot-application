@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import sandbox.apricot.recommendation.dto.RecommendationDTO;
+import sandbox.apricot.recommendation.dto.RecommendationScoreDTO;
 import sandbox.apricot.recommendation.service.RecommendationService;
 
 @RestController
@@ -25,8 +26,15 @@ public class RecommendationController {
     // 특정 지역구의 특정 카테고리 정책 평가 점수 조회 API
     //@GetMapping("/districts/{district}/rating")
     @GetMapping("/districts2")
-    public List<RecommendationDTO> getDistrictPolicyRating(String categoryCd) {
+    public List<RecommendationDTO> getDistrictPolicyRating(Long memberId, String categoryCd) {
         categoryCd = "023040";
-        return recommendationService.getDistrictPolicyRating(categoryCd);
+        memberId = 1L;
+        return recommendationService.getDistrictPolicyRating(memberId, categoryCd);
     }
+
+    @GetMapping("/districts3")
+    public List<RecommendationScoreDTO> getScoreDistrict(String district, String totalScore) {
+        return recommendationService.getScoreDistrict(district, totalScore);
+    }
+
 }

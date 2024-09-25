@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import sandbox.apricot.member.dto.response.MemberInfo;
 import sandbox.apricot.recommendation.dto.RecommendationDTO;
+import sandbox.apricot.recommendation.dto.RecommendationScoreDTO;
 
 @Mapper
 public interface RecomendationMapper {
@@ -16,6 +17,9 @@ public interface RecomendationMapper {
     List<RecommendationDTO> selectRecommendedDistricts(@Param("memberId") Long memberId, @Param("interests") List<String> interests);
 
     // 지역구별 정책 평가 점수를 가져오는 메서드
-    List<RecommendationDTO> getDistrictPolicyRating(@Param("categoryCd") String categoryCd);
+    List<RecommendationDTO> getDistrictPolicyRating(@Param("memberId") Long memberId, @Param("categoryCd") String categoryCd);
+    
+    // 지역구별 정책 총점을 가져오는 메서드
+    List<RecommendationScoreDTO> getScoreDistrict(@Param("district") String district, @Param("totalScore") String totalScore);
 
 }
