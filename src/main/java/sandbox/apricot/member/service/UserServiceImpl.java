@@ -2,6 +2,7 @@ package sandbox.apricot.member.service;
 
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import sandbox.apricot.member.mapper.MemberMapper;
 import sandbox.apricot.member.vo.Member;
@@ -11,6 +12,7 @@ import sandbox.apricot.member.vo.Member;
 public class UserServiceImpl implements UserService {
 
     private final MemberMapper memberMapper;
+    private final BCryptPasswordEncoder passwordEncoder; // BCryptPasswordEncoder 인스턴스 추가
 
     // 회원 등록 메서드 구현
     @Override
@@ -23,7 +25,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    // 비밀번호 업데이트 메서드 구현
+    // 비밀번호 갱신 메서드 구현
     @Override
     public void updatePassword(String email, String newPassword) {
         // 이메일을 통해 사용자를 검색
@@ -33,8 +35,11 @@ public class UserServiceImpl implements UserService {
         if (optionalMember.isPresent()) {
             Member member = optionalMember.get();
 
+            // 새 비밀번호 암호화
+            String encodedPassword = passwordEncoder.encode(newPassword); // 비밀번호 암호화
+
             // member의 ID를 사용하여 새 비밀번호로 업데이트
-            memberMapper.newPassword(member.getMemberId(), newPassword);
+            memberMapper.newPassword(member.getMemberId(), encodedPassword); // 암호화된 비밀번호 저장
         } else {
             // 사용자가 존재하지 않으면 예외를 발생시킴
             throw new IllegalArgumentException("해당 이메일을 가진 사용자가 존재하지 않습니다.");
