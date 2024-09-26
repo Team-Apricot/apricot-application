@@ -66,6 +66,7 @@ public class PolicyController {
         PolicyDetailDTO policyDetails = policyService.getPolicyDetailsByCode(policyCode);
         model.addAttribute("policyDetails", policyDetails);
 
+        // 조회 중인 정책과 같은 카테고리의 랜덤한 정책 3개 추천
         List<PolicyScoreDTO> recommendations = recommendationService.getPolicyRecommendation(
                 policyCode);
 
@@ -79,12 +80,13 @@ public class PolicyController {
         model.addAttribute("secondPolicyRecommendation", secondPolicy);
         model.addAttribute("thirdPolicyRecommendation", thirdPolicy);
 
-        District district1 = policyService.getDistrict(recommendations.get(0).getDistrictCode());
-        District district2 = policyService.getDistrict(recommendations.get(1).getDistrictCode());
-        District district3 = policyService.getDistrict(recommendations.get(2).getDistrictCode());
-        model.addAttribute("district1", district1);
-        model.addAttribute("district2", district2);
-        model.addAttribute("district3", district3);
+        // 각 정책에 해당하는 지역구
+        District firstPolicyDistrict = policyService.getDistrict(recommendations.get(0).getDistrictCode());
+        District secondPolicyDistrict = policyService.getDistrict(recommendations.get(1).getDistrictCode());
+        District thirdPolicyDistrict = policyService.getDistrict(recommendations.get(2).getDistrictCode());
+        model.addAttribute("firstPolicyDistrict", firstPolicyDistrict);
+        model.addAttribute("secondPolicyDistrict", secondPolicyDistrict);
+        model.addAttribute("thirdPolicyDistrict", thirdPolicyDistrict);
 
         //로그인 된 사람에게만 정보 넘기기 위해 사 용
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
