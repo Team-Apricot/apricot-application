@@ -38,5 +38,10 @@ public class ScrapServiceImpl implements ScrapService {
         return mapper.findScrap(memberId);
     }
 
+    @Override
+    public void deleteScrap(Long scrapId) {
+        mapper.deleteScrap(scrapId);
+    }
+
 }
 

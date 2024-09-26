@@ -42,15 +42,11 @@ body {
 
 .layout {
   display: flex;
-  /*justify-content: center; !*요소를 가운데로*!*/
   flex-direction: row;
-  /*align-items: center;*/
 }
 
 .navmenu-wrapper {
-  /*height: 100vh; !* 뷰포트 높이에 맞춰 고정 *!*/
-  /*position: relative; !* 고정된 위치에서 스크롤 가능하게 설정 *!*/
-  width:15%;
+  width: 15%;
 }
 
 /* 네비게이션 목차 설정 */
@@ -60,19 +56,16 @@ body {
 
 .navmenu a img {
   display: block;
-  /*margin: 0 auto; !* 이미지가 수평 중앙에 위치하도록 설정 *!*/
   max-width: 60%; /* 이미지 크기 조정 */
 }
 
 .navmenu a {
-  /*padding: 10px; !* 링크 자체의 패딩 조정 *!*/
   background-color: transparent; /* 링크 배경을 투명하게 설정 */
 }
 
 /* 공유와 찜하기 버튼 스타일 */
 .button-link {
   display: flex;
-  /*gap: 5px; !* 버튼 사이 간격 *!*/
 }
 
 .button-link {
@@ -101,7 +94,6 @@ body {
 .policy-detail-page {
   width: 70%;
   max-width: 1200px;
-  /*margin: 20px auto auto calc(13% + 60px);*/
   padding: 20px;
   border-radius: 8px;
 }
@@ -110,8 +102,7 @@ body {
 /* 정책 내용 스타일 */
 .policy-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   padding: 15px;
   margin: 15px auto;
 }
@@ -340,3 +331,81 @@ body {
   }
 
 }
+
+/* 하트 아이콘 css */
+.icon {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  font-size: 15px;
+  user-select: none;
+  transition: 100ms;
+  margin-left: 5px;
+}
+
+.check {
+  top: 0;
+  left: 0;
+  height: 2em;
+  width: 2em;
+  transition: 100ms;
+  animation: dislike_effect 400ms ease;
+}
+
+.container input:checked ~ .check path {
+  fill: #ff5353;
+  stroke-width: 0;
+}
+
+.container input:checked ~ .check {
+  animation: like_effect 400ms ease;
+}
+
+.container:hover {
+  /*transform: scale(1.1);*/
+}
+
+@keyframes like_effect {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes dislike_effect {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+

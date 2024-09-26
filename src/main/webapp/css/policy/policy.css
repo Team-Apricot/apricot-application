@@ -24,7 +24,7 @@ section {
 .search-policy-wrapper {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-  width: 70%;
+  width: 100%;
   background: #ffffff;
   margin: 10px;
 }

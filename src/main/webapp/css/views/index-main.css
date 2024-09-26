@@ -7,12 +7,10 @@ form {
 }
 
 /* 기타 스타일 */
-
 body {
   display: flex; /* Flexbox를 사용하여 자식 요소를 배치 */
   flex-direction: column; /* 수직 방향으로 배치 */
 }
-
 
 .blur-background {
   position: relative; /* 헤더 위에 위치하지 않도록 조정 */
@@ -30,8 +28,7 @@ body {
 }
 
 #rank-policy-districts-container {
-  margin-top: 20px;
-  margin-left: 35em;
+  margin: 20px 0 0 35em;
   border: none;
   width: 100%;
   max-width: 500px;
@@ -131,12 +128,17 @@ body {
 }
 
 /* 미디어 쿼리: 화면 너비가 480px 이하인 경우 */
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   section {
     flex-direction: column; /* 화면이 좁아지면 세로 방향으로 배치 */
   }
 
   .search-container, .word-cloud {
     width: 100%; /* 컨테이너의 폭을 전체 화면에 맞춤 */
+  }
+
+  #rank-policy-districts-container {
+    margin-left: 0;
+    justify-content: center;
   }
 }

@@ -20,7 +20,9 @@
 
       <div class="radio">
         <%--                <div class="nickname-input">--%>
-        <div class="update_nick_value"><label for="updateNick">닉네임 수정</label></div>
+        <div class="update-icon-label">
+          <img src="${pageContext.request.contextPath}/assets/img/person.png">
+          <label for="updateNick">닉네임 수정</label></div>
         <input type="text" id="updateNick" placeholder="닉네임을 입력하세요">
         <%--                </div>--%>
         <button class="update-detail-btn" onclick="updateNickname(${memberId})"> 수정
@@ -28,7 +30,11 @@
       </div>
 
       <div class="radio">
-        <label for="category1">나이 </label>
+        <div class="update-icon-label">
+          <img src="${pageContext.request.contextPath}/assets/img/age.png" alt="살구 Logo">
+          <label for="category1">나이 </label>
+        </div>
+
         <div id="category1" class="category-list">
           <input type="radio" name="age" id="age1" value="20대 미만"><label for="age1">20대
           미만</label>
@@ -45,7 +51,10 @@
       </div>
 
       <div class="radio">
-        <label for="category2">직업</label>
+        <div class="update-icon-label">
+          <img src="${pageContext.request.contextPath}/assets/img/job.png" alt="살구 Logo">
+          <label for="category2">직업</label>
+        </div>
         <div id="category2" class="category-list">
           <input type="radio" name="job" id="job1" value="무직"><label for="job1">무직</label>
           <input type="radio" name="job" id="job2" value="학생"><label for="job2">학생</label>
@@ -57,7 +66,10 @@
     </div>
     <div class="modal-right">
       <div class="radio">
-        <label for="category3">결혼여부</label>
+        <div class="update-icon-label">
+          <img src="${pageContext.request.contextPath}/assets/img/marriage.png" alt="살구 Logo">
+          <label for="category3">결혼여부</label>
+        </div>
         <div id="category3" class="category-list">
           <input type="radio" id="marriage1" name="marriage" value="기혼"><label
             for="marriage1">기혼</label>
@@ -68,7 +80,10 @@
       </div>
 
       <div class="radio">
-        <label for="category4">자녀수</label>
+        <div class="update-icon-label">
+          <img src="${pageContext.request.contextPath}/assets/img/baby.png" alt="살구 Logo">
+          <label for="category4">자녀수</label>
+        </div>
         <div id="category4" class="category-list">
           <input type="radio" id="numchild1" name="numchild" value=0><label
             for="numchild1">0</label>
@@ -81,7 +96,10 @@
       </div>
 
       <div class="radio">
-        <label for="category5">성별</label>
+        <div class="update-icon-label">
+          <img src="${pageContext.request.contextPath}/assets/img/gender.png" alt="살구 Logo">
+          <label for="category5">성별</label>
+        </div>
         <div id="category5" class="category-list">
           <input type="radio" name="gender" id="gender1" value="남자"><label for="gender1">
           남자</label>
@@ -89,7 +107,6 @@
           여자</label>
         </div>
         <button class="update-detail-btn" onclick="updateGender(${memberId})">수정</button>
-
       </div>
     </div>
   </div>

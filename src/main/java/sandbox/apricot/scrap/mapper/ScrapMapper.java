@@ -8,7 +8,9 @@ import sandbox.apricot.scrap.vo.Scrap;
 @Mapper
 public interface ScrapMapper {
 
-  void save(Scrap scrap);
+    void save(Scrap scrap);
 
-  List<ScrapInfo> findScrap(Long memberId);
+    List<ScrapInfo> findScrap(Long memberId);
+
+    void deleteScrap(Long scrapId);
 }
