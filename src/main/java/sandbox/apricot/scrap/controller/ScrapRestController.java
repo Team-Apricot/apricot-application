@@ -5,6 +5,8 @@ import static org.springframework.http.HttpStatus.OK;
 import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +36,17 @@ public class ScrapRestController {
                 policyCode
         );
         return ApiResponse.successResponse(OK, "성공적으로 혜택을 저장하였습니다.");
+    }
+
+    /*
+     *혜택 삭제
+     */
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/delete/{scrapId}")
+    public ApiResponse<Void> delete(@PathVariable Long scrapId) {
+        System.out.println(scrapId);
+        scrapService.deleteScrap(scrapId);
+        return ApiResponse.successResponse(OK, "성공적으로 혜택을 삭제했습니다.");
     }
 
 }

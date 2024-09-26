@@ -12,73 +12,82 @@
 </head>
 <body>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/header.jsp"/>
-<%@ include file="/WEB-INF/views/member/updatePassword.jsp" %>
 
 <section>
   <div class="hidden-background"></div>
-  <%--	백그라운드 비디오 - 나중에 필요시 사용 --%>
-  <%--	<video class="background-video" autoplay muted loop>--%>
-  <%--		<source src="${pageContext.request.contextPath}/assets/video/index-page-background.mp4" type="video/mp4">--%>
-  <%--	</video>--%>
-  <%--	<div class="overlay"></div>--%>
+<%@ include file="/WEB-INF/views/member/updatePassword.jsp" %>
   <div class="mypage-container blur-background">
     <div class="mypage-title">
       My Page
     </div>
+   <div class="update-info">
+      <div class="update-btn" onclick="goToUpdateInfo()">정보 수정</div>
+      <div class="update-btn" onclick="openUpdatePwModal()">비밀번호 수정</div>
+    </div>
+
     <!-- 내정보 확인-->
     <div class="mypage-info">
       <div class="mypage-left-side">
+       <!-- 기본 정보 -->
+    <div class="basic-info">
+      <div class="my">
+        <img class="info" src=${pageContext.request.contextPath}/assets/img/person.png>
+        <div class="info-header">닉네임</div>
+        ${memberInfo.nickName}
+      </div>
+      <div class="my">
+        <img src=${pageContext.request.contextPath}/assets/img/email.png>
+        <div class="info-header">이메일</div>
+        ${memberInfo.email}
+      </div>
+      <div class="my">
+        <img class="info" src=${pageContext.request.contextPath}/assets/img/age.png>
+        <div class="info-header">나이</div>
+        (${memberInfo.ageRange})
+      </div>
+      <div class="my">
+        <img class="info" src=${pageContext.request.contextPath}/assets/img/job.png>
+        <div class="info-header">직업</div>
+        ${memberInfo.career}
+      </div>
+    </div>
         <div class="my-info">
-
-          <!-- 기본 정보 -->
-          <div class="basic-info">
-            <i class="fa-solid fa-user"></i>
-            <div class="my-nickname">${memberInfo.nickName} </div>
-            <div class="my-id">${memberInfo.email}</div>
-            <div class="my-age">(${memberInfo.ageRange})</div>
-            <div class="my-job">${memberInfo.career}</div>
-          </div>
-
           <!-- 관심 정보 -->
           <div class="interest-info">
+          <div class="title-my-interest">
             <div class="title">
-              선택 하신 관심 분야
+              선택 한 관심 분야
             </div>
             <div class="my-interest">
               <c:forEach items="${memberInfo.interests}" var="interest">
                 <div class="my-interest-detail">#${interest}</div>
               </c:forEach>
             </div>
-            <div class="update-info">
-              <div class="update-btn" onclick="goToUpdateInfo()">정보 수정</div>
-              <div class="update-btn" onclick="openUpdatePwModal()">비밀번호 수정</div>
             </div>
-          </div>
-        </div>
 
-        <!-- 추가 정보 -->
-        <div class="add-info">
-          <div class="info-detail">
-            <div class="add-info-detail">
-              <i class="fa-solid fa-heart"></i>
-              <div class="info-header">결혼여부</div>
-              <div class="info-content">${memberInfo.marriedStatus}</div>
-            </div>
-          </div>
-
-          <div class="info-detail">
-            <div class="add-info-detail">
-              <i class="fa-solid fa-baby-carriage"></i>
-              <div class="info-header">자녀수</div>
-              <div class="info-content">${memberInfo.numChild}</div>
-            </div>
-          </div>
-
-          <div class="info-detail">
-            <div class="add-info-detail">
-              <i class="fa-solid fa-venus-mars"></i>
-              <div class="info-header">성별</div>
-              <div class="info-content">${memberInfo.gender}</div>
+            <!-- 추가 정보 -->
+            <div class="add-info">
+              <div class="info-detail">
+                <div class="add-info-detail">
+                  <img src=${pageContext.request.contextPath}/assets/img/marriage.png>
+                  <div class="info-header">결혼여부</div>
+                  <div class="info-content">${memberInfo.marriedStatus}</div>
+                </div>
+              </div>
+              <div class="info-detail">
+                <div class="add-info-detail">
+                  <img src=${pageContext.request.contextPath}/assets/img/baby.png>
+                  <div class="info-header">자녀수</div>
+                  <div class="info-content">${memberInfo.numChild}</div>
+                </div>
+              </div>
+              <div class="info-detail">
+                <div class="add-info-detail">
+                  <img src=${pageContext.request.contextPath}/assets/img/gender.png>
+                  <div class="info-header">성별</div>
+                  <div class="info-content">${memberInfo.gender}</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

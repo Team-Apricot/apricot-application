@@ -43,7 +43,7 @@
 
 .login-modal-content input {
   border-radius: 10px;
-  margin-top:10px;
+  margin-top: 10px;
   margin-bottom: 10px;
   height: 30px;
   padding: 5px 10px 5px 10px;
@@ -56,13 +56,13 @@
   font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
 }
 
-.login-form{
+.login-form {
   display: flex;
   flex-direction: column;
 }
 
-.login-btn{
-  margin-top:10px;
+.login-btn {
+  margin-top: 10px;
   background-color: #F9973E;
   color: white;
   border: none;
@@ -79,8 +79,8 @@
   flex-direction: column;
 }
 
-.signup-btn{
-  margin-top:10px;
+.signup-btn {
+  margin-top: 10px;
   background-color: #FFBB6A;
   color: white;
   border: none;
@@ -96,12 +96,12 @@
   justify-content: flex-end;
 }
 
-.close-btn{
+.close-btn {
   background-color: transparent;
-  color:#FFBB6A;
+  color: #FFBB6A;
   font-size: 30px;
   font-weight: bold;
-  border:none;
+  border: none;
 }
 
 .login-logo {
@@ -110,11 +110,22 @@
   justify-content: center;
 }
 
-.login-logo  img {
+.login-logo img {
   width: 170px; /* 로고 이미지 크기 */
   margin-right: 30px;
 }
 
-.login-form button:hover{
+.login-form button:hover {
   background-color: #e06a43;
+}
+
+@media (max-width: 550px) {
+  .login-modal {
+    padding: 0;
+    /*width:250px;*/
+  }
+
+  .login-modal-content {
+    width: 300px;
+  }
 }

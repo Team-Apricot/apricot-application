@@ -132,6 +132,11 @@ section {
   transform: scale(0.95); /* 클릭 시 살짝 축소 */
 }
 
+/*지도*/
+.map {
+  width: 35%;
+}
+
 /* 지역구 폴리곤 hover 시 음영 효과 및 테두리 추가 */
 .region {
   transition: all 0.3s ease; /* 모든 효과 부드럽게 */
@@ -176,19 +181,6 @@ section {
 /* 카테고리 버튼 및 마감 버튼 호버 */
 .details input[type="button"]:hover, .details .deadline-btn:hover {
   background-color: #FF4500; /* 카테고리 버튼 hover 시 색상 변경 */
-}
-
-/* 반응형 디자인 */
-@media (max-width: 1024px) {
-  .details2 {
-    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
-  }
-}
-
-@media (max-width: 768px) {
-  .details2 {
-    grid-template-columns: 1fr; /* 1열 그리드 */
-  }
 }
 
 /* 페이지네이션 스타일 */
@@ -254,4 +246,46 @@ section {
 
 .end {
   background-color: #FF8080;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .map {
+    width: 60%;
+    /*min-height: 400px;*/
+  }
+
+  .content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .map {
+    width: 100%;
+    /*min-height: 500px;*/
+  }
+
+  .details2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .policy-container {
+    display: flex;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .details input[type="button"] {
+    padding: 5px 10px;
+    margin-left: 3px;
+  }
 }

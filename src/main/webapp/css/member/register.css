@@ -82,7 +82,7 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  font-size: 22px;
+  font-size: 15px;
 }
 
 .form-group {
@@ -108,7 +108,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 13px;
 }
 
 .category-list {
@@ -134,7 +134,7 @@
 
 .category-list button {
   color: black;
-  font-size: 1.03em;
+  font-size: 1em;
 }
 
 /* 원래 라디오와 checkbox 버튼 제거*/
@@ -152,7 +152,7 @@ input[type="radio"], input[type="checkbox"] {
   line-height: 24px;
   text-align: center;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 12px;
   background-color: #fff;
   color: #333;
 }
@@ -172,7 +172,7 @@ input[type="radio"], input[type="checkbox"] {
   line-height: 24px;
   text-align: center;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 12px;
   background-color: #fff;
   color: #333;
 }
@@ -210,4 +210,11 @@ input[type="range"]:focus {
 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 10px;
+}
+
+
+@media(max-width: 550px){
+  .signup-content {
+    width: 300px;
+  }
 }

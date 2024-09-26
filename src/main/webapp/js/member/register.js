@@ -65,7 +65,7 @@ function gotoSecondSignUp() {
   }
 
   const isValid = Object.values(fields)
-    .every(value => value !== '') && fields.password === fields.passwordChk;
+  .every(value => value !== '') && fields.password === fields.passwordChk;
 
   if (isValid) {
     const param = {
@@ -184,7 +184,12 @@ function finishSignUp() {
   // 필수 항목에 대한 유효성 검사
   if (!completeInfo.ageRange || !completeInfo.gender || !completeInfo.career
       || !completeInfo.marriedStatus) {
-    alert("모든 필수 항목을 선택해 주세요.");
+    Swal.fire({
+      title: '유효성 검사',
+      text: '모든 필수 항목을 입력해주세요',
+      icon: 'error',
+      confirmButtonText: '확인'  // 확인 버튼 텍스트
+    })
     return;
   }
 
@@ -195,7 +200,15 @@ function finishSignUp() {
     data: JSON.stringify(completeInfo),
     success: function (response) {
       console.log(response);
-      location.href = "/"; // TODO: 로그인 모달 이동 필요
+      Swal.fire({
+        title: '회원가입',
+        text: '회원가입을 성공했습니다.',
+        icon: 'success',
+        confirmButtonText: '확인'  // 확인 버튼 텍스트
+      }).then(function(){
+        location.href = "/"; // TODO: 로그인 모달 이동 필요
+      });
+
     },
     error: function (xhr, status, error) {
       console.log("Error: " + error);
@@ -223,7 +236,12 @@ let count = 0;
 function getCheckedCnt(benefit) {
   if (benefit.checked) {
     if (count >= 3) {
-      alert("최대 3개까지만 선택가능합니다!");
+      Swal.fire({
+        title: '혜택 선택 수',
+        text: '최대 3개까지만 선택 가능합니다.',
+        icon: 'error',
+        confirmButtonText: '확인'  // 확인 버튼 텍스트
+      })
       benefit.checked = false;
       return;
     }
@@ -233,7 +251,6 @@ function getCheckedCnt(benefit) {
     count--;
     checkList = checkList.filter(item => item !== benefit.id);
   }
-  console.log(checkList);
   updateOrderNumbers();
 }
 
@@ -243,9 +260,45 @@ function updateOrderNumbers() {
     order.textContent = '';
   });
 
-  checkList.forEach((checkboxId, index) => {
+  checkList.forEach((checkboxId, count) => {
     const label = document.querySelector(`label[for='${checkboxId}']`);
     const orderDisplay = label.querySelector('.order-number');
-    orderDisplay.textContent = `${index + 1}`;
+    orderDisplay.textContent = `${count + 1}`;
   });
 }
+
+//초기화 버튼
+function resetForm() {
+
+  const inputs = document.querySelectorAll(
+      'input[type="radio"], input[type="checkbox"], input[type="range"]');
+
+  inputs.forEach(input => {
+    if (input.type === 'radio' || input.type === 'checkbox') {
+      input.checked = false; // 선택 해제
+    } else if (input.type === 'range') {
+      input.value = 0; // 0으로 초기화
+    }
+  });
+
+  // 유효성 검사 메시지 초기화
+  document.getElementById('ageValid').textContent = '';
+  document.getElementById('genderValid').textContent = '';
+  document.getElementById('jobValid').textContent = '';
+  document.getElementById('marriageValid').textContent = '';
+  document.getElementById('benefitsValid').textContent = '';
+
+  resetOrder();
+}
+
+function resetOrder() {
+  count = 0;  // 선택한 체크박스의 개수를 0으로 초기화
+  checkList = [];  // 선택된 체크박스 ID 목록을 초기화
+
+  // 선택 순서 표시 부분을 모두 초기화
+  document.querySelectorAll('.order-number').forEach(order => {
+    order.textContent = '';  // 선택 순서 표시 제거
+  });
+}
+
+
