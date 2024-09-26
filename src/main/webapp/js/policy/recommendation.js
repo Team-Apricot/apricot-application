@@ -1,14 +1,12 @@
 function openRecommendModal() {
   const hiddenBackground = document.querySelector('.hidden-background');
   const recommendModal = document.querySelector('.recommendation-modal');
-  const mainContent = document.querySelector('.mainContent');
 
   hiddenBackground.style.display = 'block';
   recommendModal.style.display = 'block';
-  mainContent.style.pointerEvents = 'none';
 
   $.ajax({
-    url: '/recommendations',
+    url: '/recommendation',
     type: 'GET',
     success: function (data) {
       $('#recommendation-modal-content').html(data);
@@ -25,12 +23,17 @@ function openRecommendModal() {
 function closeRecommendModal() {
   const hiddenBackground = document.querySelector('.hidden-background');
   const recommendModal = document.querySelector('.recommendation-modal');
-  const mainContent = document.querySelector('.mainContent');
 
   hiddenBackground.style.display = 'none';
   recommendModal.style.display = 'none';
-  mainContent.style.pointerEvents = 'auto';
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const hiddenBackground = document.querySelector('.hidden-background');
+  if (hiddenBackground) {
+    hiddenBackground.addEventListener('click', closeLoginModal);
+  }
+});
 
 ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9"];
 

@@ -9,7 +9,7 @@
   </div>
   <div class="recommendation-modal-content">
 <%--    <form class="recommendation-form" action="${pageContext.request.contextPath}/api/v1/recommendation" method="get">--%>
-      <h2>${memberInfo.nickName} 지역구 추천</h2>
+    <p>${memberInfo.nickName}</p>
 
       <div class="chart-wrapper">
             <div id="chart1" class="chart--container"></div>

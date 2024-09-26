@@ -22,9 +22,9 @@
   left: 50%;
   transform: translate(-50%, -50%); /* 화면 중앙으로 이동 */
   background-color: #fff;
-  padding: 20px; /* 패딩을 조정해 닫기 버튼과 콘텐츠 간격 확보 */
-  border-radius: 10px; /* 모달 창의 라운딩 */
-  z-index: 5;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 5; /* hiddenBackground 위에 표시되도록 설정 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   width: 92%;
@@ -41,7 +41,6 @@
   box-sizing: border-box;
 }
 
-/* 닫기 버튼 스타일 */
 .close {
   position: absolute;
   top: 10px;
