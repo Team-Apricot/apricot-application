@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sandbox.apricot.recommendation.mapper.RecommendationMapper">
+
+  <resultMap id="DistrictScoreResultMap" type="DistrictScoreDTO">
+    <result property="districtCode" column="DISTRICT_CODE"/>
+    <result property="districtScore" column="DISTRICT_SCORE"/>
+  </resultMap>
+
+  <resultMap id="ScrapGroupSimilarityMap" type="ScrapGroupSimilarityDTO">
+    <result property="originalGender" column="GROUP1_GENDER"/>
+    <result property="originalAgeRange" column="GROUP1_AGE_RANGE"/>
+    <result property="comparisonGender" column="GROUP2_GENDER"/>
+    <result property="comparisonAgeRange" column="GROUP2_AGE_RANGE"/>
+    <result property="preferenceCount" column="preferenceCount"/>
+    <result property="cosineSimilarity" column="cosineSimilarity"/>
+  </resultMap>
+
+  <resultMap id="PolicyScoreMap" type="PolicyScoreDTO">
+    <result property="policyCode" column="POLICY_CODE"/>
+    <result property="districtCode" column="DISTRICT_CODE"/>
+    <result property="totalScore" column="TOTAL_SCORE"/>
+    <result property="reviewCount" column="REVIEW_COUNT"/>
+    <result property="averageScore" column="AVG_SCORE"/>
+    <result property="categoryCode" column="CATEGORY_CODE"/>
+  </resultMap>
+
+
+  <!--개인별 지역구 점수(정책 수)-->
+  <select id="findAllDistrictScoreFromPolicyNumberByMemberId" resultMap="DistrictScoreResultMap">
+    SELECT y.district_code,
+           SUM(CASE i.priority
+                 WHEN 1 THEN 5
+                 WHEN 2 THEN 3
+                 WHEN 3 THEN 2
+                 ELSE 0 END) AS DISTRICT_SCORE
+    FROM INTERESTS i
+           JOIN YOUTH_POLICY_DETAIL y ON i.CATEGORY_ID = y.CATEGORY_CODE
+    WHERE i.MEMBER_ID = #{memberId}
+      AND DISTRICT_CODE != '26'
+    GROUP BY y.DISTRICT_CODE
+    ORDER BY DISTRICT_CODE
+  </select>
+  <!--개인별 지역구 점수(정책 점수)-->
+  <select id="findAllDistrictScoreFromPolicyScoreByMemberId" resultMap="DistrictScoreResultMap">
+    SELECT de.DISTRICT_CODE,                                    -- 지역 코드
+           SUM(de.AVG_SCORE * (CASE i.PRIORITY
+                                 WHEN 1 THEN 1.5
+                                 WHEN 2 THEN 1.2
+                                 WHEN 3 THEN 1.1
+                                 ELSE 1 END)) AS DISTRICT_SCORE -- 총점에 가중치를 곱한 값의 합계
+    FROM DISTRICT_EVALUATION de
+           JOIN INTERESTS i ON de.CATEGORY_CODE = i.CATEGORY_ID
+    WHERE i.MEMBER_ID = #{memberId}
+      and DISTRICT_CODE != '26'
+    GROUP BY de.DISTRICT_CODE
+    ORDER BY DISTRICT_CODE
+  </select>
+
+  <!-- 나이,성별 그룹에 따른 행동기반(찜)  지역구 추천 -->
+  <select id="getDistrictRecommendFromScrapBehaviorByMemberId" resultMap="ScrapGroupSimilarityMap">
+    WITH GroupVectors AS (SELECT m.age_range,
+                                 m.gender,
+                                 y.district_code,
+                                 COUNT(*) AS district_preference_count
+                          FROM members m
+                                 JOIN
+                               scraps s ON m.member_id = s.member_id
+                                 JOIN
+                               YOUTH_POLICY_DETAIL y ON s.policy_code = y.policy_code
+                          WHERE y.district_code != '26'
+                          GROUP BY m.age_range,
+                                   m.gender,
+                                   y.district_code),
+         VectorPairs AS (SELECT gv1.age_range                            AS group1_age_range,
+                                gv1.gender                               AS group1_gender,
+                                gv2.age_range                            AS group2_age_range,
+                                gv2.gender                               AS group2_gender,
+                                SUM(gv1.district_preference_count *
+                                    gv2.district_preference_count)       AS dot_product, -- 내적
+                                SQRT(SUM(gv1.district_preference_count *
+                                         gv1.district_preference_count)) AS magnitude1,  -- 그룹 1의 벡터 크기
+                                SQRT(SUM(gv2.district_preference_count *
+                                         gv2.district_preference_count)) AS magnitude2   -- 그룹 2의 벡터 크기
+                         FROM GroupVectors gv1
+                                JOIN
+                              GroupVectors gv2 ON gv1.district_code = gv2.district_code -- 같은 지역구에 대한 데이터만 비교
+                         WHERE gv1.district_code != '26'
+                           AND gv1.age_range = #{originalAgeRange}
+                           AND gv1.gender = #{originalGender}
+                           AND (gv1.age_range != gv2.age_range OR gv1.gender != gv2.gender) -- 자신을 제외한 다른 그룹과 비교
+                         GROUP BY gv1.age_range, gv1.gender, gv2.age_range, gv2.gender),
+         BestMatch AS (
+           -- 코사인 유사도가 가장 높은 그룹을 찾음
+           SELECT group1_age_range,
+                  group1_gender,
+                  group2_age_range,
+                  group2_gender,
+                  dot_product / (magnitude1 * magnitude2) AS cosine_similarity
+           FROM VectorPairs
+           ORDER BY cosine_similarity DESC
+             FETCH FIRST 1 ROWS ONLY -- 코사인 유사도가 가장 높은 그룹 1개만 선택
+         )
+    -- 선호 지역구를 찾는 쿼리
+    SELECT bm.group1_age_range,
+           bm.group1_gender,
+           bm.group2_age_range,
+           bm.group2_gender,
+           gv.district_code,
+           gv.district_preference_count AS preference_count,
+           cosine_similarity
+    FROM BestMatch bm
+           JOIN
+         GroupVectors gv ON gv.age_range = bm.group2_age_range AND gv.gender = bm.group2_gender
+    ORDER BY preference_count DESC
+      FETCH FIRST 3 ROWS ONLY -- 해당 그룹이 가장 선호하는 지역구 3개 선택
+  </select>
+
+  <!-- 유사한 정책 추천-->
+  <select id="getRelatedPolicyByPolicyScore" resultMap="PolicyScoreMap">
+    SELECT *
+    FROM YOUTH_POLICY_EVALUATION
+    WHERE YOUTH_POLICY_EVALUATION.category_code =
+          (SELECT CATEGORY_CODE FROM YOUTH_POLICY_DETAIL WHERE POLICY_CODE = #{policyCode})
+      AND district_code != '26'
+      AND POLICY_CODE != #{policyCode}
+    ORDER BY avg_score DESC
+  </select>
+
+</mapper>
