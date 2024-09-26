@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sandbox.apricot.recommendation.mapper.RecommendationMapper">
-  <!--DistrictScoreDTO 형태로 가져오는 Map -->
+
   <resultMap id="DistrictScoreResultMap" type="DistrictScoreDTO">
     <result property="districtCode" column="DISTRICT_CODE"/>
     <result property="districtScore" column="DISTRICT_SCORE"/>
@@ -60,17 +60,16 @@
 
   <!-- 나이,성별 그룹에 따른 행동기반(찜)  지역구 추천 -->
   <select id="getDistrictRecommendFromScrapBehaviorByMemberId" resultMap="ScrapGroupSimilarityMap">
-    -- 나이,성별 그룹에 따른 유사 그룹 지역구 추천
     WITH GroupVectors AS (SELECT m.age_range,
                                  m.gender,
-                                 y.district_code, -- 정책이 속한 지역구
+                                 y.district_code,
                                  COUNT(*) AS district_preference_count
                           FROM members m
                                  JOIN
                                scraps s ON m.member_id = s.member_id
                                  JOIN
                                YOUTH_POLICY_DETAIL y ON s.policy_code = y.policy_code
-                          WHERE y.district_code != '26' -- district_code 26 제외
+                          WHERE y.district_code != '26'
                           GROUP BY m.age_range,
                                    m.gender,
                                    y.district_code),
@@ -87,9 +86,9 @@
                          FROM GroupVectors gv1
                                 JOIN
                               GroupVectors gv2 ON gv1.district_code = gv2.district_code -- 같은 지역구에 대한 데이터만 비교
-                         WHERE gv1.district_code != '26'                                    -- district_code 26 제외
+                         WHERE gv1.district_code != '26'
                            AND gv1.age_range = #{originalAgeRange}
-                           AND gv1.gender = #{originalGender}                               -- 예시로 30대 남자 그룹을 기준으로 유사도 계산
+                           AND gv1.gender = #{originalGender}
                            AND (gv1.age_range != gv2.age_range OR gv1.gender != gv2.gender) -- 자신을 제외한 다른 그룹과 비교
                          GROUP BY gv1.age_range, gv1.gender, gv2.age_range, gv2.gender),
          BestMatch AS (
@@ -115,7 +114,7 @@
            JOIN
          GroupVectors gv ON gv.age_range = bm.group2_age_range AND gv.gender = bm.group2_gender
     ORDER BY preference_count DESC
-      FETCH FIRST 1 ROWS ONLY -- 해당 그룹이 가장 선호하는 지역구 1개 선택
+      FETCH FIRST 3 ROWS ONLY -- 해당 그룹이 가장 선호하는 지역구 3개 선택
   </select>
 
   <!-- 유사한 정책 추천-->
