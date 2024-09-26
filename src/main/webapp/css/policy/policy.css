@@ -20,6 +20,14 @@ section {
   margin-bottom: 30px;
 }
 
+/* 검색 결과가 없을 떄 */
+.noSearchResult{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color:gray;
+}
+
 /*검색 결과 전체 화면 */
 .search-policy-wrapper {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
@@ -39,6 +47,7 @@ section {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  min-height: 500px;
 }
 
 .detail {
@@ -153,5 +162,10 @@ section {
 
   .scrapBtn {
     margin: 0;
+  }
+
+  .search-policy-wrapper {
+    box-shadow: none;
+    background: transparent;
   }
 }

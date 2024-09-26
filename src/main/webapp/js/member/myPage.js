@@ -59,7 +59,7 @@ function goToUpdateInfo() {
   location.href = "/update";
 }
 
-// 모달 밖에 선택했을 때 모달창 닫기 - TODO: 현재 작동되지 않음. 해결 필요
+// 모달 밖에 선택했을 때 모달창 닫기
 document.addEventListener('DOMContentLoaded', () => {
 
   const hiddenBackground = document.querySelector('.hidden-background');
@@ -69,6 +69,45 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('.hidden-background not found');
   }
 })
+
+//비밀번호 수정 버튼
+function updatePw(){
+  console.log("1");
+  const info={
+    oldPassword: document.getElementById('curPassword').value,
+    newPassword:document.getElementById('newPassword').value
+  };
+  $.ajax({
+    url: `/api/v1/member/password`,
+    type: "PATCH",
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify(info),
+    success: function (response) {
+      console.log(response);
+      Swal.fire({
+        title: '비밀번호 변경',
+        text: '비밀번호를 변경하였습니다.',
+        icon: 'success',  // 성공 아이콘 사용
+        confirmButtonText: '확인'  // 확인 버튼 텍스트
+      }).then(function(){
+        location.href = "/mypage";
+      });
+    },
+    error: function (xhr, status, error) {
+      console.log("Error: " + error);
+      console.log("Status: " + status);
+      console.log(xhr.responseText);
+      Swal.fire({
+        title: '비밀번호 변경 실패',
+        text: '비밀번호를 변경에 실패했습니다.',
+        icon: 'error',  // 성공 아이콘 사용
+        confirmButtonText: '확인'  // 확인 버튼 텍스트
+      }).then(function(){
+        location.href = "/mypage";
+      });
+    }
+  });
+}
 
 //닉네임 수정 버튼
 function updateNickname(memberId) {
