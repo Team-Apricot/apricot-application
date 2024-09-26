@@ -27,10 +27,6 @@ public class EmailServiceImpl implements EmailService {
     @Value("${spring.mail.password}")  // application.properties 또는 application.yml에 정의된 비밀번호
     private String password;
 
-    @PostConstruct // 이 메서드는 객체가 생성된 후에 실행됩니다.
-    public void init() {
-        System.out.println("From: " + from); // 발신자 이메일 출력
-    }
     // 인증코드 생성 메서드 구현
     @Override
     public String generateAuthCode() {
@@ -41,9 +37,9 @@ public class EmailServiceImpl implements EmailService {
 
     // 이메일 발송 메서드 구현
     @Override
-    public void sendEmail(Member member, String subject, String text) throws MessagingException {
+    public void sendEmail(Member email, String subject, String text) throws MessagingException {
         // 이메일 수신자의 이메일 주소
-        String to = member.getEmail(); // 사용자 VO에서 이메일 주소 가져오기
+        String to = email.getEmail(); // 사용자 VO에서 이메일 주소 가져오기
 
         // 수신인, 제목, 본문 내용을 출력하여 확인
         System.out.println("To: " + to);

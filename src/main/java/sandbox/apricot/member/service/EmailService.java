@@ -9,5 +9,5 @@ public interface EmailService {
     String generateAuthCode();
 
     // 이메일 발송 메서드
-    void sendEmail(Member member, String subject, String text) throws MessagingException;
+    void sendEmail(Member email, String subject, String text) throws MessagingException;
 }
