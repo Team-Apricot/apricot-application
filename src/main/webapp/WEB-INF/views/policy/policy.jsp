@@ -19,7 +19,7 @@
     <div class="search-wrapper">
       <form action="${pageContext.request.contextPath}/policy/searchpolicy" method="get">
         <input type="text" id="search-id" name="policy-search-name" class="district-search"
-               placeholder="관심있는 혜택을 검색해주세요 (검색 예시 : 청년)">
+               placeholder="관심있는 혜택을 검색해주세요">
         <button class="search-btn">
           <i class="fas fa-search search-icon"></i>
         </button>
@@ -40,12 +40,6 @@
               <div class="location-name">${policy.districtName}</div>
               <div class="policy-name">${policy.policyName}</div>
               <div class="policy-status">${policy.prdRpttSecd}</div>
-              <!-- 로그인된 사라만 찜 버튼이 보임 -->
-              <sec:authorize access="isAuthenticated()">
-                <div class="scrapBtn" data-policy-code="${policy.policyCode}">
-                  <i class="fa-regular fa-star"></i>
-                </div>
-              </sec:authorize>
             </div>
           </c:forEach>
         </div>
