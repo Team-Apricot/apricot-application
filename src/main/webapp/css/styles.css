@@ -19,7 +19,7 @@ section {
   overflow: hidden; /* TODO: x ? 고민....*/
   position: relative;
   flex-direction: row; /* 기본적으로 가로 방향으로 배치 */
-  min-height: 80%;
+  min-height: 90%;
 }
 
 .background-video {

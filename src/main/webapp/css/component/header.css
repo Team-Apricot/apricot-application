@@ -6,8 +6,7 @@ header {
   background-color: #f8f8f8;
   height: 10%;
   width: 100%;
-  min-height: 50px;
-
+  min-height: 100px;
 }
 
 /* 로고 */
@@ -37,7 +36,9 @@ header {
   cursor: pointer;
   overflow: hidden;
   box-shadow: 1px 1px 2px #FFBB6A,
-  -1px -1px 2px #FFBB6A
+  -1px -1px 2px #FFBB6A;
+  font-size:initial;
+  line-height: initial;
 }
 
 .login button span:not(:nth-child(6)) {
@@ -83,8 +84,8 @@ header {
 
 /* 로그인 - 회원 이미지 */
 .my-img {
-  width: 40px; /* 원의 크기 */
-  height: 40px; /* 원의 크기 */
+  width: 60px;
+  height: 60px;
   border-radius: 50%; /* 원형으로 만들기 */
   overflow: hidden; /* 이미지가 원 바깥으로 나가지 않도록 설정 */
   display: flex;

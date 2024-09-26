@@ -12,6 +12,11 @@ body {
   flex-direction: column; /* 수직 방향으로 배치 */
 }
 
+section{
+  flex-direction: column;
+  min-height:1000px;
+}
+
 .blur-background {
   position: relative; /* 헤더 위에 위치하지 않도록 조정 */
   background: rgba(255, 255, 255, 0.7); /* 불투명한 카드 배경 */
@@ -75,7 +80,7 @@ body {
 /* 챗봇 오버레이 */
 .chatbot-overlay {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   right: 20px;
   width: 60px;
   height: 60px;
@@ -114,6 +119,13 @@ body {
 .chatbot-overlay:hover .chatbot-text,
 .chatbot-overlay.active .chatbot-text {
   display: block;
+}
+
+.search-container{
+  padding:0;
+  width: 90%;
+  margin:20px 0 ;
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
 }
 
 /* 미디어 쿼리: 화면 너비가 768px 이하인 경우 */
