@@ -13,8 +13,8 @@
     <result property="originalAgeRange" column="GROUP1_AGE_RANGE"/>
     <result property="comparisonGender" column="GROUP2_GENDER"/>
     <result property="comparisonAgeRange" column="GROUP2_AGE_RANGE"/>
-    <result property="preferenceCount" column="preferenceCount"/>
-    <result property="cosineSimilarity" column="cosineSimilarity"/>
+    <result property="preferenceCount" column="PREFERENCE_COUNT"/>
+    <result property="cosineSimilarity" column="COSINE_SIMILARITY"/>
   </resultMap>
 
   <resultMap id="PolicyScoreMap" type="PolicyScoreDTO">
@@ -125,7 +125,8 @@
           (SELECT CATEGORY_CODE FROM YOUTH_POLICY_DETAIL WHERE POLICY_CODE = #{policyCode})
       AND district_code != '26'
       AND POLICY_CODE != #{policyCode}
-    ORDER BY avg_score DESC
+    ORDER BY DBMS_RANDOM.VALUE
+    FETCH first 3 rows only
   </select>
 
 </mapper>

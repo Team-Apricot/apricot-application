@@ -255,10 +255,11 @@ body {
   gap: 30px; /* 이미지와 텍스트 사이의 간격 */
   box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
   overflow: hidden; /* 내용이 요소를 벗어나지 않도록 설정 */
+  width: 100%;
 }
 
 .area-item img {
-  width: 150px; /* 고정 폭 */
+  width: 100px; /* 고정 폭 */
   height: auto;
   max-height: 150px; /* 이미지 크기 조정 */
 }
@@ -336,6 +337,9 @@ body {
     font-size: 15px;
   }
 
+  .region-tag{
+    display: none;
+  }
 }
 
 /* 하트 아이콘 css */
