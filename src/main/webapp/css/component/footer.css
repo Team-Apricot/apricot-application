@@ -1,31 +1,58 @@
 footer {
   font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
-  background-color: #FFE9CE;
+  background-color: #f8f8f8;
   padding: 10PX 0;
   text-align: left;
-  width:100%;
+  width: 100%;
 }
 
-.footer-content p {
+.footer-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-layout p {
   margin: 0;
 }
 
-.footer-content a {
+.footer-layout a {
   color: #767676;
   text-decoration: none;
 }
 
-.footer-content a:hover {
+.footer-layout a:hover {
   text-decoration: underline;
+}
+
+.footer-name {
+  margin: 20px 0;
 }
 
 .footer-content {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 200px;
   justify-content: space-between;
 }
 
-.github{
-  padding-left:10px;
+.our-intro {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.github {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-href {
+  display: flex;
+  flex-direction: column;
 }
 
 .resume {
@@ -37,4 +64,17 @@ footer {
 
 .resume-href {
   margin: 10px;
+}
+
+.terms-of-use {
+  color: gray;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .terms-of-use {
+    width: 90%;
+  }
+
 }
