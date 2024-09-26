@@ -1,5 +1,6 @@
 package sandbox.apricot.policy.controller;
 
+import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sandbox.apricot.member.service.MemberService;
+import sandbox.apricot.member.dto.response.MemberInfo;
 import sandbox.apricot.policy.dto.response.District;
 import sandbox.apricot.policy.dto.response.PolicyInfo;
 import sandbox.apricot.policy.service.PolicyService;
@@ -27,7 +29,6 @@ import sandbox.apricot.policy.dto.response.PolicyDetailDTO;
 public class PolicyController {
 
     private final PolicyService policyService;
-
     private final MemberService memberService;
     private final ScrapService scrapService;
 
@@ -82,6 +83,16 @@ public class PolicyController {
             model.addAttribute("scrapInfo", scrapInfo);
         }
         return "policy/detail";
+    }
+
+    // 지역구 추천
+    @GetMapping("/recommendations")
+    public String viewRecommend(Model model, Principal principal) {
+        MemberInfo memberInfo = memberService.getMemberInfo(
+                memberService.getMemberId(principal.getName())
+        );
+        model.addAttribute("memberInfo", memberInfo);
+        return "policy/recommendation";
     }
 
 }
