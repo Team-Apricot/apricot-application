@@ -100,4 +100,15 @@
     DELETE FROM MEMBERS WHERE MEMBER_ID = #{memberId}
   </delete>
 
+  <select id="findByEmails" resultMap="MemberResultMap">
+    SELECT MEMBER_ID, EMAIL, NICK_NAME, PASSWORD, AGE_RANGE, GENDER, CAREER, MARRIED_STATUS, NUM_CHILD, MEMBER_ROLE
+    FROM MEMBERS
+    WHERE email = #{email}
+  </select>
+
+  <update id="newPassword">
+    UPDATE MEMBERS SET PASSWORD = #{password}
+    WHERE MEMBER_ID = #{memberId}
+  </update>
+
 </mapper>

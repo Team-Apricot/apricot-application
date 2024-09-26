@@ -67,7 +67,10 @@ public class SecurityConfig {
                                 "/register", "/register-interest",
                                 "/mypage",
                                 "/policy/**",
-                                "/recommendation/**"
+                                "/recommendation/**",
+                                "/policy/**",
+                                "/mail/**",
+                                "/password/**"
                         ).permitAll()
                         .requestMatchers("/api/v1/**").permitAll()
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
