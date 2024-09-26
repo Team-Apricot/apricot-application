@@ -18,13 +18,15 @@
   <div class="navmenu-wrapper">
     <nav class="navmenu">
       <ul>
-        <li><a href="#section1" id="navitem1" class="active"><img src="/assets/img/mascot.png" width="40"><span>한 눈에 보는 정책 요약</span></a>
+        <li><a href="#section1" id="navitem1" class="active"><img src="/assets/img/mascot.png"
+                                                                  width="40"><span>한 눈에 보는 정책 요약</span></a>
         </li>
         <li><a href="#section2" id="navitem2"><img src="/assets/img/mascot.png" width="40"><span>신청자격</span></a>
         </li>
         <li><a href="#section3" id="navitem3"><img src="/assets/img/mascot.png" width="40"><span>신청방법</span></a>
         </li>
-        <li><a href="#section4" id="navitem4"><img src="/assets/img/mascot.png" width="40"><span>기타</span></a></li>
+        <li><a href="#section4" id="navitem4"><img src="/assets/img/mascot.png"
+                                                   width="40"><span>기타</span></a></li>
       </ul>
     </nav>
   </div>
@@ -81,21 +83,25 @@
         <li>
           <div class="list-container">
             <div class="list-title">정책 번호</div>
-            <div class="list-content">${policyDetails.policyCode !="null" && !policyDetails.policyCode.isEmpty()? policyDetails.policyCode:"❌"}</div>
+            <div
+                class="list-content">${policyDetails.policyCode !="null" && !policyDetails.policyCode.isEmpty()? policyDetails.policyCode:"❌"}</div>
           </div>
           <div class="list-container">
             <div class="list-title">정책 분야</div>
-            <div class="list-content">${policyDetails.categoryCode !="null" && !policyDetails.categoryCode.isEmpty()? policyDetails.categoryCode:"❌"}</div>
+            <div
+                class="list-content">${policyDetails.categoryCode !="null" && !policyDetails.categoryCode.isEmpty()? policyDetails.categoryCode:"❌"}</div>
           </div>
           <div class="list-container">
             <div class="list-title">사업 운영 기간</div>
-            <div class="list-content">${policyDetails.prdRpttSecd !="null" && !policyDetails.prdRpttSecd.isEmpty()? policyDetails.prdRpttSecd:"❌"}</div>
+            <div
+                class="list-content">${policyDetails.prdRpttSecd !="null" && !policyDetails.prdRpttSecd.isEmpty()? policyDetails.prdRpttSecd:"❌"}</div>
           </div>
         </li>
         <li>
           <div class="list-container">
             <div class="list-title">사업 신청 기간</div>
-            <div class="list-content">${policyDetails.schedule !="null" && !policyDetails.schedule.isEmpty()? policyDetails.schedule:"❌"}</div>
+            <div
+                class="list-content">${policyDetails.schedule !="null" && !policyDetails.schedule.isEmpty()? policyDetails.schedule:"❌"}</div>
           </div>
           <div class="list-container">
             <div class="list-title">지원 규모</div>
@@ -130,7 +136,8 @@
         <li>
           <div class="list-container">
             <div class="list-title">연령</div>
-            <div class="list-content">${policyDetails.ageInfo !="null" && !policyDetails.ageInfo.isEmpty()? policyDetails.ageInfo:"❌"}</div>
+            <div
+                class="list-content">${policyDetails.ageInfo !="null" && !policyDetails.ageInfo.isEmpty()? policyDetails.ageInfo:"❌"}</div>
           </div>
           <div class="list-container">
             <div class="list-title">취업 상태</div>
@@ -269,12 +276,14 @@
             <div class="list-title">사업관련 참고 사이트1</div>
             <div class="list-content">
               <!-- rqutUrla가 null이 아니고 빈 문자열이 아닌 경우에만 링크를 출력 -->
-              <c:if test="${policyDetails.rfcSiteUrla1 != 'null' && !policyDetails.rfcSiteUrla1.isEmpty()}">
+              <c:if
+                  test="${policyDetails.rfcSiteUrla1 != 'null' && !policyDetails.rfcSiteUrla1.isEmpty()}">
                 <a href="${policyDetails.rfcSiteUrla1}">${policyDetails.rfcSiteUrla1}</a>
               </c:if>
 
               <!-- rqutUrla가 null이거나 빈 문자열이면 "❌" 표시 -->
-              <c:if test="${policyDetails.rfcSiteUrla1 == 'null' || policyDetails.rfcSiteUrla1.isEmpty()}">
+              <c:if
+                  test="${policyDetails.rfcSiteUrla1 == 'null' || policyDetails.rfcSiteUrla1.isEmpty()}">
                 ❌
               </c:if>
 
@@ -287,12 +296,14 @@
             <div class="list-content">
 
               <!-- rqutUrla가 null이 아니고 빈 문자열이 아닌 경우에만 링크를 출력 -->
-              <c:if test="${policyDetails.rfcSiteUrla2 != 'null' && !policyDetails.rfcSiteUrla2.isEmpty()}">
+              <c:if
+                  test="${policyDetails.rfcSiteUrla2 != 'null' && !policyDetails.rfcSiteUrla2.isEmpty()}">
                 <a href="${policyDetails.rfcSiteUrla2}">${policyDetails.rfcSiteUrla2}</a>
               </c:if>
 
               <!-- rqutUrla가 null이거나 빈 문자열이면 "❌" 표시 -->
-              <c:if test="${policyDetails.rfcSiteUrla2 == 'null' || policyDetails.rfcSiteUrla2.isEmpty()}">
+              <c:if
+                  test="${policyDetails.rfcSiteUrla2 == 'null' || policyDetails.rfcSiteUrla2.isEmpty()}">
                 ❌
               </c:if>
             </div>
@@ -303,7 +314,8 @@
 
     <div class="top-areas">
       <h2>지금 보고 있는 혜택 이용자 평점</h2>
-      <div class="avg-score" id="avg-score" data-score="${policyDetails.avgPolicyScore}">${policyDetails.avgPolicyScore}</div>
+      <div class="avg-score" id="avg-score"
+           data-score="${policyDetails.avgPolicyScore}">${policyDetails.avgPolicyScore}</div>
       <div class="rating">
         <input type="radio" id="star5" name="rating" value="5" disabled>
         <label for="star5" class="${policyDetails.avgPolicyScore >= 5 ? 'filled' : ''}"></label>
@@ -316,6 +328,8 @@
         <input type="radio" id="star1" name="rating" value="1" disabled>
         <label for="star1" class="${policyDetails.avgPolicyScore >= 1 ? 'filled' : ''}"></label>
       </div>
+      <button class="reveiewBtn" onclick="openReviewModal()">리뷰남기기</button>
+      <%@ include file="/WEB-INF/views/policy/reviewModal.jsp" %>
     </div>
 
     <div class="top-areas">

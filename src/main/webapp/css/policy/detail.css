@@ -230,7 +230,7 @@ body {
   text-align: left;
   font-size: 1.5em; /* 기본 폰트 크기 */
   color: #F9973E;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .areas-list {
@@ -293,12 +293,18 @@ body {
   padding: 10px;
 }
 
+.reveiewBtn {
+  width: 100px;
+  background-color: #F9973E;
+  color: white;
+  border: none;
+  margin: 20px;
+}
+
 /* 반응형 */
 @media (max-width: 575px) {
   .policy-header {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
   }
 
@@ -308,7 +314,7 @@ body {
   }
 
   .top-areas {
-    margin: 0;
+    margin: 20px 0;
     padding: 0;
   }
 
