@@ -19,7 +19,8 @@ public class RecommendationController {
 
     // 지역구 추천
     @GetMapping
-    public String viewRecommend(Model model, @AuthenticationPrincipal MemberPrincipalDetails member) {
+    public String viewRecommend(Model model,
+            @AuthenticationPrincipal MemberPrincipalDetails member) {
         Long memberId = member.getMember().getMemberId();
         MemberInfo memberInfo = memberService.getMemberInfo(memberId);
         model.addAttribute("memberInfo", memberInfo);
