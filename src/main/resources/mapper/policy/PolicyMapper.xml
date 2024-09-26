@@ -64,12 +64,35 @@
     OFFSET #{pageable.offset} ROWS FETCH NEXT #{pageable.pageSize} ROWS ONLY
   </select>
 
-  <select id="findPolicy" resultMap="PolicyInfoResultMap">
-    SELECT Y.POLICY_CODE ,Y.POLICY_NAME,Y.PRD_RPTT_SECD ,Y.DISTRICT_CODE,D.DISTRICT_NAME,D.DISTRICT_LOGO_PATH
+  <select id="countPolicies" resultType="int">
+        <![CDATA[
+    SELECT COUNT(*)
     FROM YOUTH_POLICY_DETAIL Y JOIN DISTRICTS D
                                     ON Y.DISTRICT_CODE = D.DISTRICT_CODE
-    WHERE POLICY_NAME LIKE '%'||#{searchName}||'%'
-       OR POLICY_CONTENT LIKE '%'||#{searchName}||'%'
-  </select>
+    WHERE Y.POLICY_NAME LIKE '%'||#{searchName}||'%'
+       OR Y.POLICY_CONTENT LIKE '%'||#{searchName}||'%'
+    ]]>
+    </select>
+
+  <select id="findPolicyWithPagination" resultMap="PolicyInfoResultMap">
+    <![CDATA[
+    SELECT POLICY_CODE, POLICY_NAME, PRD_RPTT_SECD, DISTRICT_CODE, DISTRICT_NAME, DISTRICT_LOGO_PATH
+    FROM (
+           SELECT Y.POLICY_CODE, Y.POLICY_NAME, Y.PRD_RPTT_SECD, Y.DISTRICT_CODE, D.DISTRICT_NAME, D.DISTRICT_LOGO_PATH,
+                  ROW_NUMBER() OVER (ORDER BY Y.POLICY_CODE) AS rn
+           FROM YOUTH_POLICY_DETAIL Y
+                  JOIN DISTRICTS D ON Y.DISTRICT_CODE = D.DISTRICT_CODE
+           WHERE Y.POLICY_NAME LIKE '%' || #{searchName} || '%'
+              OR Y.POLICY_CONTENT LIKE '%' || #{searchName} || '%'
+         )
+    WHERE rn > #{offset} AND rn <= #{limit}
+    ]]>
+</select>
+
+
+  <insert id="saveReview">
+    INSERT INTO REVIEWS (POLICY_CODE, MEMBER_ID, POLICY_SCORE)
+    VALUES (#{policyCode}, #{memberId}, #{policyDetailScore})
+  </insert>
 
 </mapper>

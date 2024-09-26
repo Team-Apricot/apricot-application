@@ -2,7 +2,7 @@ package sandbox.apricot.policy.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import sandbox.apricot.policy.dto.PolicyDetailDTO;
+import sandbox.apricot.policy.dto.response.PolicyDetailDTO;
 
 @Mapper
 public interface PolicyDetailMapper {

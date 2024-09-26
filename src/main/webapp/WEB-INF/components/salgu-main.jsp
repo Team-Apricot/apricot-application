@@ -30,9 +30,10 @@
     </div>
   </div>
   <!-- 챗봇 오버레이 -->
-  <div class="chatbot-overlay">
+  <div class="chatbot-overlay" onclick="openRecommendModal()">
     <i class="fas fa-robot chatbot-icon"></i>
     <div class="chatbot-text">살구에게 지역구 추천 받기</div>
   </div>
+  <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/policy/recommendation.jsp"/>
 </section>
 <script src="${pageContext.request.contextPath}/js/index.js"></script>

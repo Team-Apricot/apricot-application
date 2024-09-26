@@ -300,6 +300,24 @@
         </li>
       </ul>
     </div>
+
+    <div class="top-areas">
+      <h2>지금 보고 있는 혜택 이용자 평점</h2>
+      <div class="avg-score" id="avg-score" data-score="${policyDetails.avgPolicyScore}">${policyDetails.avgPolicyScore}</div>
+      <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5" disabled>
+        <label for="star5" class="${policyDetails.avgPolicyScore >= 5 ? 'filled' : ''}"></label>
+        <input type="radio" id="star4" name="rating" value="4" disabled>
+        <label for="star4" class="${policyDetails.avgPolicyScore >= 4 ? 'filled' : ''}"></label>
+        <input type="radio" id="star3" name="rating" value="3" disabled>
+        <label for="star3" class="${policyDetails.avgPolicyScore >= 3 ? 'filled' : ''}"></label>
+        <input type="radio" id="star2" name="rating" value="2" disabled>
+        <label for="star2" class="${policyDetails.avgPolicyScore >= 2 ? 'filled' : ''}"></label>
+        <input type="radio" id="star1" name="rating" value="1" disabled>
+        <label for="star1" class="${policyDetails.avgPolicyScore >= 1 ? 'filled' : ''}"></label>
+      </div>
+    </div>
+
     <div class="top-areas">
       <h2>지금 보고 있는 혜택과 비슷한 혜택</h2>
       <div class="areas-list">

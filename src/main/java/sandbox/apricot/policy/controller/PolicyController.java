@@ -1,10 +1,10 @@
 package sandbox.apricot.policy.controller;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +17,9 @@ import sandbox.apricot.policy.dto.response.PolicyInfo;
 import sandbox.apricot.policy.service.PolicyService;
 
 import java.util.List;
-import sandbox.apricot.policy.dto.PolicyDetailDTO;
-import sandbox.apricot.policy.service.PolicyDetailService;
 import sandbox.apricot.scrap.dto.response.ScrapInfo;
 import sandbox.apricot.scrap.service.ScrapService;
+import sandbox.apricot.policy.dto.response.PolicyDetailDTO;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,19 +27,25 @@ import sandbox.apricot.scrap.service.ScrapService;
 public class PolicyController {
 
     private final PolicyService policyService;
-    private final PolicyDetailService policyDetailService;
-
     private final MemberService memberService;
     private final ScrapService scrapService;
 
     //정책 검색 페이지
     @GetMapping("/searchpolicy")
-    public String goToPolicy(@RequestParam("policy-search-name") String searchName, Model model) {
-        policyService.findPolicy(searchName);
-        List<PolicyInfo> policyInfo = policyService.findPolicy(searchName);
-        int policyCnt = policyInfo.size();
-        model.addAttribute("policyInfo", policyInfo);
-        model.addAttribute("policyCnt", policyCnt);
+    public String goToPolicy(
+            @RequestParam("policy-search-name") String searchName,
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int size,
+            Model model) {
+        Page<PolicyInfo> policySearchPage = policyService.findPolicyWithPagination(
+                searchName, page, size
+        );
+
+        model.addAttribute("policyInfo", policySearchPage.getContent());
+        model.addAttribute("policyCnt", policySearchPage.getTotalElements());
+        model.addAttribute("currentPage", policySearchPage.getNumber() + 1);
+        model.addAttribute("totalPages", policySearchPage.getTotalPages());
+
         return "policy/policy";
     }
 
@@ -55,7 +60,7 @@ public class PolicyController {
     // 정책 상세 페이지 조회 (JSP 렌더링)
     @GetMapping("/detail/{policy_code}")
     public String viewDetail(Model model, @PathVariable("policy_code") String policyCode) {
-        PolicyDetailDTO policyDetails = policyDetailService.getPolicyDetailsByCode(policyCode);
+        PolicyDetailDTO policyDetails = policyService.getPolicyDetailsByCode(policyCode);
         model.addAttribute("policyDetails", policyDetails);
 
         //로그인 된 사람에게만 정보 넘기기 위해 사용
