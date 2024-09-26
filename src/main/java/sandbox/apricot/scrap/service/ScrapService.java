@@ -11,4 +11,6 @@ public interface ScrapService {
 
     List<ScrapInfo> getScrapInfo(Long memberId); //스크랩 정보 불러오기
 
+    void deleteScrap(Long scrapId);
+
 }
