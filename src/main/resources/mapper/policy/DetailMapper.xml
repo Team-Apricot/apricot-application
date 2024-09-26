@@ -2,41 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sandbox.apricot.policy.mapper.PolicyDetailMapper">
-  <select id="getPolicyDetailsByPolicyCode" resultType="sandbox.apricot.policy.dto.PolicyDetailDTO">
-    SELECT PRD_RPTT_SECD,
-           POLICY_CODE,
-           CATEGORY_CODE,
-           DISTRICT_CODE,
-           POLICY_NAME,
-           POLICY_CONTENT,
-           SUPPORT_CONTENT,
-           SCHEDULE,
-           POLICY_START_DATE,
-           POLICY_END_DATE,
-           AGE_INFO,
-           MIN_AGE,
-           MAX_AGE,
-           MAJOR_RQIS_CN,
-           EMPM_STTS_CN,
-           SPLZ_RLM_RQIS_CN,
-           ACCR_RQIS_CN,
-           PRCP_CN,
-           ADIT_RSCN,
-           PRCP_LMTT_TRGT_CN,
-           RQUT_PROC_CN,
-           PSTN_PAPR_CN,
-           JDGN_PRES_CN,
-           RQUT_URLA,
-           RFC_SITE_URLA1,
-           RFC_SITE_URLA2,
-           MNGT_MSON,
-           MNGT_MROF_CHER_CN,
-           CHER_CTPC_CN,
-           CNSG_NMOR,
-           TINT_CHER_CN,
-           TINT_CHER_CTPC_CN,
-           ETCT
-    FROM youth_policy_detail
-    WHERE POLICY_CODE = #{policyCode}
+  <select id="getPolicyDetailsByPolicyCode" resultType="PolicyDetailDTO">
+    WITH ReviewAvg AS (SELECT POLICY_CODE,
+                              AVG(POLICY_SCORE) AS AVG_POLICY_SCORE
+                       FROM REVIEWS
+                       WHERE POLICY_CODE = #{policyCode}
+                       GROUP BY POLICY_CODE)
+    SELECT YPD.PRD_RPTT_SECD,
+           YPD.POLICY_CODE,
+           YPD.CATEGORY_CODE,
+           YPD.DISTRICT_CODE,
+           YPD.POLICY_NAME,
+           YPD.POLICY_CONTENT,
+           YPD.SUPPORT_CONTENT,
+           YPD.SCHEDULE,
+           YPD.POLICY_START_DATE,
+           YPD.POLICY_END_DATE,
+           YPD.AGE_INFO,
+           YPD.MIN_AGE,
+           YPD.MAX_AGE,
+           YPD.MAJOR_RQIS_CN,
+           YPD.EMPM_STTS_CN,
+           YPD.SPLZ_RLM_RQIS_CN,
+           YPD.ACCR_RQIS_CN,
+           YPD.PRCP_CN,
+           YPD.ADIT_RSCN,
+           YPD.PRCP_LMTT_TRGT_CN,
+           YPD.RQUT_PROC_CN,
+           YPD.PSTN_PAPR_CN,
+           YPD.JDGN_PRES_CN,
+           YPD.RQUT_URLA,
+           YPD.RFC_SITE_URLA1,
+           YPD.RFC_SITE_URLA2,
+           YPD.MNGT_MSON,
+           YPD.MNGT_MROF_CHER_CN,
+           YPD.CHER_CTPC_CN,
+           YPD.CNSG_NMOR,
+           YPD.TINT_CHER_CN,
+           YPD.TINT_CHER_CTPC_CN,
+           YPD.ETCT,
+           COALESCE(RA.AVG_POLICY_SCORE, 3) AS AVG_POLICY_SCORE -- 평균 점수, 없으면 기본 3 반환
+    FROM youth_policy_detail YPD
+           LEFT JOIN ReviewAvg RA
+                     ON YPD.POLICY_CODE = RA.POLICY_CODE
+    WHERE YPD.POLICY_CODE = #{policyCode}
   </select>
 </mapper>

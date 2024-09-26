@@ -1,11 +1,19 @@
 package sandbox.apricot.policy.service;
 
+import static sandbox.apricot.policy.util.PolicyFormatter.formatPolicyDetail;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import sandbox.apricot.policy.dto.response.PolicyDetailDTO;
+import sandbox.apricot.policy.dto.request.RegisterReview;
 import sandbox.apricot.policy.dto.response.PolicyInfo;
 import org.springframework.data.domain.PageRequest;
 import sandbox.apricot.policy.dto.response.District;
 import sandbox.apricot.policy.dto.response.DistrictPolicies;
 import sandbox.apricot.policy.dto.response.PolicyTLDR;
 import sandbox.apricot.policy.dto.response.DistrictPolicy;
+import sandbox.apricot.policy.mapper.PolicyDetailMapper;
 import sandbox.apricot.policy.mapper.PolicyMapper;
 
 import java.util.List;
@@ -29,6 +37,7 @@ public class PolicyServiceImpl implements PolicyService {
     private static final String REDIS_KEY = "districtPolicyCnt";
 
     private final PolicyMapper policyMapper;
+    private final PolicyDetailMapper detailMapper;
     private final RedisTemplate<String, Object> redisTemplate;
 
     @Override
@@ -83,8 +92,29 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public List<PolicyInfo> findPolicy(String searchName) {
-        return policyMapper.findPolicy(searchName);
+    public PolicyDetailDTO getPolicyDetailsByCode(String policyCode) {
+        PolicyDetailDTO policyDetailDTO = detailMapper.getPolicyDetailsByPolicyCode(policyCode);
+        return formatPolicyDetail(policyDetailDTO);
+    }
+
+    @Override
+    public void registerReview(RegisterReview request, Long memberId) {
+        policyMapper.saveReview(
+                request.getPolicyCode(),
+                memberId,
+                request.getPolicyScore()
+        );
+    }
+
+    @Override
+    public Page<PolicyInfo> findPolicyWithPagination(String searchName, int page, int size) {
+        int offset = (page - 1) * size; // 오프셋 계산
+        int limit = page * size; // LIMIT 값으로 사용할 총 행 수
+        List<PolicyInfo> policies = policyMapper.findPolicyWithPagination(searchName, offset, limit);
+        int totalPolicies = policyMapper.countPolicies(searchName);
+
+        Pageable pageable = PageRequest.of(page - 1, size);
+        return new PageImpl<>(policies, pageable, totalPolicies);
     }
 
 }

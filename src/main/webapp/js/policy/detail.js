@@ -4,6 +4,19 @@ document.addEventListener('DOMContentLoaded', function () {
   const policyTableContents = document.querySelectorAll(
       '.policy-table-content');
 
+  const avgScore = parseFloat(document.getElementById("avg-score").getAttribute("data-score")).toFixed(2); // 소수점 둘째 자리까지
+  document.getElementById("avg-score").innerText = avgScore; // 평균 점수 업데이트
+
+  const roundedScore = Math.round(avgScore * 2) / 2; // 반올림 처리 (0.5 단위로)
+
+  // 해당하는 라디오 버튼을 checked 상태로 설정
+  if (roundedScore > 0) {
+    const radioButton = document.getElementById(`star${roundedScore}`);
+    if (radioButton) {
+      radioButton.checked = true;
+    }
+  }
+
   tocList.forEach((toc) => {
     // 부드러운 스크롤 기능
     toc.addEventListener('click', function (e) {
@@ -14,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
         behavior: 'smooth'
       });
     });
-
   });
 
   // Intersection Observer로 등장 애니메이션 적용

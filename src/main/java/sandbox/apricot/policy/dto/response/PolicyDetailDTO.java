@@ -1,4 +1,4 @@
-package sandbox.apricot.policy.dto;
+package sandbox.apricot.policy.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 @Builder
 public class PolicyDetailDTO {
-
 
     private String policyCode; // 정책 번호
     private String categoryCode; // 정책 분야
@@ -49,5 +48,7 @@ public class PolicyDetailDTO {
     private String tintCherCtpcCn; // ➕ 운영 기관 담당자 연락처
 
     private String etct; // 기타 유익 정보
+
+    private Double avgPolicyScore; // 점수
 
 }

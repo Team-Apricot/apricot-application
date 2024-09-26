@@ -1,0 +1,39 @@
+.rating {
+  display: inline-block;
+  opacity: 1;
+}
+
+.rating input {
+  display: none; /* 라디오 버튼 숨기기 */
+  opacity: 1;
+}
+
+.rating label {
+  float: right; /* 오른쪽 정렬 */
+  cursor: default; /* 클릭 비활성화 */
+  color: lightgray; /* 기본 별 색상 */
+  transition: color 0.3s, transform 0.3s; /* 애니메이션 효과 유지 */
+}
+
+.rating label:before {
+  content: '\2605'; /* 별 기호 */
+  font-size: 30px; /* 별 크기 */
+}
+
+/* 채워진 별 색상 */
+.rating label.filled {
+  color: #F9973E; /* 선택된 별 색상 */
+  animation: bounce 0.5s ease-in-out alternate; /* 애니메이션 효과 추가 */
+}
+
+@keyframes bounce {
+  to {
+    transform: scale(1.2); /* 애니메이션 효과 */
+  }
+}
+
+#avg-score {
+  font-family: 'Jua', sans-serif; /* 외부 폰트 적용 */
+  font-size: 2em;
+  color: #070707;
+}
