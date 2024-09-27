@@ -170,3 +170,64 @@ document.addEventListener('DOMContentLoaded', function () {
     hiddenBackground.addEventListener('click', closeReviewModal);
   }
 });
+
+// 정책 평점 리뷰 저장 기능.
+$(document).ready(function () {
+  // URL에서 policyCode 추출
+  const policyCode = getPolicyCodeFromUrl();
+
+  // "확인" 버튼 클릭 시 실행되는 함수
+  $('.btn').on('click', function () {
+    // 선택된 별점 값을 가져옴
+    const selectedStar = $('input[name="reviewStar"]:checked').val();
+
+    // 별점이 선택되지 않았을 경우 경고 표시
+    if (!selectedStar) {
+      alert('별점을 선택해주세요.');
+      return;
+    }
+
+    // policyCode가 null이 아닌지 확인
+    if (!policyCode) {
+      alert('정책 코드를 찾을 수 없습니다.');
+      return;
+    }
+
+    // AJAX 요청을 통해 서버로 평점 데이터를 전송
+    $.ajax({
+      url: '/api/v1/policy',  // 서버의 엔드포인트 URL
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        policyCode: policyCode, // URL에서 추출한 정책 코드
+        policyScore: selectedStar // 선택한 별점 값
+      }),
+      success: function (response) {
+        console.log(response);
+        if (response.code == 200) {
+          Swal.fire('평점이 성공적으로 제출되었습니다.','리뷰해주셔서 감사합니다!','success').then(
+              function () {
+                closeReviewModal(); // 모달 닫기 함수 호출
+                // 페이지 새로 고침
+                location.reload();
+              }
+          );
+
+        } else {
+          Swal.fire('평점 제출에 실패했습니다.','다시 시도해 주세요', 'failure');
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error('AJAX Error: ', error);
+        alert('서버 요청 중 오류가 발생했습니다.');
+      }
+    });
+  });
+});
+
+// 현재 URL에서 policyCode를 추출하는 함수
+function getPolicyCodeFromUrl() {
+  const url = window.location.href; // 현재 페이지의 URL 가져오기
+  const segments = url.split('/');  // 슬래시(/)를 기준으로 URL을 분리
+  return segments[segments.length - 1];  // 마지막 부분이 policyCode라고 가정
+}
