@@ -21,10 +21,10 @@ import sandbox.apricot.member.vo.Member;
 @RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
 
-    @Value("${mail.username}")  // 이메일 발신자의 주소
+    @Value("${spring.mail.username}")  // 이메일 발신자의 주소
     private String from;
 
-    @Value("${mail.password}") // 이메일 발신자의 비밀번호
+    @Value("${spring.mail.password}") // 이메일 발신자의 비밀번호
     private String password;
 
     // 인증코드 생성 메서드: 6자리 숫자 랜덤 생성
