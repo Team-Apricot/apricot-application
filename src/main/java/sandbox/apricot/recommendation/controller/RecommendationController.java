@@ -15,15 +15,8 @@ import sandbox.apricot.member.service.MemberService;
 @RequestMapping("/recommendation")
 public class RecommendationController {
 
-    private final MemberService memberService;
-
-    // 지역구 추천
     @GetMapping
-    public String viewRecommend(Model model,
-            @AuthenticationPrincipal MemberPrincipalDetails member) {
-        Long memberId = member.getMember().getMemberId();
-        MemberInfo memberInfo = memberService.getMemberInfo(memberId);
-        model.addAttribute("memberInfo", memberInfo);
+    public String viewRecommend() {
         return "policy/recommendation";
     }
 
