@@ -1,7 +1,5 @@
 package sandbox.apricot.auth.service;
 
-import static sandbox.apricot.member.util.exception.MemberErrorCode.MEMBER_NOT_FOUND;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

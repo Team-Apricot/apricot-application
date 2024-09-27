@@ -34,8 +34,4 @@ public interface MemberMapper {
 
     void deleteById(Long memberId);
 
-    void newPassword(Long memberId, String newPassword); // memberId로 비밀번호 업데이트
-
-    Optional<Member> findByEmails(String email); // 이메일로 사용자를 찾는 메서드
-
 }

@@ -68,7 +68,6 @@ public class SecurityConfig {
                                 "/mypage",
                                 "/policy/**",
                                 "/recommendation/**",
-                                "/policy/**",
                                 "/mail/**",
                                 "/password/**"
                         ).permitAll()
