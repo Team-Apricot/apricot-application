@@ -101,7 +101,7 @@ h3 {
 .close {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 30px;
   background: transparent;
   border: none;
   font-size: 24px;
@@ -131,4 +131,45 @@ h3 {
 
 .recommendation-modal-content::-webkit-scrollbar-thumb:hover {
   background: #555; /* 핸들 호버 색상 */
+}
+
+
+
+
+.recommend-district {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.rank {
+  display: flex;
+  align-items: flex-end;
+}
+
+.title{
+  margin-bottom: 30px;
+}
+
+.title h2{
+  font-size:25px;
+}
+
+.districtCode{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.districtScore {
+  display: flex;
+  justify-content: center;
+}
+
+
+.medal {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

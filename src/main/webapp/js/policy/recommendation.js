@@ -8,10 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function openRecommendModal() {
   const hiddenBackground = document.querySelector('.hidden-background');
   const recommendModal = document.querySelector('.recommendation-modal');
+  const chatbot = document.querySelector('.chatbot-overlay');
+  const body = document.body
 
   hiddenBackground.style.display = 'block';
   recommendModal.style.display = 'block';
-
+  chatbot.style.display = 'none'; //챗봇 아이콘 안보이도록
+  body.style.position = 'fixed'; //body 안움직이도록
   $.ajax({
     url: '/api/v1/recommendation',
     type: 'GET',
@@ -30,19 +33,50 @@ function openRecommendModal() {
 
       updateChartData(listByDistrictPolicyCnt, listByDistrictPolicyScore);
 
-      $('#recommendation-title').text(`살구가 추천 드리는 \'${data.nickName}\'님의 지역구 추천 정보 입니다.`);
+      $('#recommendation-title').text(
+          `살구가 추천 드리는 \'${data.nickName}\'님의 지역구 추천 정보 입니다.`);
 
       // 지역구 별 혜택수를 기준으로 한 추천 결과
       // $('#reason1-title').text('지역구 별 혜택수를 기준으로 한 추천 결과 입니다.');
-      $('#reason1-title').text(`\'${data.nickName}\'님이 관심 가지는 분야와 비슷한 혜택을 가장 많이 제공해줘요!`);
+      $('#reason1-title').text(
+          `\'${data.nickName}\'님이 관심 가지는 분야와 비슷한 혜택을 가장 많이 제공해줘요!`);
       const topPolicyCnt = listByDistrictPolicyCnt
       .sort((a, b) => b.districtScore - a.districtScore)
       .slice(0, 3);
       $('#policy-cnt-results').html(`
-        추천 지역구는 ${topPolicyCnt[0].districtCode} 입니다.<br>
-        <i class="fas fa-trophy"></i> ${topPolicyCnt[0].districtCode} - ${topPolicyCnt[0].districtScore} 점<br>
-        <i class="fas fa-medal"></i> ${topPolicyCnt[1].districtCode} - ${topPolicyCnt[1].districtScore} 점<br>
-        <i class="fas fa-star"></i> ${topPolicyCnt[2].districtCode} - ${topPolicyCnt[2].districtScore} 점
+        <div class="recommend-district">
+        <div class="title">
+        추천 지역구는 <h2 style="color:#F9973E; display:inline"> ${topPolicyCnt[0].districtCode}</h2> 입니다.<br>
+        </div>
+        <div class="rank">
+        <div class="medal">
+        <img src="../assets/img/silverMedal.png" width="50px">
+        <div class="districtCode">
+        ${topPolicyCnt[1].districtCode} 
+        </div>
+        <div class="districtScore">
+        ${topPolicyCnt[1].districtScore} 점<br>
+        </div>
+        </div>
+        <div class="medal">      
+         <img src="../assets/img/goldMadal.png" width="50px">
+         <div class="dirtrictCode">
+          ${topPolicyCnt[0].districtCode}
+          </div>
+          <div class="districtScore">
+           ${topPolicyCnt[0].districtScore} 점<br>
+           </div>
+        </div>
+        <div class="medal">
+           <img src="../assets/img/bronzeMedal.png" width="50px">
+           <div class="dirtrictCode">
+          ${topPolicyCnt[2].districtCode}
+          </div>
+          <div class="districtScore">
+          ${topPolicyCnt[2].districtScore} 점
+          </div>
+         </div>
+         </div>
       `);
 
       // 사용자들의 혜택 평가 점수를 기준으로 한 추천 결과
@@ -50,11 +84,40 @@ function openRecommendModal() {
       const topPolicyScore = listByDistrictPolicyScore
       .sort((a, b) => b.districtScore - a.districtScore)
       .slice(0, 3);
-      $('#policy-score-results').html(`
-        추천 지역구는 ${topPolicyScore[0].districtCode} 입니다.<br>
-        <i class="fas fa-trophy"></i> ${topPolicyScore[0].districtCode} - ${topPolicyScore[0].districtScore} 점<br>
-        <i class="fas fa-medal"></i> ${topPolicyScore[1].districtCode} - ${topPolicyScore[1].districtScore} 점<br>
-        <i class="fas fa-star"></i> ${topPolicyScore[2].districtCode} - ${topPolicyScore[2].districtScore} 점
+      $('#policy-score-results').html(
+          `
+  <div class="recommend-district">   
+      <div class="title">
+        추천 지역구는 <h2 style="color:#F9973E; display:inline"> ${topPolicyScore[0].districtCode}</h2> 입니다.<br>
+        </div>
+        <div class="rank">
+        <div class="medal">
+        <img src="../assets/img/silverMedal.png" width="50px">
+        <div class="districtCode">
+        ${topPolicyScore[1].districtCode} 
+        </div>
+        <div class="districtScore">
+        ${topPolicyScore[1].districtScore} 점<br>
+        </div>
+        </div>
+        <div class="medal">      
+         <img src="../assets/img/goldMadal.png" width="50px">
+         <div class="dirtrictCode">
+          ${topPolicyScore[0].districtCode}
+          </div>
+          <div class="districtScore">
+           ${topPolicyScore[0].districtScore} 점<br>
+           </div>
+        </div>
+        <div class="medal">
+           <img src="../assets/img/bronzeMedal.png" width="50px">
+           <div class="dirtrictCode">
+          ${topPolicyScore[2].districtCode}
+          </div>
+          <div class="districtScore">
+          ${topPolicyScore[2].districtScore} 점
+          </div>
+         </div>
       `);
 
       // 사용자들의 혜택 평가 점수를 기준으로 한 추천 결과
@@ -65,10 +128,29 @@ function openRecommendModal() {
 
       $('#similar-group-results').html(`
         \<\'${data.nickName}\'님은 \'${groupInfo1.comparisonAgeRange} ${groupInfo1.comparisonGender}\' 회원들과 비슷한 관심을 보이고 있습니다.\><br><br>
-        추천 지역구는 ${groupInfo1.districtCode} 입니다.<br>
-        <i class="fas fa-trophy"></i> ${groupInfo1.districtCode}<br>
-        <i class="fas fa-medal"></i> ${groupInfo2.districtCode}<br>
-        <i class="fas fa-star"></i> ${groupInfo3.districtCode}
+       <div class="recommend-district">   
+         <div class="title">
+        추천 지역구는 <h2 style="color:#F9973E; display:inline"> ${groupInfo1.districtCode}</h2> 입니다.<br>
+        </div>
+        <div class="rank">
+        <div class="medal">
+        <img src="../assets/img/silverMedal.png" width="50px">
+        <div class="districtCode">
+        ${groupInfo2.districtCode} 
+        </div>
+        </div>
+        <div class="medal">      
+         <img src="../assets/img/goldMadal.png" width="50px">
+         <div class="dirtrictCode">
+          ${groupInfo1.districtCode}
+          </div>
+        </div>
+        <div class="medal">
+           <img src="../assets/img/bronzeMedal.png" width="50px">
+           <div class="dirtrictCode">
+          ${groupInfo3.districtCode}
+          </div>
+         </div>
       `);
 
       viewChart();
@@ -103,7 +185,6 @@ function updateChartData(policyCntData, policyScoreData) {
   console.log(policyCntDataDistrictScores1)
   console.log(policyCntDataDistrictNames2)
   console.log(policyCntDataDistrictScores2)
-
 
   const policyScoreDataDistrictNames1 = [];
   const policyScoreDataDistrictScores1 = [];
@@ -152,9 +233,13 @@ function viewChart() {
 function closeRecommendModal() {
   const hiddenBackground = document.querySelector('.hidden-background');
   const recommendModal = document.querySelector('.recommendation-modal');
+  const chatbot = document.querySelector('.chatbot-overlay');
+  const body = document.body
 
   hiddenBackground.style.display = 'none';
   recommendModal.style.display = 'none';
+  chatbot.style.display = 'flex';
+  body.style.position = 'static';
 }
 
 ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9"];
@@ -201,6 +286,12 @@ let chartConfig1 = {
       tooltip: {
         visible: true
       },
+      animation: {
+        effect: "11",
+        method: "3",
+        sequence: "ANIMATION_BY_PLOT_AND_NODE",
+        speed:10
+      }
     },
     scaleX: {
       labels: [],
@@ -260,6 +351,12 @@ let chartConfig2 = {
       tooltip: {
         visible: true
       },
+      animation: {
+        effect: "11",
+        method: "3",
+        sequence: "ANIMATION_BY_PLOT_AND_NODE",
+        speed:10
+      }
     },
     scaleX: {
       labels: [],
