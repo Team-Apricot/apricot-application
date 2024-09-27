@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/index-main-env.jsp"/>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/env/index-intro-env.jsp"/>
 
@@ -81,10 +83,12 @@
     </div>
   </div>
   <!-- 챗봇 오버레이 -->
-  <div class="chatbot-overlay" onclick="openRecommendModal()">
-    <i class="fas fa-robot chatbot-icon"></i>
-    <div class="chatbot-text">살구에게 지역구 추천 받기</div>
-  </div>
+  <sec:authorize access="isAuthenticated()">
+    <div class="chatbot-overlay" onclick="openRecommendModal()">
+      <i class="fas fa-robot chatbot-icon"></i>
+      <div class="chatbot-text">살구에게 지역구 추천 받기</div>
+    </div>
+  </sec:authorize>
   <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/policy/recommendation.jsp"/>
 </section>
 <script src="${pageContext.request.contextPath}/js/index.js"></script>
