@@ -1,8 +1,9 @@
 package sandbox.apricot.member.controller;
 
+import static org.springframework.http.HttpStatus.OK;
+
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ public class EmailRestController {
 
     // 회원가입 이메일 인증 API
     @PostMapping("/signup")
-    public ResponseEntity<ApiResponse<String>> sendEmail(@RequestBody Member member) throws MessagingException {
+    public ApiResponse<String> sendEmail(@RequestBody Member member) throws MessagingException {
         // 인증 코드 생성
         String authCode = emailService.generateAuthCode();
 
@@ -28,16 +29,16 @@ public class EmailRestController {
         emailService.sendEmail(member, "인증 코드", "귀하의 인증 코드는 " + authCode + "입니다.");
 
         // 성공 응답 (ApiResponse 객체로 성공 메시지 전송)
-        return ResponseEntity.ok(ApiResponse.successResponse(
-                org.springframework.http.HttpStatus.OK,
+        return ApiResponse.successResponse(
+                OK,
                 "이메일 전송 성공",
-                "\uD83D\uDDA5\uFE0F 인증코드: " + authCode
-        ));
+                authCode
+        );
     }
 
     // 비밀번호 찾기용 이메일 인증 API
     @PostMapping("/password-find")
-    public ResponseEntity<ApiResponse<String>> sendResetCode(@RequestBody Member member) throws MessagingException {
+    public ApiResponse<String> sendResetCode(@RequestBody Member member) throws MessagingException {
         // 인증 코드 생성
         String authCode = emailService.generateAuthCode();
 
@@ -47,10 +48,10 @@ public class EmailRestController {
         emailService.sendEmail(member, subject, text);
 
         // 성공 응답
-        return ResponseEntity.ok(ApiResponse.successResponse(
-                org.springframework.http.HttpStatus.OK,
+        return ApiResponse.successResponse(
+                OK,
                 "비밀번호 재설정 인증코드 전송 성공",
                 authCode
-        ));
+        );
     }
 }

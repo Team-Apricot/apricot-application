@@ -74,8 +74,6 @@ dependencies {
 
     // Spring Boot 메일 의존성
     implementation 'org.springframework.boot:spring-boot-starter-mail'
-
-    // Spring Boot 메일 의존성
     implementation 'jakarta.mail:jakarta.mail-api:2.1.1'
 
     // Test
