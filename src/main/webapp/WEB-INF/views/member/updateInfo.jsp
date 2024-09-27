@@ -110,6 +110,51 @@
       </div>
     </div>
   </div>
+  <div class="modal-bottom">
+    <div class="radio">
+      <div class="category-header" onclick="">
+        <img src="${pageContext.request.contextPath}/assets/img/interest.png" alt="살구 Logo">
+        관심사 수정
+        <%--        <i id="icon6" class="fa-solid fa-sort-down"></i>--%>
+      </div>
+      <div id="category6" class="category-list">
+        <input type="checkbox" id="023010" name="benefits" value="일자리"
+               onclick='getCheckedCnt(this)'>
+        <label for="023010"><span class="order-number"></span>일자리</label>
+
+        <input type="checkbox" id="023020" name="benefits" value="주거"
+               onclick='getCheckedCnt(this)'>
+        <label for="023020"><span class="order-number"></span>주거</label>
+
+        <input type="checkbox" id="023030" name="benefits" value="교육"
+               onclick='getCheckedCnt(this)'>
+        <label for="023030"><span class="order-number"></span>교육</label>
+
+        <input type="checkbox" id="023040" name="benefits" value="복지"
+               onclick='getCheckedCnt(this)'>
+        <label for="023040"><span class="order-number"></span>복지</label>
+
+        <input type="checkbox" id="023050" name="benefits" value="참여/권리"
+               onclick='getCheckedCnt(this)'>
+        <label for="023050"><span class="order-number"></span>참여/권리</label>
+
+        <input type="checkbox" id="023060" name="benefits" value="의료 시설"
+               onclick='getCheckedCnt(this)'>
+        <label for="023060"><span class="order-number"></span>의료 시설</label>
+
+        <input type="checkbox" id="023070" name="benefits" value="문화 시설"
+               onclick='getCheckedCnt(this)'>
+        <label for="023070"><span class="order-number"></span> 문화 시설</label>
+
+        <input type="checkbox" id="023080" name="benefits" value="체육 시설"
+               onclick='getCheckedCnt(this)'>
+        <label for="023080"><span class="order-number"></span>체육 시설</label>
+      </div>
+      <button class="update-detail-btn" onclick="updateInterest()">수정</button>
+
+      <div id="benefitsValid" class="error"></div>
+    </div>
+  </div>
 </div>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/footer.jsp"/>
 </body>
