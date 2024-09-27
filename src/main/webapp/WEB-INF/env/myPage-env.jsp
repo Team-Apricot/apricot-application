@@ -5,3 +5,4 @@
 
 <!-- App. JS File -->
 <script src="${pageContext.request.contextPath}/js/member/myPage.js"></script>
+<script src="${pageContext.request.contextPath}/js/member/update.js"></script>
