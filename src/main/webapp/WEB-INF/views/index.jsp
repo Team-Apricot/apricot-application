@@ -14,16 +14,6 @@
 <body>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/header.jsp"/>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/salgu-main.jsp"/>
-
-<%-- TODO: 소개 페이지 필요시 사용(일정 보고 진행 예정) --%>
-<%--<sec:authorize access="isAuthenticated()"> <!-- 로그인된 사용자에게 표시할 내비게이션 링크 -->--%>
-<%--	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/salgu-main.jsp"/>--%>
-<%--</sec:authorize>--%>
-
-<%--<sec:authorize access="!isAuthenticated()"> <!-- 비로그인 사용자에게 표시할 내비게이션 링크 -->--%>
-<%--	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/salgu-intro.jsp"/>--%>
-<%--</sec:authorize>--%>
-
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/components/footer.jsp"/>
 </body>
 </html>
