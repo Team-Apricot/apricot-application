@@ -3,6 +3,7 @@ package sandbox.apricot.recommendation.service;
 import java.util.List;
 import sandbox.apricot.recommendation.dto.response.DistrictScoreDTO;
 import sandbox.apricot.recommendation.dto.response.PolicyScoreDTO;
+import sandbox.apricot.recommendation.dto.response.RecommendationInfo;
 import sandbox.apricot.recommendation.dto.response.ScrapGroupSimilarityDTO;
 
 public interface RecommendationService {
@@ -17,4 +18,7 @@ public interface RecommendationService {
     List<ScrapGroupSimilarityDTO> getRecommendationByScrapGroup(String ageRange, String gender);
 
     List<PolicyScoreDTO> getPolicyRecommendation(String policyCode);
+
+    RecommendationInfo getRecommendationInfo(Long memberId);
+
 }

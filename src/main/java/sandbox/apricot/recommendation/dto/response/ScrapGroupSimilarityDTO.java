@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -15,7 +16,7 @@ public class ScrapGroupSimilarityDTO {
     private String comparisonGender;
     private String comparisonAgeRange;
     private int preferenceCount;
-    private String districtCode;
+    @Setter private String districtCode;
     private double cosineSimilarity;
 
     @Builder
