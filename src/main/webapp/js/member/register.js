@@ -21,12 +21,34 @@ document.addEventListener('DOMContentLoaded', function () {
         errorMessage = isValid ? '' : "이메일을 입력해주세요.";
         break;
       case 'nickname':
-        isValid = value !== '';
-        errorMessage = isValid ? '' : "닉네임을 입력해주세요.";
+        if(value ===''){
+          isValid=false;
+          errorMessage= "닉네임을 입력해주세요";
+        }
+        else if(value.length<2 || value.length>10){
+          isValid=false;
+          errorMessage="닉네임은 2자 이상 10자 미만이여야 합니다."
+        }
+        else{
+          errorMessage="";
+        }
+        // errorMessage = isValid ? '' : "닉네임을 입력해주세요.";
         break;
       case 'pwd':
         isValid = value !== ''; // TODO: 비밀번호 유효성 검사 조건 추가
-        errorMessage = isValid ? '' : "비밀번호를 입력해주세요.";
+        const pwdRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+        if(value===''){
+          isValid=false;
+          errorMessage = "비밀번호를 입력해주세요";
+        }
+        else if(!pwdRegex.test(value) && (value.length<8||value.length>20)){
+          isValid = false;
+          errorMessage="비밀번호는 8자 이상, 20자 이하이어야 하며, 대문자, 소문자, 숫자, 특수 문자를 포함해야 합니다."
+        }
+        else{
+          errorMessage="";
+        }
+        // errorMessage = isValid ? '' : "비밀번호를 입력해주세요.";
         break;
       case 'pwdChk':
         isValid = value !== '' && value === fields.pwd.value;

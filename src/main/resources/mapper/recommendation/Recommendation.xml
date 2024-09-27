@@ -13,8 +13,8 @@
     <result property="originalAgeRange" column="GROUP1_AGE_RANGE"/>
     <result property="comparisonGender" column="GROUP2_GENDER"/>
     <result property="comparisonAgeRange" column="GROUP2_AGE_RANGE"/>
-    <result property="preferenceCount" column="preferenceCount"/>
-    <result property="cosineSimilarity" column="cosineSimilarity"/>
+    <result property="preferenceCount" column="PREFERENCE_COUNT"/>
+    <result property="cosineSimilarity" column="COSINE_SIMILARITY"/>
   </resultMap>
 
   <resultMap id="PolicyScoreMap" type="PolicyScoreDTO">
@@ -30,17 +30,17 @@
   <!--개인별 지역구 점수(정책 수)-->
   <select id="findAllDistrictScoreFromPolicyNumberByMemberId" resultMap="DistrictScoreResultMap">
     SELECT y.district_code,
-           SUM(CASE i.priority
-                 WHEN 1 THEN 5
-                 WHEN 2 THEN 3
-                 WHEN 3 THEN 2
-                 ELSE 0 END) AS DISTRICT_SCORE
-    FROM INTERESTS i
-           JOIN YOUTH_POLICY_DETAIL y ON i.CATEGORY_ID = y.CATEGORY_CODE
-    WHERE i.MEMBER_ID = #{memberId}
-      AND DISTRICT_CODE != '26'
-    GROUP BY y.DISTRICT_CODE
-    ORDER BY DISTRICT_CODE
+           COALESCE(SUM(CASE i.priority
+                          WHEN 1 THEN 5
+                          WHEN 2 THEN 3
+                          WHEN 3 THEN 2
+                          ELSE 0 END), 0) AS DISTRICT_SCORE
+    FROM YOUTH_POLICY_DETAIL y
+           LEFT JOIN INTERESTS i ON i.CATEGORY_ID = y.CATEGORY_CODE
+      AND i.MEMBER_ID = #{memberId}
+    WHERE y.DISTRICT_CODE != '26'
+    GROUP BY y.district_code
+    ORDER BY y.district_code
   </select>
   <!--개인별 지역구 점수(정책 점수)-->
   <select id="findAllDistrictScoreFromPolicyScoreByMemberId" resultMap="DistrictScoreResultMap">
@@ -114,7 +114,7 @@
            JOIN
          GroupVectors gv ON gv.age_range = bm.group2_age_range AND gv.gender = bm.group2_gender
     ORDER BY preference_count DESC
-      FETCH FIRST 3 ROWS ONLY -- 해당 그룹이 가장 선호하는 지역구 3개 선택
+      FETCH FIRST 10 ROWS ONLY -- 해당 그룹이 가장 선호하는 지역구 3개 선택
   </select>
 
   <!-- 유사한 정책 추천-->
@@ -125,7 +125,8 @@
           (SELECT CATEGORY_CODE FROM YOUTH_POLICY_DETAIL WHERE POLICY_CODE = #{policyCode})
       AND district_code != '26'
       AND POLICY_CODE != #{policyCode}
-    ORDER BY avg_score DESC
+    ORDER BY DBMS_RANDOM.VALUE
+    FETCH first 3 rows only
   </select>
 
 </mapper>

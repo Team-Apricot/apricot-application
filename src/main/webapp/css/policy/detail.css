@@ -230,7 +230,7 @@ body {
   text-align: left;
   font-size: 1.5em; /* 기본 폰트 크기 */
   color: #F9973E;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .areas-list {
@@ -255,10 +255,11 @@ body {
   gap: 30px; /* 이미지와 텍스트 사이의 간격 */
   box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
   overflow: hidden; /* 내용이 요소를 벗어나지 않도록 설정 */
+  width: 100%;
 }
 
 .area-item img {
-  width: 150px; /* 고정 폭 */
+  width: 100px; /* 고정 폭 */
   height: auto;
   max-height: 150px; /* 이미지 크기 조정 */
 }
@@ -293,12 +294,18 @@ body {
   padding: 10px;
 }
 
+.reveiewBtn {
+  width: 100px;
+  background-color: #F9973E;
+  color: white;
+  border: none;
+  margin: 20px;
+}
+
 /* 반응형 */
 @media (max-width: 575px) {
   .policy-header {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
   }
 
@@ -308,7 +315,7 @@ body {
   }
 
   .top-areas {
-    margin: 0;
+    margin: 20px 0;
     padding: 0;
   }
 
@@ -330,6 +337,9 @@ body {
     font-size: 15px;
   }
 
+  .region-tag{
+    display: none;
+  }
 }
 
 /* 하트 아이콘 css */

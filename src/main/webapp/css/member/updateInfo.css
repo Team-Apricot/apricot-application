@@ -100,7 +100,7 @@
 }
 
 /* 원래 라디오 버튼 제거*/
-input[type="radio"] {
+input[type="radio"], input[type="checkbox"] {
   display: none;
 }
 
@@ -143,6 +143,46 @@ input[type="radio"] {
   align-items: center;
 }
 
+/*체크박스 버튼 커스텀*/
+.category-list input[type="checkbox"] + label {
+  display: inline-block;
+  cursor: pointer;
+  height: 24px;
+  width: 90px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  background-color: #fff;
+  color: #333;
+}
+
+/*체크박스 버튼 클릭시*/
+.category-list input[type="checkbox"]:checked + label {
+  background-color: #f79025;
+  color: #fff;
+}
+
+/* 체크박스 순서 */
+.order-number {
+  font-weight: bold;
+  color: red;
+  margin-right: 3px;
+}
+
+.category-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+#category6 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 10px;
+}
+
 /* 넓이가 800 이하이면 모든 수정 레이아웃 세로로 배치 */
 @media (max-width: 800px) {
   .modal-content {
@@ -151,5 +191,16 @@ input[type="radio"] {
     align-items: center;
     justify-content: center;
   }
+}
 
+@media (max-width: 490px) {
+  #category6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #category1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 10px;
+  }
 }

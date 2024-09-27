@@ -1,0 +1,139 @@
+/*리뷰 모달 창 띄우기 */
+.review-modal {
+  display: none; /* 기본적으로 숨김 */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 화면 중앙으로 이동 */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 5; /* hiddenBackground 위에 표시되도록 설정 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  height: 30%;
+  overflow: hidden; /* 스크롤 튀어나옴 방지 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 리뷰 모달 스크롤바 없앰 */
+.review-modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* 전체 컨테이너 */
+.review-modal-content {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+/*닫기버튼*/
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* 별 */
+#myform fieldset {
+  display: inline-block;
+  direction: rtl;
+  border: 0;
+}
+
+#myform fieldset legend {
+  text-align: right;
+}
+
+#myform input[type=radio] {
+  display: none;
+}
+
+#myform label {
+  font-size: 3em;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform label:hover {
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#myform label:hover ~ label {
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#myform input[type=radio]:checked ~ label {
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewContents {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: solid 1.5px #D3D3D3;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: none;
+}
+
+/*리뷰 모달 글씨 */
+.text-bold {
+  text-align: center;
+  font-size: 1.5em; /* 기본 폰트 크기 */
+  color: #F9973E;
+  /*margin-bottom: 10px;*/
+}
+
+.text-bold h3 {
+  text-align: center;
+}
+
+.btn {
+  width: 100px;
+  background-color: #F9973E;
+  color: white;
+  border: none;
+  margin: 20px;
+  text-align: center;
+}
+
+/*반응형 */
+@media (max-width: 1100px) {
+  .text-bold {
+    font-size: 1.2em;
+  }
+
+  #myform label {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 900px) {
+  .review-modal {
+    width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .review-modal {
+    width: 70%;
+  }
+}
+
+form{
+  justify-content: center;
+
+}

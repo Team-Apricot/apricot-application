@@ -28,6 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
       element.classList.add(statusClass);
     }
   });
+
+  // 검색결과 없을 때 메시지 띄우기
+  const policyCnt = parseInt(document.getElementById('policycnt').textContent);
+  if(policyCnt===0){
+    const noSearchResultDiv = document.querySelector('.noSearchResult');
+    const searchDetail = document.querySelector('.search-detail');
+    searchDetail.style.minHeight="20px";
+    noSearchResultDiv.style.display = "flex";
+    noSearchResultDiv.innerHTML="검색 결과가 없습니다.";
+    noSearchResultDiv.style.height="500px";
+  }
+
+
 });
 
 //관심있는 정책 눌렀을 때 해당 정책 세부 페이지로 이동

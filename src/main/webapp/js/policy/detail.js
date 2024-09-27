@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const policyTableContents = document.querySelectorAll(
       '.policy-table-content');
 
-  const avgScore = parseFloat(document.getElementById("avg-score").getAttribute("data-score")).toFixed(2); // 소수점 둘째 자리까지
+  const avgScore = parseFloat(
+      document.getElementById("avg-score").getAttribute("data-score")).toFixed(
+      2); // 소수점 둘째 자리까지
   document.getElementById("avg-score").innerText = avgScore; // 평균 점수 업데이트
 
   const roundedScore = Math.round(avgScore * 2) / 2; // 반올림 처리 (0.5 단위로)
@@ -142,3 +144,29 @@ function deleteScrap(scrapId) {
       }
   )
 }
+
+//리뷰 모달 열기
+function openReviewModal() {
+  const hiddenBackground = document.querySelector('.hidden-background');
+  const reviewModal = document.querySelector('.review-modal');
+
+  hiddenBackground.style.display = 'flex';
+  reviewModal.style.display = 'flex';
+}
+
+//리뷰 모달 닫기
+function closeReviewModal() {
+  const hiddenBackground = document.querySelector('.hidden-background');
+  const reviewModal = document.querySelector('.review-modal');
+
+  hiddenBackground.style.display = 'none';
+  reviewModal.style.display = 'none';
+}
+
+//hidden-background 클릭시 모달 닫기
+document.addEventListener('DOMContentLoaded', function () {
+  const hiddenBackground = document.querySelector('.hidden-background');
+  if (hiddenBackground) {
+    hiddenBackground.addEventListener('click', closeReviewModal);
+  }
+});
