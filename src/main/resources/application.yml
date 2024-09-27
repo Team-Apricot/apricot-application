@@ -15,6 +15,10 @@ spring:
   config:
     activate:
       on-profile: local
+  data:
+    redis:
+      port: ${spring.data.redis.port}
+      host: localhost
 
 server:
   port: 8080
@@ -28,6 +32,10 @@ spring:
   config:
     activate:
       on-profile: blue
+  data:
+    redis:
+      port: ${spring.data.redis.port}
+      host: ${spring.data.redis.host.blue}
 
 server:
   port: ${server.port.blue}
@@ -41,6 +49,11 @@ spring:
   config:
     activate:
       on-profile: green
+  data:
+    redis:
+      port: ${spring.data.redis.port}
+      host: ${spring.data.redis.host.green}
+
 
 server:
   port: ${server.port.green}
@@ -67,17 +80,13 @@ spring:
     restart:
       enabled: true
 
-  data:
-    redis:
-      port: 6379
-      host: localhost
-  cache:
-    type: redis
-
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+
+  cache:
+    type: redis
 
 server:
   servlet:
