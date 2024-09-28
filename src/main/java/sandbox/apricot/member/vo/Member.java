@@ -14,7 +14,6 @@ public class Member extends BaseTime {
 
     private Long memberId; // 사용자 고유 식별자
     private String email; // 로그인 아이디
-    private String authCode;
     private String nickName; // 닉네임
     private String password; // 로그인 비밀번호
     private String ageRange; // 연령대 - 20대 미만, 20대, 30대, 40대, 50대 이상
@@ -25,10 +24,9 @@ public class Member extends BaseTime {
     private MemberRole memberRole; // 권한 - USER_ROLE, ADMIN_ROLE
 
     @Builder
-    public Member(String email, String authCode, String nickName, String password, String ageRange, String gender,
+    public Member(String email, String nickName, String password, String ageRange, String gender,
             String career, String marriedStatus, int numChild, MemberRole memberRole) {
         this.email = email;
-        this.authCode = authCode;
         this.nickName = nickName;
         this.password = password;
         this.ageRange = ageRange;

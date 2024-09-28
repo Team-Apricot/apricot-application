@@ -1,44 +1,5 @@
 /*회원가입 모달 화면 css */
 
-.input-button-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  width: 100%;
-}
-
-.input-button-container input,
-.input-button-container button {
-  flex-grow: 1;
-  margin-right: 10px;
-  padding: 10px;
-  height: 40px;
-  box-sizing: border-box;
-}
-
-.input-button-container button {
-  flex-grow: 0;
-  width: 150px;
-}
-
-.auth-btn {
-  margin-top: 10px;
-  background-color: #FFBB6A;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-family: 'Jua', sans-serif; /* signup-btn과 동일한 폰트 적용 */
-  float: right; /* 버튼을 오른쪽으로 정렬 */
-}
-
-/* 이메일과 인증번호 확인 버튼에 대한 호버 효과 */
-.auth-btn:hover {
-  background-color: #e06a43;
-}
-
 .signup-logo {
   display: flex;
   flex-direction: column;

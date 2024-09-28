@@ -70,20 +70,4 @@ public class ApiResponse<T> {
                 .build();
     }
 
-    /**
-     * 상태 코드(int)를 사용하는 errorResponse 메서드 추가
-     *
-     * @param code - 상태 코드
-     * @param message - 오류 메시지
-     */
-    public static <T> ApiResponse<T> errorResponse(
-            final int code,
-            final String message
-    ) {
-        return ApiResponse.<T>builder()
-                .code(code)
-                .message(message)
-                .build();
-    }
-
 }

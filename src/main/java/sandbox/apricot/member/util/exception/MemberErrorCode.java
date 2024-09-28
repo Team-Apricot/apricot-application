@@ -26,9 +26,11 @@ public enum MemberErrorCode implements ErrorCode {
     WRONG_NICKNAME(BAD_REQUEST, "닉네임을 다시 확인해 주세요."),
     NICKNAME_DUPLICATE(BAD_REQUEST, "이미 사용 중인 닉네임입니다."),
     NICKNAME_RANGE_VIOLATION(BAD_REQUEST, "닉네임은 2자 이상, 10자 미만이어야 합니다."),
-    NICKNAME_CONTAINS_SPECIAL_CHAR(BAD_REQUEST, "닉네임에 특수문자를 포함할 수 없습니다."),
-    AUTHENTICATION_CODE_DOES_NOT_MATCH(BAD_REQUEST,"인증코드가 일치하지 않습니다.");
+    NICKNAME_CONTAINS_SPECIAL_CHAR(BAD_REQUEST, "닉네임에 특수문자를 포함할 수 없습니다.");
+
 
     private final HttpStatus httpStatus;
+
     private final String message;
+
 }

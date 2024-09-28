@@ -6,20 +6,6 @@ spring:
       blue: blue, common, secret
       green: green, common, secret
 
-mail:
-  host: smtp.gmail.com
-  port: 587
-  username: ${spring.mail.username} # application-secret.yml에서 참조
-  password: ${spring.mail.password} # application-secret.yml에서 참조
-  properties:
-    mail:
-      smtp:
-        auth: true
-        starttls:
-          enable: true
-          required: true
-      debug: true
-
 server:
   env: blue
 

@@ -4,7 +4,6 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.log4j.Log4j2;
@@ -75,19 +74,6 @@ public class GlobalExceptionHandler {
         log.error(">>> [ ❌ 서버 내부에서 문제가 발생했습니다. method: {}, requestURI: {}, exception: {} ]",
                 request.getMethod(), request.getRequestURI(), exception);
         return ApiResponse.errorResponse(INTERNAL_SERVER_ERROR, exception.getMessage());
-    }
-
-    /**
-     * MessagingException을 처리하기 위한 예외 처리 메서드입니다.
-     * 이메일 전송 과정에서 발생할 수 있는 오류를 처리하여,
-     * 클라이언트에게 적절한 오류 응답을 제공하고 로그에 오류 정보를 기록하는 기능을 수행합니다.
-     * */
-    @ExceptionHandler(MessagingException.class)
-    @ResponseStatus(INTERNAL_SERVER_ERROR)
-    protected ApiResponse<Void> handleMessagingException(MessagingException exception, HttpServletRequest request) {
-        log.error(">>> [ ❌ 이메일 전송 중 오류 발생. method: {}, requestURI: {}, exception: {} ]",
-                request.getMethod(), request.getRequestURI(), exception);
-        return ApiResponse.errorResponse(INTERNAL_SERVER_ERROR, "이메일 전송 실패: " + exception.getMessage());
     }
 
 }
