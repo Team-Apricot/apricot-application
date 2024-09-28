@@ -31,7 +31,7 @@ public interface PolicyMapper {
     void saveReview(
             @Param("policyCode") String policyCode,
             @Param("memberId") Long memberId,
-            @Param("policyScore") Integer policyScore
+            @Param("policyDetailScore") Integer policyScore
     );
 
 }
