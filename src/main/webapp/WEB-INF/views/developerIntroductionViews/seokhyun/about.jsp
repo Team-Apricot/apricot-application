@@ -13,8 +13,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/favicon.png' />" rel="icon">
-  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/favicon.png'/>" rel="icon">
+  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/apple-touch-icon.png'/>" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
