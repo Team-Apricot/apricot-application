@@ -13,8 +13,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/favicon.png' />" rel="icon">
-  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
+  <link href="<c:url value='/assets/img/mascot.png' />" rel="icon">
+  <link href="<c:url value='/assets/img/mascot.png' />" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -45,7 +45,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="<c:url value='/index.html' />" class="logo d-flex align-items-center">
+      <a href="<c:url value='/resume/seokhyun/home' />" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="/salguDevelopers/seokhyun/assets/img/logo.png" alt=""> -->
         <h1 class="sitename">shhwang</h1>
@@ -81,7 +81,7 @@
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="<c:url value='/resume/seokhyun/home' />">Home</a></li>
             <li class="current">Resume</li>
           </ol>
         </div>
@@ -204,11 +204,7 @@
       <p>그룹사업내 경험을 기반으로 다양한 업무지식을 축적하고 신기술을 적극 도입하여 적용하는 등 이러한 주요업무에 참여하게 된다면 제게
                   는 커다란 기회라고 생각합니다.</p>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/smuhsh" target="_blank"><i class="bi bi-github"></i></a>
       </div>
       <div class="container">
         <div class="copyright">
@@ -219,7 +215,7 @@
           <!-- You can delete the links only if you've purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-          Designed by <a href="https://bootstrapmade.com/">shhwang</a>
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
     </div>
