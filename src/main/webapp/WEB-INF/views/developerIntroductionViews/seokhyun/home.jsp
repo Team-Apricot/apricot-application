@@ -11,8 +11,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/favicon.png' />" rel="icon">
-  <link href="<c:url value='/salguDevelopers/seokhyun/assets/img/apple-touch-icon.png' />" rel="apple-touch-icon">
+  <link href="<c:url value='/assets/img/mascot.png' />" rel="icon">
+  <link href="<c:url value='/assets/img/mascot.png' />" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -29,13 +29,25 @@
   <!-- Main CSS File -->
   <link href="<c:url value='/salguDevelopers/seokhyun/assets/css/main.css' />" rel="stylesheet">
 
+  <style>
+    .social-links a {
+      color: #333;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #4078c0; /* GitHub blue color */
+    }
+  </style>
+
 </head>
 
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="<c:url value='/resume/seokhyun/home' />" class="logo d-flex align-items-center">
         <h1 class="sitename">shhwang</h1>
       </a>
 
@@ -81,12 +93,6 @@
       <div class="container" data-aos="zoom-out" data-aos-delay="100">
         <h2>Seokhyun Hwang</h2>
         <p>I <span class="typed" data-typed-items=" am Developer, love my Koong">I love my Koong</span><span class="typed-cursor typed-cursor--blink"></span></p>
-        <div class="social-links">
-          <a href="#"><i class="bi bi-twitter-x"></i></a>
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
-        </div>
       </div>
     </section><!-- /Hero Section -->
   </main>
@@ -98,11 +104,7 @@
       그래서 어려움을 겪는 동료들과 소통하며 대인관계에서 신뢰를 쌓았고
          이후에도 일을 추진함에 있어서 큰 성과를 가졌습니다.</p>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/smuhsh" target="_blank"><i class="bi bi-github"></i></a>
       </div>
       <div class="container">
         <div class="copyright">
