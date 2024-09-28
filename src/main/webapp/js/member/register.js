@@ -4,10 +4,103 @@
 document.addEventListener('DOMContentLoaded', function () {
   const fields = {
     email: document.getElementById('email'),
+    authCode: document.getElementById('authCode'),
     nickname: document.getElementById('nickname'),
     pwd: document.getElementById('pwd'),
     pwdChk: document.getElementById('pwdChk'),
   };
+
+  let authCodeSent = false;
+  let correctAuthCode = ''; // 서버로부터 받은 실제 인증코드 저장
+  let timerInterval;
+
+  // 인증번호 전송 후 3분 타이머 시작
+  function startTimer(duration, display) {
+    let timer = duration;
+    clearInterval(timerInterval); // 이전 타이머 초기화
+    timerInterval = setInterval(function () {
+      const minutes = Math.floor(timer / 60);
+      const seconds = timer % 60;
+      display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds} 남음`;
+
+      if (--timer < 0) {
+        clearInterval(timerInterval);
+        display.textContent = '인증 시간이 만료되었습니다.';
+        authCodeSent = false; // 타이머가 끝나면 다시 인증할 수 있도록 설정
+      }
+    }, 1000);
+  }
+
+// 이메일 인증 버튼 클릭 시 인증코드 전송 로직
+  document.getElementById('sendAuthCodeBtn').addEventListener('click', function () {
+    const email = fields.email.value;
+
+    if (email === '') {
+      document.getElementById('emailValid').innerHTML = '이메일을 입력해주세요.';
+      document.getElementById('emailValid').style.color = 'red';
+      return;
+    }
+
+    // 이메일 인증 API 호출
+    $.ajax({
+      url: `/api/v1/member/send-auth-code`,
+      type: 'POST',
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify({ email: email }), // 데이터를 JSON 문자열로 변환
+      success: function (data) {
+        correctAuthCode = data.authCode; // 서버로부터 받은 인증코드 저장
+        authCodeSent = true; // 인증코드 전송 상태
+        document.getElementById('emailValid').innerHTML = '인증코드가 발송되었습니다.';
+        document.getElementById('emailValid').style.color = 'green';
+
+        // 3분 타이머 시작
+        const display = document.getElementById('authCodeTimer');
+        startTimer(180, display);
+      },
+      error: function () {
+        document.getElementById('emailValid').innerHTML = '인증코드 발송에 실패했습니다.';
+        document.getElementById('emailValid').style.color = 'red';
+      }
+    });
+  });
+
+  // 인증번호 확인 버튼 클릭 시 로직
+  document.getElementById('verifyAuthCodeBtn').addEventListener('click', function () {
+    const authCode = fields.authCode.value;
+
+    if (authCode === '') {
+      document.getElementById('authCodeValid').innerHTML = '인증코드를 입력해주세요.';
+      document.getElementById('authCodeValid').style.color = 'red';
+      return;
+    }
+
+    if (authCode.length !== 6) {
+      document.getElementById('authCodeValid').innerHTML = '인증코드가 잘못되었습니다.';
+      document.getElementById('authCodeValid').style.color = 'red';
+      return;
+    }
+
+    // 서버로 인증코드 검증 요청
+    $.ajax({
+      url: `/api/v1/member/verify-auth-code`,
+      type: 'POST',
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify(authCode), // 인증코드를 JSON으로 전송
+      success: function (response) {
+        document.getElementById('authCodeValid').innerHTML = '인증을 성공했습니다.';
+        document.getElementById('authCodeValid').style.color = 'green';
+
+        // 타이머 종료 및 관련 메시지 제거
+        clearInterval(timerInterval); // 타이머 중지
+        document.getElementById('authCodeTimer').innerHTML = ''; // 타이머 메시지 제거
+      },
+      error: function () {
+        document.getElementById('authCodeValid').innerHTML = '인증코드가 일치하지 않습니다.';
+        document.getElementById('authCodeValid').style.color = 'red';
+      }
+    });
+
+  });
 
   // 필드 유효성 검사 함수
   function validateField(field) {
