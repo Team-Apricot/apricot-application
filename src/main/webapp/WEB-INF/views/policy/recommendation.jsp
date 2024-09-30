@@ -26,13 +26,16 @@
           분석합니다.</u></p>
         <div id="policy-score-results"></div>
       </div>
-      <div class="reason">
-        <h2 id="reason3-title"></h2>
-        <p class="provide-info"><i class="fas fa-search"></i> <u>회원님의 정보로 비슷한 성향을 가진 회원들의 인기 있는 혜택을
-          가진 지역구를
-          분석합니다.</u></p>
-        <div id="similar-group-results"></div>
-      </div>
+
+      <%--          TODO: COMMING SOON --%>
+      <%--      <div class="reason">--%>
+      <%--        <h2 id="reason3-title"></h2>--%>
+      <%--        <p class="provide-info"><i class="fas fa-search"></i> <u>회원님의 정보로 비슷한 성향을 가진 회원들의 인기 있는 혜택을--%>
+      <%--          가진 지역구를--%>
+      <%--          분석합니다.</u></p>--%>
+      <%--        <div id="similar-group-results"></div>--%>
+      <%--      </div>--%>
+
       <%--      <div id="result-salgu">--%>
 
       <%--      </div>--%>
