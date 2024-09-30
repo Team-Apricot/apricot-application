@@ -122,17 +122,18 @@
                  onclick='getCheckedCnt(this)'>
           <label for="023050"><span class="order-number"></span>참여/권리</label>
 
-          <input type="checkbox" id="023060" name="benefits" value="의료 시설"
-                 onclick='getCheckedCnt(this)'>
-          <label for="023060"><span class="order-number"></span>의료 시설</label>
+          <%--          TODO: COMMING SOON --%>
+          <%--          <input type="checkbox" id="023060" name="benefits" value="의료 시설"--%>
+          <%--                 onclick='getCheckedCnt(this)'>--%>
+          <%--          <label for="023060"><span class="order-number"></span>의료 시설</label>--%>
 
-          <input type="checkbox" id="023070" name="benefits" value="문화 시설"
-                 onclick='getCheckedCnt(this)'>
-          <label for="023070"><span class="order-number"></span> 문화 시설</label>
+          <%--          <input type="checkbox" id="023070" name="benefits" value="문화 시설"--%>
+          <%--                 onclick='getCheckedCnt(this)'>--%>
+          <%--          <label for="023070"><span class="order-number"></span> 문화 시설</label>--%>
 
-          <input type="checkbox" id="023080" name="benefits" value="체육 시설"
-                 onclick='getCheckedCnt(this)'>
-          <label for="023080"><span class="order-number"></span>체육 시설</label>
+          <%--          <input type="checkbox" id="023080" name="benefits" value="체육 시설"--%>
+          <%--                 onclick='getCheckedCnt(this)'>--%>
+          <%--          <label for="023080"><span class="order-number"></span>체육 시설</label>--%>
         </div>
         <div id="benefitsValid" class="error"></div>
       </div>
