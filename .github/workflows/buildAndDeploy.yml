@@ -30,20 +30,24 @@ jobs:
         ./gradlew clean build
 
     - name: Login to DockerHub
+      if: github.event_name == 'push'
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build Docker
+      if: github.event_name == 'push'
       run: docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/apricot_application .
 
     - name: Push Docker
+      if: github.event_name == 'push'
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/apricot_application:latest
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: Set target IP
         run: |
