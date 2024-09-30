@@ -334,8 +334,11 @@
         <label for="star1"
                class="${policyDetails.avgPolicyScore >= 1 ? 'filled' : ''}"></label>
       </div>
-      <button class="reveiewBtn" onclick="openReviewModal()">리뷰남기기</button>
-      <%@ include file="/WEB-INF/views/policy/reviewModal.jsp" %>
+
+      <sec:authorize access="isAuthenticated()">
+        <button class="reveiewBtn" onclick="openReviewModal()">리뷰남기기</button>
+        <%@ include file="/WEB-INF/views/policy/reviewModal.jsp" %>
+      </sec:authorize>
     </div>
     <div class="top-areas">
       <h2>지금 보고 있는 혜택과 비슷한 혜택</h2>
