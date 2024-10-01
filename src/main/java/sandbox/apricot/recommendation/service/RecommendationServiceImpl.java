@@ -54,7 +54,7 @@ public class RecommendationServiceImpl implements RecommendationService {
         }
 
         // Redis에 데이터가 없거나 오류가 발생한 경우 DB에서 데이터를 조회
-        log.info(" >>> [ 🔍 Oracle - 지역구 혜택 수 조회 시도 ]");
+        log.info(">>> [ 🔍 Oracle - 지역구 혜택 수 조회 시도 ]");
 
         String nickName = member.getNickName();
         String ageRange = member.getAgeRange();
@@ -74,9 +74,9 @@ public class RecommendationServiceImpl implements RecommendationService {
 
         try {
             ops.set(redisKeyForMember, dbData, 24, TimeUnit.HOURS);
-            log.info(" >>> [ ✨ Redis - Data 등록 완료 ]");
+            log.info(">>> [ ✨ Redis - Data 등록 완료 ]");
         } catch (Exception e) {
-            log.error(" >>> [ ⚠️ Redis 데이터 캐싱 중 오류 발생: {} ]", e.getMessage());
+            log.error(">>> [ ⚠️ Redis 데이터 캐싱 중 오류 발생: {} ]", e.getMessage());
         }
 
         return dbData;
