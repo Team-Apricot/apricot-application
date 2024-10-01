@@ -5,6 +5,7 @@ import static sandbox.apricot.interest.util.exception.InterestErrorCode.*;
 import java.util.stream.IntStream;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sandbox.apricot.interest.dto.request.InterestRegister;
@@ -19,8 +20,12 @@ import sandbox.apricot.interest.util.exception.InterestBusinessException;
 @RequiredArgsConstructor
 public class InterestServiceImpl implements InterestService {
 
+    private static final String REDIS_KEY = "recommendInfo";
+
     private final InterestMapper interestMapper;
     private final CategoryMapper categoryMapper;
+
+    private final RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public void register(InterestRegister request) {
@@ -39,7 +44,19 @@ public class InterestServiceImpl implements InterestService {
 
     @Override
     public void update(InterestRegister request) {
-        interestMapper.deleteByMemberId(request.getMemberId());
+        Long memberId = request.getMemberId();
+
+        // Redis에서 해당 회원의 캐시 삭제
+        String redisKeyForMember = REDIS_KEY + ":" + memberId;
+        log.info(">>> [ ⚡ Redis 캐시 삭제 시도 - 회원 ID: {} ]", memberId);
+        try {
+            redisTemplate.delete(redisKeyForMember);
+            log.info(">>> [ ⚡ Redis 캐시 삭제 완료 - 회원 ID: {} ]", memberId);
+        } catch (Exception e) {
+            log.error(">>> [ ⚠️ Redis 캐시 삭제 중 오류 발생 - 회원 ID: {}: {} ]", memberId, e.getMessage());
+        }
+
+        interestMapper.deleteByMemberId(memberId);
         register(request);
     }
 

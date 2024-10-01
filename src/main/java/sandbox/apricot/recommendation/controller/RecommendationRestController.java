@@ -5,16 +5,14 @@ import static org.springframework.http.HttpStatus.OK;
 import java.security.Principal;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sandbox.apricot.auth.dto.MemberPrincipalDetails;
 import sandbox.apricot.common.response.ApiResponse;
 import sandbox.apricot.member.dto.response.MemberInfo;
 import sandbox.apricot.member.service.MemberService;
-import sandbox.apricot.member.vo.Member;
 import sandbox.apricot.recommendation.dto.response.DistrictScoreDTO;
 import sandbox.apricot.recommendation.dto.response.PolicyScoreDTO;
 import sandbox.apricot.recommendation.dto.response.RecommendationInfo;
@@ -29,6 +27,7 @@ public class RecommendationRestController {
     private final RecommendationService recommendationService;
     private final MemberService memberService;
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping
     public ApiResponse<RecommendationInfo> getRecommendationByMemberId(
             Principal principal) {
@@ -68,8 +67,7 @@ public class RecommendationRestController {
     @GetMapping("/related-policy/{policy_code}")
     public ApiResponse<List<PolicyScoreDTO>> getRelatedPolicyByPolicyScore(
             @PathVariable("policy_code") String policyCode) {
-        List<PolicyScoreDTO> data = recommendationService.getPolicyRecommendation(policyCode
-        );
+        List<PolicyScoreDTO> data = recommendationService.getPolicyRecommendation(policyCode);
         return ApiResponse.successResponse(OK, "성공적으로 관련 정책 추천 리스트를 조회하였습니다.", data);
     }
 }

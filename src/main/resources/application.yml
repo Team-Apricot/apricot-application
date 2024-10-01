@@ -110,7 +110,7 @@ server:
 logging:
   level:
     org.springframework.cache: DEBUG
-    sandbox.apricot: DEBUG
+#    sandbox.apricot: DEBUG
     sandbox.apricot.common.aop.CacheLogging: DEBUG
 
 mybatis:

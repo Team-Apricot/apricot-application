@@ -2,8 +2,13 @@ package sandbox.apricot.recommendation.service;
 
 import static sandbox.apricot.member.util.exception.MemberErrorCode.MEMBER_NOT_FOUND;
 
+import java.util.concurrent.TimeUnit;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sandbox.apricot.member.mapper.MemberMapper;
 import sandbox.apricot.member.util.exception.MemberBusinessException;
 import sandbox.apricot.member.vo.Member;
@@ -16,17 +21,40 @@ import sandbox.apricot.recommendation.mapper.RecommendationMapper;
 import java.util.List;
 import sandbox.apricot.recommendation.util.DataPreprocess;
 
+@Log4j2
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class RecommendationServiceImpl implements RecommendationService {
 
+    private static final String REDIS_KEY = "recommendInfo";
     private final RecommendationMapper recommendationMapper;
     private final MemberMapper memberMapper;
+
+    private final RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public RecommendationInfo getRecommendationInfo(Long memberId) {
         Member member = memberMapper.findById(memberId)
                 .orElseThrow(() -> new MemberBusinessException(MEMBER_NOT_FOUND));
+
+        // memberId를 포함한 고유한 Redis 키 생성
+        String redisKeyForMember = REDIS_KEY + ":" + memberId;
+
+        ValueOperations<String, Object> ops = redisTemplate.opsForValue();
+        RecommendationInfo cachedData = null;
+
+        try {
+            cachedData = (RecommendationInfo) ops.get(redisKeyForMember); // 사용자별 캐시 키로 접근
+            if (cachedData != null) {
+                return cachedData;
+            }
+        } catch (Exception e) {
+            log.error(">>> [ ⚠️ Redis 접근 중 오류 발생 ]: {}", e.getMessage());
+        }
+
+        // Redis에 데이터가 없거나 오류가 발생한 경우 DB에서 데이터를 조회
+        log.info(">>> [ 🔍 Oracle - 지역구 혜택 수 조회 시도 ]");
 
         String nickName = member.getNickName();
         String ageRange = member.getAgeRange();
@@ -37,12 +65,21 @@ public class RecommendationServiceImpl implements RecommendationService {
         List<ScrapGroupSimilarityDTO> listByDistrictPolicyScrapOfScrapGroup =
                 getRecommendationByScrapGroup(ageRange, gender); // 스크랩 점수 추천
 
-        return RecommendationInfo.builder()
+        RecommendationInfo dbData = RecommendationInfo.builder()
                 .nickName(nickName)
                 .listByDistrictPolicyCnt(listByDistrictPolicyCnt)
                 .listByDistrictPolicyScore(listByDistrictPolicyScore)
                 .listByDistrictPolicyScrapOfScrapGroup(listByDistrictPolicyScrapOfScrapGroup)
                 .build();
+
+        try {
+            ops.set(redisKeyForMember, dbData, 24, TimeUnit.HOURS);
+            log.info(">>> [ ✨ Redis - Data 등록 완료 ]");
+        } catch (Exception e) {
+            log.error(">>> [ ⚠️ Redis 데이터 캐싱 중 오류 발생: {} ]", e.getMessage());
+        }
+
+        return dbData;
     }
 
     @Override
