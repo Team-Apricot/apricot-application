@@ -106,6 +106,7 @@ server:
   servlet:
     session:
       persistent: false
+  forwarded-headers-strategy: native
 
 logging:
   level:
